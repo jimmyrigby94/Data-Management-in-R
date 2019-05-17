@@ -3,7 +3,7 @@
 
 
 <div class = activity>
-<div class = structure>
+<div class = activitytitle>
 Core dplyr Functions for Data Manipulation
 </div>
 - filter(): select rows based on some logical condition
@@ -18,7 +18,7 @@ Core dplyr Functions for Data Manipulation
 
 
 <div class = activity>
-<div class = structure>
+<div class = activitytitle>
 Non-Exhaustive List of Helper Functions
 </div>
 - desc(): arranges in decending order
