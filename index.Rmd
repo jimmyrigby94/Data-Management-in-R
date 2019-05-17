@@ -36,6 +36,8 @@ library(tidyverse)
 
 - [Dplyr Vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 - [R For Data Scientists: Chapter 5](http://r4ds.had.co.nz/transform.html)
+- [Data Wrangling Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [50 Examples of Dplyr](https://www.listendata.com/2016/08/dplyr-tutorial.html)
 
 </div>
 
