@@ -21,12 +21,12 @@ Core dplyr Functions for Data Manipulation
 <div class = activitytitle>
 Non-Exhaustive List of Helper Functions
 </div>
-- desc(): arranges in decending order
+- desc(): arranges in descending order
 - starts_with("abc"): matches names that being "abc" (i.e., abc1)
 - ends_with("abc"): matches names that end "abc" (i.e., cat_abc)
 - contains("abc"): matches names that contain "abc" (i.e., new_abc1)
 - num_range("x", 1:3) matches x1, x2, x3
-- count(): Counts the number of rows in a dataset/group
+- count(): Counts the number of rows in a data set/group
 - group_indices(): creates vector of integer ids for group
 - rowwise(): groups the data by columns and applies functions across columns
 </div>
@@ -87,7 +87,7 @@ filter(data, logical_test, ...)
 - Some observations were created when the survey was being tested. 
 - These observations not informative and should be removed. 
 - Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).
-- Using filter(), we can easily retain the real observations while exculding rows associated with the pilot test.
+- Using filter(), we can easily retain the real observations while excluding rows associated with the pilot test.
 
 ```{r, include = FALSE}
 ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
@@ -141,8 +141,8 @@ select(data, cols_to_keep, ...)
 - The second argument specifies the transformation we want to preform.
 - In this case, the transformation argument specifies a column or columns we would like to keep, separated by commas.
 - If you want to keep a range of columns you can specify the first column and last column of the range with a colon.
-- Sometimes, it is more effecient to drop then select columns.
-- To remove columns, simply include a minus sign infront of the column name.
+- Sometimes, it is more efficient to drop then select columns.
+- To remove columns, simply include a minus sign in front of the column name.
 - select() can also be used to reorder columns - the columns will be ordered how you type them.
 
 </div>
@@ -233,8 +233,8 @@ rename(data, old_name = new_name, ...)
 </div>
 
 ### Using rename()
-- Given that Q1.x and Q2.x are not meaninful stems, we should rename the items so that they are interpretable.
-- It turns out that items that are labeled Q1 measured consientousness and items that are measured Q2 measure job performance. 
+- Given that Q1.x and Q2.x are not meaningful stems, we should rename the items so that they are interpretable.
+- It turns out that items that are labeled Q1 measured conscientiousness and items that are measured Q2 measure job performance. 
 
 ```{r, echo = FALSE}
 knitr::kable(ex_data, format = "html", caption = "Survey Data: Selected Columns") %>%
@@ -296,16 +296,16 @@ mutate(data, new_var = function, ...)
 </div>
 - Again, following the general dplyr form (See section \@ref(form)), the first argument specifies the data you are manipulating.
 - The next argument specifies the transformation, which in mutate() defines a new variable.
-- To do this, you specificy a formula that specifies the name of a new variable on the left of the equals sign and a function that creates the new variable on the right.
+- To do this, you specify a formula that specifies the name of a new variable on the left of the equals sign and a function that creates the new variable on the right.
 - In this notation, function refers to any function or operator that creates a vector of output that is as long as the data frame *or* has a single value.
-- Multiple new variables can be created within one mutate() call, but should be spearated by commas.
+- Multiple new variables can be created within one mutate() call, but should be separated by commas.
 
 ### Helper Functions
 - rowwise(): Applies functions across columns within rows.
 - ungroup(): Undoes grouping functions such as rowwise() and group_by() (group_by() will be discussed in Section \@ref(group))
 
 ### Using mutate()
-- Given that their are two subscales (i.e., conscientousness and performance) within our survey data, we can create scale scores for these sets of items. 
+- Given that their are two sub scales (i.e., conscientiousness and performance) within our survey data, we can create scale scores for these sets of items. 
 - Typically this is done by averaging the item level data.
 - mutate() provides an easy way to do this!
 
@@ -353,7 +353,7 @@ mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf =
 - Furthermore, using rowwise(), ungroup(), and mutate() all together makes our code difficult to read!
 - Wouldn't it be nice if there was some shorthand way to link functions together?
 - Lucky for us there is, and it is call the pipe operator. 
-- The pipe operator carrys forward the output of the previous function and uses it in the function that follows.
+- The pipe operator carries forward the output of the previous function and uses it in the function that follows.
 - This allows us to string together multiple functions without retyping the data argument. 
 
 ### Structure of the Pipe Operator
@@ -418,15 +418,15 @@ group_by(data, grouping_variable, ...)
 
 
 - group_by() takes the common dplyr structure - define the data and then define the transformation.
-- The transforamation in this case simply defines the grouping variable.
+- The transformation in this case simply defines the grouping variable.
 - If multiple grouping variables are provided, the data is grouped by unique combinations of all grouping variables.
 - Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object. 
 - Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section \@ref(sum))
-- Also, just like rowwise(), in order return the dataset to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.
+- Also, just like rowwise(), in order return the data set to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.
 
 ### Using group_by()
 - The survey data has been joined with information regarding employees managers.
-- We can now calculate each employee's team's average performance, conscientousness, and team size in the data.
+- We can now calculate each employee's team's average performance, conscientiousness, and team size in the data.
 - While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.
 
 ```{r, include = FALSE}
@@ -481,7 +481,7 @@ summarise(data, summary_var = function, ...)
 - The function should return a single value (i.e., mean() or sd()).
 
 ### Using summarise()
-- Let's create a sumary table for the overall sample as well as each team
+- Let's create a summary table for the overall sample as well as each team
 
 
 ```{example, sum1}

@@ -1,5 +1,5 @@
 --- 
-title: "An Introduction to R"
+title: "Psyc 6300: Data Management"
 date: "`r Sys.Date()`"
 author: "James Rigby"
 site: bookdown::bookdown_site
@@ -9,17 +9,35 @@ biblio-style: apalike
 link-citations: yes
 description: "This is an introduction to R as a statistical package for psychological research."
 ---
+
+
+
+```{r htmlTemplate, echo=FALSE}
+# Create the external file
+img <- htmltools::img(src = knitr::image_uri("suppl/uh.png"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:50px; right:1%; padding:10px;z-index:200;')
+
+htmlhead <- paste0('
+<script>
+document.write(\'<div class="logos">',img,'</div>\')
+</script>
+')
+
+readr::write_lines(htmlhead, path = "header.html")
+
+```
+
 # (PART) Data Management with Dplyr {-}
 
 # Prerequisites
-
 - This book assumes that you are familiar with the basics of the R language.
 
 - While we will review logic some logical operators, we will not discuss basic arithmatic operators, common functions (i.e., mean), or data structures. 
 
 - Please review the material on base R if you are still uncomfortable with the foundations of the language.
 
-- Datacamp offeres a great set of courses [here](https://www.datacamp.com/courses/free-introduction-to-r) that will help get you up to speed.
+- Datacamp offers a great set of courses [here](https://www.datacamp.com/courses/free-introduction-to-r) that will help get you up to speed.
 
 - If you have yet to do so please install and load tidyverse by running the following code
 
@@ -44,5 +62,10 @@ library(tidyverse)
 </div>
 
 ## Acknowledgements
+
+```{r, echo = FALSE}
+knitr::include_graphics("suppl/DataCamp.png")
+```
+
 
 This class is supported by DataCamp, the most intuitive learning platform for data science. Learn R, Python and SQL the way you learn best through a combination of short expert videos and hands-on-the-keyboard exercises. Take over 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalised feedback on every exercise.
