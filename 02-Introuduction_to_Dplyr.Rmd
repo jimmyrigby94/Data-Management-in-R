@@ -1,0 +1,60 @@
+```{r, warning=FALSE, message=FALSE, error=FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+# What is dplyr?
+<div class = semiemph>
+- dplyr is a package that tries to provide a set of functions that utilizes a consistent design, philosophy, grammar, and data structure
+- This consistency increases usability and interpretability of code
+- It is consistently updated and supported by members of the R-Core team and creaters of RStudio
+- It is the most commonly used to manipulate data within the R program
+</div>
+## Why is Data Manipulation Important?
+
+### Example 1: Survey Data
+<div class = tiny>
+```{r, echo = FALSE}
+ex_dat<-read.csv("suppl/cons_perf.csv")
+
+knitr::kable(head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q")), format = "html", caption = "Example of Survey Data") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```
+</div>
+
+### What's Wrong With the Survey Data?
+- Some of the meta-data collected by the survey platform is not meaningful.
+- It is unclear what the data (i.e., Q1.1) is referring to.
+- Items that start with Q1 and Q2 are associated with unique scales that need to be formed into composites.
+- Some observations were created by you during pilot testing and should not be included.
+
+## This Isn't Relevant to Me - My Research is Experimental!
+
+### Example 2: Experimental Data
+```{r,echo=FALSE}
+ex_dat2a<-tibble(id = 1:6,
+                condition = rep(0:1, each = 3),
+                pre = rnorm(6, 5, sd = 1), 
+                non_naieve = c(rep(0, 4), rep(1, 2)))
+
+ex_dat2b<-tibble(id = 1:6,
+                condition = rep(0:1, each = 3),
+                post = rnorm(6, 6, sd = 1), 
+                non_naieve = c(rep(0, 4), rep(1, 2)))
+
+knitr::kable(list(head(ex_dat2a), head(ex_dat2b)),digits = 2, format = "html", caption = "Example of Experimental Data" )%>%
+  kableExtra::kable_styling()
+```
+
+### What's Wrong With the Experimental Data?
+- Some of your participants figured out the purpose of your expiriment making their responses invalid.
+- Your pre and post scale was miscalibrated and is .3 higher than it should be.
+- Your pre and post measures are stored in seperate data files.
+
+## Take-Aways
+<div class = semiemph>
+1. No matter what paradigm you work in data management is critical.
+2. Tidy data rarely exists in the wild.
+3. Efficiently managing data will save you time and make you a valuable assest to your collaborators.
+</div>
+
+

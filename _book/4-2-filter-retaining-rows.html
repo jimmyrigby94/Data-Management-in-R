@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="4.2 filter(): Retaining Rows | An Introduction to R" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This is an introduction to R as a statistical package for psychological research." />
+
+
+<meta name="author" content="James Rigby" />
+
+<meta name="date" content="2019-05-16" />
+
+
+<meta name="description" content="This is an introduction to R as a statistical package for psychological research.">
+
+<title>4.2 filter(): Retaining Rows | An Introduction to R</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+\usepackage{booktabs}
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="part"><span><b>I Data Management with Dplyr</b></span></li>
+<li class="has-sub"><a href="index.html#prerequisites"><span class="toc-section-number">1</span> Prerequisites</a><ul>
+<li><a href="1-1-supplemental-resources.html#supplemental-resources"><span class="toc-section-number">1.1</span> Supplemental Resources</a></li>
+</ul></li>
+<li><a href="2-material-overview.html#material-overview"><span class="toc-section-number">2</span> Material Overview</a></li>
+<li class="has-sub"><a href="3-what-is-dplyr.html#what-is-dplyr"><span class="toc-section-number">3</span> What is dplyr?</a><ul>
+<li class="has-sub"><a href="3-1-why-is-data-manipulation-important.html#why-is-data-manipulation-important"><span class="toc-section-number">3.1</span> Why is Data Manipulation Important?</a><ul>
+<li><a href="3-1-why-is-data-manipulation-important.html#example-1-survey-data"><span class="toc-section-number">3.1.1</span> Example 1: Survey Data</a></li>
+<li><a href="3-1-why-is-data-manipulation-important.html#whats-wrong-with-the-survey-data"><span class="toc-section-number">3.1.2</span> What’s Wrong With the Survey Data?</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-2-but-my-research-is-experimental.html#but-my-research-is-experimental"><span class="toc-section-number">3.2</span> But My Research is Experimental!</a><ul>
+<li><a href="3-2-but-my-research-is-experimental.html#example-2-experimental-data"><span class="toc-section-number">3.2.1</span> Example 2: Experimental Data</a></li>
+<li><a href="3-2-but-my-research-is-experimental.html#whats-wrong-with-the-experimental-data"><span class="toc-section-number">3.2.2</span> What’s Wrong With the Experimental Data?</a></li>
+</ul></li>
+<li><a href="3-3-take-aways.html#take-aways"><span class="toc-section-number">3.3</span> Take-Aways</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-dplyr-functions.html#dplyr-functions"><span class="toc-section-number">4</span> dplyr Functions</a><ul>
+<li><a href="4-1-form.html#form"><span class="toc-section-number">4.1</span> dplyr Function Structure</a></li>
+<li class="has-sub"><a href="4-2-filter-retaining-rows.html#filter-retaining-rows"><span class="toc-section-number">4.2</span> filter(): Retaining Rows</a><ul>
+<li><a href="4-2-filter-retaining-rows.html#filter-structure"><span class="toc-section-number">4.2.1</span> filter() Structure</a></li>
+<li><a href="4-2-filter-retaining-rows.html#using-filter"><span class="toc-section-number">4.2.2</span> Using filter()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-3-select-choosing-columns.html#select-choosing-columns"><span class="toc-section-number">4.3</span> select(): Choosing Columns</a><ul>
+<li><a href="4-3-select-choosing-columns.html#select-structure"><span class="toc-section-number">4.3.1</span> select() Structure</a></li>
+<li><a href="4-3-select-choosing-columns.html#useful-helper-functions-for-select"><span class="toc-section-number">4.3.2</span> Useful Helper Functions for select()</a></li>
+<li><a href="4-3-select-choosing-columns.html#using-select"><span class="toc-section-number">4.3.3</span> Using select()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-4-rename-renaming-variables.html#rename-renaming-variables"><span class="toc-section-number">4.4</span> rename(): Renaming Variables</a><ul>
+<li><a href="4-4-rename-renaming-variables.html#rename-structure"><span class="toc-section-number">4.4.1</span> rename() Structure</a></li>
+<li><a href="4-4-rename-renaming-variables.html#using-rename"><span class="toc-section-number">4.4.2</span> Using rename()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-5-mutate-creating-new-variables.html#mutate-creating-new-variables"><span class="toc-section-number">4.5</span> mutate(): Creating New Variables</a><ul>
+<li><a href="4-5-mutate-creating-new-variables.html#mutate-structure"><span class="toc-section-number">4.5.1</span> mutate() Structure</a></li>
+<li><a href="4-5-mutate-creating-new-variables.html#helper-functions"><span class="toc-section-number">4.5.2</span> Helper Functions</a></li>
+<li><a href="4-5-mutate-creating-new-variables.html#using-mutate"><span class="toc-section-number">4.5.3</span> Using mutate()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-6-the-pipe-operator.html#the-pipe-operator"><span class="toc-section-number">4.6</span> The Pipe Operator (%&gt;%)</a><ul>
+<li><a href="4-6-the-pipe-operator.html#structure-of-the-pipe-operator"><span class="toc-section-number">4.6.1</span> Structure of the Pipe Operator</a></li>
+<li><a href="4-6-the-pipe-operator.html#using-the-pipe-operator"><span class="toc-section-number">4.6.2</span> Using the pipe operator</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-7-group.html#group"><span class="toc-section-number">4.7</span> group_by(): Grouping Data Frames</a><ul>
+<li><a href="4-7-group.html#group_by-structure"><span class="toc-section-number">4.7.1</span> group_by Structure</a></li>
+<li><a href="4-7-group.html#using-group_by"><span class="toc-section-number">4.7.2</span> Using group_by()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-8-sum.html#sum"><span class="toc-section-number">4.8</span> summarise(): Creating Data Summaries</a><ul>
+<li><a href="4-8-sum.html#summarise-structure"><span class="toc-section-number">4.8.1</span> summarise() Structure</a></li>
+<li><a href="4-8-sum.html#using-summarise"><span class="toc-section-number">4.8.2</span> Using summarise()</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-9-arrange-ordering-rows.html#arrange-ordering-rows"><span class="toc-section-number">4.9</span> arrange(): Ordering Rows</a><ul>
+<li><a href="4-9-arrange-ordering-rows.html#arrange-structure"><span class="toc-section-number">4.9.1</span> arrange() Structure</a></li>
+<li><a href="4-9-arrange-ordering-rows.html#using-arrange"><span class="toc-section-number">4.9.2</span> Using arrange()</a></li>
+</ul></li>
+</ul></li>
+<li><a href="5-activity-1.html#activity-1"><span class="toc-section-number">5</span> Activity 1</a></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="filter-retaining-rows" class="section level2">
+<h2><span class="header-section-number">4.2</span> filter(): Retaining Rows</h2>
+<ul>
+<li>This function allows you to subset the data frame based on a logical test.</li>
+<li>Simply put, it allows you to choose which rows to keep.</li>
+</ul>
+<div id="filter-structure" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> filter() Structure</h3>
+<div class="activity">
+<div class="activitytitle">
+<p>filter(data, logical_test, …)</p>
+</div>
+<ul>
+<li>Remember, all dplyr functions take the same general form (See section <a href="4-1-form.html#form">4.1</a>).</li>
+<li>The first argument specifies the data frame that we are manipulating.</li>
+<li>The second argument specifies the transformation we want to preform.</li>
+<li>In this case transformation argument uses a logical test to define the observations we would like to keep.</li>
+<li>Logical tests can explicitly use logical operators (i.e., == or %in%).</li>
+<li>Functions that return logical values can also be used (i.e., is.na()).</li>
+<li>Multiple logical tests can be provided as indicated by the elipse.</li>
+<li>If they are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.</li>
+<li>If they are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained</li>
+</ul>
+</div>
+</div>
+<div id="using-filter" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Using filter()</h3>
+<ul>
+<li>Remember the survey data?</li>
+<li>Some observations were created when you were pilot testing the survey.</li>
+<li>These are not informative because they do not come from your sample and should be removed.</li>
+<li>Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).</li>
+<li>Using filter() we can easily retain the real observations while exculding rows associated with the pilot test.</li>
+</ul>
+<table class="table table-striped" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-6">Table 4.1: </span>Full Survey Data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ResponseId
+</th>
+<th style="text-align:right;">
+Status
+</th>
+<th style="text-align:left;">
+last_name
+</th>
+<th style="text-align:right;">
+Q1.1
+</th>
+<th style="text-align:right;">
+Q1.2
+</th>
+<th style="text-align:right;">
+Q1.3
+</th>
+<th style="text-align:right;">
+Q2.1
+</th>
+<th style="text-align:right;">
+Q2.2
+</th>
+<th style="text-align:right;">
+Q2.3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+R_3oR2O5GVj417Rb8
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_24kfInksYNZC2Bb
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_2Sq8eFhNWEfZOJd
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_BWjnVPEG2iVgRKp
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_3n9rQagKRteaa0F
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_beYF2qSztK7r6jn
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<span id="exm:filter1" class="example"><strong>Example 4.1  </strong></span>Using filter to retain non-pilot observations (Status = 1).
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(ex_data, Status <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre>
+<table class="table table-striped" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-8">Table 4.2: </span>Filtered Survey Data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ResponseId
+</th>
+<th style="text-align:right;">
+Status
+</th>
+<th style="text-align:left;">
+last_name
+</th>
+<th style="text-align:right;">
+Q1.1
+</th>
+<th style="text-align:right;">
+Q1.2
+</th>
+<th style="text-align:right;">
+Q1.3
+</th>
+<th style="text-align:right;">
+Q2.1
+</th>
+<th style="text-align:right;">
+Q2.2
+</th>
+<th style="text-align:right;">
+Q2.3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+R_24kfInksYNZC2Bb
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_2Sq8eFhNWEfZOJd
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_BWjnVPEG2iVgRKp
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_3n9rQagKRteaa0F
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_beYF2qSztK7r6jn
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<span id="exm:filter2" class="example"><strong>Example 4.2  </strong></span>A less practical example that retains observations that responded to Q1.1 OR Q1.3 with 5
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(ex_data, Q1<span class="fl">.1</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span>Q1<span class="fl">.3</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span> )</code></pre>
+<table class="table table-striped" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-10">Table 4.3: </span>Filtered Survey Data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ResponseId
+</th>
+<th style="text-align:right;">
+Status
+</th>
+<th style="text-align:left;">
+last_name
+</th>
+<th style="text-align:right;">
+Q1.1
+</th>
+<th style="text-align:right;">
+Q1.2
+</th>
+<th style="text-align:right;">
+Q1.3
+</th>
+<th style="text-align:right;">
+Q2.1
+</th>
+<th style="text-align:right;">
+Q2.2
+</th>
+<th style="text-align:right;">
+Q2.3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+R_2Sq8eFhNWEfZOJd
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_BWjnVPEG2iVgRKp
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_beYF2qSztK7r6jn
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="4-1-form.html"><button class="btn btn-default">Previous</button></a>
+<a href="4-3-select-choosing-columns.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

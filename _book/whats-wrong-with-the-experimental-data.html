@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.5 What’s Wrong With the Experimental Data? | An Introduction to R</title>
+  <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.5 What’s Wrong With the Experimental Data? | An Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to R as a statistical package for psychological research." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.5 What’s Wrong With the Experimental Data? | An Introduction to R" />
+  
+  <meta name="twitter:description" content="This is an introduction to R as a statistical package for psychological research." />
+  
+
+<meta name="author" content="James Rigby" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="example-2-experimental-data.html">
+<link rel="next" href="core-dplyr-functions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Data Management with Dplyr</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.1</b> Supplemental Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
+<li class="chapter" data-level="3" data-path="an-introduction-to-dplyr.html"><a href="an-introduction-to-dplyr.html"><i class="fa fa-check"></i><b>3</b> An Introduction to dplyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-dplyr.html"><a href="what-is-dplyr.html"><i class="fa fa-check"></i><b>3.1</b> What is dplyr?</a></li>
+<li class="chapter" data-level="3.2" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html"><i class="fa fa-check"></i><b>3.2</b> Why is Data Manipulation Important?</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html#example-1-survey-data"><i class="fa fa-check"></i><b>3.2.1</b> Example 1: Survey Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="whats-wrong-with-the-survey-data.html"><a href="whats-wrong-with-the-survey-data.html"><i class="fa fa-check"></i><b>3.3</b> What’s Wrong With the Survey Data?</a></li>
+<li class="chapter" data-level="3.4" data-path="example-2-experimental-data.html"><a href="example-2-experimental-data.html"><i class="fa fa-check"></i><b>3.4</b> Example 2: Experimental Data</a></li>
+<li class="chapter" data-level="3.5" data-path="whats-wrong-with-the-experimental-data.html"><a href="whats-wrong-with-the-experimental-data.html"><i class="fa fa-check"></i><b>3.5</b> What’s Wrong With the Experimental Data?</a></li>
+<li class="chapter" data-level="3.6" data-path="core-dplyr-functions.html"><a href="core-dplyr-functions.html"><i class="fa fa-check"></i><b>3.6</b> Core dplyr Functions</a></li>
+<li class="chapter" data-level="3.7" data-path="dplyr-function-structure.html"><a href="dplyr-function-structure.html"><i class="fa fa-check"></i><b>3.7</b> dplyr Function Structure</a></li>
+<li class="chapter" data-level="3.8" data-path="key-helper-functions.html"><a href="key-helper-functions.html"><i class="fa fa-check"></i><b>3.8</b> Key Helper Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="whats-wrong-with-the-experimental-data" class="section level2">
+<h2><span class="header-section-number">3.5</span> What’s Wrong With the Experimental Data?</h2>
+<ul>
+<li>Some of your participants deduced the purpose of your expiriment.</li>
+<li>Your post scale was miscalibrated and is .3 higher than it should be.</li>
+<li></li>
+</ul>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="example-2-experimental-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="core-dplyr-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Introduction to R.pdf", "Introduction to R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

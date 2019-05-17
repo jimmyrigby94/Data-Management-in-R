@@ -1,0 +1,91 @@
+/* Whole document: */
+body{
+  font-family: Times New Roman;
+  font-size: 16pt;
+}
+/* Headers */
+h1{
+  font-size: 24pt;
+  margin-top: 84px;
+
+}
+
+h2{
+  font-size: 22pt;
+
+}
+
+h3{
+  font-size: 20pt;
+
+}
+
+h4{
+  font-size: 18pt;
+}
+
+/* Emphasized */
+
+.emphasize{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20pt;
+}
+
+.semiemph{
+  text-align: left;
+  font-size: 18pt;
+}
+
+
+.tiny{
+  font-size: 10pt;
+}
+
+.chapter{
+  font-size: 12pt;
+}
+
+.part{
+  font-size: 13pt;
+}
+
+.activity{
+  background-color: lightgrey;
+
+  padding-top: 0;
+  padding-bottom:  0;
+
+  border-radius: 25px;
+  margin:0;
+  white-space-collapse:true;
+}
+.activitytitle{
+  white-space-collapse:true;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin: 0;
+  background-color: lightblue;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20pt;
+  margin-top:0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom:0;
+}
+
+.advactivitytitle{
+  white-space-collapse:true;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin: 0;
+  margin-top:0;
+  background-color: red;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20pt;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom:0;
+}

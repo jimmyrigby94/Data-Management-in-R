@@ -1,0 +1,26 @@
+# Material Overview
+
+<div class = semiemph>
+
+Part 1: What is dplyr? (15 Minutes)
+
+
+Part 2: dplyr's Core Functions (45 Minutes)
+
+
+Break (15 Minutes)
+
+
+Activity 1 (30 Minutes)
+
+
+Part 3: Join Functions (30 Minutes)
+
+
+Break (15 Minutes)
+
+
+Activity 2 (30 Minutes)
+
+</div>
+

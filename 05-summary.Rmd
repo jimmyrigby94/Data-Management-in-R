@@ -1,0 +1,192 @@
+# Join Functions
+
+- Let's look at the original survey data set after it was cleaned up. 
+
+```{r, echo = FALSE}
+ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
+ex_data%>%
+  filter(Status == 0)%>%
+  select(-Status, -last_name)%>%
+  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+  rowwise()%>%
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  knitr::kable(digits = 2)%>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```
+
+- Note that manager information was not originally stored in this data - two data sets had to be merged with this data frame.
+
+```{r, echo = FALSE}
+man_data<-rbind(head(ex_dat)%>%
+  mutate(Manager = c("David","Nick", "Julia", "Nick", "Nick", "Julia"))%>%
+  select(ResponseId, Manager), 
+  head(ex_dat)%>%
+  mutate(Manager = c("David","David", "Julia", "Nick", "Nick", "Julia"), 
+         ResponseId=str_replace(ResponseId, "[[2:7]]", "4"))%>%
+  select(ResponseId, Manager))
+
+  knitr::kable(man_data)
+```
+
+
+- Merging data sets can be rather complicated, as you will soon see. 
+- Luckily the creators of dplyr wrote a set of functions that make merging multiple data tables easy
+
+## Overview of dplyr Functions for Joining and Binding
+
+### Binding Functions
+- bind_rows(): Stacks many data frames vertically. 
+- bind_cols(): Joins many date frames horizontally.
+
+### Mutating Joins
+- left_join(): Joins based on an ID variable. Retains all rows in left data frame and only matching rows in the right.
+- right_join(): Joins based on an ID variable. Retains all rows in the right data frame and only matching rows in the left.
+- inner_join(): Joins based on an ID variable. Retains only matching rows for both data frames.
+- full_join(): Joins based on an ID variable (Considers order). Retains only matching rows for 
+
+### Filtering Joins
+- semi_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame. 
+- anit_join(): Reains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
+
+
+## bind_cols(): Binding Data Frames Horizontally
+- bind_cols is used when you have a set of data frames that 
+
+    1. Have equal number of rows
+    2. Are ordered identically, with no missing information
+    
+- If these two requirements are not met, the data will joined combining information about different participants
+- If your data does not meet either of these requirements, use a join function discussed below.
+    
+### bind_cols() Structure
+
+<div class = activity>
+<div class = activitytitle>
+
+bind_cols(...)
+
+</div>
+- bind_cols() takes two or more data frames (or a list of data frames) that have an equal number of identically ordered rows.
+</div>
+
+### Using bind_cols()
+- Note that, while for the survey data we want to combine two data frames horizontally, the data frames do not have the same number of rows.
+- Furthemore, based on the responseId variable, we know that participants are not in the same order.
+- Thus we are probably better off using a different function to join these two data sets. 
+- In contrast, note that in the two tabels below, each data frame has the same number of observations and the ID variables align perfectly.
+
+```{r, echo = FALSE}
+cb1_data <- ex_data %>%
+  filter(Status == 0) %>%
+  rename(
+    cons1 = Q1.1,
+    cons2 = Q1.2,
+    cons3 = Q1.3,
+    perf1 = Q2.1,
+    perf2 = Q2.2,
+    perf3 = Q2.3
+  ) %>%
+  rowwise() %>%
+  mutate(cons = mean(c(cons1, cons2, cons3), na.rm = TRUE),
+         perf = mean(c(perf1, perf2, perf3), na.rm = TRUE))%>%
+               select(ResponseId, cons)
+
+cb2_data <- ex_data %>%
+  filter(Status == 0) %>%
+  rename(
+    cons1 = Q1.1,
+    cons2 = Q1.2,
+    cons3 = Q1.3,
+    perf1 = Q2.1,
+    perf2 = Q2.2,
+    perf3 = Q2.3
+  ) %>%
+  rowwise() %>%
+  mutate(cons = mean(c(cons1, cons2, cons3), na.rm = TRUE),
+         perf = mean(c(perf1, perf2, perf3), na.rm = TRUE))%>%
+               select(ResponseId, perf)
+
+knitr::kable(list(cb1_data,
+             cb2_data), digits = 2, caption = "Two Tables With Corresponding Rows and Equal Dimensions")
+```
+
+```{example, bindc}
+Binding data frames together horizontally.
+```{r, eval = FALSE}
+bind_cols(cons_dat, perf_dat)
+```
+
+```{r, echo = FALSE}
+bind_cols(cb1_data, cb2_data)%>%
+  knitr::kable(digits = 2, caption = "Output of bind_cols()")
+```
+
+- Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name
+- While this example was adequate for illustration purposes, in practice, join functions are more flexible and appropriate when data sets have  shared identifier.
+
+## bind_rows(): Binding Data Frames Vertically
+- bind_rows() is used when you want to bind data frames vertically
+- This is sometimes referred to as stacking data frames
+- Unlike bind_cols(), bind_rows() attempts to match columns based on their name
+- If a data frame is missing a column, observations will have missing data for that variable
+
+### bind_rows() Structure
+
+<div class = activity>
+<div class = activitytitle>
+
+bind_rows(...)
+
+</div>
+
+- bind_rows() takes two or more data frames (or a list of data frames) 
+
+</div>
+
+### Using bind_rows()
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+br_data<-ex_data%>%
+          filter(Status == 0) %>%
+          rename(
+            cons1 = Q1.1,
+            cons2 = Q1.2,
+            cons3 = Q1.3,
+            perf1 = Q2.1,
+            perf2 = Q2.2,
+            perf3 = Q2.3
+          ) %>%
+          rowwise() %>%
+          mutate(cons = mean(c(cons1, cons2, cons3), na.rm = TRUE),
+                 perf = mean(c(perf1, perf2, perf3), na.rm = TRUE))%>%
+          select(ResponseId, cons, perf)
+          
+br1_data<-br_data[1:3,]
+br2_data<-br_data[4:nrow(br_data),]
+
+knitr::kable(list(br1_data, 
+                  left_join(br2_data,man_data)%>%
+  select(Manager, ResponseId, perf, cons)), digits = 2, caption="Two data frames with a different number of columns ordered differently.")
+
+```
+
+```{example, bindr}
+Binding data frames together vertically (AKA, stacking).
+```{r, eval = FALSE}
+bind_rows(cons_dat, perf_dat)
+```
+
+```{r, echo = FALSE, message = FALSE, warning=FALSE}
+knitr::kable(bind_rows(br1_data, left_join(br2_data,man_data)%>%
+                  select(Manager, ResponseId, perf, cons)),
+  digits = 2, caption = "Output of bind_cols()")
+```
+
+- Note that columns that are named the same are appropriately matched. 
+- Furthermore, observations from a data frames that is missing a column are assigned NA for that variable.
+
+
+
+
+
+
