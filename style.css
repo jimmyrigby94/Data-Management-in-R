@@ -75,6 +75,23 @@ h4{
   padding-bottom:0;
 }
 
+.structure{
+  white-space-collapse:true;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin: 0;
+  background-color: lightblue;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20pt;
+  margin-top:0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom:0;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+
 .advactivitytitle{
   white-space-collapse:true;
   border-top-left-radius: 25px;
@@ -88,5 +105,4 @@ h4{
   margin-bottom: 0;
   padding-top: 0;
   padding-bottom:0;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }

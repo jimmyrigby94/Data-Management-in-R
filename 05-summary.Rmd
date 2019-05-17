@@ -61,7 +61,7 @@ man_data<-rbind(head(ex_dat)%>%
 ### bind_cols() Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 bind_cols(...)
 
@@ -134,7 +134,7 @@ bind_cols(cb1_data, cb2_data)%>%
 ### bind_rows() Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 bind_rows(...)
 

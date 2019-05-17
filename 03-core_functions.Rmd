@@ -3,7 +3,7 @@
 
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 Core dplyr Functions for Data Manipulation
 </div>
 - filter(): select rows based on some logical condition
@@ -18,7 +18,7 @@ Core dplyr Functions for Data Manipulation
 
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 Non-Exhaustive List of Helper Functions
 </div>
 - desc(): arranges in decending order
@@ -40,7 +40,7 @@ All of the core dplyr functions take the following form:
 </div>
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 function(data, transformation, ...)
 </div>
@@ -63,7 +63,7 @@ function(data, transformation, ...)
 ### filter() Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 filter(data, logical_test, ...)
 
@@ -131,7 +131,7 @@ knitr::kable(filter(ex_data, Q1.1 == 5 | Q1.3 == 5 ), format = "html", caption =
 ### select() Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 select(data, cols_to_keep, ...)
 
@@ -222,7 +222,7 @@ ex_data<-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 
 ### rename() Structure
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 rename(data, old_name = new_name, ...)
 
@@ -289,7 +289,7 @@ ex_data<-rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1,
 
 ### mutate() Structure
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 mutate(data, new_var = function, ...)
 
@@ -359,7 +359,7 @@ mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf =
 ### Structure of the Pipe Operator
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 function1(data, transformation, ...)%>%
   function2(transformation)
@@ -410,7 +410,7 @@ ex_data%>%
 ### group_by Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 group_by(data, grouping_variable, ...)
 
@@ -469,7 +469,7 @@ knitr::kable()
 ### summarise() Structure
 
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 summarise(data, summary_var = function, ...)
 
@@ -522,7 +522,7 @@ ex_data%>%
 
 ### arrange() Structure
 <div class = activity>
-<div class = activitytitle>
+<div class = structure>
 
 arrange(data, sort_var, ...)
 
