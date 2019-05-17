@@ -223,13 +223,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bind_cols-binding-data-frames-horizontally" class="section level2">
 <h2><span class="header-section-number">6.2</span> bind_cols(): Binding Data Frames Horizontally</h2>
 <ul>
-<li><p>bind_cols is used when you have a set of data frames that</p>
+<li><p>bind_cols() is used when you have a set of data frames that</p>
 <ol style="list-style-type: decimal">
 <li>Have equal number of rows</li>
-<li>Are ordered identically, with no missing information</li>
+<li>Are ordered identically, with no missing or new observations</li>
 </ol></li>
 <li>If these two requirements are not met, the data will joined combining information about different participants</li>
-<li><p>If your data does not meet either of these requirements, use a join function discussed below.</p></li>
+<li><p>If your data does not meet either of these requirements, but has a participant identifier use a join function discussed below.</p></li>
 </ul>
 <div id="bind_cols-structure" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> bind_cols() Structure</h3>
@@ -471,7 +471,8 @@ R_beYF2qSztK7r6jn
 </tbody>
 </table>
 <ul>
-<li>Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name</li>
+<li>Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name.</li>
+<li>This is intended to prevent mixups, but can result in dupicate data.</li>
 <li>While this example was adequate for illustration purposes, in practice, join functions are more flexible and appropriate when data sets have shared identifier.</li>
 </ul>
 </div>

@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.7</span> group_by(): Grouping Data Frames</h2>
 <ul>
 <li>Sometimes, when working with data we want to perform some operation within a grouping variable.</li>
-<li>For example, imagine the employees responding to the survey we have been working with report to different managers.</li>
+<li>For example, the participants responding to this survey report to different managers.</li>
 <li>We may be interested in creating a new column of data that contains the work-groups’ average performance.</li>
 <li>group_by() can be used in tandem with mutate() to apply a function within columns clustering on groups</li>
 </ul>
@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>group_by() takes the common dplyr structure - define the data and then define the transformation.</li>
 <li>The transforamation in this case simply defines the grouping variable.</li>
-<li>If multiple grouping variables are provided, the data is grouped by unique combinations of the grouping variables.</li>
+<li>If multiple grouping variables are provided, the data is grouped by unique combinations of all grouping variables.</li>
 <li>Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object.</li>
 <li>Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section <a href="sum.html#sum">4.8</a>)</li>
 <li>Also, just like rowwise(), in order return the dataset to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.</li>
@@ -246,9 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-group_by" class="section level3">
 <h3><span class="header-section-number">4.7.2</span> Using group_by()</h3>
 <ul>
-<li>The survey data has been merged with information regarding employees managers.</li>
-<li>Some potentially useful information can be derived now that we have a grouping variable.</li>
-<li>We can include the employee’s team’s average performance, average conscientousness, and team size in the data.</li>
+<li>The survey data has been joined with information regarding employees managers.</li>
+<li>We can now calculate each employee’s team’s average performance, conscientousness, and team size in the data.</li>
 <li>While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.</li>
 </ul>
 <table>

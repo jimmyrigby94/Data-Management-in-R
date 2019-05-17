@@ -240,8 +240,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Logical tests can explicitly use logical operators (i.e., == or %in%).</li>
 <li>Functions that return logical values can also be used (i.e., is.na()).</li>
 <li>Multiple logical tests can be provided as indicated by the elipse.</li>
-<li>If they are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.</li>
-<li>If they are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained</li>
+<li>If tests are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.</li>
+<li>If tests are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained</li>
 </ul>
 </div>
 </div>
@@ -249,10 +249,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.2.2</span> Using filter()</h3>
 <ul>
 <li>Remember the survey data?</li>
-<li>Some observations were created when you were pilot testing the survey.</li>
-<li>These are not informative because they do not come from your sample and should be removed.</li>
+<li>Some observations were created when the survey was being tested.</li>
+<li>These observations not informative and should be removed.</li>
 <li>Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).</li>
-<li>Using filter() we can easily retain the real observations while exculding rows associated with the pilot test.</li>
+<li>Using filter(), we can easily retain the real observations while exculding rows associated with the pilot test.</li>
 </ul>
 <table class="table table-striped" style="width: auto !important; ">
 <caption>

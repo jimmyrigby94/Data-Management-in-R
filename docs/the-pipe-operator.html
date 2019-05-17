@@ -224,11 +224,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.6</span> The Pipe Operator (%&gt;%)</h2>
 <ul>
 <li>Notice that while cleaning the survey data we have been typing the data argument multiple times.</li>
-<li>Furthermore, using rowwise() and ungroup() with mutate() makes our code difficult to read!</li>
-<li>Wouldn’t it be nice if there was some short hand way to link functions together?</li>
-<li>Lucky for us there is, and it is call the pipe operator which lin.</li>
+<li>Furthermore, using rowwise(), ungroup(), and mutate() all together makes our code difficult to read!</li>
+<li>Wouldn’t it be nice if there was some shorthand way to link functions together?</li>
+<li>Lucky for us there is, and it is call the pipe operator.</li>
 <li>The pipe operator carrys forward the output of the previous function and uses it in the function that follows.</li>
-<li>This allows you to string together multiple functions without retyping the data argument.</li>
+<li>This allows us to string together multiple functions without retyping the data argument.</li>
 </ul>
 <div id="structure-of-the-pipe-operator" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> Structure of the Pipe Operator</h3>
@@ -239,7 +239,7 @@ function2(transformation)</p>
 </div>
 <ul>
 <li>The pipe operator carriers forward the output of the previous call and uses it in the subsequent function</li>
-<li>Thus following any function or object call with %&gt;% will carry forward the output into the next function that is called</li>
+<li>Thus, following any call with %&gt;% will carry forward the output into the subsequent function</li>
 </ul>
 </div>
 <div id="using-the-pipe-operator" class="section level3">

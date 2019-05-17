@@ -13,7 +13,7 @@ description: "This is an introduction to R as a statistical package for psycholo
 
 # Prerequisites
 
-- This chapter assumes that you are familiar with the basics of the R language.
+- This book assumes that you are familiar with the basics of the R language.
 
 - While we will review logic some logical operators, we will not discuss basic arithmatic operators, common functions (i.e., mean), or data structures. 
 
@@ -22,7 +22,11 @@ description: "This is an introduction to R as a statistical package for psycholo
 - If you have yet to do so please install and load tidyverse by running the following code
 
 ```{r, eval=FALSE}
+# Install tidyverse
 install.packages("tidyverse")
+
+# Load tidyverse
+library(tidyverse)
 ```
 
 

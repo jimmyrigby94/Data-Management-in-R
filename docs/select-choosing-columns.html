@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> select(): Choosing Columns</h2>
 <ul>
 <li>Often when cleaning data, we only want to work a subset of columns.</li>
-<li>select() is used to choose specific columns.</li>
+<li>select() is used to retain or remove specific columns.</li>
 </ul>
 <div id="select-structure" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> select() Structure</h3>
@@ -239,8 +239,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In this case, the transformation argument specifies a column or columns we would like to keep, separated by commas.</li>
 <li>If you want to keep a range of columns you can specify the first column and last column of the range with a colon.</li>
 <li>Sometimes, it is more effecient to drop then select columns.</li>
-<li>To remove columns, simply include a minus sign infront of the column.</li>
-<li>The columns will be ordered how you type them.</li>
+<li>To remove columns, simply include a minus sign infront of the column name.</li>
+<li>select() can also be used to reorder columns - the columns will be ordered how you type them.</li>
 </ul>
 </div>
 </div>
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Again, this function helps us solve two issues in the survey data example.</li>
 <li>The survey platform created a column of data for the participant’s last name that is completely empty.</li>
-<li>Furthermore, the Status column is no longer informative.</li>
+<li>Furthermore, the Status column is no longer informative because all the values should equal 0.</li>
 <li>We can remove this column entirely using the select function.</li>
 <li>All of the following examples complete the same task using different methods although some are more efficient than others!</li>
 </ul>

@@ -77,17 +77,17 @@ filter(data, logical_test, ...)
 - Logical tests can explicitly use logical operators (i.e., == or %in%).
 - Functions that return logical values can also be used (i.e., is.na()).
 - Multiple logical tests can be provided as indicated by the elipse.
-- If they are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.
-- If they are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained
+- If tests are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.
+- If tests are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained
 
 </div>
 
 ### Using filter()
 - Remember the survey data?
-- Some observations were created when you were pilot testing the survey. 
-- These are not informative because they do not come from your sample and should be removed. 
+- Some observations were created when the survey was being tested. 
+- These observations not informative and should be removed. 
 - Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).
-- Using filter() we can easily retain the real observations while exculding rows associated with the pilot test.
+- Using filter(), we can easily retain the real observations while exculding rows associated with the pilot test.
 
 ```{r, include = FALSE}
 ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
@@ -125,7 +125,7 @@ knitr::kable(filter(ex_data, Q1.1 == 5 | Q1.3 == 5 ), format = "html", caption =
 
 ## select(): Choosing Columns
 - Often when cleaning data, we only want to work a subset of columns. 
-- select() is used to choose specific columns. 
+- select() is used to retain or remove specific columns. 
 
 
 ### select() Structure
@@ -142,8 +142,8 @@ select(data, cols_to_keep, ...)
 - In this case, the transformation argument specifies a column or columns we would like to keep, separated by commas.
 - If you want to keep a range of columns you can specify the first column and last column of the range with a colon.
 - Sometimes, it is more effecient to drop then select columns.
-- To remove columns, simply include a minus sign infront of the column.
-- The columns will be ordered how you type them.
+- To remove columns, simply include a minus sign infront of the column name.
+- select() can also be used to reorder columns - the columns will be ordered how you type them.
 
 </div>
 
@@ -157,7 +157,7 @@ select(data, cols_to_keep, ...)
 ### Using select()
 - Again, this function helps us solve two issues in the survey data example.
 - The survey platform created a column of data for the participant's last name that is completely empty.
-- Furthermore, the Status column is no longer informative.
+- Furthermore, the Status column is no longer informative because all the values should equal 0.
 - We can remove this column entirely using the select function.
 - All of the following examples complete the same task using different methods although some are more efficient than others!
 
@@ -228,13 +228,13 @@ rename(data, old_name = new_name, ...)
 
 </div>
 - Following the general dplyr form (See section \@ref(form)), the first argument specifies the data you are manipulating.
-- In this case the transformation arguments take the form of an equation where the new column name is on the left of the equals sign and the old column name is on the right.
+- In this case the transformation arguments take the form of an equation, where the new column name is on the left of the equals sign and the old column name is on the right.
 - Multiple variables can be renamed within one rename call, as indicated by the elipse.
 </div>
 
 ### Using rename()
 - Given that Q1.x and Q2.x are not meaninful stems, we should rename the items so that they are interpretable.
-- It turns out items in labeled Q1 measured consientousness and items in Q2 measured job performance. 
+- It turns out that items that are labeled Q1 measured consientousness and items that are measured Q2 measure job performance. 
 
 ```{r, echo = FALSE}
 knitr::kable(ex_data, format = "html", caption = "Survey Data: Selected Columns") %>%
@@ -302,7 +302,7 @@ mutate(data, new_var = function, ...)
 
 ### Helper Functions
 - rowwise(): Applies functions across columns within rows.
-- ungroup(): Undoes grouping functions such as rowwise() and group_by() (group_by will be discussed in Section \@ref(group))
+- ungroup(): Undoes grouping functions such as rowwise() and group_by() (group_by() will be discussed in Section \@ref(group))
 
 ### Using mutate()
 - Given that their are two subscales (i.e., conscientousness and performance) within our survey data, we can create scale scores for these sets of items. 
@@ -350,11 +350,11 @@ mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf =
 
 ## The Pipe Operator (%>%)
 - Notice that while cleaning the survey data we have been typing the data argument multiple times.
-- Furthermore, using rowwise() and ungroup() with mutate() makes our code difficult to read!
-- Wouldn't it be nice if there was some short hand way to link functions together?
-- Lucky for us there is, and it is call the pipe operator which lin. 
+- Furthermore, using rowwise(), ungroup(), and mutate() all together makes our code difficult to read!
+- Wouldn't it be nice if there was some shorthand way to link functions together?
+- Lucky for us there is, and it is call the pipe operator. 
 - The pipe operator carrys forward the output of the previous function and uses it in the function that follows.
-- This allows you to string together multiple functions without retyping the data argument. 
+- This allows us to string together multiple functions without retyping the data argument. 
 
 ### Structure of the Pipe Operator
 
@@ -366,7 +366,7 @@ function1(data, transformation, ...)%>%
 
 </div>
 - The pipe operator carriers forward the output of the previous call and uses it in the subsequent function
-- Thus following any function or object call with %>% will carry forward the output into the next function that is called
+- Thus, following any call with %>% will carry forward the output into the subsequent function
 
 ### Using the pipe operator
 - Lets use the pipe operator to make our code more readable
@@ -403,8 +403,8 @@ ex_data%>%
 ## group_by(): Grouping Data Frames {#group}
 
 - Sometimes, when working with data we want to perform some operation within a grouping variable.
-- For example, imagine the employees responding to the survey we have been working with report to different managers.
-- We may be interested in creating a new column of data that contains the work-groups' average performance. 
+- For example, the participants responding to this survey report to different managers.
+- We may be interested in creating a new column of data that contains the work-groups' average performance.
 - group_by() can be used in tandem with mutate() to apply a function within columns clustering on groups
 
 ### group_by Structure
@@ -419,15 +419,14 @@ group_by(data, grouping_variable, ...)
 
 - group_by() takes the common dplyr structure - define the data and then define the transformation.
 - The transforamation in this case simply defines the grouping variable.
-- If multiple grouping variables are provided, the data is grouped by unique combinations of the grouping variables.
+- If multiple grouping variables are provided, the data is grouped by unique combinations of all grouping variables.
 - Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object. 
 - Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section \@ref(sum))
 - Also, just like rowwise(), in order return the dataset to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.
 
 ### Using group_by()
-- The survey data has been merged with information regarding employees managers.
-- Some potentially useful information can be derived now that we have a grouping variable.
-- We can include the employee's team's average performance, average conscientousness, and team size in the data.
+- The survey data has been joined with information regarding employees managers.
+- We can now calculate each employee's team's average performance, conscientousness, and team size in the data.
 - While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.
 
 ```{r, include = FALSE}
@@ -477,7 +476,8 @@ summarise(data, summary_var = function, ...)
 </div>
 
 - Following the consistent dplyr structure, summarise() requires that you first specify the data and then a transformation.
-- The transformation in summarise takes a similar form as mutate() the left hand side of the equation defines the name of a new summary variable and the right hand side defines a function or operation.
+- The transformation in summarise takes a similar form as mutate().
+- The left hand side of the equation defines the name of a new summary variable and the right hand side defines a function or operation.
 - The function should return a single value (i.e., mean() or sd()).
 
 ### Using summarise()

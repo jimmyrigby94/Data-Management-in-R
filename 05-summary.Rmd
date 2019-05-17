@@ -14,7 +14,7 @@ ex_data%>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
 ```
 
-- Note that manager information was not originally stored in this data - two data sets had to be merged with this data frame.
+- Note that manager information was not originally stored in this data - a data set containing manager information had to be merged with the original data frame.
 
 ```{r, echo = FALSE}
 man_data<-rbind(head(ex_dat)%>%
@@ -30,7 +30,7 @@ man_data<-rbind(head(ex_dat)%>%
 
 
 - Merging data sets can be rather complicated, as you will soon see. 
-- Luckily the creators of dplyr wrote a set of functions that make merging multiple data tables easy
+- Luckily the creators of dplyr wrote a set of functions that make merging multiple data tables easy.
 
 ## Overview of dplyr Functions for Joining and Binding
 
@@ -46,17 +46,17 @@ man_data<-rbind(head(ex_dat)%>%
 
 ### Filtering Joins
 - semi_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame. 
-- anit_join(): Reains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
+- anit_join(): Retains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
 
 
 ## bind_cols(): Binding Data Frames Horizontally
-- bind_cols is used when you have a set of data frames that 
+- bind_cols() is used when you have a set of data frames that 
 
     1. Have equal number of rows
-    2. Are ordered identically, with no missing information
+    2. Are ordered identically, with no missing or new observations
     
 - If these two requirements are not met, the data will joined combining information about different participants
-- If your data does not meet either of these requirements, use a join function discussed below.
+- If your data does not meet either of these requirements, but has a participant identifier use a join function discussed below.
     
 ### bind_cols() Structure
 
@@ -121,14 +121,15 @@ bind_cols(cb1_data, cb2_data)%>%
   knitr::kable(digits = 2, caption = "Output of bind_cols()")
 ```
 
-- Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name
+- Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name.
+- This is intended to prevent mixups, but can result in dupicate data.
 - While this example was adequate for illustration purposes, in practice, join functions are more flexible and appropriate when data sets have  shared identifier.
 
 ## bind_rows(): Binding Data Frames Vertically
-- bind_rows() is used when you want to bind data frames vertically
-- This is sometimes referred to as stacking data frames
-- Unlike bind_cols(), bind_rows() attempts to match columns based on their name
-- If a data frame is missing a column, observations will have missing data for that variable
+- bind_rows() is used when you want to bind data frames vertically.
+- This is sometimes referred to as stacking data frames.
+- Unlike bind_cols(), bind_rows() attempts to match columns based on their names.
+- If a data frame is missing a column, observations will have missing data for that variable.
 
 ### bind_rows() Structure
 
