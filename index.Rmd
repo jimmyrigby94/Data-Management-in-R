@@ -19,6 +19,8 @@ description: "This is an introduction to R as a statistical package for psycholo
 
 - Please review the material on base R if you are still uncomfortable with the foundations of the language.
 
+- Datacamp offeres a great set of courses [here](https://www.datacamp.com/courses/free-introduction-to-r) that will help get you up to speed.
+
 - If you have yet to do so please install and load tidyverse by running the following code
 
 ```{r, eval=FALSE}
@@ -29,7 +31,6 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-
 ## Supplemental Resources
 
 <div class = semiemph>
@@ -37,7 +38,11 @@ library(tidyverse)
 - [Dplyr Vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 - [R For Data Scientists: Chapter 5](http://r4ds.had.co.nz/transform.html)
 - [Data Wrangling Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [DataCamp: Data Manipulation with Dplyr](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)
 - [50 Examples of Dplyr](https://www.listendata.com/2016/08/dplyr-tutorial.html)
 
 </div>
 
+## Acknowledgements
+
+This class is supported by DataCamp, the most intuitive learning platform for data science. Learn R, Python and SQL the way you learn best through a combination of short expert videos and hands-on-the-keyboard exercises. Take over 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalised feedback on every exercise.
