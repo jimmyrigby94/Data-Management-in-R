@@ -11,23 +11,6 @@ description: "This is an introduction to R as a statistical package for psycholo
 ---
 
 
-
-```{r htmlTemplate, echo=FALSE}
-# Create the external file
-img <- htmltools::img(src = knitr::image_uri("suppl/uh.png"), 
-               alt = 'logo', 
-               style = 'position:absolute; top:50px; right:1%; padding:10px;z-index:200;')
-
-htmlhead <- paste0('
-<script>
-document.write(\'<div class="logos">',img,'</div>\')
-</script>
-')
-
-readr::write_lines(htmlhead, path = "header.html")
-
-```
-
 # (PART) Data Management with Dplyr {-}
 
 # Prerequisites

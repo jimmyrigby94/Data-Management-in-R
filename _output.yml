@@ -1,6 +1,4 @@
 bookdown::gitbook:
-  includes:
-    in_header: header.html
   split_by: section
   css: style.css
   config:
