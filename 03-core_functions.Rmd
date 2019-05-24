@@ -1,4 +1,4 @@
-# dplyr Functions
+# Core dplyr Functions
 
 
 
@@ -56,7 +56,7 @@ function(data, transformation, ...)
 </div>
 </div>
 
-## filter(): Retaining Rows
+## filter(): Retaining Rows {#filter}
 - This function allows you to subset the data frame based on a logical test.
 - Simply put, it allows you to choose which rows to keep.
 

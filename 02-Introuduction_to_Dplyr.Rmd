@@ -1,5 +1,6 @@
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo = FALSE}
 library(tidyverse)
+library(ggpubr)
 ```
 
 # What is dplyr?
