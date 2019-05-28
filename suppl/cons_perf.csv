@@ -1,6 +1,6 @@
 StartDate,EndDate,Status,Progress,Duration..in.seconds.,Finished,Manager,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,DistributionChannel,UserLanguage,Q1.1,Q1.2,Q1.3,Q2.1,Q2.2,Q2.3
 1/28/2018 20:30,1/28/2018 20:31,8,25,21,0,Dustin,2/4/2018 20:31,R_3oR2O5GVj417Rb8,,,,,anonymous,EN,NA,1,2,1,1,1
-2/5/2018 0:08,2/5/2018 0:09,0,100,53,1,Dustin,2/5/2018 0:09,R_24kfInksYNZC2Bb,,,,,anonymous,EN,2,1,1,4,5,3
+2/5/2018 0:08,2/5/2018 0:09,0,100,53,1,Dustin,2/5/2018 0:09,R_24kfInksYNZC2Bb,,,,,anonymous,EN,NA,1,1,4,5,3
 2/1/2018 12:47,2/1/2018 12:48,0,0,53,0,Dustin,2/8/2018 12:49,R_2Sq8eFhNWEfZOJd,,,,,anonymous,EN,5,1,3,1,1,1
 1/29/2018 10:33,1/29/2018 10:35,0,25,86,0,Dustin,2/5/2018 10:35,R_BWjnVPEG2iVgRKp,,,,,anonymous,EN,5,1,1,3,1,1
 1/28/2018 21:08,1/28/2018 21:09,0,100,33,1,Dustin,1/28/2018 21:09,R_3n9rQagKRteaa0F,,,,,anonymous,EN,3,1,2,4,5,5

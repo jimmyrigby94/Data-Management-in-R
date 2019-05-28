@@ -50,6 +50,18 @@ h4{
   font-size: 13pt;
 }
 
+
+.list{
+  background-color: lightgrey;
+  padding-top: 0;
+  padding-bottom:  0;
+  border-radius: 25px;
+  margin:0;
+  white-space-collapse:true;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .activity{
   background-color: lightgrey;
 

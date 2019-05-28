@@ -3,6 +3,7 @@ library(tidyverse)
 library(ggpubr)
 ```
 
+# (PART) Introduction to Dplyr {-}
 # What is dplyr?
 <div class = semiemph>
 - dplyr is a package that tries to provide a set of functions that utilizes a consistent design, philosophy, grammar, and data structure
@@ -13,14 +14,14 @@ library(ggpubr)
 ## Why is Data Manipulation Important?
 
 ### Example 1: Survey Data
-<div class = tiny>
-```{r, echo = FALSE}
+
+```{r, echo = FALSE, fig.height=2, fig.width=11}
 ex_dat<-read.csv("suppl/cons_perf.csv")
 
-knitr::kable(head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q")), format = "html", caption = "Example of Survey Data") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
+  ggpubr::ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
 ```
-</div>
 
 ### What's Wrong With the Survey Data?
 - Some of the meta-data collected by the survey platform is not meaningful.
@@ -31,28 +32,35 @@ knitr::kable(head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLast
 ## This Isn't Relevant to Me - My Research is Experimental!
 
 ### Example 2: Experimental Data
-```{r,echo=FALSE}
+```{r,echo=FALSE, fig.width=6, fig.height=2}
 ex_dat2a<-tibble(id = 1:6,
                 condition = rep(0:1, each = 3),
-                pre = rnorm(6, 5, sd = 1), 
+                pre = round(rnorm(6, 5, sd = 1), 2), 
                 non_naieve = c(rep(0, 4), rep(1, 2)))
 
-ex_dat2b<-tibble(id = 1:6,
-                condition = rep(0:1, each = 3),
-                post = rnorm(6, 6, sd = 1), 
-                non_naieve = c(rep(0, 4), rep(1, 2)))
+ex_dat2b<-tibble(id = c(1, 3:6),
+                condition = c(rep(0, each = 2), rep(1, each = 3)),
+                post = round(rnorm(5, 6, sd = 1), 2), 
+                non_naieve = c(rep(0, 3), rep(1, 2)))
 
-knitr::kable(list(head(ex_dat2a), head(ex_dat2b)),digits = 2, format = "html", caption = "Example of Experimental Data" )%>%
-  kableExtra::kable_styling()
+t1<-ggpubr::ggtexttable(ex_dat2a, theme = ttheme(base_style="lBlueWhite"))
+t2<-ggpubr::ggtexttable(ex_dat2b, theme = ttheme(base_style="lBlueWhite"))
+
+
+ggarrange(t1,t2)
 ```
 
 ### What's Wrong With the Experimental Data?
 - Some of your participants figured out the purpose of your expiriment making their responses invalid.
 - Your pre and post scale was miscalibrated and is .3 higher than it should be.
 - Your pre and post measures are stored in seperate data files.
+- Making matters more difficult, you have 17% participant attrition so you can't just copy and paste data frames together.
 
 ## Take-Aways
-<div class = semiemph>
+<div class = activity>
+<div class = activitytitle>
+Why Does Data Mangaement Matter?
+</div>
 1. No matter what paradigm you work in data management is critical.
 2. Tidy data rarely exists in the wild.
 3. Efficiently managing data will save you time and make you a valuable assest to your collaborators.

@@ -1,4 +1,4 @@
-book_filename: "Introduction to R"
+book_filename: "Introduction_to_R"
 delete_merged_file: true
 output_dir: "docs"
 language:

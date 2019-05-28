@@ -1,0 +1,14 @@
+# (PART) Tidy Data with tidyr {-}
+
+# Multivariate and Univariate Data
+
+## gather(): Wide to Long
+
+## spread(): Long to Wide
+
+# Spliting and Joining Columns
+
+## separate(): Splitting Columns
+
+## unite(): Joining Columns
+

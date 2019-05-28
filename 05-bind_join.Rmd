@@ -1,16 +1,18 @@
-# Bind and Join Functions
+# (PART) Combining Data Frames {-}
+# Combining Data Sets
 
-- Let's look at the original survey data set after it was cleaned up. 
 
 
-```{r, echo = FALSE, fig.height= 3, fig.width=10}
+
+```{r, echo = FALSE, fig.height= 3.5, fig.width=10}
 ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE),
-         ResponseId = as.character(ResponseId))
+         ResponseId = as.character(ResponseId))%>%
+  mutate_if(is.numeric, round, digits = 2)
 
 man_data<-rbind(head(ex_dat)[-1,]%>%
   mutate(Manager = c("Nick", "Julia", "Nick", "Nick", "Julia"))%>%
@@ -22,25 +24,26 @@ man_data<-rbind(head(ex_dat)[-1,]%>%
   select(ResponseId, Manager))%>%
   distinct(ResponseId, .keep_all = TRUE)
 
+man_data<-bind_rows(man_data, man_data[6,])
+man_data[11, 2]<- "Travis"
+
 t1<-ggpubr::ggtexttable(ex_data, theme = ttheme(base_style="lBlueWhite"))
 t2<-ggpubr::ggtexttable(man_data, theme = ttheme(base_style="lBlueWhite"))
 
-t1
+ggarrange(t1, t2, widths = c(2,1))
 ```
 
+- Take a look the left panel of the tables above which shows the original survey data set after it was cleaned up. 
 - Manager information was not originally stored in this data!
 - In order to get manager information into the data frame I did some magic behind the scenes. 
-- I merged the survey dataset with the data set below based on the ResponseId variable.
-
-```{r, echo = FALSE}
-t2
-```
-
-
+- I merged the survey dataset the manager data in the right pane based on the ResponseId variable.
 - Luckily the creators of dplyr wrote a set of functions that make merging multiple data tables easy.
 - In the following sections we are going to learn a variety of different ways to bind and join data frames.
 
-## dplyr Functions for Joining and Binding
+# Binding Functions
+- Binding functions are the most basic method used to combine data sets in the tidyverse, although they are not appropriate for all cases.
+- In the sections that follow we will review what these funcitons do and highlight cases in which they are and are not appropriate. 
+
 <div class = activity>
 <div class = activitytitle>
 Binding Functions
@@ -49,34 +52,15 @@ Binding Functions
 - bind_cols(): Joins many date frames horizontally.
 </div>
 
-<div class = activity>
-<div class = activitytitle>
-Mutating Joins
-</div>
-
-- left_join(): Joins based on an ID variable. Retains all rows in left data frame and only matching rows in the right.
-- right_join(): Joins based on an ID variable. Retains all rows in the right data frame and only matching rows in the left.
-- inner_join(): Joins based on an ID variable. Retains only matching rows for both data frames.
-- full_join(): Joins based on an ID variable (Considers order). Retains only matching rows for 
-</div>
-
-<div class = activity>
-<div class = activitytitle>
-Filtering Joins
-</div>
-- semi_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame. 
-- anti_join(): Retains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
-</div>
-
 ## bind_cols(): Binding Data Frames Horizontally
 - bind_cols() is used when you have a set of data frames that 
 
-<div class = activity>
+<div class = list>
 1. Have equal number of rows
 2. Are ordered identically, with no missing or new observations
 </div>
 
-- If these two requirements are not met, the data will joined combining information about different participants
+- If these two requirements are not met, the data will joined combining information about different observations or participants
 - If your data does not meet either of these requirements, but has a participant identifier use a join function discussed below.
     
 ### bind_cols() Structure
@@ -96,7 +80,7 @@ bind_cols(...)
 - Thus we are probably better off using a different function to join these two data sets. 
 - In contrast, note that in the two tabels below, each data frame has the same number of observations and the ID variables align perfectly.
 
-```{r, echo = FALSE, fig.height=4}
+```{r, echo = FALSE, fig.height=2}
 cb1_data <- ex_data %>%
                select(ResponseId, cons)
 
@@ -115,7 +99,7 @@ Binding data frames together horizontally.
 bind_cols(cons_dat, perf_dat)
 ```
 
-```{r, echo = FALSE, fig.height=3, fig.width=7}
+```{r, echo = FALSE, fig.height=2, fig.width=7}
 bind_cols(cb1_data, cb2_data)%>%
   ggtexttable(theme = ttheme("lBlueWhite"))
 ```
@@ -167,17 +151,17 @@ Binding data frames together vertically (AKA, stacking).
 bind_rows(cons_dat, perf_dat)
 ```
 
-```{r, echo = FALSE, message = FALSE, warning=FALSE}
+```{r, echo = FALSE, message = FALSE, warning=FALSE, fig.height=2, fig.width=8}
 bind_rows(br1_data, left_join(br2_data,man_data)%>%
                   select(Manager, ResponseId, perf, cons))%>%
   ggtexttable(theme = ttheme("lBlueWhite"))
 ```
 
-- Note that columns that are named the same are appropriately matched. 
+- Note that the columns that are named the same are appropriately matched. 
 - Furthermore, observations from a data frames that is missing a column are assigned NA for that variable.
 
 
-## Mutating Joins
+# Mutating Joins
 
 - Note that when we were using bind_cols(), corresponding rows in each data frame were assumed to belong to the same observation.
 - This perfect matchup rarely occurs unless data frames were programatically spit and manipulated by the user. 
@@ -188,7 +172,7 @@ bind_rows(br1_data, left_join(br2_data,man_data)%>%
 - The mutating join functions were developed with these problems in mind.
 - Mutating join functions share a number of common characteristics. 
 
-<div class = activity>      
+<div class = list>      
 1. They share the same structural form.
 2. Data frames are horizontally combined so that the outputted dataframe has more columns than either of the independent data frames.
 3. Rows are matched based on some common ID variable.
@@ -198,10 +182,21 @@ bind_rows(br1_data, left_join(br2_data,man_data)%>%
 - Despite their simularities, each mutating join differs in how it handles observations that do not match on an ID variable.
 - In the sections that follow, I will: 
 
-<div class = activity>
+<div class = list>
 1. Define the common join fucntion form.
-2. Instead of rehash the common form, described how each join function handles observations without a match.
+2. Described how each join function handles observations that do not have a match on the ID variable.
 3. Provide examples of uses for each form.
+</div>
+
+<div class = activity>
+<div class = activitytitle>
+List of Mutating Joins
+</div>
+
+- left_join(): Joins based on an ID variable. Retains all rows in left data frame and only matching rows in the right.
+- right_join(): Joins based on an ID variable. Retains all rows in the right data frame and only matching rows in the left.
+- inner_join(): Joins based on an ID variable. Retains only matching rows for both data frames.
+- full_join(): Joins based on an ID variable (Considers order). Retains only matching rows for 
 </div>
 
 ## Join Functions: Structural Form {#joinform}
@@ -225,7 +220,7 @@ function(x, y, by = c("lh_id", "rh_id))
 ## full_join()
 - full_join() retains all rows from left- and right-hand data frames.
 
-```{r, echo = FALSE, fig.width=10}
+```{r, echo = FALSE, fig.width=10, fig.height = 3.5}
 ggarrange(t1,t2, widths = c(2,1))
 ```
 
@@ -235,7 +230,7 @@ Joining the survey data with managerial data, retaining all observations from bo
 full_join(cons_dat, man_data, by = c("ResponseId", "ResponseId"))
 ```
 
-```{r, fig.width=10, fig.height=4, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
 full_join(ex_data, man_data, by=c("ResponseId", "ResponseId"))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -246,7 +241,7 @@ Changing which data frame is the left-hand df and which data frame is the right-
 full_join(man_data, cons_dat, by = c("ResponseId", "ResponseId"))
 ```
 
-```{r, fig.width=10, fig.height=4, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
 full_join(man_data, ex_data, by=c("ResponseId", "ResponseId"))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -257,7 +252,7 @@ Since the data frames only share one variable with a commmon name. dplyr does gi
 full_join(man_data, cons_dat)
 ```
 
-```{r, fig.width=10, fig.height=4, echo=FALSE, warning=FALSE}
+```{r, fig.width=10, fig.height=3.5, echo=FALSE, warning=FALSE}
 full_join(man_data, ex_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -266,7 +261,7 @@ full_join(man_data, ex_data)%>%
 ## left_join() {#left}
 - left_join() retains all observations in the left-hand data frame but only matching observations from the right-hand data frame.
 
-```{r, echo = FALSE, fig.width=10}
+```{r, echo = FALSE, fig.width=10, fig.height=3.5}
 ggarrange(t1,t2, widths = c(2,1))
 ```
 
@@ -296,7 +291,7 @@ left_join(man_data, ex_data)%>%
 - Unsupprisingly, right_join() is the inverse of left_join().
 - It simply retains all observations in the right-hand data frame and only matching observations in the left-hand data frame
 
-```{r, echo = FALSE, fig.width=10}
+```{r, echo = FALSE, fig.width=10, fig.height=3.5}
 ggarrange(t1,t2, widths = c(2,1))
 ```
 
@@ -306,9 +301,11 @@ Note that this example produces output that is identical to Example \@ref(exm:le
 right_join(man_data, cons_dat)
 ```
 
-```{r, fig.width=10, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
 right_join(man_data, ex_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+ex_data<-right_join(man_data, ex_data)
 ```
 
 ## inner_join()
@@ -320,7 +317,7 @@ right_join(man_data, ex_data)%>%
 - Thus, inner_join() offers a different approach to excluding non-employees from our data along with non-respondents.
 - Although the Status column is now gone, the first observation in the survey data below originated from a pilot test (Status == 8).
 
-```{r, echo = FALSE, fig.width=10}
+```{r, echo = FALSE, fig.width=10, fig.height=3.5}
 unfiltered<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
@@ -339,22 +336,30 @@ inner_join() will exclude all respondents for whom we do not have managerial inf
 inner_join(man_data, unfiltered_cons_dat)
 ```
 
-```{r, fig.width=10, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
 inner_join(man_data, unfiltered)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
-## Filtering Joins
+# Filtering Joins
 - While mutating joins are useful, sometimes it is necessary to remove observations from a data frame based on information stored elsewhere without adding any information to a focal data frame. 
 - Filtering joins do just that.
 - As their title suggests, filtering joins are kind of a hybrid between filter() and the join family of functions.
 - They take the same structural form as mutating joins (discussed in Section \@ref(joinform)) but remove or retain observations that do not correspond to any observations ID variable in the rigth-hand data frame.
 
+<div class = activity>
+<div class = activitytitle>
+Filtering Joins
+</div>
+- semi_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame. 
+- anti_join(): Retains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
+</div>
+
 ## semi_join()
 - semi_join() retains observations in the left-hand dataframe that have corresponding ID variables in the right-hand data frame.
 - No new collumns are added to the left-hand dataframe.
 
-```{r, echo = FALSE, fig.width=10}
+```{r, echo = FALSE, fig.width=10, fig.height=3.5}
 ggarrange(t3,t2, widths = c(2,1))
 ```
 
@@ -364,7 +369,7 @@ Using semi_join() to retain observations for which we have managerial data witho
 semi_join(unfiltered_cons_dat, man_data)
 ```
 
-```{r, fig.width=10, fig.height=4, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, fig.width=10, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
 semi_join(unfiltered, man_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -373,13 +378,18 @@ semi_join(unfiltered, man_data)%>%
 - anti_join() retains observations in the left-hand data frame that do NOT have corresponding ID variables in the right-hand data frame. 
 - No new collumns are added to the left-hand dataframe.
 
+
+```{r, echo = FALSE, fig.width=10, fig.height=3.5}
+ggarrange(t3,t2, widths = c(2,1))
+```
+
 ```{example, antijoin1}
 Using anti_join() to identify employees in the managerial data frame that have not yet responded to our survey. 
 ```{r, eval = FALSE}
 anti_join( man_data, unfiltered_cons_dat)
 ```
 
-```{r, fig.width=10, fig.height=4, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, fig.width=10, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
 anti_join(man_data, unfiltered)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```

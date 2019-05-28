@@ -1,0 +1,204 @@
+# (PART) Advanced Dplyr {-}
+
+# Other Functions for Extracting Observations
+
+- In the previous chapters, we learned several functions that can be used to extract obseravtions from a data frame. 
+- filter() uses a logical test to extract observations.
+- In contrast, filtering joins use an ID variable in another data frame to extract observations.
+- In the chapters that follow we will cover functions that allow us to extract observations when we want to 
+
+<div class=list>
+1. Want to take a random subset of observations
+2. Want to retain only distinct observations
+</div>
+
+
+## Random Samples of Observations
+- While very much beyond the scope of this lecture, randomly splitting a data set is a key operation for many statistical procedures. 
+- Researchers who want to cross-validated their models subset their data (sometimes $n$ times) to evaluate its performance
+- When a model's statistical assumptions are violated, a researcher can implement a procedure called bootstrapping that uses resampling methods to estimate a parameters standard error. 
+- In short, knowing how to randomly sample a data set opens the door to many other statistical procedures
+- The following sections will define the structural form, and show a few examples, however this section is not ended to go indepth into resampling methods. 
+
+### Structural Form of sample_ Functions
+<div class = activity>
+<div class = structure>
+sample_x(data, size, replace, weight, ...)</div>
+- sample_x denotes the sampling function you would like to use.
+- data: specifies the data frame you would like to operate on.
+- size: specifies the size of the sample you would like to take either in absolute or relative terms (depending on whether you use sample_n() or sample_frac()).
+- replace: logical value specifying whether a data frame should be sampled with replacement (i.e., bootstrap). 
+- weight: a vector of weights equal to the number of observations in the dataframe specifying how likely each observation is to be sampled (useful for stratefied sampling). 
+</div>
+
+### Using sample_n() and sample_frac()
+- sample_frac() and sample_n() only differ in terms of the size argument
+- For sample_frac() you specify a proportion, relative to data argument. 
+- For sample_n() you specify an absolute number of rows for the output data. 
+- Arguably, sample_frac() is more robust to changes in upstream code. 
+- For example, if you catch a mistake in your data cleaning prior to taking a random sample of your data set, sample_frac() will still sample relative to this new data frame. 
+- In contrast, sample_n() does not adjust to changes in your code and will still resample based on the n you define.
+- Putting differences aside, lets consider how a researcher could create a training and test data frame to evaluate their model's performance.
+- When randomly sampling the data frame, always make sure to use set.seed() so that the results are reproducible.
+- I will also include and example that shows you how to work around the potential pitfalls fo sample_n() by avoiding hardcoding its size argument.
+
+
+```{r, echo=FALSE, fig.height=3, fig.width=8}
+ex_data%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+
+```{example, samplen1}
+Using sample_n() and anti_join() to create training and test sets, hardcoding size.
+```{r, eval = FALSE}
+set.seed(123)
+training <- sample_n(ex_data, size = 4, replace = FALSE)
+holdout <- anti_join(ex_data, training)
+```
+
+```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE, }
+set.seed(123)
+
+training <- sample_n(ex_data, size = 4, replace = FALSE) 
+holdout <- anti_join(ex_data, training)
+
+t1<-training%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+
+t2<-holdout%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+ggarrange(t1, t2)
+```
+
+```{example, samplefrac}
+Using sample_frac() and anti_join() to create training and test sets.
+```{r, eval = FALSE}
+set.seed(123)
+training <- sample_frac(ex_data, size = .8, replace = FALSE)
+holdout <- anti_join(ex_data, training)
+```
+
+```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE, }
+set.seed(123)
+
+training <- sample_frac(ex_data, size = .8, replace = FALSE) 
+holdout <- anti_join(ex_data, training)
+
+t1<-training%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+
+t2<-holdout%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+ggarrange(t1, t2)
+
+```
+
+
+```{example, samplen2}
+Using sample_n() and anti_join() to create training and test sets, without hardcoding n.
+```{r, eval = FALSE}
+set.seed(123)
+rel_n<- nrow(ex_data)*.8
+training <- sample_n(ex_data, size = rel_n, replace = FALSE)
+holdout <- anti_join(ex_data, training)
+```
+
+```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
+set.seed(123)
+
+rel_n<-nrow(ex_data)*.8
+
+training <- sample_n(ex_data, size = rel_n, replace = FALSE) 
+holdout <- anti_join(ex_data, training)
+
+t1<-training%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+
+t2<-holdout%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+ggarrange(t1, t2)
+```
+
+
+## distinct(): extracting unique observations
+- As we know, data collection methods are not perfect and neither are participants. 
+- Sometimes, software accidently records duplicate observations. 
+- Furthermore, participants may take surveys more than once resulting in duplicate information for the same person.
+- Identifying distinct responses is often of critical step in ensuring high fidelity data.
+- The final observation extraction function we will cover provides a means of extracting unique cases.
+
+### distinct() Structure
+<div class = activity>
+<div class = structure>
+distinct(data, distinct_var, ..., .keep_all)</div>
+- data: specifies the data frame you would like to operate on.
+- distinct_var: defines a variable that you would like to identify distinct levels of.
+- If multiple variables are provided, distinct identifies unique combinations of these levels.
+- .keep_all: is a logical values that specifies whether or not to keep all other variables in the resulting output.
+- Note that distinct() returns the first observations with a distinct level of distinct_var.
+- This means that if .keep_all = TRUE is only really appropriate when an observation is a true duplicate (all information is redundant).
+</div>
+
+### Using distinct()
+```{r, fig.height=3.5, fig.width=3, echo = FALSE}
+man_data%>%
+    ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+```
+
+- Let's take a look at the manager data that we used when combining multiple data frames.
+- Let's use distinct() determine:
+
+<div class = list>
+1. How many unique managers do we have?
+2. How many unique employees do we have?
+3. How many unique manager employee combinations do we have?
+</div>
+
+
+```{example, distinct1}
+Using distinct() to extract unique levels of manager.
+```{r, eval = FALSE}
+man_data%>%
+  distinct(Manager)
+```
+
+```{r, fig.height=1.5, fig.width=3, echo = FALSE}
+man_data%>%
+  distinct(Manager)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+```
+
+```{example, distinct2}
+Using distinct() to extract unique levels of ResponseId.
+```{r, eval = FALSE}
+man_data%>%
+  distinct(Employee)
+```
+
+```{r, fig.height=3.5, fig.width=3, echo = FALSE}
+man_data%>%
+  distinct(ResponseId)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+
+```
+```{example, distinct3}
+Using distinct() to extract unique ResponseId-Manager combinations.
+```{r, eval = FALSE}
+man_data%>%
+  distinct(Employee, Manager)
+```
+
+```{r, fig.height=3.5, fig.width=3}
+man_data%>%
+  distinct(ResponseId, Manager)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```

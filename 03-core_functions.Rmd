@@ -1,7 +1,5 @@
 # Core dplyr Functions
 
-
-
 <div class = activity>
 <div class = activitytitle>
 Core dplyr Functions for Data Manipulation
@@ -14,24 +12,6 @@ Core dplyr Functions for Data Manipulation
 - summarise(): Create summary statistics for a group
 - arrange(): reorder rows based on some column
 </div>
-
-
-
-<div class = activity>
-<div class = activitytitle>
-Non-Exhaustive List of Helper Functions
-</div>
-- desc(): arranges in descending order
-- starts_with("abc"): matches names that being "abc" (i.e., abc1)
-- ends_with("abc"): matches names that end "abc" (i.e., cat_abc)
-- contains("abc"): matches names that contain "abc" (i.e., new_abc1)
-- num_range("x", 1:3) matches x1, x2, x3
-- count(): Counts the number of rows in a data set/group
-- group_indices(): creates vector of integer ids for group
-- rowwise(): groups the data by columns and applies functions across columns
-</div>
-
-
 
 ## dplyr Function Structure {#form}
 
@@ -93,9 +73,9 @@ filter(data, logical_test, ...)
 ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
 ```
 
-```{r, echo=FALSE}
-knitr::kable(ex_data, format = "html", caption = "Full Survey Data") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo=FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 
@@ -105,9 +85,10 @@ Using filter to retain non-pilot observations (Status = 1).
 filter(ex_data, Status == 0)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(filter(ex_data, Status == 0), format = "html", caption = "Filtered Survey Data") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+filter(ex_data, Status == 0)%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ex_data<-filter(ex_data, Status == 0)
 ```
 
@@ -118,9 +99,9 @@ A less practical example that retains observations that responded to Q1.1 OR Q1.
 filter(ex_data, Q1.1 == 5 | Q1.3 == 5 )
 ```
 
-```{r, echo = FALSE}
-knitr::kable(filter(ex_data, Q1.1 == 5 | Q1.3 == 5 ), format = "html", caption = "Filtered Survey Data") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=1.5, fig.width=8}
+filter(ex_data, Q1.1 == 5 | Q1.3 == 5)%>%
+      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ## select(): Choosing Columns
@@ -161,9 +142,9 @@ select(data, cols_to_keep, ...)
 - We can remove this column entirely using the select function.
 - All of the following examples complete the same task using different methods although some are more efficient than others!
 
-```{r, echo=FALSE}
-knitr::kable(ex_data, format = "html", caption = "Survey Data with No Test Cases") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo=FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, select1}
@@ -174,9 +155,9 @@ Using select() by specifying columns to retain.
 select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3), format = "html", caption = "Survey Data: Retained Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)%>%
+      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, select2}
@@ -186,9 +167,9 @@ Using select() by specifying columns to omit.
 select(ex_data, -Status, -last_name)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(select(ex_data, -Status, -last_name), format = "html", caption = "Survey Data: Dropped Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+select(ex_data, -Status, -last_name)%>%
+      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, select3}
@@ -198,9 +179,9 @@ Using select() by specifying range of columns.
 select(ex_data, ResponseId, Q1.1:Q2.3)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(select(ex_data, ResponseId, Q1.1:Q2.3), format = "html", caption = "Survey Data: Column Range") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+select(ex_data, ResponseId, Q1.1:Q2.3)%>%
+     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, select4}
@@ -210,9 +191,11 @@ Using select() with helper functions.
 select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 ```
 
-```{r, echo = FALSE}
-knitr::kable(select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q")), format = "html", caption = "Survey Data: Helper Functions") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
+  
 
 ex_data<-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 ```
@@ -236,9 +219,9 @@ rename(data, old_name = new_name, ...)
 - Given that Q1.x and Q2.x are not meaningful stems, we should rename the items so that they are interpretable.
 - It turns out that items that are labeled Q1 measured conscientiousness and items that are measured Q2 measure job performance. 
 
-```{r, echo = FALSE}
-knitr::kable(ex_data, format = "html", caption = "Survey Data: Selected Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 
@@ -249,9 +232,9 @@ Using rename() to provide substantive column names.
 rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3), format = "html", caption = "Survey Data: Renaming Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, rename2}
@@ -261,9 +244,10 @@ select() can be used to rename columns as well!
 select(ex_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(select(ex_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3), format = "html", caption = "Survey Data: Using select() to rename columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+select(ex_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ```{example, rename3}
@@ -274,12 +258,12 @@ colnames(ex_data)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
 ex_data
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=2, fig.width=8}
 ex_data2<-ex_data
 colnames(ex_data2)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
 
-knitr::kable(ex_data2, format = "html", caption = "Survey Data: Using Base R to Rename Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+ex_data2%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 
 ex_data<-rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
@@ -309,9 +293,10 @@ mutate(data, new_var = function, ...)
 - Typically this is done by averaging the item level data.
 - mutate() provides an easy way to do this!
 
-```{r, echo = FALSE}
-knitr::kable(ex_data, format = "html", caption = "Survey Data: Renamed Columns") %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ```{example, mutate1}
@@ -321,14 +306,13 @@ Using mutate() and arithmetic operators to create scale scores with missing data
 mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)
 ```
 
-<div class = tiny>
 
-```{r, echo = FALSE}
-knitr::kable(mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3), format = "html", caption = "Survey Data: Renamed Columns", digits = 2) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
-</div>
 
 
 ```{example, mutate2}
@@ -338,15 +322,12 @@ Using mutate() and rowwise() to create scale scores while handling missing data 
 ungroup(mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE)))
 ```
 
-<div class = tiny>
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=2, fig.width=8}
 mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
-  knitr::kable(x = ., format = "html", caption = "Survey Data: Renamed Columns", digits = 2)%>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+  mutate_if(is.numeric, round, digits = 2)%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
-
-</div>
 
 ## The Pipe Operator (%>%)
 - Notice that while cleaning the survey data we have been typing the data argument multiple times.
@@ -389,15 +370,15 @@ ex_data%>%
   ungroup()
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=2, fig.width=8}
 ex_data%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
-  knitr::kable(digits = 2)%>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "left")
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ## group_by(): Grouping Data Frames {#group}
@@ -441,8 +422,10 @@ ex_data<-ex_data%>%
   select(ResponseId, Manager, cons, perf)
 ```
 
-```{r, echo = FALSE}
-knitr::kable(ex_data)
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, groupby1}
@@ -450,14 +433,15 @@ Using group_by() to create team level variables and n() to create group size var
 ```{r, eval = FALSE}
 ex_data%>%
   group_by(Manager)%>%
-  mutate(ave_cons = mean(cons, na.rm = TRUE), team_perf = mean(cons, na.rm = TRUE), team_size = n())
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(cons, na.rm = TRUE), team_size = n())
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=2, fig.width=8}
 ex_data%>%
   group_by(Manager)%>%
   mutate(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(cons, na.rm = TRUE), team_size = n())%>%
-knitr::kable()
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ## summarise(): Creating Data Summaries {#sum}
@@ -491,11 +475,14 @@ ex_data%>%
   summarise(mean_cons = mean(cons, na.rm = TRUE), mean_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
 ```
-```{r, echo = FALSE}
+
+```{r, echo = FALSE, fig.height=1, fig.width=12}
 ex_data%>%
   summarise(mean_cons = mean(cons, na.rm = TRUE), mean_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
-  knitr::kable(caption = "Summary Statistics for the Entire Sample")
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ```{example, sum2}
@@ -507,12 +494,14 @@ ex_data%>%
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=1, fig.width=12}
 ex_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
-  knitr::kable(caption = "Summary Statistics by Team")
+    mutate_if(is.numeric, round, digits = 2)%>%
+   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ## arrange(): Ordering Rows
@@ -546,13 +535,16 @@ ex_data%>%
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(team_cons)
 ```
-```{r, echo = FALSE}
+
+```{r, echo = FALSE, fig.height=1, fig.width=8}
 ex_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(team_cons)%>%
-  knitr::kable()
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
 ```
 
 ```{example, arr2}
@@ -565,12 +557,13 @@ ex_data%>%
   arrange(desc(team_cons))
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=1, fig.width=8}
 ex_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(desc(team_cons))%>%
-  knitr::kable()
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 

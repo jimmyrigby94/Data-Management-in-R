@@ -1,26 +1,49 @@
 # Material Overview
 
-<div class = semiemph>
+If you are taking PSYC 6300 with me, this is the lecture plan for the classes covering data management.
 
-Part 1: What is dplyr? (15 Minutes)
+<div class = activity>
+<div class = activitytitle>
+Day 1: Basic Dplyr
+</div>
 
-
-Part 2: dplyr's Core Functions (45 Minutes)
-
-
-Break (15 Minutes)
-
-
-Activity 1 (30 Minutes)
+- Part 1: What is dplyr? (15 Minutes)
 
 
-Part 3: Join Functions (30 Minutes)
+- Part 2: dplyr's Core Functions (45 Minutes)
 
 
-Break (15 Minutes)
+- Break (15 Minutes)
 
 
-Activity 2 (30 Minutes)
+- Activity 1 (30 Minutes)
+
+
+- Part 3: Bind and Join Functions (30 Minutes)
+
+
+- Break (15 Minutes)
+
+
+- Activity 2 (30 Minutes)
 
 </div>
 
+<div class = activity>
+<div class = activitytitle>
+Day 2: Advanced Dplyr and Tidyr
+</div>
+
+- Part 1: Functions for Extracting Observations
+
+- Part 2: Key Helper Functions
+
+- Break (15 Minutes)
+
+- Activity 1 (30 Minutes)
+
+- Part 3: Repeated Operations
+
+- Part 4: Reshaping Data
+
+</div>
