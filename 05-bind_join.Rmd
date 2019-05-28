@@ -46,8 +46,7 @@ ggarrange(t1, t2, widths = c(2,1))
 
 <div class = activity>
 <div class = activitytitle>
-Binding Functions
-</div>
+Binding Functions</div>
 - bind_rows(): Stacks many data frames vertically. 
 - bind_cols(): Joins many date frames horizontally.
 </div>
@@ -68,9 +67,7 @@ Binding Functions
 <div class = activity>
 <div class = structure>
 
-bind_cols(...)
-
-</div>
+bind_cols(...)</div>
 - bind_cols() takes two or more data frames (or a list of data frames) that have an equal number of identically ordered rows.
 </div>
 
@@ -119,9 +116,7 @@ bind_cols(cb1_data, cb2_data)%>%
 <div class = activity>
 <div class = structure>
 
-bind_rows(...)
-
-</div>
+bind_rows(...)</div>
 
 - bind_rows() takes two or more data frames (or a list of data frames) 
 
@@ -190,8 +185,7 @@ bind_rows(br1_data, left_join(br2_data,man_data)%>%
 
 <div class = activity>
 <div class = activitytitle>
-List of Mutating Joins
-</div>
+List of Mutating Joins</div>
 
 - left_join(): Joins based on an ID variable. Retains all rows in left data frame and only matching rows in the right.
 - right_join(): Joins based on an ID variable. Retains all rows in the right data frame and only matching rows in the left.
@@ -204,9 +198,7 @@ List of Mutating Joins
 <div class = activity>
 <div class = structure>
 
-function(x, y, by = c("lh_id", "rh_id))
-
-</div>
+function(x, y, by = c("lh_id", "rh_id))</div>
 - function denotes the type of join you would like to perform (i.e., full_join, left_join).
 - Join functions commonly refer to left-hand and right-hand and data frames.
 - Whether a data frame is a left-hand or right-hand data frame is determined by what order you enter your the two dataframes. 
@@ -349,8 +341,7 @@ inner_join(man_data, unfiltered)%>%
 
 <div class = activity>
 <div class = activitytitle>
-Filtering Joins
-</div>
+Filtering Joins</div>
 - semi_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame. 
 - anti_join(): Retains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame. 
 </div>

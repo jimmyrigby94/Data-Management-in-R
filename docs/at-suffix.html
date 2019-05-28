@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 _at() suffix | Psyc 6300: Data Management</title>
+  <title>Chapter 12 _at() suffix | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 _at() suffix | Psyc 6300: Data Management" />
+  <meta property="og:title" content="Chapter 12 _at() suffix | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 _at() suffix | Psyc 6300: Data Management" />
+  <meta name="twitter:title" content="Chapter 12 _at() suffix | Psyc 6300: Data Management" />
   
   <meta name="twitter:description" content="This is an introduction to R as a statistical package for psychological research." />
   
@@ -130,113 +130,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="load-tidyverse.html"><a href="load-tidyverse.html"><i class="fa fa-check"></i><b>2</b> Load tidyverse</a><ul>
-<li class="chapter" data-level="2.1" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>2.1</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="2.2" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>2.2</b> Acknowledgements</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>3</b> Material Overview</a></li>
+<li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
-<li class="chapter" data-level="4" data-path="what-is-dplyr.html"><a href="what-is-dplyr.html"><i class="fa fa-check"></i><b>4</b> What is dplyr?</a><ul>
-<li class="chapter" data-level="4.1" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html"><i class="fa fa-check"></i><b>4.1</b> Why is Data Manipulation Important?</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html#example-1-survey-data"><i class="fa fa-check"></i><b>4.1.1</b> Example 1: Survey Data</a></li>
-<li class="chapter" data-level="4.1.2" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html#whats-wrong-with-the-survey-data"><i class="fa fa-check"></i><b>4.1.2</b> What’s Wrong With the Survey Data?</a></li>
+<li class="chapter" data-level="3" data-path="what-is-dplyr.html"><a href="what-is-dplyr.html"><i class="fa fa-check"></i><b>3</b> What is dplyr?</a><ul>
+<li class="chapter" data-level="3.1" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html"><i class="fa fa-check"></i><b>3.1</b> Why is Data Manipulation Important?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html#example-1-survey-data"><i class="fa fa-check"></i><b>3.1.1</b> Example 1: Survey Data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="why-is-data-manipulation-important.html"><a href="why-is-data-manipulation-important.html#whats-wrong-with-the-survey-data"><i class="fa fa-check"></i><b>3.1.2</b> What’s Wrong With the Survey Data?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html"><i class="fa fa-check"></i><b>4.2</b> This Isn’t Relevant to Me - My Research is Experimental!</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html#example-2-experimental-data"><i class="fa fa-check"></i><b>4.2.1</b> Example 2: Experimental Data</a></li>
-<li class="chapter" data-level="4.2.2" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html#whats-wrong-with-the-experimental-data"><i class="fa fa-check"></i><b>4.2.2</b> What’s Wrong With the Experimental Data?</a></li>
+<li class="chapter" data-level="3.2" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html"><i class="fa fa-check"></i><b>3.2</b> This Isn’t Relevant to Me - My Research is Experimental!</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html#example-2-experimental-data"><i class="fa fa-check"></i><b>3.2.1</b> Example 2: Experimental Data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="this-isnt-relevant-to-me-my-research-is-experimental.html"><a href="this-isnt-relevant-to-me-my-research-is-experimental.html#whats-wrong-with-the-experimental-data"><i class="fa fa-check"></i><b>3.2.2</b> What’s Wrong With the Experimental Data?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="take-aways.html"><a href="take-aways.html"><i class="fa fa-check"></i><b>4.3</b> Take-Aways</a></li>
+<li class="chapter" data-level="3.3" data-path="take-aways.html"><a href="take-aways.html"><i class="fa fa-check"></i><b>3.3</b> Take-Aways</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="core-dplyr-functions.html"><a href="core-dplyr-functions.html"><i class="fa fa-check"></i><b>5</b> Core dplyr Functions</a><ul>
-<li class="chapter" data-level="5.1" data-path="form.html"><a href="form.html"><i class="fa fa-check"></i><b>5.1</b> dplyr Function Structure</a></li>
-<li class="chapter" data-level="5.2" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>5.2</b> filter(): Retaining Rows</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="filter.html"><a href="filter.html#filter-structure"><i class="fa fa-check"></i><b>5.2.1</b> filter() Structure</a></li>
-<li class="chapter" data-level="5.2.2" data-path="filter.html"><a href="filter.html#using-filter"><i class="fa fa-check"></i><b>5.2.2</b> Using filter()</a></li>
+<li class="chapter" data-level="4" data-path="core-dplyr-functions.html"><a href="core-dplyr-functions.html"><i class="fa fa-check"></i><b>4</b> Core dplyr Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="form.html"><a href="form.html"><i class="fa fa-check"></i><b>4.1</b> dplyr Function Structure</a></li>
+<li class="chapter" data-level="4.2" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>4.2</b> filter(): Retaining Rows</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="filter.html"><a href="filter.html#filter-structure"><i class="fa fa-check"></i><b>4.2.1</b> filter() Structure</a></li>
+<li class="chapter" data-level="4.2.2" data-path="filter.html"><a href="filter.html#using-filter"><i class="fa fa-check"></i><b>4.2.2</b> Using filter()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html"><i class="fa fa-check"></i><b>5.3</b> select(): Choosing Columns</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#select-structure"><i class="fa fa-check"></i><b>5.3.1</b> select() Structure</a></li>
-<li class="chapter" data-level="5.3.2" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#useful-helper-functions-for-select"><i class="fa fa-check"></i><b>5.3.2</b> Useful Helper Functions for select()</a></li>
-<li class="chapter" data-level="5.3.3" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#using-select"><i class="fa fa-check"></i><b>5.3.3</b> Using select()</a></li>
+<li class="chapter" data-level="4.3" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html"><i class="fa fa-check"></i><b>4.3</b> select(): Choosing Columns</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#select-structure"><i class="fa fa-check"></i><b>4.3.1</b> select() Structure</a></li>
+<li class="chapter" data-level="4.3.2" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#useful-helper-functions-for-select"><i class="fa fa-check"></i><b>4.3.2</b> Useful Helper Functions for select()</a></li>
+<li class="chapter" data-level="4.3.3" data-path="select-choosing-columns.html"><a href="select-choosing-columns.html#using-select"><i class="fa fa-check"></i><b>4.3.3</b> Using select()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html"><i class="fa fa-check"></i><b>5.4</b> rename(): Renaming Variables</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html#rename-structure"><i class="fa fa-check"></i><b>5.4.1</b> rename() Structure</a></li>
-<li class="chapter" data-level="5.4.2" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html#using-rename"><i class="fa fa-check"></i><b>5.4.2</b> Using rename()</a></li>
+<li class="chapter" data-level="4.4" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html"><i class="fa fa-check"></i><b>4.4</b> rename(): Renaming Variables</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html#rename-structure"><i class="fa fa-check"></i><b>4.4.1</b> rename() Structure</a></li>
+<li class="chapter" data-level="4.4.2" data-path="rename-renaming-variables.html"><a href="rename-renaming-variables.html#using-rename"><i class="fa fa-check"></i><b>4.4.2</b> Using rename()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html"><i class="fa fa-check"></i><b>5.5</b> mutate(): Creating New Variables</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#mutate-structure"><i class="fa fa-check"></i><b>5.5.1</b> mutate() Structure</a></li>
-<li class="chapter" data-level="5.5.2" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#helper-functions"><i class="fa fa-check"></i><b>5.5.2</b> Helper Functions</a></li>
-<li class="chapter" data-level="5.5.3" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#using-mutate"><i class="fa fa-check"></i><b>5.5.3</b> Using mutate()</a></li>
+<li class="chapter" data-level="4.5" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html"><i class="fa fa-check"></i><b>4.5</b> mutate(): Creating New Variables</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#mutate-structure"><i class="fa fa-check"></i><b>4.5.1</b> mutate() Structure</a></li>
+<li class="chapter" data-level="4.5.2" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#helper-functions"><i class="fa fa-check"></i><b>4.5.2</b> Helper Functions</a></li>
+<li class="chapter" data-level="4.5.3" data-path="mutate-creating-new-variables.html"><a href="mutate-creating-new-variables.html#using-mutate"><i class="fa fa-check"></i><b>4.5.3</b> Using mutate()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html"><i class="fa fa-check"></i><b>5.6</b> The Pipe Operator (%&gt;%)</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html#structure-of-the-pipe-operator"><i class="fa fa-check"></i><b>5.6.1</b> Structure of the Pipe Operator</a></li>
-<li class="chapter" data-level="5.6.2" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html#using-the-pipe-operator"><i class="fa fa-check"></i><b>5.6.2</b> Using the pipe operator</a></li>
+<li class="chapter" data-level="4.6" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html"><i class="fa fa-check"></i><b>4.6</b> The Pipe Operator (%&gt;%)</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html#structure-of-the-pipe-operator"><i class="fa fa-check"></i><b>4.6.1</b> Structure of the Pipe Operator</a></li>
+<li class="chapter" data-level="4.6.2" data-path="the-pipe-operator.html"><a href="the-pipe-operator.html#using-the-pipe-operator"><i class="fa fa-check"></i><b>4.6.2</b> Using the pipe operator</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>5.7</b> group_by(): Grouping Data Frames</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>5.7.1</b> group_by Structure</a></li>
-<li class="chapter" data-level="5.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>5.7.2</b> Using group_by()</a></li>
+<li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
+<li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>5.8</b> summarise(): Creating Data Summaries</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>5.8.1</b> summarise() Structure</a></li>
-<li class="chapter" data-level="5.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>5.8.2</b> Using summarise()</a></li>
+<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>5.9</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="5.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>5.9.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="5.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>5.9.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>6</b> Activity 1</a></li>
+<li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
 <li class="part"><span><b>II Combining Data Frames</b></span></li>
-<li class="chapter" data-level="7" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>7</b> Combining Data Sets</a></li>
-<li class="chapter" data-level="8" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>8</b> Binding Functions</a><ul>
-<li class="chapter" data-level="8.1" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html"><i class="fa fa-check"></i><b>8.1</b> bind_cols(): Binding Data Frames Horizontally</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html#bind_cols-structure"><i class="fa fa-check"></i><b>8.1.1</b> bind_cols() Structure</a></li>
-<li class="chapter" data-level="8.1.2" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html#using-bind_cols"><i class="fa fa-check"></i><b>8.1.2</b> Using bind_cols()</a></li>
+<li class="chapter" data-level="6" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>6</b> Combining Data Sets</a></li>
+<li class="chapter" data-level="7" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>7</b> Binding Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html"><i class="fa fa-check"></i><b>7.1</b> bind_cols(): Binding Data Frames Horizontally</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html#bind_cols-structure"><i class="fa fa-check"></i><b>7.1.1</b> bind_cols() Structure</a></li>
+<li class="chapter" data-level="7.1.2" data-path="bind-cols-binding-data-frames-horizontally.html"><a href="bind-cols-binding-data-frames-horizontally.html#using-bind_cols"><i class="fa fa-check"></i><b>7.1.2</b> Using bind_cols()</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html"><i class="fa fa-check"></i><b>8.2</b> bind_rows(): Binding Data Frames Vertically</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html#bind_rows-structure"><i class="fa fa-check"></i><b>8.2.1</b> bind_rows() Structure</a></li>
-<li class="chapter" data-level="8.2.2" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html#using-bind_rows"><i class="fa fa-check"></i><b>8.2.2</b> Using bind_rows()</a></li>
+<li class="chapter" data-level="7.2" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html"><i class="fa fa-check"></i><b>7.2</b> bind_rows(): Binding Data Frames Vertically</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html#bind_rows-structure"><i class="fa fa-check"></i><b>7.2.1</b> bind_rows() Structure</a></li>
+<li class="chapter" data-level="7.2.2" data-path="bind-rows-binding-data-frames-vertically.html"><a href="bind-rows-binding-data-frames-vertically.html#using-bind_rows"><i class="fa fa-check"></i><b>7.2.2</b> Using bind_rows()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="mutating-joins.html"><a href="mutating-joins.html"><i class="fa fa-check"></i><b>9</b> Mutating Joins</a><ul>
-<li class="chapter" data-level="9.1" data-path="joinform.html"><a href="joinform.html"><i class="fa fa-check"></i><b>9.1</b> Join Functions: Structural Form</a></li>
-<li class="chapter" data-level="9.2" data-path="full-join.html"><a href="full-join.html"><i class="fa fa-check"></i><b>9.2</b> full_join()</a></li>
-<li class="chapter" data-level="9.3" data-path="left.html"><a href="left.html"><i class="fa fa-check"></i><b>9.3</b> left_join()</a></li>
-<li class="chapter" data-level="9.4" data-path="right-join.html"><a href="right-join.html"><i class="fa fa-check"></i><b>9.4</b> right_join()</a></li>
-<li class="chapter" data-level="9.5" data-path="inner-join.html"><a href="inner-join.html"><i class="fa fa-check"></i><b>9.5</b> inner_join()</a></li>
+<li class="chapter" data-level="8" data-path="mutating-joins.html"><a href="mutating-joins.html"><i class="fa fa-check"></i><b>8</b> Mutating Joins</a><ul>
+<li class="chapter" data-level="8.1" data-path="joinform.html"><a href="joinform.html"><i class="fa fa-check"></i><b>8.1</b> Join Functions: Structural Form</a></li>
+<li class="chapter" data-level="8.2" data-path="full-join.html"><a href="full-join.html"><i class="fa fa-check"></i><b>8.2</b> full_join()</a></li>
+<li class="chapter" data-level="8.3" data-path="left.html"><a href="left.html"><i class="fa fa-check"></i><b>8.3</b> left_join()</a></li>
+<li class="chapter" data-level="8.4" data-path="right-join.html"><a href="right-join.html"><i class="fa fa-check"></i><b>8.4</b> right_join()</a></li>
+<li class="chapter" data-level="8.5" data-path="inner-join.html"><a href="inner-join.html"><i class="fa fa-check"></i><b>8.5</b> inner_join()</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filtering-joins.html"><a href="filtering-joins.html"><i class="fa fa-check"></i><b>10</b> Filtering Joins</a><ul>
-<li class="chapter" data-level="10.1" data-path="semi-join.html"><a href="semi-join.html"><i class="fa fa-check"></i><b>10.1</b> semi_join()</a></li>
-<li class="chapter" data-level="10.2" data-path="anti-join.html"><a href="anti-join.html"><i class="fa fa-check"></i><b>10.2</b> anti_join()</a></li>
+<li class="chapter" data-level="9" data-path="filtering-joins.html"><a href="filtering-joins.html"><i class="fa fa-check"></i><b>9</b> Filtering Joins</a><ul>
+<li class="chapter" data-level="9.1" data-path="semi-join.html"><a href="semi-join.html"><i class="fa fa-check"></i><b>9.1</b> semi_join()</a></li>
+<li class="chapter" data-level="9.2" data-path="anti-join.html"><a href="anti-join.html"><i class="fa fa-check"></i><b>9.2</b> anti_join()</a></li>
 </ul></li>
 <li class="part"><span><b>III Advanced Dplyr</b></span></li>
-<li class="chapter" data-level="11" data-path="other-functions-for-extracting-observations.html"><a href="other-functions-for-extracting-observations.html"><i class="fa fa-check"></i><b>11</b> Other Functions for Extracting Observations</a><ul>
-<li class="chapter" data-level="11.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html"><i class="fa fa-check"></i><b>11.1</b> Random Samples of Observations</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#structural-form-of-sample_-functions"><i class="fa fa-check"></i><b>11.1.1</b> Structural Form of sample_ Functions</a></li>
-<li class="chapter" data-level="11.1.2" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#using-sample_n-and-sample_frac"><i class="fa fa-check"></i><b>11.1.2</b> Using sample_n() and sample_frac()</a></li>
+<li class="chapter" data-level="10" data-path="other-functions-for-extracting-observations.html"><a href="other-functions-for-extracting-observations.html"><i class="fa fa-check"></i><b>10</b> Other Functions for Extracting Observations</a><ul>
+<li class="chapter" data-level="10.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html"><i class="fa fa-check"></i><b>10.1</b> Random Samples of Observations</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#structural-form-of-sample_-functions"><i class="fa fa-check"></i><b>10.1.1</b> Structural Form of sample_ Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#using-sample_n-and-sample_frac"><i class="fa fa-check"></i><b>10.1.2</b> Using sample_n() and sample_frac()</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html"><i class="fa fa-check"></i><b>11.2</b> distinct(): extracting unique observations</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#distinct-structure"><i class="fa fa-check"></i><b>11.2.1</b> distinct() Structure</a></li>
-<li class="chapter" data-level="11.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>11.2.2</b> Using distinct()</a></li>
+<li class="chapter" data-level="10.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html"><i class="fa fa-check"></i><b>10.2</b> distinct(): extracting unique observations</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#distinct-structure"><i class="fa fa-check"></i><b>10.2.1</b> distinct() Structure</a></li>
+<li class="chapter" data-level="10.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>10.2.2</b> Using distinct()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="notable-helper-functions.html"><a href="notable-helper-functions.html"><i class="fa fa-check"></i><b>12</b> Notable Helper Functions</a><ul>
-<li class="chapter" data-level="12.1" data-path="count.html"><a href="count.html"><i class="fa fa-check"></i><b>12.1</b> count()</a></li>
-<li class="chapter" data-level="12.2" data-path="n.html"><a href="n.html"><i class="fa fa-check"></i><b>12.2</b> n()</a></li>
+<li class="chapter" data-level="11" data-path="notable-helper-functions.html"><a href="notable-helper-functions.html"><i class="fa fa-check"></i><b>11</b> Notable Helper Functions</a><ul>
+<li class="chapter" data-level="11.1" data-path="count.html"><a href="count.html"><i class="fa fa-check"></i><b>11.1</b> count()</a></li>
+<li class="chapter" data-level="11.2" data-path="n.html"><a href="n.html"><i class="fa fa-check"></i><b>11.2</b> n()</a></li>
 </ul></li>
 <li class="part"><span><b>IV Repeated Operations</b></span></li>
-<li class="chapter" data-level="13" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>13</b> _at() suffix</a></li>
-<li class="chapter" data-level="14" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>14</b> _if() suffix</a></li>
-<li class="chapter" data-level="15" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>15</b> _all() suffix</a></li>
+<li class="chapter" data-level="12" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>12</b> _at() suffix</a></li>
+<li class="chapter" data-level="13" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>13</b> _if() suffix</a></li>
+<li class="chapter" data-level="14" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>14</b> _all() suffix</a></li>
 <li class="part"><span><b>V Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="16" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>16</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="16.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>16.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="16.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>16.2</b> spread(): Long to Wide</a></li>
+<li class="chapter" data-level="15" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>15</b> Multivariate and Univariate Data</a><ul>
+<li class="chapter" data-level="15.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>15.1</b> gather(): Wide to Long</a></li>
+<li class="chapter" data-level="15.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>15.2</b> spread(): Long to Wide</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>17</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="17.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>17.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="17.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>17.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="16" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>16</b> Spliting and Joining Columns</a><ul>
+<li class="chapter" data-level="16.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>16.1</b> separate(): Splitting Columns</a></li>
+<li class="chapter" data-level="16.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>16.2</b> unite(): Joining Columns</a></li>
 </ul></li>
 </ul>
 
@@ -256,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="at-suffix" class="section level1">
-<h1><span class="header-section-number">Chapter 13</span> _at() suffix</h1>
+<h1><span class="header-section-number">Chapter 12</span> _at() suffix</h1>
 </div>
             </section>
 

@@ -10,21 +10,18 @@
 
 <div class = semiemph><div class = activity>
 <div class = activitytitle>
-Instructions
-</div>
+Instructions</div>
 1. Keep observations that completed the survey AND were not from a test run.
 2. Remove columns that only contain missing data or a single value for every observation.
 3. Rename variables that start with Q to something meaningful.
 4. Create scale scores for the two different subscales in the data. 
 5. Generate summaries for the two new subscales for the entire data set and a grouping variable
-
 </div>
 
 
 <div class = semiemph><div class = activity>
 <div class = advactivitytitle>
-Advanced Activity
-</div>
+Advanced Activity</div>
 1. Did respondents complete the survey multiple times?
 2. On average how many times did each participant respond?
 3. Create scale scores that use mean(..., na.rm = TRUE) for participants that responded to 2 or more items, otherwise assign the respondent missing values.

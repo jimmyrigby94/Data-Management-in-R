@@ -59,8 +59,7 @@ ggarrange(t1,t2)
 ## Take-Aways
 <div class = activity>
 <div class = activitytitle>
-Why Does Data Mangaement Matter?
-</div>
+Why Does Data Mangaement Matter?</div>
 1. No matter what paradigm you work in data management is critical.
 2. Tidy data rarely exists in the wild.
 3. Efficiently managing data will save you time and make you a valuable assest to your collaborators.
