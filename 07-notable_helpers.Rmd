@@ -1,7 +1,0 @@
-# Notable Helper Functions
-
-## count()
-
-## n()
-
-

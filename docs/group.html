@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-28" />
+<meta name="date" content="2019-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="the-pipe-operator.html">
-<link rel="next" href="sum.html">
+<link rel="next" href="arrange-ordering-rows.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -129,10 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -174,14 +174,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
 <li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
+<li class="chapter" data-level="4.7.3" data-path="group.html"><a href="group.html#summarise-structure"><i class="fa fa-check"></i><b>4.7.3</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.7.4" data-path="group.html"><a href="group.html#using-summarise"><i class="fa fa-check"></i><b>4.7.4</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
-<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.8" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.8</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.8.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.8.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
@@ -219,22 +217,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>10.2.2</b> Using distinct()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="notable-helper-functions.html"><a href="notable-helper-functions.html"><i class="fa fa-check"></i><b>11</b> Notable Helper Functions</a><ul>
-<li class="chapter" data-level="11.1" data-path="count.html"><a href="count.html"><i class="fa fa-check"></i><b>11.1</b> count()</a></li>
-<li class="chapter" data-level="11.2" data-path="n.html"><a href="n.html"><i class="fa fa-check"></i><b>11.2</b> n()</a></li>
+<li class="chapter" data-level="11" data-path="performing-repeated-operations.html"><a href="performing-repeated-operations.html"><i class="fa fa-check"></i><b>11</b> Performing Repeated Operations</a><ul>
+<li class="chapter" data-level="11.1" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>11.1</b> all() suffix</a></li>
+<li class="chapter" data-level="11.2" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>11.2</b> at() suffix</a></li>
+<li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
 </ul></li>
-<li class="part"><span><b>IV Repeated Operations</b></span></li>
-<li class="chapter" data-level="12" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>12</b> _at() suffix</a></li>
-<li class="chapter" data-level="13" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>13</b> _if() suffix</a></li>
-<li class="chapter" data-level="14" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>14</b> _all() suffix</a></li>
-<li class="part"><span><b>V Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="15" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>15</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="15.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>15.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="15.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>15.2</b> spread(): Long to Wide</a></li>
+<li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
+<li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
+<li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>16</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="16.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>16.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="16.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>16.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
+<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
+<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
 </ul></li>
 </ul>
 
@@ -272,7 +267,7 @@ group_by(data, grouping_variable, …)
 <li>The transformation in this case simply defines the grouping variable.</li>
 <li>If multiple grouping variables are provided, the data is grouped by unique combinations of all grouping variables.</li>
 <li>Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object.</li>
-<li>Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section <a href="sum.html#sum">4.8</a>)</li>
+<li>Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section <a href="#sum"><strong>??</strong></a>)</li>
 <li>Also, just like rowwise(), in order return the data set to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.</li>
 </ul>
 </div>
@@ -281,10 +276,10 @@ group_by(data, grouping_variable, …)
 <h3><span class="header-section-number">4.7.2</span> Using group_by()</h3>
 <ul>
 <li>The survey data has been joined with information regarding employees managers.</li>
-<li>We can now calculate each employee’s team’s average performance, conscientiousness, and team size in the data.</li>
+<li>We can now calculate each employee’s team’s average performance, conscientiousness, and the number of teammates who responded in the data.</li>
 <li>While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.</li>
 </ul>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-37-1.png" width="768" /></p>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-38-1.png" width="768" /></p>
 
 <div class="example">
 <span id="exm:groupby1" class="example"><strong>Example 4.13  </strong></span>Using group_by() to create team level variables and n() to create group size variables
@@ -295,7 +290,68 @@ group_by(data, grouping_variable, …)
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">team_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_perf =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_size =</span> <span class="kw">n</span>())</code></pre>
 <pre><code>## `mutate_if()` ignored the following grouping variables:
 ## Column `Manager`</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-39-1.png" width="768" /></p>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-40-1.png" width="768" />
+
+<div class="example">
+<span id="exm:addcount" class="example"><strong>Example 4.14  </strong></span>add_count() is a nice alternative, to the group_by()%&gt;%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_count</span>(Manager)</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-42-1.png" width="768" />
+## summarise(): Creating Data Summaries {#sum}</p>
+<ul>
+<li>While creating grouped variables is sometimes necessary for analyses, often we simply want to describe properties of our data.</li>
+<li>summarise() is especially useful for this because it applies a function across rows of data to create a single value.</li>
+<li>If the data is grouped, there is a value returned for each group.</li>
+</ul>
+</div>
+<div id="summarise-structure" class="section level3">
+<h3><span class="header-section-number">4.7.3</span> summarise() Structure</h3>
+<div class="activity">
+<div class="structure">
+summarise(data, summary_var = function, …)
+</div>
+<ul>
+<li>Following the consistent dplyr structure, summarise() requires that you first specify the data and then a transformation.</li>
+<li>The transformation in summarise takes a similar form as mutate().</li>
+<li>The left hand side of the equation defines the name of a new summary variable and the right hand side defines a function or operation.</li>
+<li>The function should return a single value (i.e., mean() or sd()).</li>
+</ul>
+</div>
+</div>
+<div id="using-summarise" class="section level3">
+<h3><span class="header-section-number">4.7.4</span> Using summarise()</h3>
+<ul>
+<li>Let’s create a summary table for the overall sample as well as each team</li>
+</ul>
+
+<div class="example">
+<span id="exm:sum1" class="example"><strong>Example 4.15  </strong></span>Using summarise() to create a summary table for the entire survey data frame
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">mean_perf =</span> <span class="kw">mean</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+            <span class="dt">sd_cons =</span> <span class="kw">sd</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">sd_perf =</span> <span class="kw">sd</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-44-1.png" width="1152" /></p>
+
+<div class="example">
+<span id="exm:sum2" class="example"><strong>Example 4.16  </strong></span>Using group_by() and summarise() to create a summary table for different work groups
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Manager)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">team_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_perf =</span> <span class="kw">mean</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+            <span class="dt">sd_cons =</span> <span class="kw">sd</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">sd_perf =</span> <span class="kw">sd</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-46-1.png" width="1152" /></p>
+
+<div class="example">
+<span id="exm:count" class="example"><strong>Example 4.17  </strong></span>count() is a nice alternative to the group_by()%&gt;%summarise() chain if your goal is simply to describe grouped frequencies.
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(Manager)</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-48-1.png" width="1152" /></p>
 </div>
 </div>
             </section>
@@ -304,7 +360,7 @@ group_by(data, grouping_variable, …)
         </div>
       </div>
 <a href="the-pipe-operator.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sum.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="arrange-ordering-rows.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

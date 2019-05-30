@@ -1,14 +1,12 @@
 # Activity 1
-<div  class = semiemph>
 
 - Now it's your turn!
 - You can find a data set titled "cons_perf.csv" in the supplemental material linked [here](https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl).
 - A .txt file (cons_perf_desc.txt) is also included describing the data and structure.
 - Your goal is to clean the data and then summarise the data in a meaningful way. 
 
-</div>
 
-<div class = semiemph><div class = activity>
+<div class = activity>
 <div class = activitytitle>
 Instructions</div>
 1. Keep observations that completed the survey AND were not from a test run.
@@ -19,7 +17,7 @@ Instructions</div>
 </div>
 
 
-<div class = semiemph><div class = activity>
+<div class = activity>
 <div class = advactivitytitle>
 Advanced Activity</div>
 1. Did respondents complete the survey multiple times?

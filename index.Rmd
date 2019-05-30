@@ -1,0 +1,61 @@
+--- 
+title: "Psyc 6300: Data Management"
+date: "`r Sys.Date()`"
+author: "James Rigby"
+site: bookdown::bookdown_site
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+description: "This is an introduction to R as a statistical package for psychological research."
+---
+
+# Introduction
+
+```{r, echo = FALSE}
+knitr::include_graphics("suppl/cover.png")
+```
+
+## Prerequisites
+
+- This book assumes that you are familiar with the basics of the R language.
+
+- Thus, we will not discuss basic arithmatic operators, common functions (i.e., mean), or data structures. 
+
+- Please review the material on base R if you are still uncomfortable with the foundations of the language.
+
+- Datacamp offers a great set of courses (linked [here](https://www.datacamp.com/courses/free-introduction-to-r)) that will help get you up to speed.
+
+- If you have yet to do so please install and load tidyverse by running the following code
+
+```{r, eval=FALSE}
+# Install tidyverse
+install.packages("tidyverse")
+
+# Load tidyverse
+library(tidyverse)
+```
+
+## Supplemental Resources
+
+This is by no means the only resource to learn data management skills in R. My aim is to provide a somewhat biased overview of how data management should be done in R. I draw heavily on packages from the tidyverse because they result in type consistent output and incorporate piping making them easier to use and interpret when compared to their base R counterparts. Here are additional that may provide different perspectives or additional insight into data management in R.
+
+<div class = activity>
+<div class = activitytitle>
+Supplemental Resources</div>
+
+- [Dplyr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf)
+- [Dplyr Vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+- [R For Data Scientists: Chapter 5](http://r4ds.had.co.nz/transform.html)
+- [DataCamp: Data Manipulation with Dplyr](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)
+- [Quick R: Data Management in Base R](https://www.statmethods.net/management/variables.html)
+
+</div>
+
+## Acknowledgements
+
+```{r, echo = FALSE}
+knitr::include_graphics("suppl/DataCamp.png")
+```
+
+
+This class is supported by DataCamp, the most intuitive learning platform for data science. Learn R, Python and SQL the way you learn best through a combination of short expert videos and hands-on-the-keyboard exercises. Take over 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalised feedback on every exercise.

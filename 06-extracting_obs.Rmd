@@ -154,12 +154,12 @@ man_data%>%
 ```
 
 - Let's take a look at the manager data that we used when combining multiple data frames.
-- Let's use distinct() determine:
+- Let's use distinct() create data frames that:
 
 <div class = list>
-1. How many unique managers do we have?
-2. How many unique employees do we have?
-3. How many unique manager employee combinations do we have?
+1. Store the names of each manager.
+2. Store the IDs associated with each employee.
+3. Store ID/manager combinations.
 </div>
 
 

@@ -1,8 +1,6 @@
 # (PART) Combining Data Frames {-}
+
 # Combining Data Sets
-
-
-
 
 ```{r, echo = FALSE, fig.height= 3.5, fig.width=10}
 ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
@@ -32,6 +30,7 @@ t2<-ggpubr::ggtexttable(man_data, theme = ttheme(base_style="lBlueWhite"))
 
 ggarrange(t1, t2, widths = c(2,1))
 ```
+
 
 - Take a look the left panel of the tables above which shows the original survey data set after it was cleaned up. 
 - Manager information was not originally stored in this data!

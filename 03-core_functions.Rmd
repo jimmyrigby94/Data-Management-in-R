@@ -14,14 +14,13 @@ Core dplyr Functions for Data Manipulation</div>
 
 ## dplyr Function Structure {#form}
 
-<div class=semiemph>
-All of the core dplyr functions take the following form:</div>
+All of the core dplyr functions take the following form:
 
 <div class = activity>
 <div class = structure>
 function(data, transformation, ...)</div>
 
-<div class=semiemph>
+
 1. function: the dplyr function that you want to use
 
 2. data: the data frame or tibble you want to use the function on
@@ -30,7 +29,7 @@ function(data, transformation, ...)</div>
 
 4. ...: other transformations you want to perform
 </div>
-</div>
+
 
 ## filter(): Retaining Rows {#filter}
 - This function allows you to subset the data frame based on a logical test.
@@ -335,7 +334,7 @@ function1(data, transformation, ...)%>%
   function2(transformation)</div>
 - The pipe operator carriers forward the output of the previous call and uses it in the subsequent function
 - Thus, following any call with %>% will carry forward the output into the subsequent function
-
+</div>
 ### Using the pipe operator
 - Lets use the pipe operator to make our code more readable
 
@@ -391,7 +390,7 @@ group_by(data, grouping_variable, ...)</div>
 
 ### Using group_by()
 - The survey data has been joined with information regarding employees managers.
-- We can now calculate each employee's team's average performance, conscientiousness, and team size in the data.
+- We can now calculate each employee's team's average performance, conscientiousness, and the number of teammates who responded in the data.
 - While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.
 
 ```{r, include = FALSE}
@@ -427,7 +426,19 @@ ex_data%>%
   mutate_if(is.numeric, round, digits = 2)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
+```{example, addcount}
+add_count() is a nice alternative, to the group_by()%>%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.
+```{r, eval = FALSE}
+ex_data%>%
+  add_count(Manager)
+```
 
+```{r, echo = FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+  add_count(Manager)%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
 ## summarise(): Creating Data Summaries {#sum}
 
 - While creating grouped variables is sometimes necessary for analyses, often we simply want to describe properties of our data.
@@ -487,6 +498,21 @@ ex_data%>%
 
 ```
 
+```{example, count}
+count() is a nice alternative to the group_by()%>%summarise() chain if your goal is simply to describe grouped frequencies.
+```{r, eval = FALSE}
+ex_data%>%
+  count(Manager)
+```
+
+```{r, echo = FALSE, fig.height=1, fig.width=12}
+ex_data%>%
+  count(Manager)%>%
+    mutate_if(is.numeric, round, digits = 2)%>%
+   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
+```
+
 ## arrange(): Ordering Rows
 - arrange() can be used to sort rows in a data frame
 - By default, arrange() orders a data frame from values in a column that go from smallest to largest
@@ -495,7 +521,7 @@ ex_data%>%
 ### arrange() Structure
 <div class = activity>
 <div class = structure>
-arrange(data, sort_var, ...)</div>
+arrange(data, sort_var, ...) </div>
 - arrange() takes the same structure as all other core dplyr functions.
 - First, specify the data you are manipulating
 - Second, specify the transformation - the column or columns you are sorting by
