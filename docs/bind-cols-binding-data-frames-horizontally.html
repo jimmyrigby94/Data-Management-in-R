@@ -129,10 +129,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
+<<<<<<< HEAD
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
 <li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
+||||||| merged common ancestors
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+=======
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+>>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -282,14 +294,26 @@ bind_cols(…)
 <li>Thus we are probably better off using a different function to join these two data sets.</li>
 <li>In contrast, note that in the two tabels below, each data frame has the same number of observations and the ID variables align perfectly.</li>
 </ul>
+<<<<<<< HEAD
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+||||||| merged common ancestors
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+=======
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+>>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 
 <div class="example">
 <span id="exm:bindc" class="example"><strong>Example 7.1  </strong></span>Binding data frames together horizontally.
 </div>
 
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bind_cols</span>(cons_dat, perf_dat)</code></pre>
+<<<<<<< HEAD
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+||||||| merged common ancestors
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+=======
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+>>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 <ul>
 <li>Note that, since there is a dupicate column (ResponseId) in the new joined dataset, col_bind() automatically added a 1 to the end of the column name.</li>
 <li>This is intended to prevent mixups, but can result in dupicate data.</li>

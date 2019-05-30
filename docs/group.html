@@ -129,10 +129,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
+<<<<<<< HEAD
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
 <li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
+||||||| merged common ancestors
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+=======
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+>>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -290,6 +302,7 @@ group_by(data, grouping_variable, …)
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">team_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_perf =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_size =</span> <span class="kw">n</span>())</code></pre>
 <pre><code>## `mutate_if()` ignored the following grouping variables:
 ## Column `Manager`</code></pre>
+<<<<<<< HEAD
 <img src="Introduction_to_R_files/figure-html/unnamed-chunk-40-1.png" width="768" />
 
 <div class="example">
@@ -352,6 +365,72 @@ summarise(data, summary_var = function, …)
 <pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">count</span>(Manager)</code></pre>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-48-1.png" width="1152" /></p>
+||||||| merged common ancestors
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-39-1.png" width="768" /></p>
+=======
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-39-1.png" width="768" />
+
+<div class="example">
+<span id="exm:addcount" class="example"><strong>Example 4.14  </strong></span>add_count() is a nice alternative, to the group_by()%&gt;%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_count</span>(Manager)</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-41-1.png" width="768" />
+## summarise(): Creating Data Summaries {#sum}</p>
+<ul>
+<li>While creating grouped variables is sometimes necessary for analyses, often we simply want to describe properties of our data.</li>
+<li>summarise() is especially useful for this because it applies a function across rows of data to create a single value.</li>
+<li>If the data is grouped, there is a value returned for each group.</li>
+</ul>
+</div>
+<div id="summarise-structure" class="section level3">
+<h3><span class="header-section-number">4.7.3</span> summarise() Structure</h3>
+<div class="activity">
+<div class="structure">
+summarise(data, summary_var = function, …)
+</div>
+<ul>
+<li>Following the consistent dplyr structure, summarise() requires that you first specify the data and then a transformation.</li>
+<li>The transformation in summarise takes a similar form as mutate().</li>
+<li>The left hand side of the equation defines the name of a new summary variable and the right hand side defines a function or operation.</li>
+<li>The function should return a single value (i.e., mean() or sd()).</li>
+</ul>
+</div>
+</div>
+<div id="using-summarise" class="section level3">
+<h3><span class="header-section-number">4.7.4</span> Using summarise()</h3>
+<ul>
+<li>Let’s create a summary table for the overall sample as well as each team</li>
+</ul>
+
+<div class="example">
+<span id="exm:sum1" class="example"><strong>Example 4.15  </strong></span>Using summarise() to create a summary table for the entire survey data frame
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">mean_perf =</span> <span class="kw">mean</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+            <span class="dt">sd_cons =</span> <span class="kw">sd</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">sd_perf =</span> <span class="kw">sd</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-43-1.png" width="1152" /></p>
+
+<div class="example">
+<span id="exm:sum2" class="example"><strong>Example 4.16  </strong></span>Using group_by() and summarise() to create a summary table for different work groups
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Manager)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">team_cons =</span> <span class="kw">mean</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">team_perf =</span> <span class="kw">mean</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+            <span class="dt">sd_cons =</span> <span class="kw">sd</span>(cons, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">sd_perf =</span> <span class="kw">sd</span>(perf, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-45-1.png" width="1152" /></p>
+
+<div class="example">
+<span id="exm:count" class="example"><strong>Example 4.17  </strong></span>count() is a nice alternative to the group_by()%&gt;%summarise() chain if your goal is simply to describe grouped frequencies.
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(Manager)</code></pre>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-47-1.png" width="1152" /></p>
+>>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </div>
 </div>
             </section>
