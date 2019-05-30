@@ -1,0 +1,147 @@
+# Performing Repeated Operations
+- By this point, my hope is that you feel comfortable with the core dplyr functions.
+- In the next chapters, we will discuss three variations on each of these functions that allow you to write one line of code to repeat a manipulation many times. 
+- While I will not demonstrated every variation of these functions, knowing they exist can help you speed up your data cleaning.
+- What are some instances when you would want to do repeated manipulations?
+<div class = list>
+- Renaming all all columns so that their names are lower case.
+- Centering a set of independent variables for regression.
+- Calculating summary statistics for a large set of variables.
+- Converting a set of variables that were read as character to numeric.
+- Rounding all numeric variables to the second decimal place.
+</div>
+
+- Most of the core functions have variations that variations that facilitate repeated operations in different ways.
+- The names are mostly the same, except a suffix is added to the end to differentiate it from its typical call (i.e., mutate_all())
+- Each suffix defines the repeated manipulation in a different way.
+
+<div class = activity>
+<div class = activitytitle>
+Summary of Suffix Definitions
+</div>
+- _all: Applies the transformation to all columns.
+- _at: Applies the transformation to a set of columns you define.
+- _if: Applies the transformation to a set of columns that match an argument.
+</div>
+
+## all() suffix
+- As you might suspect, functions with the _all() suffix apply your specified transformation to **all** columns in the data frame.
+- This is useful when there is a single transformation that is appropriate for every column.
+- For example, because R is case sensitive, it is much easier to always were with lower case column names.
+- Using rename_all() will help us rename every single column so that it matches this pattern.
+- To use rename_all() we simply define the data frame and then a function that will take a column name and change it in some way.
+- tolower() converts string values to lowercase and is the appropriate function to use here.
+
+```{r, echo = FALSE, fig.width=10, fig.height=2}
+ex_data%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+
+```{example, renameall}
+Using rename_all() and tolower() to rename all variables so they are lower case.
+```{r, eval = FALSE}
+ex_data%>%
+  rename_all(tolower)
+```
+
+```{r, echo=FALSE, fig.height=2, fig.width=8}
+ex_data%>%
+  rename_all(tolower)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+## at() suffix
+- The at suffix applies a given transformation to a set of variables.
+- It relies on the vars() helper function to define these variables. 
+- Let's use the mutate_at() function to center the cons and perf columns
+- In this case, I want to retain my centered and uncentered variables for later use.
+- To do this, I defined a named list that contains the functions I want to apply to the variables I define.
+- The names of the elements in the list will be appended to my original names to create new columns. 
+- .s are used as place holders for the vars.
+
+```{r, echo = FALSE, fig.width=10, fig.height=2}
+ex_data%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+```{example, mutateat}
+Using mutate_at() to center cons and perf at 0.
+```{r, eval = FALSE}
+centered_data<-ex_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))
+
+centered_data
+```
+
+```{r, echo=FALSE, echo = FALSE, fig.height=2, fig.width=10}
+ex_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+- Lets double check our work using summarise_at()
+- Centering a variables changes it's expected value but not its spread.
+- This means that the new variables should have different means but identical standard deviations compared to the original variables.
+
+```{example, summariseat}
+Using summarise_at() to verify the transformation worked appropriately
+```{r, eval = FALSE}
+centered_data%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))
+
+```
+
+```{r, echo=FALSE, fig.width=12, fig.height=1}
+ex_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))%>%
+  mutate_if(is.numeric, round, digits = 5)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+
+## if() suffix
+- The _if suffix applies a transformation to a set of columns that satisfy a logical test.
+- I have been using mutate_if() and round() behind the scenes while writing this book to format most of the tables that you see. 
+- Consider Example \@ref(exm:summariseat) when I don't use mutate_if(). 
+
+```{example, summariseat2}
+The code you saw really generates this ugly beast. 
+```{r, eval = FALSE}
+centered_data%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))
+
+```
+
+```{r, echo=FALSE, fig.width=12, fig.height=1}
+ex_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+- The floating point (maximum decimal point) in R goes out a long way making calculations very precise but output unwildy.
+- By using mutate_if(), we can apply round() repeatedly across the data frame. 
+- round() only works with numeric data, though, so we want to avoid applying it character and factor data.
+
+```{example, summariseat3}
+Using summarise_at() to verify the transformation worked appropriately
+```{r, eval = FALSE}
+centered_data%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))%>%
+  mutate_if(is.numeric, round, digits = 5)
+```
+
+```{r, echo=FALSE, fig.width=12, fig.height=1}
+ex_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+  summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
+                                                      sd = ~sd(., na.rm = TRUE)))%>%
+  mutate_if(is.numeric, round, digits = 5)%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```

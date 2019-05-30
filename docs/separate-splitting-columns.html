@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>16.1 separate(): Splitting Columns | Psyc 6300: Data Management</title>
+  <title>13.1 separate(): Splitting Columns | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="16.1 separate(): Splitting Columns | Psyc 6300: Data Management" />
+  <meta property="og:title" content="13.1 separate(): Splitting Columns | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="16.1 separate(): Splitting Columns | Psyc 6300: Data Management" />
+  <meta name="twitter:title" content="13.1 separate(): Splitting Columns | Psyc 6300: Data Management" />
   
   <meta name="twitter:description" content="This is an introduction to R as a statistical package for psychological research." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-28" />
+<meta name="date" content="2019-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,10 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -174,14 +174,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
 <li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
+<li class="chapter" data-level="4.7.3" data-path="group.html"><a href="group.html#summarise-structure"><i class="fa fa-check"></i><b>4.7.3</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.7.4" data-path="group.html"><a href="group.html#using-summarise"><i class="fa fa-check"></i><b>4.7.4</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
-<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.8" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.8</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.8.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.8.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
@@ -219,22 +217,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>10.2.2</b> Using distinct()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="notable-helper-functions.html"><a href="notable-helper-functions.html"><i class="fa fa-check"></i><b>11</b> Notable Helper Functions</a><ul>
-<li class="chapter" data-level="11.1" data-path="count.html"><a href="count.html"><i class="fa fa-check"></i><b>11.1</b> count()</a></li>
-<li class="chapter" data-level="11.2" data-path="n.html"><a href="n.html"><i class="fa fa-check"></i><b>11.2</b> n()</a></li>
+<li class="chapter" data-level="11" data-path="performing-repeated-operations.html"><a href="performing-repeated-operations.html"><i class="fa fa-check"></i><b>11</b> Performing Repeated Operations</a><ul>
+<li class="chapter" data-level="11.1" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>11.1</b> all() suffix</a></li>
+<li class="chapter" data-level="11.2" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>11.2</b> at() suffix</a></li>
+<li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
 </ul></li>
-<li class="part"><span><b>IV Repeated Operations</b></span></li>
-<li class="chapter" data-level="12" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>12</b> _at() suffix</a></li>
-<li class="chapter" data-level="13" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>13</b> _if() suffix</a></li>
-<li class="chapter" data-level="14" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>14</b> _all() suffix</a></li>
-<li class="part"><span><b>V Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="15" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>15</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="15.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>15.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="15.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>15.2</b> spread(): Long to Wide</a></li>
+<li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
+<li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
+<li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>16</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="16.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>16.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="16.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>16.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
+<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
+<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
 </ul></li>
 </ul>
 
@@ -254,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="separate-splitting-columns" class="section level2">
-<h2><span class="header-section-number">16.1</span> separate(): Splitting Columns</h2>
+<h2><span class="header-section-number">13.1</span> separate(): Splitting Columns</h2>
 </div>
             </section>
 
