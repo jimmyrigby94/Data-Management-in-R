@@ -129,22 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
 <li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
-||||||| merged common ancestors
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
-=======
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -260,7 +248,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<<<<<<< HEAD
 <div id="all-suffix" class="section level2">
 <h2><span class="header-section-number">11.1</span> all() suffix</h2>
 <ul>
@@ -272,41 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>tolower() converts string values to lowercase and is the appropriate function to use here.</li>
 </ul>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-98-1.png" width="960" /></p>
-||||||| merged common ancestors
-<div id="all-suffix" class="section level1">
-<h1><span class="header-section-number">Chapter 14</span> _all() suffix</h1>
-=======
-<div id="all-suffix" class="section level2">
-<h2><span class="header-section-number">11.1</span> all() suffix</h2>
-<ul>
-<li>As you might suspect, functions with the _all() suffix apply your specified transformation to <strong>all</strong> columns in the data frame.</li>
-<li>This is useful when there is a single transformation that is appropriate for every column.</li>
-<li>For example, because R is case sensitive, it is much easier to always were with lower case column names.</li>
-<li>Using rename_all() will help us rename every single column so that it matches this pattern.</li>
-<li>To use rename_all() we simply define the data frame and then a function that will take a column name and change it in some way.</li>
-<li>tolower() converts string values to lowercase and is the appropriate function to use here.</li>
-</ul>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-97-1.png" width="960" /></p>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 
 <div class="example">
 <span id="exm:renameall" class="example"><strong>Example 11.1  </strong></span>Using rename_all() and tolower() to rename all variables so they are lower case.
 </div>
 
-<<<<<<< HEAD
 <pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">rename_all</span>(tolower)</code></pre>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-100-1.png" width="768" /></p>
 </div>
-||||||| merged common ancestors
-
-
-=======
-<pre class="sourceCode r"><code class="sourceCode r">ex_data<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rename_all</span>(tolower)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-99-1.png" width="768" /></p>
-</div>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
             </section>
 
           </div>

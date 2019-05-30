@@ -129,22 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
 <li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
-||||||| merged common ancestors
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
-=======
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -287,13 +275,7 @@ distinct(data, distinct_var, …, .keep_all)
 </div>
 <div id="using-distinct" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Using distinct()</h3>
-<<<<<<< HEAD
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-91-1.png" width="288" /></p>
-||||||| merged common ancestors
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-86-1.png" width="288" /></p>
-=======
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-90-1.png" width="288" /></p>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 <ul>
 <li>Let’s take a look at the manager data that we used when combining multiple data frames.</li>
 <li>Let’s use distinct() create data frames that:</li>
@@ -312,13 +294,7 @@ distinct(data, distinct_var, …, .keep_all)
 
 <pre class="sourceCode r"><code class="sourceCode r">man_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">distinct</span>(Manager)</code></pre>
-<<<<<<< HEAD
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-93-1.png" width="288" /></p>
-||||||| merged common ancestors
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-88-1.png" width="288" /></p>
-=======
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-92-1.png" width="288" /></p>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 
 <div class="example">
 <span id="exm:distinct2" class="example"><strong>Example 10.5  </strong></span>Using distinct() to extract unique levels of ResponseId.
@@ -326,13 +302,7 @@ distinct(data, distinct_var, …, .keep_all)
 
 <pre class="sourceCode r"><code class="sourceCode r">man_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">distinct</span>(Employee)</code></pre>
-<<<<<<< HEAD
 <img src="Introduction_to_R_files/figure-html/unnamed-chunk-95-1.png" width="288" />
-||||||| merged common ancestors
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-90-1.png" width="288" />
-=======
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-94-1.png" width="288" />
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 
 <div class="example">
 <span id="exm:distinct3" class="example"><strong>Example 10.6  </strong></span>Using distinct() to extract unique ResponseId-Manager combinations.
@@ -343,13 +313,7 @@ distinct(data, distinct_var, …, .keep_all)
 <pre class="sourceCode r"><code class="sourceCode r">man_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">distinct</span>(ResponseId, Manager)<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggtexttable</span>(<span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="dt">base_style=</span><span class="st">&quot;lBlueWhite&quot;</span>))</code></pre>
-<<<<<<< HEAD
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-97-1.png" width="288" /></p>
-||||||| merged common ancestors
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-92-1.png" width="288" /></p>
-=======
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-96-1.png" width="288" /></p>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 
 </div>
 </div>

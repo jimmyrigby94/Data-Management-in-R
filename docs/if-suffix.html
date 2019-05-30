@@ -129,22 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"Psyc 6300</a></li>
 
 <li class="divider"></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="1.2" data-path="supplemental-resources.html"><a href="supplemental-resources.html"><i class="fa fa-check"></i><b>1.2</b> Supplemental Resources</a></li>
 <li class="chapter" data-level="1.3" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
-||||||| merged common ancestors
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="introduction.html"><a href="introduction.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
-=======
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.0.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.0.2</b> Supplemental Resources</a></li>
-<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.0.3</b> Acknowledgements</a></li>
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
 </ul></li>
 <li class="chapter" data-level="2" data-path="material-overview.html"><a href="material-overview.html"><i class="fa fa-check"></i><b>2</b> Material Overview</a></li>
 <li class="part"><span><b>I Introduction to Dplyr</b></span></li>
@@ -260,7 +248,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<<<<<<< HEAD
 <div id="if-suffix" class="section level2">
 <h2><span class="header-section-number">11.3</span> if() suffix</h2>
 <ul>
@@ -285,37 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="example">
 <span id="exm:summariseat3" class="example"><strong>Example 11.5  </strong></span>Using summarise_at() to verify the transformation worked appropriately
-||||||| merged common ancestors
-<div id="if-suffix" class="section level1">
-<h1><span class="header-section-number">Chapter 13</span> _if() suffix</h1>
-=======
-<div id="if-suffix" class="section level2">
-<h2><span class="header-section-number">11.3</span> if() suffix</h2>
-<ul>
-<li>The _if suffix applies a transformation to a set of columns that satisfy a logical test.</li>
-<li>I have been using mutate_if() and round() behind the scenes while writing this book to format most of the tables that you see.</li>
-<li>Consider Example <a href="at-suffix.html#exm:summariseat">11.3</a> when I don’t use mutate_if().</li>
-</ul>
-
-<div class="example">
-<span id="exm:summariseat2" class="example"><strong>Example 11.4  </strong></span>The code you saw really generates this ugly beast.
 </div>
-
-<pre class="sourceCode r"><code class="sourceCode r">centered_data<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
-                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-106-1.png" width="1152" /></p>
-<ul>
-<li>The floating point (maximum decimal point) in R goes out a long way making calculations very precise but output unwildy.</li>
-<li>By using mutate_if(), we can apply round() repeatedly across the data frame.</li>
-<li>round() only works with numeric data, though, so we want to avoid applying it character and factor data.</li>
-</ul>
-
-<div class="example">
-<span id="exm:summariseat3" class="example"><strong>Example 11.5  </strong></span>Using summarise_at() to verify the transformation worked appropriately
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
-</div>
-<<<<<<< HEAD
 
 <pre class="sourceCode r"><code class="sourceCode r">centered_data<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
@@ -328,21 +285,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-||||||| merged common ancestors
-=======
-
-<pre class="sourceCode r"><code class="sourceCode r">centered_data<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
-                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dt">digits =</span> <span class="dv">5</span>)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-108-1.png" width="1152" /></p>
-
-</div>
-<!-- </div> -->
-
-
-
->>>>>>> e1efedc12b12f886690e3712c3979efc5e3c2dc9
             </section>
 
           </div>
