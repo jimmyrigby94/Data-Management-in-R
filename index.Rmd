@@ -11,9 +11,17 @@ description: "This is an introduction to R as a statistical package for psycholo
 
 # Introduction
 
+
+
+
 ```{r, echo = FALSE}
 knitr::include_graphics("suppl/cover.png")
 ```
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(message = FALSE)
+```
+
 
 ## Prerequisites
 
@@ -37,7 +45,10 @@ library(tidyverse)
 
 ## Supplemental Resources
 
-This is by no means the only resource to learn data management skills in R. My aim is to provide a somewhat biased overview of how data management should be done in R. I draw heavily on packages from the tidyverse because they result in type consistent output and incorporate piping making them easier to use and interpret when compared to their base R counterparts. Here are additional that may provide different perspectives or additional insight into data management in R.
+- This is by no means the only resource to learn data management skills in R. 
+- My aim is to provide a somewhat biased overview of how data management should be done in R. 
+- I draw heavily on packages from the tidyverse because they result in type consistent output and incorporate piping making them easier to use and interpret when compared to their base R counterparts. 
+- Here are additional resources that may provide different perspectives or additional insight into data management in R.
 
 <div class = activity>
 <div class = activitytitle>
