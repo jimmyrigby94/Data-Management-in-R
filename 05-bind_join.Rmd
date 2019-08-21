@@ -2,31 +2,23 @@
 
 # Combining Data Sets
 
-```{r, echo = FALSE, fig.height= 3.5, fig.width=10}
-ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
+```{r, echo = FALSE, fig.height= 3.5, fig.width=10, fig.caption = "Separate data frames for manager rosters and employee data."}
+survey_data<-read_csv("suppl/survey_data.csv")
+  
+survey_data<-survey_data%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
-  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE),
-         ResponseId = as.character(ResponseId))%>%
-  mutate_if(is.numeric, round, digits = 2)
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  ungroup()%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$"))
 
-man_data<-rbind(head(ex_dat)[-1,]%>%
-  mutate(Manager = c("Nick", "Julia", "Nick", "Nick", "Julia"))%>%
-  select(ResponseId, Manager), 
-  head(ex_dat)%>%
-  mutate(Manager = c("David","David", "Julia", "Nick", "Nick", "Julia"), 
-         ResponseId=str_replace(ResponseId, "[[2:7]]", "4"),
-         ResponseId = as.character(ResponseId))%>%
-  select(ResponseId, Manager))%>%
-  distinct(ResponseId, .keep_all = TRUE)
 
-man_data<-bind_rows(man_data, man_data[6,])
-man_data[11, 2]<- "Travis"
 
-t1<-ggpubr::ggtexttable(ex_data, theme = ttheme(base_style="lBlueWhite"))
-t2<-ggpubr::ggtexttable(man_data, theme = ttheme(base_style="lBlueWhite"))
+t1<-ggpubr::ggtexttable(survey_data, theme = ttheme(base_style="lBlueWhite"))
+t2<-ggpubr::ggtexttable(manager, theme = ttheme(base_style="lBlueWhite"))
 
 ggarrange(t1, t2, widths = c(2,1))
 ```
@@ -76,11 +68,11 @@ bind_cols(...)</div>
 - Thus we are probably better off using a different function to join these two data sets. 
 - In contrast, note that in the two tabels below, each data frame has the same number of observations and the ID variables align perfectly.
 
-```{r, echo = FALSE, fig.height=2}
-cb1_data <- ex_data %>%
+```{r, echo = FALSE, fig.height=2, fig.width=6}
+cb1_data <- survey_data %>%
                select(ResponseId, cons)
 
-cb2_data <- ex_data%>%
+cb2_data <- survey_data%>%
                select(ResponseId, perf)
 
 bt1<- ggtexttable(cb1_data, theme = ttheme("lBlueWhite"))
@@ -124,19 +116,18 @@ bind_rows(...)</div>
 ### Using bind_rows()
 
 ```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.height=3}
-br_data<-ex_data%>%
+br_data<-survey_data%>%
           select(ResponseId, cons, perf)
           
 br1_data<-br_data[1:3,]
 br2_data<-br_data[4:nrow(br_data),]
-br2_data<-left_join(br2_data,man_data)%>%
+br2_data<-left_join(br2_data,manager)%>%
   select(Manager, ResponseId, perf, cons)
 
 rt1<-ggtexttable(br1_data, theme = ttheme("lBlueWhite"))
 rt2<-ggtexttable(br2_data, theme = ttheme("lBlueWhite"))
 
 ggarrange(rt1, rt2, nrow=2)
-
 ```
 
 ```{example, bindr}
@@ -146,8 +137,7 @@ bind_rows(cons_dat, perf_dat)
 ```
 
 ```{r, echo = FALSE, message = FALSE, warning=FALSE, fig.height=2, fig.width=8}
-bind_rows(br1_data, left_join(br2_data,man_data)%>%
-                  select(Manager, ResponseId, perf, cons))%>%
+bind_rows(br1_data, br2_data)%>%
   ggtexttable(theme = ttheme("lBlueWhite"))
 ```
 
@@ -197,7 +187,7 @@ List of Mutating Joins</div>
 <div class = activity>
 <div class = structure>
 
-function(x, y, by = c("lh_id", "rh_id))</div>
+function(x, y, by = c("lh_id", "rh_id"))</div>
 - function denotes the type of join you would like to perform (i.e., full_join, left_join).
 - Join functions commonly refer to left-hand and right-hand and data frames.
 - Whether a data frame is a left-hand or right-hand data frame is determined by what order you enter your the two dataframes. 
@@ -218,33 +208,33 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, fulljoin1}
 Joining the survey data with managerial data, retaining all observations from both data frames.
 ```{r, eval = FALSE}
-full_join(cons_dat, man_data, by = c("ResponseId", "ResponseId"))
+full_join(cons_dat, manager, by = c("ResponseId", "ResponseId"))
 ```
 
 ```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
-full_join(ex_data, man_data, by=c("ResponseId", "ResponseId"))%>%
+full_join(survey_data, manager, by=c("ResponseId", "ResponseId"))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ```{example, fulljoin2}
 Changing which data frame is the left-hand df and which data frame is the right-hand df changes the order of the columns but not which observations are kept.
 ```{r, eval = FALSE}
-full_join(man_data, cons_dat, by = c("ResponseId", "ResponseId"))
+full_join(manager, cons_dat, by = c("ResponseId", "ResponseId"))
 ```
 
 ```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
-full_join(man_data, ex_data, by=c("ResponseId", "ResponseId"))%>%
+full_join(manager, survey_data, by=c("ResponseId", "ResponseId"))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ```{example, fulljoin3}
 Since the data frames only share one variable with a commmon name. dplyr does give us a lovely message to let us know what the data frames are being joined by. This message will be suppressed from this point forward.
 ```{r, eval = FALSE}
-full_join(man_data, cons_dat)
+full_join(manager, cons_dat)
 ```
 
 ```{r, fig.width=10, fig.height=3.5, echo=FALSE, warning=FALSE}
-full_join(man_data, ex_data)%>%
+full_join(manager, survey_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -259,22 +249,22 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, leftjoin1}
 Retaining all observations from the survey data, but only matching observations from the managerial data.
 ```{r, eval = FALSE}
-left_join(cons_dat, man_data)
+left_join(cons_dat, manager)
 ```
 
 ```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
-left_join(ex_data, man_data)%>%
+left_join(survey_data, manager)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ```{example, leftjoin2}
 For left_join() order does matter. Different observations are retained depending on which data frame is in the left_hand position and which data frame is in the right-hand right hand position. 
 ```{r, eval = FALSE}
-left_join(man_data, cons_dat)
+left_join(manager, cons_dat)
 ```
 
 ```{r, fig.width=10, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
-left_join(man_data, ex_data)%>%
+left_join(manager, survey_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -289,14 +279,14 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, righjoin1}
 Note that this example produces output that is identical to Example \@ref(exm:leftjoin1). The only difference is the data frame arguments are flipped!
 ```{r, eval = FALSE}
-right_join(man_data, cons_dat)
+right_join(manager, cons_dat)
 ```
 
 ```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
-right_join(man_data, ex_data)%>%
+right_join(manager, survey_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 
-ex_data<-right_join(man_data, ex_data)
+survey_data<-right_join(manager, survey_data)
 ```
 
 ## inner_join()
@@ -309,14 +299,17 @@ ex_data<-right_join(man_data, ex_data)
 - Although the Status column is now gone, the first observation in the survey data below originated from a pilot test (Status == 8).
 
 ```{r, echo = FALSE, fig.width=10, fig.height=3.5}
-unfiltered<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
+survey_data<-read_csv("suppl/survey_data.csv")
+  
+unfiltered_survey_data<-survey_data%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
-  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE),
-         ResponseId = as.character(ResponseId))
-
-t3<-ggtexttable(unfiltered, theme = ttheme(base_style="lBlueWhite"))
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  ungroup()%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$"))
+t3<-ggtexttable(unfiltered_survey_data, theme = ttheme(base_style="lBlueWhite"))
   
 ggarrange(t3,t2, widths = c(2,1))
 ```
@@ -324,11 +317,11 @@ ggarrange(t3,t2, widths = c(2,1))
 ```{example, innerjoin1}
 inner_join() will exclude all respondents for whom we do not have managerial information and all employees who did not respond to the survey.
 ```{r, eval = FALSE}
-inner_join(man_data, unfiltered_cons_dat)
+inner_join(manager, unfiltered_survey_data)
 ```
 
 ```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
-inner_join(man_data, unfiltered)%>%
+inner_join(manager, unfiltered_survey_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -356,11 +349,11 @@ ggarrange(t3,t2, widths = c(2,1))
 ```{example, semijoin1}
 Using semi_join() to retain observations for which we have managerial data without adding managerial data to the survey data. 
 ```{r, eval = FALSE}
-semi_join(unfiltered_cons_dat, man_data)
+semi_join(unfiltered_survey_data, manager)
 ```
 
 ```{r, fig.width=10, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
-semi_join(unfiltered, man_data)%>%
+semi_join(unfiltered_survey_data, manager)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -376,10 +369,10 @@ ggarrange(t3,t2, widths = c(2,1))
 ```{example, antijoin1}
 Using anti_join() to identify employees in the managerial data frame that have not yet responded to our survey. 
 ```{r, eval = FALSE}
-anti_join( man_data, unfiltered_cons_dat)
+anti_join( manager, unfiltered_survey_data)
 ```
 
 ```{r, fig.width=10, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
-anti_join(man_data, unfiltered)%>%
+anti_join(manager, unfiltered_survey_data)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```

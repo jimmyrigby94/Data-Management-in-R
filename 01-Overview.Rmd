@@ -4,23 +4,22 @@ If you are taking PSYC 6300 with me, this is the lecture plan for the classes co
 
 <div class = activity>
 <div class = activitytitle>
-Day 1: Basic Dplyr</div>
-- Part 1: What is dplyr? (15 Minutes)
-- Part 2: dplyr's Core Functions (45 Minutes)
-- Break (15 Minutes)
-- Activity 1 (30 Minutes)
-- Part 3: Bind and Join Functions (30 Minutes)
-- Break (15 Minutes)
-- Activity 2 (30 Minutes)
+Day 1: Basic dplyr</div>
+- Part 1: What is dplyr?
+- Part 2: Core dplyr Functions
+- Break
+- Activity 1
+- Part 3: Bind and Join Functions
+- Break
+- Activity 2 
 </div>
 
 <div class = activity>
 <div class = activitytitle>
-Day 2: Advanced Dplyr and Tidyr</div>
+Day 2: Advanced dplyr and tidyr</div>
 - Part 1: Functions for Extracting Observations
-- Part 2: Key Helper Functions
-- Break (15 Minutes)
-- Activity 1 (30 Minutes)
-- Part 3: Repeated Operations
-- Part 4: Reshaping Data
+- Part 2: Repeated Operations
+- Break 
+- Activity 1
+- Part 3: spread() and gather()
 </div>

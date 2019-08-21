@@ -1,5 +1,20 @@
 # (PART) Advanced Dplyr {-}
 
+```{r}
+survey_data<-read_csv("suppl/survey_data.csv")
+  
+survey_data<-survey_data%>%
+  filter(Status!=8)%>%
+  select(-Status, -last_name)%>%
+  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+  rowwise()%>%
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  ungroup()%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$"))
+```
+
+
 # Other Functions for Extracting Observations
 
 - In the previous chapters, we learned several functions that can be used to extract obseravtions from a data frame. 
@@ -44,7 +59,7 @@ sample_x(data, size, replace, weight, ...)</div>
 
 
 ```{r, echo=FALSE, fig.height=3, fig.width=8}
-ex_data%>%
+survey_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -53,15 +68,15 @@ ex_data%>%
 Using sample_n() and anti_join() to create training and test sets, hardcoding size.
 ```{r, eval = FALSE}
 set.seed(123)
-training <- sample_n(ex_data, size = 4, replace = FALSE)
-holdout <- anti_join(ex_data, training)
+training <- sample_n(survey_data, size = 4, replace = FALSE)
+holdout <- anti_join(survey_data, training)
 ```
 
 ```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE, }
 set.seed(123)
 
-training <- sample_n(ex_data, size = 4, replace = FALSE) 
-holdout <- anti_join(ex_data, training)
+training <- sample_n(survey_data, size = 4, replace = FALSE) 
+holdout <- anti_join(survey_data, training)
 
 t1<-training%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
@@ -77,15 +92,15 @@ ggarrange(t1, t2)
 Using sample_frac() and anti_join() to create training and test sets.
 ```{r, eval = FALSE}
 set.seed(123)
-training <- sample_frac(ex_data, size = .8, replace = FALSE)
-holdout <- anti_join(ex_data, training)
+training <- sample_frac(survey_data, size = .8, replace = FALSE)
+holdout <- anti_join(survey_data, training)
 ```
 
 ```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE, }
 set.seed(123)
 
-training <- sample_frac(ex_data, size = .8, replace = FALSE) 
-holdout <- anti_join(ex_data, training)
+training <- sample_frac(survey_data, size = .8, replace = FALSE) 
+holdout <- anti_join(survey_data, training)
 
 t1<-training%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
@@ -103,18 +118,18 @@ ggarrange(t1, t2)
 Using sample_n() and anti_join() to create training and test sets, without hardcoding n.
 ```{r, eval = FALSE}
 set.seed(123)
-rel_n<- nrow(ex_data)*.8
-training <- sample_n(ex_data, size = rel_n, replace = FALSE)
-holdout <- anti_join(ex_data, training)
+rel_n<- nrow(survey_data)*.8
+training <- sample_n(survey_data, size = rel_n, replace = FALSE)
+holdout <- anti_join(survey_data, training)
 ```
 
 ```{r, fig.width=14, fig.height=2, message=FALSE, echo=FALSE, warning=FALSE}
 set.seed(123)
 
-rel_n<-nrow(ex_data)*.8
+rel_n<-nrow(survey_data)*.8
 
-training <- sample_n(ex_data, size = rel_n, replace = FALSE) 
-holdout <- anti_join(ex_data, training)
+training <- sample_n(survey_data, size = rel_n, replace = FALSE) 
+holdout <- anti_join(survey_data, training)
 
 t1<-training%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
@@ -148,7 +163,7 @@ distinct(data, distinct_var, ..., .keep_all)</div>
 
 ### Using distinct()
 ```{r, fig.height=3.5, fig.width=3, echo = FALSE}
-man_data%>%
+manager%>%
     ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 
 ```
@@ -166,12 +181,12 @@ man_data%>%
 ```{example, distinct1}
 Using distinct() to extract unique levels of manager.
 ```{r, eval = FALSE}
-man_data%>%
+manager%>%
   distinct(Manager)
 ```
 
 ```{r, fig.height=1.5, fig.width=3, echo = FALSE}
-man_data%>%
+manager%>%
   distinct(Manager)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 
@@ -180,12 +195,12 @@ man_data%>%
 ```{example, distinct2}
 Using distinct() to extract unique levels of ResponseId.
 ```{r, eval = FALSE}
-man_data%>%
+manager%>%
   distinct(Employee)
 ```
 
 ```{r, fig.height=3.5, fig.width=3, echo = FALSE}
-man_data%>%
+manager%>%
   distinct(ResponseId)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 
@@ -193,12 +208,12 @@ man_data%>%
 ```{example, distinct3}
 Using distinct() to extract unique ResponseId-Manager combinations.
 ```{r, eval = FALSE}
-man_data%>%
+manager%>%
   distinct(Employee, Manager)
 ```
 
 ```{r, fig.height=3.5, fig.width=3}
-man_data%>%
+manager%>%
   distinct(ResponseId, Manager)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```

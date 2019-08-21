@@ -1,14 +1,122 @@
 # (PART) Tidy Data with tidyr {-}
 
-# Multivariate and Univariate Data
+# Wider and Longer Data Formats
 
-## gather(): Wide to Long
+- You now know how to efficiently add/remove columns, remove rows, and summarise information contained within a data frame. 
+- There are a few more tools you need to learn before you can handle most data management tasks. 
+- You have seen one form longitudinal data can take in  Chapter 1 (separate objects). 
+- It can also come in long format and wide format, depicted below. 
 
-## spread(): Long to Wide
+- Transitioning back and forth between these formats is an important skill to have, because different analyses require different data formats. 
+- For example, most multi-level modeling softwares take the data in long format. In contrast, many MANCOVA packages require wide format data. 
+- Luckily, tidyr, another package written by Hadley Wickham, is specially designed to reshape data. 
 
-# Spliting and Joining Columns
+<div class = activity>
+<div class = activitytitle>
+Core tidyr Functions for Reshaping Data</div>
+- gather(): Make a data frame longer
+- spread(): Make a data frame wider
+</div>
 
-## separate(): Splitting Columns
+```{r, fig.cap="Wide Format", fig.height=2, fig.width=4.5, echo = FALSE, message=FALSE}
+wide<-ex_dat2a%>%
+  left_join(ex_dat2b)
+  
+wide%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
 
-## unite(): Joining Columns
+```{r, echo = FALSE, fig.cap="Long Format", message=FALSE}
+long<-ex_dat2a%>%
+  left_join(ex_dat2b)%>%
+  gather(key = "time", value = "test", pre, post)
+
+long%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+
+
+## gather(): Wider to Longer
+
+gather() is a function intended to take wide format data and make it longer. It does this by gathering a set of columns in the wide data into one column. The user defines the columns columns that should be collapsed, the name of the column that will store the original columns' names, and the name of the column that will store the original columns' values. 
+
+### gather() Structure
+<div class = activity>
+<div class = structure>
+
+gather(data, key, value, ...)</div>
+
+- key: Name of column to store wide format column names.
+- value: Name of column to store the selected columns values.
+- ...: A selection of columns to gather into long format. This operates similar to select() and can accommodate special operators like :, -, starts_with, etc.
+</div>
+
+
+
+
+### Using gather()
+- gather() is useful for converting a data frame into a longer format.
+- We will illustrate this with the wide data set shown previously
+- This data frame has to columns for a test core taken at two different time points
+- These are labeled "pre" and "post"
+- gather() can be used to stack the pre and post columns into a single test column which we will define with the value
+- The temporal information can be stored in a separate column which we define with the key argument
+
+```{r, echo = FALSE}
+wide%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+```{example, gather1}
+We can specify the columns we want to gather using the elipse argument
+```{r, eval=FALSE}
+gather(wide, key = "time", value = "test", pre, post)
+```
+
+
+```{r, echo = FALSE}
+gather(wide, key = "time", value = "test", pre, post)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
+```{example, gather2}
+Equivalent sytax would be to use - to deselect columns to be gathered. In some use cases, this is quicker.
+```{r, eval=FALSE}
+gather(wide, key = "time", value = "test", -c(id, gender, condition, non_naieve))
+```
+## spread(): Longer to Wider
+
+- spread() is gather()'s conjugate. 
+- It converts long data frames into wider data frames. 
+- To do this, the user specifies a key column, that stores variable names, and a value column that stores the information associated with those variables. 
+- The key column is spread so that each unique value stored within it becomes a new column storing the associated values. 
+
+### spread() Structure
+<div class = activity>
+<div class = structure>
+
+spread(data, key, value)</div>
+
+- key: Name of column to store wide format column names.
+- value: Name of column to store the selected columns values.
+</div>
+
+### Using spread()
+
+```{r, echo = FALSE}
+long%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+```{example, spread1}
+```{r, eval=FALSE}
+spread(wide, key = "time", value = "test")
+```
+
+
+```{r, echo = FALSE}
+spread(long, key = "time", value = "test")%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
+
 

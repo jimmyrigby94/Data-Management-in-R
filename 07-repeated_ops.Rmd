@@ -33,7 +33,7 @@ Summary of Suffix Definitions
 - tolower() converts string values to lowercase and is the appropriate function to use here.
 
 ```{r, echo = FALSE, fig.width=10, fig.height=2}
-ex_data%>%
+survey_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -41,12 +41,12 @@ ex_data%>%
 ```{example, renameall}
 Using rename_all() and tolower() to rename all variables so they are lower case.
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   rename_all(tolower)
 ```
 
 ```{r, echo=FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+survey_data%>%
   rename_all(tolower)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -61,21 +61,21 @@ ex_data%>%
 - .s are used as place holders for the vars.
 
 ```{r, echo = FALSE, fig.width=10, fig.height=2}
-ex_data%>%
+survey_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ```{example, mutateat}
 Using mutate_at() to center cons and perf at 0.
 ```{r, eval = FALSE}
-centered_data<-ex_data%>%
+centered_data<-survey_data%>%
   mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))
 
 centered_data
 ```
 
 ```{r, echo=FALSE, echo = FALSE, fig.height=2, fig.width=10}
-ex_data%>%
+survey_data%>%
   mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -93,7 +93,7 @@ centered_data%>%
 ```
 
 ```{r, echo=FALSE, fig.width=12, fig.height=1}
-ex_data%>%
+survey_data%>%
   mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%
@@ -117,7 +117,7 @@ centered_data%>%
 ```
 
 ```{r, echo=FALSE, fig.width=12, fig.height=1}
-ex_data%>%
+survey_data%>%
   mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%
@@ -138,7 +138,7 @@ centered_data%>%
 ```
 
 ```{r, echo=FALSE, fig.width=12, fig.height=1}
-ex_data%>%
+survey_data%>%
   mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%

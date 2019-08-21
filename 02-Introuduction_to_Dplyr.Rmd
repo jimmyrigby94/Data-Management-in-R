@@ -1,6 +1,7 @@
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo = FALSE}
-library(tidyverse)
-library(ggpubr)
+# loading packages into R
+library(tidyverse) # data management and visulaization
+library(ggpubr) # Supplemental package for ggplot2 that makes pretty tables
 ```
 
 # (PART) Introduction to Dplyr {-}
@@ -16,11 +17,10 @@ library(ggpubr)
 ### Example 1: Survey Data
 
 ```{r, echo = FALSE, fig.height=2, fig.width=11}
-ex_dat<-read.csv("suppl/cons_perf.csv")
+survey_dat<-read.csv("suppl/survey_data.csv")
 
-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))%>%
-  ggpubr::ggtexttable(theme = ttheme(base_style="lBlueWhite"))
-
+survey_dat%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ### What's Wrong With the Survey Data?
@@ -32,13 +32,17 @@ head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_
 ## This Isn't Relevant to Me - My Research is Experimental!
 
 ### Example 2: Experimental Data
-```{r,echo=FALSE, fig.width=6, fig.height=2}
+```{r,echo=FALSE, fig.width=7.5, fig.height=2}
+
+set.seed(1234)
 ex_dat2a<-tibble(id = 1:6,
+                 gender = sample(c("M", "F"), size = 6, replace = TRUE),
                 condition = rep(0:1, each = 3),
                 pre = round(rnorm(6, 5, sd = 1), 2), 
                 non_naieve = c(rep(0, 4), rep(1, 2)))
-
+set.seed(1234)
 ex_dat2b<-tibble(id = c(1, 3:6),
+                 gender = sample(c("M", "F"), size = 6, replace = TRUE)[-2],
                 condition = c(rep(0, each = 2), rep(1, each = 3)),
                 post = round(rnorm(5, 6, sd = 1), 2), 
                 non_naieve = c(rep(0, 3), rep(1, 2)))
@@ -60,9 +64,9 @@ ggarrange(t1,t2)
 <div class = activity>
 <div class = activitytitle>
 Why Does Data Mangaement Matter?</div>
-1. No matter what paradigm you work in data management is critical.
-2. Tidy data rarely exists in the wild.
-3. Efficiently managing data will save you time and make you a valuable assest to your collaborators.
+1. Data is messy, no matter what paradigm you work in.
+2. Models have different structuring requirements.
+3. Knowing how to use a robust set of tools for data management will save you time.
 </div>
 
 

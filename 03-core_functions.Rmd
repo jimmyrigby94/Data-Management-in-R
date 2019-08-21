@@ -6,9 +6,9 @@ Core dplyr Functions for Data Manipulation</div>
 - filter(): select rows based on some logical condition
 - select(): select columns based on their names
 - rename(): rename columns
-- mutate(): add new variables that are functions of old - variables
+- mutate(): add new variables that are functions of old variables
 - group_by(): perform grouped operations
-- summarise(): Create summary statistics for a group
+- summarise(): create summary statistics for a group
 - arrange(): reorder rows based on some column
 </div>
 
@@ -49,7 +49,7 @@ filter(data, logical_test, ...)</div>
 - In this case transformation argument uses a logical test to define the observations we would like to keep.
 - Logical tests can explicitly use logical operators (i.e., == or %in%).
 - Functions that return logical values can also be used (i.e., is.na()).
-- Multiple logical tests can be provided as indicated by the elipse.
+- Multiple logical tests can be provided as indicated by the ellipse.
 - If tests are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.
 - If tests are separated by a pipe (i.e., |), either argument can be satisfied for the observation to be retained
 
@@ -58,16 +58,18 @@ filter(data, logical_test, ...)</div>
 ### Using filter()
 - Remember the survey data?
 - Some observations were created when the survey was being tested. 
-- These observations not informative and should be removed. 
+- These observations are not informative and should be removed. 
 - Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).
 - Using filter(), we can easily retain the real observations while excluding rows associated with the pilot test.
 
 ```{r, include = FALSE}
-ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
+# Creates the survey data we will be working with
+# Run this to load the data into the environment
+survey_data<-read_csv("suppl/survey_data.csv")
 ```
 
-```{r, echo=FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo=FALSE, fig.height=2, fig.width=8, fig.cap="Raw Data"}
+survey_data%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -75,30 +77,33 @@ ex_data%>%
 ```{example, filter1}
 Using filter to retain non-pilot observations (Status = 1).
 ```{r, eval=FALSE}
-filter(ex_data, Status == 0)
+filter(survey_data, Status == 0)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-filter(ex_data, Status == 0)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Filtered Data"}
+## Prints the data
+filter(survey_data, Status == 0)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 
-ex_data<-filter(ex_data, Status == 0)
+# Saves it to the enviornment
+survey_data<-filter(survey_data, Status == 0)
 ```
 
 
 ```{example, filter2}
 A less practical example that retains observations that responded to Q1.1 OR Q1.3 with 5
 ```{r, eval=FALSE}
-filter(ex_data, Q1.1 == 5 | Q1.3 == 5 )
+filter(survey_data, Q1.1 == 5 | Q1.3 == 5 )
 ```
 
-```{r, echo = FALSE, fig.height=1.5, fig.width=8}
-filter(ex_data, Q1.1 == 5 | Q1.3 == 5)%>%
+```{r, echo = FALSE, fig.height=1.5, fig.width=8, fig.cap="Participants Who Responded 5 to questions Q1.1 OR Q1.3"}
+# Prints the less practical example but doesn't save it
+filter(survey_data, Q1.1 == 5 | Q1.3 == 5)%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ## select(): Choosing Columns
-- Often when cleaning data, we only want to work a subset of columns. 
+- Often when cleaning data, we only want to work with a subset of columns. 
 - select() is used to retain or remove specific columns. 
 
 
@@ -124,7 +129,7 @@ select(data, cols_to_keep, ...)</div>
 - ends_with() used in tandem with select() allows you to keep variables that share a suffix.
 - contains() used in tandem with select() allows you to keep variables that share some common string anywhere in their structure.
 - These can be used along with [regular expressions](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) to automate large portions of data cleaning.
-- Helper Functions can speed up the data cleaning process while keeping your code easy to interpret.
+- Helper functions can speed up the data cleaning process while keeping your code easy to interpret.
 
 ### Using select()
 - Again, this function helps us solve two issues in the survey data example.
@@ -133,21 +138,20 @@ select(data, cols_to_keep, ...)</div>
 - We can remove this column entirely using the select function.
 - All of the following examples complete the same task using different methods although some are more efficient than others!
 
-```{r, echo=FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo=FALSE, fig.height=2, fig.width=8, fig.cap="Most Recent Data"}
+survey_data%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, select1}
 Using select() by specifying columns to retain.
 
-
 ```{r, eval=FALSE}
-select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)
+select(survey_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Selected Data"}
+select(survey_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -155,11 +159,11 @@ select(ex_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)%>%
 Using select() by specifying columns to omit.
 
 ```{r, eval=FALSE}
-select(ex_data, -Status, -last_name)
+select(survey_data, -Status, -last_name)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(ex_data, -Status, -last_name)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Dropped Data"}
+select(survey_data, -Status, -last_name)%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -167,11 +171,11 @@ select(ex_data, -Status, -last_name)%>%
 Using select() by specifying range of columns.
 
 ```{r, eval=FALSE}
-select(ex_data, ResponseId, Q1.1:Q2.3)
+select(survey_data, ResponseId, Q1.1:Q2.3)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(ex_data, ResponseId, Q1.1:Q2.3)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Range of Variables Selected"}
+select(survey_data, ResponseId, Q1.1:Q2.3)%>%
      ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -179,16 +183,16 @@ select(ex_data, ResponseId, Q1.1:Q2.3)%>%
 Using select() with helper functions.
 
 ```{r, eval=FALSE}
-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
+select(survey_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Select with Helper Functions"}
+select(survey_data, contains("id", ignore.case = TRUE), starts_with("Q"))%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 
   
 
-ex_data<-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
+survey_data<-select(survey_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 ```
 
 ## rename(): Renaming Variables
@@ -201,15 +205,15 @@ ex_data<-select(ex_data, contains("id", ignore.case = TRUE), starts_with("Q"))
 rename(data, old_name = new_name, ...)</div>
 - Following the general dplyr form (See section \@ref(form)), the first argument specifies the data you are manipulating.
 - In this case the transformation arguments take the form of an equation, where the new column name is on the left of the equals sign and the old column name is on the right.
-- Multiple variables can be renamed within one rename call, as indicated by the elipse.
+- Multiple variables can be renamed within one rename call, as indicated by the ellipse.
 </div>
 
 ### Using rename()
 - Given that Q1.x and Q2.x are not meaningful stems, we should rename the items so that they are interpretable.
-- It turns out that items that are labeled Q1 measured conscientiousness and items that are measured Q2 measure job performance. 
+- It turns out that items that are labeled with the prefix "Q1" measured conscientiousness and items that are measured Q2 measure job performance. 
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Most Recent Data"}
+survey_data%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -218,43 +222,42 @@ ex_data%>%
 Using rename() to provide substantive column names.
 
 ```{r, eval=FALSE}
-rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Renamed Data"}
+rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
-```{example, rename2}
+```{example, rename2, fig.cap = "Renamed Data using Select"}
 select() can be used to rename columns as well!
 
 ```{r, eval=FALSE}
-select(ex_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+select(survey_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(ex_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+select(survey_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
-
 ```
 
 ```{example, rename3}
 rename() may be one area where dplyr is lacking in efficiency. Here is the base R code to do the same task!
 
 ```{r, eval=FALSE}
-colnames(ex_data)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
-ex_data
+colnames(survey_data)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
+survey_data
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data2<-ex_data
-colnames(ex_data2)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap = "Renamed Data Using Base R"}
+survey_data2<-survey_data
+colnames(survey_data2)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
 
-ex_data2%>%
+survey_data2%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 
-ex_data<-rename(ex_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+survey_data<-rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
 ```
 
 ## mutate(): Creating New Variables
@@ -277,26 +280,25 @@ mutate(data, new_var = function, ...)</div>
 - ungroup(): Undoes grouping functions such as rowwise() and group_by() (group_by() will be discussed in Section \@ref(group))
 
 ### Using mutate()
-- Given that their are two sub scales (i.e., conscientiousness and performance) within our survey data, we can create scale scores for these sets of items. 
-- Typically this is done by averaging the item level data.
+- Given that there are two sub scales (i.e., conscientiousness and performance) within our survey data, we can create scale scores for these sets of items. 
+- Typically, this is done by averaging the item level data.
 - mutate() provides an easy way to do this!
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap = "Most Recent Data"}
+survey_data%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
-
 ```
 
 ```{example, mutate1}
 Using mutate() and arithmetic operators to create scale scores with missing data.
 
 ```{r, eval=FALSE}
-mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)
+mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)
 ```
 
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Arithmatic Scale Scores"}
+mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%>%
   mutate_if(is.numeric, round, digits = 2)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
@@ -307,12 +309,51 @@ mutate(ex_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%>%
 Using mutate() and rowwise() to create scale scores while handling missing data (use with caution).
 
 ```{r, eval=FALSE}
-ungroup(mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE)))
+ungroup(mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE)))
 ```
 
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-mutate(rowwise(ex_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Rowwise Scale Scores"}
+mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+
+survey_data<-mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  select(matches("[[:alpha:]]$"))%>%
+  ungroup()
+```
+
+<div class = list>
+- Two new functions are used in the code below. 
+- percent_rank() calculates the percentage of observations *less than* an observation.
+- cume_dist() calculates the percentage of obseravtions *less than or equal to* an observation.
+</div>
+
+```{example, mutate3}
+While the above examples illustrate composites, you can also create normalize variables (i.e., percents).
+
+```{r, eval=FALSE}
+mutate(survey_data, perf_p = percent_rank(perf), perf_cdf = cume_dist(perf))
+```
+
+```{r, echo = FALSE, fig.height=2, fig.width=9, fig.cap="Adding Rank Variables"}
+survey_data<-mutate(survey_data, perf_p = percent_rank(perf), perf_cdf = cume_dist(perf))%>%
+  mutate_if(is.numeric, round, digits = 2)
+
+survey_data%>%
+    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
+
+```{example, mutate4}
+You can also create binary indicator variables using conditional logic (i.e. if_else() statements). These indicator variables are sometimes referred to a dummy coded variables or one hot encoding.
+```{r, eval=FALSE}
+mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))
+```
+
+
+
+```{r, echo = FALSE, fig.height=2, fig.width=9.5, fig.cap = "Adding Dummy Variables"}
+mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))%>%
   mutate_if(is.numeric, round, digits = 2)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
@@ -334,12 +375,14 @@ function1(data, transformation, ...)%>%
   function2(transformation)</div>
 - The pipe operator carriers forward the output of the previous call and uses it in the subsequent function
 - Thus, following any call with %>% will carry forward the output into the subsequent function
+- The pipe can be used with base R by using a period as a place holder for the data frame.
 </div>
+
 ### Using the pipe operator
-- Lets use the pipe operator to make our code more readable
+- Let's use the pipe operator to make our code more readable
 
 ```{r, include=FALSE}
-ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName, starts_with("Q"))
+survey_data<-read_csv("suppl/survey_data.csv")
 ```
 
 
@@ -347,27 +390,41 @@ ex_data<-head(ex_dat)%>%select(ResponseId, Status, last_name = RecipientLastName
 Using pipe operator (%>%) to redo what we have done thus far.
 
 ```{r, eval=FALSE}
-ex_data%>%
+survey_data%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
-  ungroup()
+  ungroup()%>%
+  mutate(perf_p = percent_rank(cons), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$"))
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=9.5, fig.cap = "Replicating Data cleaning with Piping"}
+survey_data<-survey_data%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
   rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
-  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+  ungroup()%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$"))
 
+survey_data%>%
+  mutate_if(.predicate = is.numeric, round, digits = 2)%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ## group_by(): Grouping Data Frames {#group}
+
+```{r, echo = FALSE}
+manager<-read_csv("suppl/Manager Data.csv")
+
+survey_data<-left_join(survey_data, manager)%>%
+  select(ResponseId, Manager, everything())
+```
 
 - Sometimes, when working with data we want to perform some operation within a grouping variable.
 - For example, the participants responding to this survey report to different managers.
@@ -386,6 +443,7 @@ group_by(data, grouping_variable, ...)</div>
 - Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object. 
 - Because of this, group_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section \@ref(sum))
 - Also, just like rowwise(), in order return the data set to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.
+
 </div>
 
 ### Using group_by()
@@ -393,57 +451,70 @@ group_by(data, grouping_variable, ...)</div>
 - We can now calculate each employee's team's average performance, conscientiousness, and the number of teammates who responded in the data.
 - While I only illustrate how to use group_by() with the pipe operator, if for some reason you wanted to use a single group_by() call instead of a chain, it can be done.
 
-```{r, include = FALSE}
-ex_data<-ex_data%>%
-  filter(Status == 0)%>%
-  select(-Status, -last_name)%>%
-  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
-  rowwise()%>%
-  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
-  ungroup()%>%
-  mutate(Manager = c("Nick", "Julia", "Nick", "Nick", "Julia"))%>%
-  select(ResponseId, Manager, cons, perf)
-```
-
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=10, fig.cap = "Cleaned Data with Manager Info"}
+survey_data%>%
   mutate_if(is.numeric, round, digits = 2)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
 ```{example, groupby1}
-Using group_by() to create team level variables and n() to create group size variables
+Using group_by() to create team level variables and n() to create group size variables.
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   group_by(Manager)%>%
-  mutate(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(cons, na.rm = TRUE), team_size = n())
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n(), team_cdf = cume_dist(perf))%>%
+  ungroup()
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=12, fig.cap="Group and Size Variables"}
+survey_data<-survey_data%>%
   group_by(Manager)%>%
-  mutate(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(cons, na.rm = TRUE), team_size = n())%>%
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n())%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ungroup()
+
+survey_data%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
+```{example, groupby2}
+Using group_by() to create team level cumulative distribution.
+```{r, eval = FALSE}
+survey_data%>%
+  group_by(Manager)%>%
+  mutate(team_cdf = cume_dist(perf))%>%
+  ungroup()
+```
+
+```{r, echo = FALSE, fig.height=2, fig.width=11.5, fig.cap="Within-team CDF"}
+survey_data%>%
+  group_by(Manager)%>%
+  mutate(team_cdf = cume_dist(perf))%>%
+  ungroup()%>%
   mutate_if(is.numeric, round, digits = 2)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
+
 ```{example, addcount}
 add_count() is a nice alternative, to the group_by()%>%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   add_count(Manager)
 ```
 
-```{r, echo = FALSE, fig.height=2, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Alternative method for creating count variables"}
+survey_data%>%
   add_count(Manager)%>%
   mutate_if(is.numeric, round, digits = 2)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
+
+
 ## summarise(): Creating Data Summaries {#sum}
 
 - While creating grouped variables is sometimes necessary for analyses, often we simply want to describe properties of our data.
 - summarise() is especially useful for this because it applies a function across rows of data to create a single value.
 - If the data is grouped, there is a value returned for each group.
+
 
 ### summarise() Structure
 
@@ -465,13 +536,13 @@ summarise(data, summary_var = function, ...)</div>
 ```{example, sum1}
 Using summarise() to create a summary table for the entire survey data frame
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   summarise(mean_cons = mean(cons, na.rm = TRUE), mean_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
 ```
 
-```{r, echo = FALSE, fig.height=1, fig.width=12}
-ex_data%>%
+```{r, echo = FALSE, fig.height=1, fig.width=12, fig.cap = "Summary Statistics"}
+survey_data%>%
   summarise(mean_cons = mean(cons, na.rm = TRUE), mean_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   mutate_if(is.numeric, round, digits = 2)%>%
@@ -482,14 +553,14 @@ ex_data%>%
 ```{example, sum2}
 Using group_by() and summarise() to create a summary table for different work groups
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
 ```
 
-```{r, echo = FALSE, fig.height=1, fig.width=12}
-ex_data%>%
+```{r, echo = FALSE, fig.height=1, fig.width=12, fig.cap="Grouped Summary Statistics"}
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
@@ -501,12 +572,12 @@ ex_data%>%
 ```{example, count}
 count() is a nice alternative to the group_by()%>%summarise() chain if your goal is simply to describe grouped frequencies.
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   count(Manager)
 ```
 
-```{r, echo = FALSE, fig.height=1, fig.width=12}
-ex_data%>%
+```{r, echo = FALSE, fig.height=1, fig.width=12, "Grouped Frequencies"}
+survey_data%>%
   count(Manager)%>%
     mutate_if(is.numeric, round, digits = 2)%>%
    ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
@@ -534,15 +605,15 @@ arrange(data, sort_var, ...) </div>
 ```{example, arr1}
 Adding arrange() to our summary table
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(team_cons)
 ```
 
-```{r, echo = FALSE, fig.height=1, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=1, fig.width=8, fig.cap="Sorting the Summary Table"}
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
@@ -555,15 +626,15 @@ ex_data%>%
 ```{example, arr2}
 Sorting the summary table in descending order with desc() and arrange()
 ```{r, eval = FALSE}
-ex_data%>%
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(desc(team_cons))
 ```
 
-```{r, echo = FALSE, fig.height=1, fig.width=8}
-ex_data%>%
+```{r, echo = FALSE, fig.height=1, fig.width=8, fig.cap="Sorting in Descending Order"}
+survey_data%>%
   group_by(Manager)%>%
   summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
             sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
