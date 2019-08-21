@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 rename(): Renaming Variables | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
-  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 rename(): Renaming Variables | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-29" />
+<meta name="date" content="2019-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -174,15 +173,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
 <li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
-<li class="chapter" data-level="4.7.3" data-path="group.html"><a href="group.html#summarise-structure"><i class="fa fa-check"></i><b>4.7.3</b> summarise() Structure</a></li>
-<li class="chapter" data-level="4.7.4" data-path="group.html"><a href="group.html#using-summarise"><i class="fa fa-check"></i><b>4.7.4</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.8</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.8.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="4.8.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.8.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
+<li class="chapter" data-level="5" data-path="activity.html"><a href="activity.html"><i class="fa fa-check"></i><b>5</b> Activity</a></li>
 <li class="part"><span><b>II Combining Data Frames</b></span></li>
 <li class="chapter" data-level="6" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>6</b> Combining Data Sets</a></li>
 <li class="chapter" data-level="7" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>7</b> Binding Functions</a><ul>
@@ -223,13 +224,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
 </ul></li>
 <li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
+<li class="chapter" data-level="12" data-path="wider-and-longer-data-formats.html"><a href="wider-and-longer-data-formats.html"><i class="fa fa-check"></i><b>12</b> Wider and Longer Data Formats</a><ul>
+<li class="chapter" data-level="12.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wider to Longer</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#gather-structure"><i class="fa fa-check"></i><b>12.1.1</b> gather() Structure</a></li>
+<li class="chapter" data-level="12.1.2" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#using-gather"><i class="fa fa-check"></i><b>12.1.2</b> Using gather()</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="12.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Longer to Wider</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#spread-structure"><i class="fa fa-check"></i><b>12.2.1</b> spread() Structure</a></li>
+<li class="chapter" data-level="12.2.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#using-spread"><i class="fa fa-check"></i><b>12.2.2</b> Using spread()</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -262,7 +265,7 @@ rename(data, old_name = new_name, …)
 <ul>
 <li>Following the general dplyr form (See section <a href="form.html#form">4.1</a>), the first argument specifies the data you are manipulating.</li>
 <li>In this case the transformation arguments take the form of an equation, where the new column name is on the left of the equals sign and the old column name is on the right.</li>
-<li>Multiple variables can be renamed within one rename call, as indicated by the elipse.</li>
+<li>Multiple variables can be renamed within one rename call, as indicated by the ellipse.</li>
 </ul>
 </div>
 </div>
@@ -270,31 +273,46 @@ rename(data, old_name = new_name, …)
 <h3><span class="header-section-number">4.4.2</span> Using rename()</h3>
 <ul>
 <li>Given that Q1.x and Q2.x are not meaningful stems, we should rename the items so that they are interpretable.</li>
-<li>It turns out that items that are labeled Q1 measured conscientiousness and items that are measured Q2 measure job performance.</li>
+<li>It turns out that items that are labeled with the prefix “Q1” measured conscientiousness and items that are measured Q2 measure job performance.</li>
 </ul>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-22-1.png" width="768" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-23"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-23-1.png" alt="Most Recent Data" width="768" />
+<p class="caption">
+Figure 4.9: Most Recent Data
+</p>
+</div>
 
 <div class="example">
 <p><span id="exm:rename1" class="example"><strong>Example 4.7  </strong></span>Using rename() to provide substantive column names.</p>
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rename</span>(ex_data, <span class="dt">cons1 =</span> Q1<span class="fl">.1</span>, <span class="dt">cons2 =</span> Q1<span class="fl">.2</span>, <span class="dt">cons3 =</span> Q1<span class="fl">.3</span>, <span class="dt">perf1 =</span> Q2<span class="fl">.1</span>, <span class="dt">perf2 =</span> Q2<span class="fl">.2</span>, <span class="dt">perf3 =</span> Q2<span class="fl">.3</span>)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-24-1.png" width="768" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">rename</span>(survey_data, <span class="dt">cons1 =</span> Q1<span class="fl">.1</span>, <span class="dt">cons2 =</span> Q1<span class="fl">.2</span>, <span class="dt">cons3 =</span> Q1<span class="fl">.3</span>, <span class="dt">perf1 =</span> Q2<span class="fl">.1</span>, <span class="dt">perf2 =</span> Q2<span class="fl">.2</span>, <span class="dt">perf3 =</span> Q2<span class="fl">.3</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-25"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-25-1.png" alt="Renamed Data" width="768" />
+<p class="caption">
+Figure 4.10: Renamed Data
+</p>
+</div>
 
 <div class="example">
 <p><span id="exm:rename2" class="example"><strong>Example 4.8  </strong></span>select() can be used to rename columns as well!</p>
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(ex_data, ResponseId, <span class="dt">cons1 =</span> Q1<span class="fl">.1</span>, <span class="dt">cons2 =</span> Q1<span class="fl">.2</span>, <span class="dt">cons3 =</span> Q1<span class="fl">.3</span>, <span class="dt">perf1 =</span> Q2<span class="fl">.1</span>, <span class="dt">perf2 =</span> Q2<span class="fl">.2</span>, <span class="dt">perf3 =</span> Q2<span class="fl">.3</span>)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-26-1.png" width="768" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">select</span>(survey_data, ResponseId, <span class="dt">cons1 =</span> Q1<span class="fl">.1</span>, <span class="dt">cons2 =</span> Q1<span class="fl">.2</span>, <span class="dt">cons3 =</span> Q1<span class="fl">.3</span>, <span class="dt">perf1 =</span> Q2<span class="fl">.1</span>, <span class="dt">perf2 =</span> Q2<span class="fl">.2</span>, <span class="dt">perf3 =</span> Q2<span class="fl">.3</span>)</a></code></pre></div>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-27-1.png" width="768" /></p>
 
 <div class="example">
 <p><span id="exm:rename3" class="example"><strong>Example 4.9  </strong></span>rename() may be one area where dplyr is lacking in efficiency. Here is the base R code to do the same task!</p>
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(ex_data)&lt;-<span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;cons&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="kw">paste0</span>(<span class="st">&quot;perf&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))
-ex_data</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-28-1.png" width="768" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">colnames</span>(survey_data)&lt;-<span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;cons&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="kw">paste0</span>(<span class="st">&quot;perf&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb10-2" title="2">survey_data</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-29"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-29-1.png" alt="Renamed Data Using Base R" width="768" />
+<p class="caption">
+Figure 4.11: Renamed Data Using Base R
+</p>
+</div>
 </div>
 </div>
             </section>

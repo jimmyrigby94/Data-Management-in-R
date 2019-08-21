@@ -1,0 +1,15 @@
+X1: Arbitrary number vector
+id: Participant ID
+StartDate = Data of first session
+Therapist: Who administers therapy
+Pull_Date: When was this patients information pulled?
+Recruitment_Channel: How did the patient hear about your clinic?
+Q1.1: Beck's Depression 1
+Q1.2: Beck's Depression2
+Q1.3: Beck's Depression3
+Q2.1: Subjective Well-Being 1
+Q2.2: Subjective Well-Being 2
+Q2.3: Subjective Well-Being 3
+recovery: Was the condition for which the patient first began therapy resolved?
+attrition: Did the patients stop attending therapy?
+

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.1 gather(): Wide to Long | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
-  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.1 gather(): Wide to Long | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-29" />
+<meta name="date" content="2019-08-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -224,12 +223,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
 <li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
+<li class="chapter" data-level="12.0.1" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html#wide-format"><i class="fa fa-check"></i><b>12.0.1</b> Wide Format</a></li>
+<li class="chapter" data-level="12.0.2" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html#long-format"><i class="fa fa-check"></i><b>12.0.2</b> Long Format</a></li>
 <li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
 <li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
 </ul></li>
 </ul>
 
@@ -250,6 +247,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="gather-wide-to-long" class="section level2">
 <h2><span class="header-section-number">12.1</span> gather(): Wide to Long</h2>
+<div class="activity">
+<div class="structure">
+gather(data, key, …)
+</div>
+<ul>
+<li>key: Name of column to store wide format column names.</li>
+<li>value: Name of column to store the selected columns values.</li>
+<li>…: A selection of columns to gather into long format. This operates similar to select() and can accomidate special operators like :, -, starts_with, etc.</li>
+</ul>
+</div>
 </div>
             </section>
 

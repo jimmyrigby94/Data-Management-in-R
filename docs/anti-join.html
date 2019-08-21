@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.2 anti_join() | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
-  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.2 anti_join() | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-29" />
+<meta name="date" content="2019-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -174,15 +173,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
 <li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
-<li class="chapter" data-level="4.7.3" data-path="group.html"><a href="group.html#summarise-structure"><i class="fa fa-check"></i><b>4.7.3</b> summarise() Structure</a></li>
-<li class="chapter" data-level="4.7.4" data-path="group.html"><a href="group.html#using-summarise"><i class="fa fa-check"></i><b>4.7.4</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.8</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.8.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="4.8.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.8.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
+<li class="chapter" data-level="5" data-path="activity.html"><a href="activity.html"><i class="fa fa-check"></i><b>5</b> Activity</a></li>
 <li class="part"><span><b>II Combining Data Frames</b></span></li>
 <li class="chapter" data-level="6" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>6</b> Combining Data Sets</a></li>
 <li class="chapter" data-level="7" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>7</b> Binding Functions</a><ul>
@@ -223,13 +224,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
 </ul></li>
 <li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
+<li class="chapter" data-level="12" data-path="wider-and-longer-data-formats.html"><a href="wider-and-longer-data-formats.html"><i class="fa fa-check"></i><b>12</b> Wider and Longer Data Formats</a><ul>
+<li class="chapter" data-level="12.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wider to Longer</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#gather-structure"><i class="fa fa-check"></i><b>12.1.1</b> gather() Structure</a></li>
+<li class="chapter" data-level="12.1.2" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#using-gather"><i class="fa fa-check"></i><b>12.1.2</b> Using gather()</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="12.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Longer to Wider</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#spread-structure"><i class="fa fa-check"></i><b>12.2.1</b> spread() Structure</a></li>
+<li class="chapter" data-level="12.2.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#using-spread"><i class="fa fa-check"></i><b>12.2.2</b> Using spread()</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -254,20 +257,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>anti_join() retains observations in the left-hand data frame that do NOT have corresponding ID variables in the right-hand data frame.</li>
 <li>No new collumns are added to the left-hand dataframe.</li>
 </ul>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-81-1.png" width="960" /></p>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-87-1.png" width="960" /></p>
 
 <div class="example">
 <span id="exm:antijoin1" class="example"><strong>Example 9.2  </strong></span>Using anti_join() to identify employees in the managerial data frame that have not yet responded to our survey.
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>( man_data, unfiltered_cons_dat)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-83-1.png" width="960" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">anti_join</span>( manager, unfiltered_survey_data)</a></code></pre></div>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-89-1.png" width="960" /></p>
 
 </div>
 <!-- </div> -->
 
 
 
+<a class="sourceLine" id="cb35-2" title="2">  </a>
+<a class="sourceLine" id="cb35-3" title="3">survey_data&lt;-survey_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="st">  </span><span class="kw">filter</span>(Status<span class="op">!=</span><span class="dv">8</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-5" title="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Status, <span class="op">-</span>last_name)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-6" title="6"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">cons1 =</span> Q1<span class="fl">.1</span>, <span class="dt">cons2 =</span> Q1<span class="fl">.2</span>, <span class="dt">cons3 =</span> Q1<span class="fl">.3</span>, <span class="dt">perf1 =</span> Q2<span class="fl">.1</span>, <span class="dt">perf2 =</span> Q2<span class="fl">.2</span>, <span class="dt">perf3 =</span> Q2<span class="fl">.3</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-7" title="7"><span class="st">  </span><span class="kw">rowwise</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cons =</span> <span class="kw">mean</span>(<span class="kw">c</span>(cons1,cons2,cons3), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">perf =</span> <span class="kw">mean</span>(<span class="kw">c</span>(perf1,perf2,perf3), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-9" title="9"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-10" title="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">perf_p =</span> <span class="kw">percent_rank</span>(perf), <span class="dt">perf_cdf =</span> <span class="kw">cume_dist</span>(perf), <span class="dt">lt_50p =</span> <span class="kw">if_else</span>(perf_p<span class="op">&lt;=</span>.<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-11" title="11"><span class="st">  </span><span class="kw">select</span>(<span class="kw">matches</span>(<span class="st">&quot;[[:alpha:]]$&quot;</span>))</a></code></pre></div>
+</div>
             </section>
 
           </div>

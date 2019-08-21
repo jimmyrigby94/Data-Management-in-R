@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.1 Random Samples of Observations | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
-  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.1 Random Samples of Observations | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-05-29" />
+<meta name="date" content="2019-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -174,15 +173,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="group.html"><a href="group.html"><i class="fa fa-check"></i><b>4.7</b> group_by(): Grouping Data Frames</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="group.html"><a href="group.html#group_by-structure"><i class="fa fa-check"></i><b>4.7.1</b> group_by Structure</a></li>
 <li class="chapter" data-level="4.7.2" data-path="group.html"><a href="group.html#using-group_by"><i class="fa fa-check"></i><b>4.7.2</b> Using group_by()</a></li>
-<li class="chapter" data-level="4.7.3" data-path="group.html"><a href="group.html#summarise-structure"><i class="fa fa-check"></i><b>4.7.3</b> summarise() Structure</a></li>
-<li class="chapter" data-level="4.7.4" data-path="group.html"><a href="group.html#using-summarise"><i class="fa fa-check"></i><b>4.7.4</b> Using summarise()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.8</b> arrange(): Ordering Rows</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.8.1</b> arrange() Structure</a></li>
-<li class="chapter" data-level="4.8.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.8.2</b> Using arrange()</a></li>
+<li class="chapter" data-level="4.8" data-path="sum.html"><a href="sum.html"><i class="fa fa-check"></i><b>4.8</b> summarise(): Creating Data Summaries</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="sum.html"><a href="sum.html#summarise-structure"><i class="fa fa-check"></i><b>4.8.1</b> summarise() Structure</a></li>
+<li class="chapter" data-level="4.8.2" data-path="sum.html"><a href="sum.html#using-summarise"><i class="fa fa-check"></i><b>4.8.2</b> Using summarise()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html"><i class="fa fa-check"></i><b>4.9</b> arrange(): Ordering Rows</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#arrange-structure"><i class="fa fa-check"></i><b>4.9.1</b> arrange() Structure</a></li>
+<li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
+<li class="chapter" data-level="5" data-path="activity.html"><a href="activity.html"><i class="fa fa-check"></i><b>5</b> Activity</a></li>
 <li class="part"><span><b>II Combining Data Frames</b></span></li>
 <li class="chapter" data-level="6" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>6</b> Combining Data Sets</a></li>
 <li class="chapter" data-level="7" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>7</b> Binding Functions</a><ul>
@@ -223,13 +224,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
 </ul></li>
 <li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="12" data-path="multivariate-and-univariate-data.html"><a href="multivariate-and-univariate-data.html"><i class="fa fa-check"></i><b>12</b> Multivariate and Univariate Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="gather-wide-to-long.html"><a href="gather-wide-to-long.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wide to Long</a></li>
-<li class="chapter" data-level="12.2" data-path="spread-long-to-wide.html"><a href="spread-long-to-wide.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Long to Wide</a></li>
+<li class="chapter" data-level="12" data-path="wider-and-longer-data-formats.html"><a href="wider-and-longer-data-formats.html"><i class="fa fa-check"></i><b>12</b> Wider and Longer Data Formats</a><ul>
+<li class="chapter" data-level="12.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wider to Longer</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#gather-structure"><i class="fa fa-check"></i><b>12.1.1</b> gather() Structure</a></li>
+<li class="chapter" data-level="12.1.2" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#using-gather"><i class="fa fa-check"></i><b>12.1.2</b> Using gather()</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="spliting-and-joining-columns.html"><a href="spliting-and-joining-columns.html"><i class="fa fa-check"></i><b>13</b> Spliting and Joining Columns</a><ul>
-<li class="chapter" data-level="13.1" data-path="separate-splitting-columns.html"><a href="separate-splitting-columns.html"><i class="fa fa-check"></i><b>13.1</b> separate(): Splitting Columns</a></li>
-<li class="chapter" data-level="13.2" data-path="unite-joining-columns.html"><a href="unite-joining-columns.html"><i class="fa fa-check"></i><b>13.2</b> unite(): Joining Columns</a></li>
+<li class="chapter" data-level="12.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Longer to Wider</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#spread-structure"><i class="fa fa-check"></i><b>12.2.1</b> spread() Structure</a></li>
+<li class="chapter" data-level="12.2.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#using-spread"><i class="fa fa-check"></i><b>12.2.2</b> Using spread()</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -285,35 +288,35 @@ sample_x(data, size, replace, weight, …)
 <li>When randomly sampling the data frame, always make sure to use set.seed() so that the results are reproducible.</li>
 <li>I will also include and example that shows you how to work around the potential pitfalls fo sample_n() by avoiding hardcoding its size argument.</li>
 </ul>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-84-1.png" width="768" /></p>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-91-1.png" width="768" /></p>
 
 <div class="example">
 <span id="exm:samplen1" class="example"><strong>Example 10.1  </strong></span>Using sample_n() and anti_join() to create training and test sets, hardcoding size.
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
-training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(ex_data, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)
-holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(ex_data, training)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-86-1.png" width="1344" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb36-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb36-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-93-1.png" width="1344" /></p>
 
 <div class="example">
 <span id="exm:samplefrac" class="example"><strong>Example 10.2  </strong></span>Using sample_frac() and anti_join() to create training and test sets.
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
-training &lt;-<span class="st"> </span><span class="kw">sample_frac</span>(ex_data, <span class="dt">size =</span> <span class="fl">.8</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)
-holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(ex_data, training)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-88-1.png" width="1344" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb37-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_frac</span>(survey_data, <span class="dt">size =</span> <span class="fl">.8</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb37-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-95-1.png" width="1344" /></p>
 
 <div class="example">
 <span id="exm:samplen2" class="example"><strong>Example 10.3  </strong></span>Using sample_n() and anti_join() to create training and test sets, without hardcoding n.
 </div>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
-rel_n&lt;-<span class="st"> </span><span class="kw">nrow</span>(ex_data)<span class="op">*</span>.<span class="dv">8</span>
-training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(ex_data, <span class="dt">size =</span> rel_n, <span class="dt">replace =</span> <span class="ot">FALSE</span>)
-holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(ex_data, training)</code></pre>
-<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-90-1.png" width="1344" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb38-2" title="2">rel_n&lt;-<span class="st"> </span><span class="kw">nrow</span>(survey_data)<span class="op">*</span>.<span class="dv">8</span></a>
+<a class="sourceLine" id="cb38-3" title="3">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> rel_n, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb38-4" title="4">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-97-1.png" width="1344" /></p>
 </div>
 </div>
             </section>
