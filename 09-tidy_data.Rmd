@@ -10,6 +10,15 @@
 - Transitioning back and forth between these formats is an important skill to have, because different analyses require different data formats. 
 - For example, most multi-level modeling software take the data in long format. In contrast, many MANCOVA packages require wide format data. 
 - Luckily, tidyr, another package written by Hadley Wickham, is specially designed to reshape data. 
+- tidyr contains a set of functions for wrangling messy data and making it tidy. 
+- tidy data has the following properties.
+
+
+    1. Each variable forms a column.
+    2. Each observation forms a row.
+    3. Each type of observational unit forms a table.
+
+- Please see the [tidyr vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) for more information on tidy data.
 
 <div class = activity>
 <div class = activitytitle>

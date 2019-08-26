@@ -268,13 +268,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Let’s see what you’ve learned!</li>
 <li><a href="https://en.wikipedia.org/wiki/Relational_database">Relational databases</a> are a common way to store data.</li>
 <li>Information associated with different levels is stored in separate tables.</li>
-<li>Tables are linked with foreign keys.</li>
-<li>This organization reduces memory demands, but requires a strong knowledge of joins to extract meaningful information.</li>
-<li><a href="https://www.imdb.com/">IMBD</a> stores their data about movies in a similar format.</li>
+<li>Tables are linked with foreign keys, a fancy name for ID variables.</li>
+<li>This organization reduces memory demands, but requires a strong knowledge of joins to extract piece together the information.</li>
+<li><a href="https://www.imdb.com/">IMBD</a> stores their data about movies in a relational database format.</li>
 <li>You can find a description of the data files title IMDB.txt in the suppl folder, linked <a href="https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl">here</a>.</li>
 <li>Again, instructions may be ambiguous.</li>
-<li>This is intended to facilitate critical thinking when applying the principles learned.</li>
-<li>Feel free to use other functions unless explictly told not to.</li>
+<li>This is done intentionally to facilitate critical thinking when applying the principles learned above.</li>
+<li>Feel free to use other functions unless explictly told not to do so.</li>
 </ul>
 <div class="activity">
 <div class="activitytitle">
@@ -290,8 +290,8 @@ Instructions
 <li>names.csv</li>
 </ul></li>
 <li><p>Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.</p></li>
-<li><p>Create a new object call actors that only contains information about actor-movie pairs where they are categorized as actors.</p></li>
-<li><p>Are there actors that for whom we don’t have their movie history?</p></li>
+<li><p>Create a new object call actors that only contains information about actor-movie combinations where they are explicitly categorized as actors.</p></li>
+<li><p>Are there actors that for whom we don’t have movie history?</p></li>
 <li><p>How many actors are missing movie information?</p></li>
 <li><p>Merge the titles and ratings data sets retaining all observations in title to create a new dataframe called movies.</p></li>
 <li><p>Merge actors and movies using your favorite mutating join.</p></li>

@@ -75,7 +75,7 @@ survey_data%>%
 
 
 ```{example, filter1}
-Using filter to retain non-pilot observations (Status = 1).
+Using filter to retain non-pilot observations (Status = 0).
 ```{r, eval=FALSE}
 filter(survey_data, Status == 0)
 ```

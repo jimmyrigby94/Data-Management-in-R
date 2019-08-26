@@ -3,13 +3,13 @@
 - Let's see what you've learned!
 - [Relational databases](https://en.wikipedia.org/wiki/Relational_database) are a common way to store data.
 - Information associated with different levels is stored in separate tables.
-- Tables are linked with foreign keys.
-- This organization reduces memory demands, but requires a strong knowledge of joins to extract meaningful information.
-- [IMBD](https://www.imdb.com/) stores their data about movies in a similar format. 
+- Tables are linked with foreign keys, a fancy name for ID variables.
+- This organization reduces memory demands, but requires a strong knowledge of joins to extract piece together the information.
+- [IMBD](https://www.imdb.com/) stores their data about movies in a relational database format. 
 - You can find a description of the data files title IMDB.txt in the suppl folder, linked [here](https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl).
 - Again, instructions may be ambiguous.
-- This is intended to facilitate critical thinking when applying the principles learned. 
-- Feel free to use other functions unless explictly told not to. 
+- This is done intentionally to facilitate critical thinking when applying the principles learned above. 
+- Feel free to use other functions unless explictly told not to do so. 
 
 <div class = activity>
 <div class = activitytitle>
@@ -25,9 +25,9 @@ Instructions</div>
     
 2. Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.
 
-3. Create a new object call actors that only contains information about actor-movie pairs where they are categorized as actors. 
+3. Create a new object call actors that only contains information about actor-movie combinations where they are explicitly categorized as actors. 
 
-4. Are there actors that for whom we don't have their movie history? 
+4. Are there actors that for whom we don't have movie history? 
 
 5. How many actors are missing movie information?
 
@@ -41,6 +41,7 @@ Instructions</div>
     - Count the number of movies each actor has been in.
     - Calculate the average ratings for each actor.
     - Create a cumulative distribution variable for the actors' average ratings.
+    
     
 9. Plot the rating cumulative distribution.
 
