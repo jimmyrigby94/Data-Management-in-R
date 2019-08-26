@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Activity 1 | Psyc 6300: Data Management</title>
+  <title>Chapter 10 Activity | Psyc 6300: Data Management</title>
   <meta name="description" content="This is an introduction to R as a statistical package for psychological research." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Activity 1 | Psyc 6300: Data Management" />
+  <meta property="og:title" content="Chapter 10 Activity | Psyc 6300: Data Management" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Activity 1 | Psyc 6300: Data Management" />
+  <meta name="twitter:title" content="Chapter 10 Activity | Psyc 6300: Data Management" />
   
   <meta name="twitter:description" content="This is an introduction to R as a statistical package for psychological research." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-21" />
+<meta name="date" content="2019-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="arrange-ordering-rows.html">
-<link rel="next" href="combining-data-sets.html">
+<link rel="prev" href="anti-join.html">
+<link rel="next" href="other-functions-for-extracting-observations.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.9.2" data-path="arrange-ordering-rows.html"><a href="arrange-ordering-rows.html#using-arrange"><i class="fa fa-check"></i><b>4.9.2</b> Using arrange()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>5</b> Activity 1</a></li>
+<li class="chapter" data-level="5" data-path="activity.html"><a href="activity.html"><i class="fa fa-check"></i><b>5</b> Activity</a></li>
 <li class="part"><span><b>II Combining Data Frames</b></span></li>
 <li class="chapter" data-level="6" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>6</b> Combining Data Sets</a></li>
 <li class="chapter" data-level="7" data-path="binding-functions.html"><a href="binding-functions.html"><i class="fa fa-check"></i><b>7</b> Binding Functions</a><ul>
@@ -207,31 +207,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="semi-join.html"><a href="semi-join.html"><i class="fa fa-check"></i><b>9.1</b> semi_join()</a></li>
 <li class="chapter" data-level="9.2" data-path="anti-join.html"><a href="anti-join.html"><i class="fa fa-check"></i><b>9.2</b> anti_join()</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="activity-1.html"><a href="activity-1.html"><i class="fa fa-check"></i><b>10</b> Activity</a></li>
 <li class="part"><span><b>III Advanced Dplyr</b></span></li>
-<li class="chapter" data-level="10" data-path="other-functions-for-extracting-observations.html"><a href="other-functions-for-extracting-observations.html"><i class="fa fa-check"></i><b>10</b> Other Functions for Extracting Observations</a><ul>
-<li class="chapter" data-level="10.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html"><i class="fa fa-check"></i><b>10.1</b> Random Samples of Observations</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#structural-form-of-sample_-functions"><i class="fa fa-check"></i><b>10.1.1</b> Structural Form of sample_ Functions</a></li>
-<li class="chapter" data-level="10.1.2" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#using-sample_n-and-sample_frac"><i class="fa fa-check"></i><b>10.1.2</b> Using sample_n() and sample_frac()</a></li>
+<li class="chapter" data-level="11" data-path="other-functions-for-extracting-observations.html"><a href="other-functions-for-extracting-observations.html"><i class="fa fa-check"></i><b>11</b> Other Functions for Extracting Observations</a><ul>
+<li class="chapter" data-level="11.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html"><i class="fa fa-check"></i><b>11.1</b> Random Samples of Observations</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#structural-form-of-sample_-functions"><i class="fa fa-check"></i><b>11.1.1</b> Structural Form of sample_ Functions</a></li>
+<li class="chapter" data-level="11.1.2" data-path="random-samples-of-observations.html"><a href="random-samples-of-observations.html#using-sample_n-and-sample_frac"><i class="fa fa-check"></i><b>11.1.2</b> Using sample_n() and sample_frac()</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html"><i class="fa fa-check"></i><b>10.2</b> distinct(): extracting unique observations</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#distinct-structure"><i class="fa fa-check"></i><b>10.2.1</b> distinct() Structure</a></li>
-<li class="chapter" data-level="10.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>10.2.2</b> Using distinct()</a></li>
+<li class="chapter" data-level="11.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html"><i class="fa fa-check"></i><b>11.2</b> distinct(): extracting unique observations</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#distinct-structure"><i class="fa fa-check"></i><b>11.2.1</b> distinct() Structure</a></li>
+<li class="chapter" data-level="11.2.2" data-path="distinct-extracting-unique-observations.html"><a href="distinct-extracting-unique-observations.html#using-distinct"><i class="fa fa-check"></i><b>11.2.2</b> Using distinct()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="performing-repeated-operations.html"><a href="performing-repeated-operations.html"><i class="fa fa-check"></i><b>11</b> Performing Repeated Operations</a><ul>
-<li class="chapter" data-level="11.1" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>11.1</b> all() suffix</a></li>
-<li class="chapter" data-level="11.2" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>11.2</b> at() suffix</a></li>
-<li class="chapter" data-level="11.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>11.3</b> if() suffix</a></li>
+<li class="chapter" data-level="12" data-path="performing-repeated-operations.html"><a href="performing-repeated-operations.html"><i class="fa fa-check"></i><b>12</b> Performing Repeated Operations</a><ul>
+<li class="chapter" data-level="12.1" data-path="all-suffix.html"><a href="all-suffix.html"><i class="fa fa-check"></i><b>12.1</b> all() suffix</a></li>
+<li class="chapter" data-level="12.2" data-path="at-suffix.html"><a href="at-suffix.html"><i class="fa fa-check"></i><b>12.2</b> at() suffix</a></li>
+<li class="chapter" data-level="12.3" data-path="if-suffix.html"><a href="if-suffix.html"><i class="fa fa-check"></i><b>12.3</b> if() suffix</a></li>
 </ul></li>
 <li class="part"><span><b>IV Tidy Data with tidyr</b></span></li>
-<li class="chapter" data-level="12" data-path="wider-and-longer-data-formats.html"><a href="wider-and-longer-data-formats.html"><i class="fa fa-check"></i><b>12</b> Wider and Longer Data Formats</a><ul>
-<li class="chapter" data-level="12.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html"><i class="fa fa-check"></i><b>12.1</b> gather(): Wider to Longer</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#gather-structure"><i class="fa fa-check"></i><b>12.1.1</b> gather() Structure</a></li>
-<li class="chapter" data-level="12.1.2" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#using-gather"><i class="fa fa-check"></i><b>12.1.2</b> Using gather()</a></li>
+<li class="chapter" data-level="13" data-path="wider-and-longer-data-formats.html"><a href="wider-and-longer-data-formats.html"><i class="fa fa-check"></i><b>13</b> Wider and Longer Data Formats</a><ul>
+<li class="chapter" data-level="13.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html"><i class="fa fa-check"></i><b>13.1</b> gather(): Wider to Longer</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#gather-structure"><i class="fa fa-check"></i><b>13.1.1</b> gather() Structure</a></li>
+<li class="chapter" data-level="13.1.2" data-path="gather-wider-to-longer.html"><a href="gather-wider-to-longer.html#using-gather"><i class="fa fa-check"></i><b>13.1.2</b> Using gather()</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html"><i class="fa fa-check"></i><b>12.2</b> spread(): Longer to Wider</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#spread-structure"><i class="fa fa-check"></i><b>12.2.1</b> spread() Structure</a></li>
-<li class="chapter" data-level="12.2.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#using-spread"><i class="fa fa-check"></i><b>12.2.2</b> Using spread()</a></li>
+<li class="chapter" data-level="13.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html"><i class="fa fa-check"></i><b>13.2</b> spread(): Longer to Wider</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#spread-structure"><i class="fa fa-check"></i><b>13.2.1</b> spread() Structure</a></li>
+<li class="chapter" data-level="13.2.2" data-path="spread-longer-to-wider.html"><a href="spread-longer-to-wider.html#using-spread"><i class="fa fa-check"></i><b>13.2.2</b> Using spread()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="recent-developments.html"><a href="recent-developments.html"><i class="fa fa-check"></i><b>13.3</b> Recent Developments</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="recent-developments.html"><a href="recent-developments.html#the-problems-with-gather-and-spread"><i class="fa fa-check"></i><b>13.3.1</b> The Problems with gather() and spread()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="pivot-longer-gathers-predecessor.html"><a href="pivot-longer-gathers-predecessor.html"><i class="fa fa-check"></i><b>13.4</b> pivot_longer(): gather’s() predecessor</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="pivot-longer-gathers-predecessor.html"><a href="pivot-longer-gathers-predecessor.html#pivot_longer-structure"><i class="fa fa-check"></i><b>13.4.1</b> pivot_longer() structure</a></li>
+<li class="chapter" data-level="13.4.2" data-path="pivot-longer-gathers-predecessor.html"><a href="pivot-longer-gathers-predecessor.html#using-pivot_longer"><i class="fa fa-check"></i><b>13.4.2</b> Using pivot_longer()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="pivot-wider-spreads-predecessor.html"><a href="pivot-wider-spreads-predecessor.html"><i class="fa fa-check"></i><b>13.5</b> pivot_wider(): spread()’s predecessor</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="pivot-wider-spreads-predecessor.html"><a href="pivot-wider-spreads-predecessor.html#pivot_wider-structure"><i class="fa fa-check"></i><b>13.5.1</b> pivot_wider() Structure</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -252,40 +263,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="activity-1" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Activity 1</h1>
+<h1><span class="header-section-number">Chapter 10</span> Activity</h1>
 <ul>
-<li>Now it’s your turn!</li>
-<li>You can find a data set titled “clinician.csv” in the supplemental material linked <a href="https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl">here</a>.</li>
-<li>A .txt file (clinician_description.txt) is also included describing the data and structure.</li>
-<li>Your goal is to clean the data and then summarise the data in a meaningful way.</li>
-<li>Instructions may, at times, be intentionally ambiguous.</li>
+<li>Let’s see what you’ve learned!</li>
+<li><a href="https://en.wikipedia.org/wiki/Relational_database">Relational databases</a> are a common way to store data.</li>
+<li>Information associated with different levels is stored in separate tables.</li>
+<li>Tables are linked with foreign keys.</li>
+<li>This organization reduces memory demands, but requires a strong knowledge of joins to extract meaningful information.</li>
+<li><a href="https://www.imdb.com/">IMBD</a> stores their data about movies in a similar format.</li>
+<li>You can find a description of the data files title IMDB.txt in the suppl folder, linked <a href="https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl">here</a>.</li>
+<li>Again, instructions may be ambiguous.</li>
 <li>This is intended to facilitate critical thinking when applying the principles learned.</li>
+<li>Feel free to use other functions unless explictly told not to.</li>
 </ul>
 <div class="activity">
 <div class="activitytitle">
 Instructions
 </div>
-<p>Data Cleaning
-1. Create a dataframe with only the current patients.
-2. Remove irrelevant columns.
-3. Assign meaningful names to all columns.
-4. Remove observatons that have NO data for Beck Depression Inventory and Subjective Well-Being scales.
-5. Create scale scores using arithmetic operators.
-6. Create scale scores using a method that employs a function to generate the mean.
-7. Create a varaible that stores the depression CDF for each participant.</p>
-<p>Group-Level Feature Extraction
-1. Create a variable that stores therapist-level depression scores for each participant
-2. Create a variable that stores therapist-level attrition rate.</p>
-<p>Summary Statistics
-1. Create a separate data frame that summarises the sample’s central tendency (i.e., mean, median, and mode) and spread (i.e., variance, standard deviation, and mad).
-2. Create an identical table, except calculate these summary statistics across therapists.
-3. Which therapist has the highest attrition rate?
-4. Which therapist has the highest recovery rate?
-5. Is there an association between the Recrutiment Medium and recovery rate?</p>
-<p>Follow-up Quesitons
-1. What was the difference between scale scores generated by arithmetic operators and functions?
-2. Did the information stored within group-level features differ than what was generated in the grouped summary statistics?
-3. When would it be useful to store group-level data as a summary table versus a variable in the original data frame?</p>
+<p><strong>Data Cleaning</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Load the following .csv’s into your environment</p>
+<ul>
+<li>ratings.csv</li>
+<li>titles.csv</li>
+<li>principal_actors.csv</li>
+<li>names.csv</li>
+</ul></li>
+<li><p>Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.</p></li>
+<li><p>Create a new object call actors that only contains information about actor-movie pairs where they are categorized as actors.</p></li>
+<li><p>Are there actors that for whom we don’t have their movie history?</p></li>
+<li><p>How many actors are missing movie information?</p></li>
+<li><p>Merge the titles and ratings data sets retaining all observations in title to create a new dataframe called movies.</p></li>
+<li><p>Merge actors and movies using your favorite mutating join.</p></li>
+<li><p>Calculate summary statistics using the actors unique id. Store the below information in an object titled actor_summaries</p>
+<ul>
+<li>Count the number of movies each actor has been in.</li>
+<li>Calculate the average ratings for each actor.</li>
+<li>Create a cumulative distribution variable for the actors’ average ratings.</li>
+</ul></li>
+<li><p>Plot the rating cumulative distribution.</p></li>
+<li><p>Using the actor_summaries and movies, create a data frame that contains the movie information for the actors with ratings in the top 10%.</p></li>
+</ol>
 </div>
 
 </div>
@@ -297,8 +315,8 @@ Instructions
           </div>
         </div>
       </div>
-<a href="arrange-ordering-rows.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="combining-data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anti-join.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="other-functions-for-extracting-observations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

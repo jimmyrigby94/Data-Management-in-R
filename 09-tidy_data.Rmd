@@ -8,7 +8,7 @@
 - It can also come in long format and wide format, depicted below. 
 
 - Transitioning back and forth between these formats is an important skill to have, because different analyses require different data formats. 
-- For example, most multi-level modeling softwares take the data in long format. In contrast, many MANCOVA packages require wide format data. 
+- For example, most multi-level modeling software take the data in long format. In contrast, many MANCOVA packages require wide format data. 
 - Luckily, tidyr, another package written by Hadley Wickham, is specially designed to reshape data. 
 
 <div class = activity>
@@ -19,16 +19,16 @@ Core tidyr Functions for Reshaping Data</div>
 </div>
 
 ```{r, fig.cap="Wide Format", fig.height=2, fig.width=4.5, echo = FALSE, message=FALSE}
-wide<-ex_dat2a%>%
-  left_join(ex_dat2b)
+wide<-ex_data%>%
+  left_join(ex_datb)
   
 wide%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
 ```{r, echo = FALSE, fig.cap="Long Format", message=FALSE}
-long<-ex_dat2a%>%
-  left_join(ex_dat2b)%>%
+long<-ex_data%>%
+  left_join(ex_datb)%>%
   gather(key = "time", value = "test", pre, post)
 
 long%>%
@@ -63,7 +63,7 @@ gather(data, key, value, ...)</div>
 - gather() can be used to stack the pre and post columns into a single test column which we will define with the value
 - The temporal information can be stored in a separate column which we define with the key argument
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap="Wide Format Data"}
 wide%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -75,11 +75,11 @@ gather(wide, key = "time", value = "test", pre, post)
 ```
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Using gather() to Go From Wide to Long"}
 gather(wide, key = "time", value = "test", pre, post)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
-```{example, gather2}
+```{example, gather2, fig.cap = "Alternative column selection"}
 Equivalent sytax would be to use - to deselect columns to be gathered. In some use cases, this is quicker.
 ```{r, eval=FALSE}
 gather(wide, key = "time", value = "test", -c(id, gender, condition, non_naieve))
@@ -103,7 +103,7 @@ spread(data, key, value)</div>
 
 ### Using spread()
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap="Long Data"}
 long%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -114,9 +114,94 @@ spread(wide, key = "time", value = "test")
 ```
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap="Using Spread to Go From Long to Wide"}
 spread(long, key = "time", value = "test")%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
+## Recent Developments
 
+- The tidyverse is under constant development by a team of very smart people. 
+- Recently, Hadley Wickham, one of the key contributes to the tidyverse announced new functions that will come to replace gather() and spread.
+- To prepare you for this eventuality, I am going to introduce pivot_wider() and pivot_longer().
+- Given that they are still in development, I will only cover the very basics of these functions.
+- They are only available in the tidyr development version and are not yet available in the tidyverse package
+- To download the development version restart your R session (ctr+shift+f10) and run the following code
+
+
+```{r, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("tidyverse/tidyr")
+```
+
+### The Problems with gather() and spread()
+- Gather and spread will throw errors when working with some data types.
+- Some find the functions non-intuitive.
+- The latest iteration of these functions make them more robust and also more intuitive.
+- Cannot extract meta-data from column names.
+
+## pivot_longer(): gather's() predecessor 
+- pivot_longer() is the most recent iteration of gather()
+- It takes a data set and transforms it so it is longer, just like gather().
+
+### pivot_longer() structure
+<div class = activity>
+<div class = structure>
+
+pivot_longer(data, names_to, values_to, cols, ...)</div>
+- cols: The columns to gather, defined similar to select() and gather()
+- names_to: Column name to store the former column names.
+- values_to: Column name to store the former value names.
+- ...: to see additional arguments run ?pivot_longer.
+</div>
+
+
+### Using pivot_longer()
+
+```{r, echo = FALSE, fig.cap="Wide Data"}
+wide%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+```{example, pivotlonger}
+We can specify the columns we want to gather using the elipse argument
+```{r, eval=FALSE}
+pivot_longer(wide, cols = c(pre, post), key = "time", value = "test")
+```
+
+
+```{r, echo = FALSE, fig.cap = "Using pivot_longer() to go from Wide to Long"}
+pivot_longer(wide, cols = c(pre, post), names_to = "time", values_to = "test")%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```
+
+## pivot_wider(): spread()'s predecessor
+- pivot_wider() is the most recent iteration of spread().
+- pivot_wider() takes a data frame and makes it wider.
+
+### pivot_wider() Structure
+<div class = activity>
+<div class = structure>
+
+pivot_wider(data, names_from, values_from, ...)</div>
+- names_from: Column name to store the former column names.
+- values_from: Column name to store the former value names.
+- ...: to see additional arguments run ?pivot_longer.
+</div>
+
+
+```{r, echo = FALSE, fig.cap="Long Data"}
+long%>%
+  ggtexttable(theme = ttheme(base_style="lBlueWhite"))
+```
+
+```{example, spread1}
+```{r, eval=FALSE}
+pivot_wider(long, names_from =  "time", values_from = "test")
+```
+
+
+```{r, echo = FALSE, fig.cap="Using pivot_wider() to Go From Long to Wide"}
+pivot_wider(long, names_from =  "time", values_from = "test")%>%
+  ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
+```

@@ -35,20 +35,20 @@ survey_dat%>%
 ```{r,echo=FALSE, fig.width=7.5, fig.height=2}
 
 set.seed(1234)
-ex_dat2a<-tibble(id = 1:6,
+ex_data<-tibble(id = 1:6,
                  gender = sample(c("M", "F"), size = 6, replace = TRUE),
                 condition = rep(0:1, each = 3),
                 pre = round(rnorm(6, 5, sd = 1), 2), 
                 non_naieve = c(rep(0, 4), rep(1, 2)))
 set.seed(1234)
-ex_dat2b<-tibble(id = c(1, 3:6),
+ex_datb<-tibble(id = c(1, 3:6),
                  gender = sample(c("M", "F"), size = 6, replace = TRUE)[-2],
                 condition = c(rep(0, each = 2), rep(1, each = 3)),
                 post = round(rnorm(5, 6, sd = 1), 2), 
                 non_naieve = c(rep(0, 3), rep(1, 2)))
 
-t1<-ggpubr::ggtexttable(ex_dat2a, theme = ttheme(base_style="lBlueWhite"))
-t2<-ggpubr::ggtexttable(ex_dat2b, theme = ttheme(base_style="lBlueWhite"))
+t1<-ggpubr::ggtexttable(ex_data, theme = ttheme(base_style="lBlueWhite"))
+t2<-ggpubr::ggtexttable(ex_datb, theme = ttheme(base_style="lBlueWhite"))
 
 
 ggarrange(t1,t2)

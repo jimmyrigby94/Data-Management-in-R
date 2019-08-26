@@ -344,13 +344,58 @@ survey_data%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
+- This information can be used to provide useful summarise of distributions.
+- I demonstrate how this can be visualized below. 
+
+```{r, fig.width = 10}
+p1<-survey_data%>%
+  select(perf, perf_p, perf_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y = perf_p))+
+  geom_density(stat = "identity", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance< x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of percent_ranks() Output")
+  
+p2<-survey_data%>%
+  select(perf, perf_p, perf_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y = perf_cdf))+
+  geom_density(stat = "identity", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of cume_dist() Output")
+
+ggarrange(p1, p2)
+```
+
+- Note that, the cume_dist() can be visulized from raw data (without feature engineering) by using the stat_ecdf
+- ecdf stands for empirical cumulative density function
+
+```{r}
+survey_data%>%
+  ggplot(aes(x = perf))+
+  geom_density(stat = "ecdf", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of cume_dist() Output")
+```
+
+
+
 ```{example, mutate4}
 You can also create binary indicator variables using conditional logic (i.e. if_else() statements). These indicator variables are sometimes referred to a dummy coded variables or one hot encoding.
 ```{r, eval=FALSE}
 mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))
 ```
 
+<div class = activity>
+<div class = structure>
 
+if_else(logical_test, value_if_TRUE, value_if_FALSE)</div>
+- Used to conditionally operate on dataframe
+- Uses two different values or algorithms, depending on a logical test
+</div>
 
 ```{r, echo = FALSE, fig.height=2, fig.width=9.5, fig.cap = "Adding Dummy Variables"}
 mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))%>%
@@ -462,7 +507,7 @@ Using group_by() to create team level variables and n() to create group size var
 ```{r, eval = FALSE}
 survey_data%>%
   group_by(Manager)%>%
-  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n(), team_cdf = cume_dist(perf))%>%
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n())%>%
   ungroup()
 ```
 
@@ -486,13 +531,30 @@ survey_data%>%
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=11.5, fig.cap="Within-team CDF"}
-survey_data%>%
+tmp_survey_data<-survey_data%>%
   group_by(Manager)%>%
   mutate(team_cdf = cume_dist(perf))%>%
   ungroup()%>%
-  mutate_if(is.numeric, round, digits = 2)%>%
+  mutate_if(is.numeric, round, digits = 2)
+
+tmp_survey_data%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
+
+The CDF can be used to visulize distributional differences across groups as well. 
+
+```{r, echo = FALSE}
+tmp_survey_data%>%
+  select(Manager, perf, team_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y= team_cdf, fill = Manager))+
+  geom_density(stat = "identity")+
+  facet_wrap(~Manager)+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of Grouped cume_dist() Output")
+```
+
 
 ```{example, addcount}
 add_count() is a nice alternative, to the group_by()%>%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.

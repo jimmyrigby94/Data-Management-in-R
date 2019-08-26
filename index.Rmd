@@ -11,9 +11,6 @@ description: "This is an introduction to R as a statistical package for psycholo
 
 # Introduction
 
-
-
-
 ```{r, echo = FALSE}
 knitr::include_graphics("suppl/cover.png")
 ```

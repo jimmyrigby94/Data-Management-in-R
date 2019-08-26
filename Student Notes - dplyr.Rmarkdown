@@ -1,0 +1,238 @@
+---
+title: "Dplyr Student Notes"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dependencies and Data (Run First)
+
+```{r}
+library(tidyverse)
+# Loading data
+survey_data<-read_csv("suppl/survey_data.csv")
+```
+
+
+## Examples
+
+### filter
+```{r, }
+survey_data<-filter(survey_data, Status == 0)
+survey_data
+```
+
+```{r}
+filter(survey_data, Q1.1 == 5 | Q1.3 == 5)
+```
+
+### select()
+```{r}
+select(survey_data, ResponseId, Q1.1, Q1.2, Q1.3, Q2.1, Q2.2, Q2.3)
+```
+
+```{r}
+select(survey_data, -Status, -last_name)
+```
+
+```{r}
+select(survey_data, ResponseId, Q1.1:Q2.3)
+```
+
+```{r}
+select(survey_data, contains("id", ignore.case = TRUE), starts_with("Q"))
+```
+
+```{r}
+survey_data<-select(survey_data, contains("id", ignore.case = TRUE), starts_with("Q"))
+survey_data
+```
+
+### rename()
+
+```{r}
+rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+```
+
+```{r}
+select(survey_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+```
+
+```{r}
+colnames(survey_data)<-c("ResponseId", paste0("cons", 1:3), paste0("perf", 1:3))
+survey_data
+```
+
+### mutate()
+```{r}
+mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)
+```
+
+```{r}
+ungroup(mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE)))
+
+survey_data<-mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  select(matches("[[:alpha:]]$"))%>%
+  ungroup()
+```
+
+
+```{r}
+survey_data<-mutate(survey_data, perf_p = percent_rank(perf), perf_cdf = cume_dist(perf))
+survey_data
+```
+
+```{r}
+survey_data%>%
+  select(perf, perf_p, perf_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y = perf_p))+
+  geom_density(stat = "identity", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance< x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of percent_ranks() Output")
+```
+
+```{r}
+survey_data%>%
+  select(perf, perf_p, perf_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y = perf_cdf))+
+  geom_density(stat = "identity", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of cume_dist() Output")
+```
+
+
+```{r}
+survey_data%>%
+  ggplot(aes(x = perf))+
+  geom_density(stat = "ecdf", fill = "blue", color = "white")+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of cume_dist() Output")
+```
+
+```{r}
+survey_data<-mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))
+survey_data
+```
+
+### Pipe Operator
+```{r}
+# Reloading dirty data to illustrate pipe operator
+survey_data<-read_csv("suppl/survey_data.csv")
+```
+
+
+```{r}
+survey_data<-survey_data%>%
+  filter(Status == 0)%>%
+  select(-Status, -last_name)%>%
+  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+  rowwise()%>%
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  ungroup()%>%
+  mutate(perf_p = percent_rank(cons), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  select(matches("[[:alpha:]]$")) # dropping columns that end in numbers to keep prints manageable
+
+survey_data
+```
+
+### group_by()
+```{r, echo = FALSE}
+# Data Preporation (We will get to the join function below later)
+manager<-read_csv("suppl/Manager Data.csv")
+
+survey_data<-left_join(survey_data, manager)%>%
+  select(ResponseId, Manager, everything())
+```
+
+```{r}
+survey_data<-survey_data%>%
+  group_by(Manager)%>%
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n())%>%
+  ungroup()
+
+survey_data
+```
+
+```{r}
+survey_data<-survey_data%>%
+  group_by(Manager)%>%
+  mutate(team_cons = mean(cons, na.rm = TRUE), team_size = n())%>%
+  mutate_if(is.numeric, round, digits = 2)%>%
+  ungroup()
+
+survey_data
+```
+
+```{r}
+survey_data<-survey_data%>%
+  group_by(Manager)%>%
+  mutate(team_cdf = cume_dist(perf))%>%
+  ungroup()
+
+survey_data
+```
+
+```{r}
+survey_data%>%
+  select(Manager, perf, team_cdf)%>%
+  distinct()%>%
+  ggplot(aes(x = perf, y= team_cdf, fill = Manager))+
+  geom_density(stat = "identity")+
+  facet_wrap(~Manager)+
+  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  labs(title = "Plot of Grouped cume_dist() Output")
+```
+
+
+```{r}
+survey_data%>%
+  add_count(Manager)
+```
+
+### Summarise
+
+```{r}
+survey_data%>%
+  summarise(mean_cons = mean(cons, na.rm = TRUE), mean_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
+```
+
+```{r}
+survey_data%>%
+  group_by(Manager)%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))
+```
+
+```{r}
+survey_data%>%
+  count(Manager)
+```
+
+### Arrange
+
+```{r}
+survey_data%>%
+  group_by(Manager)%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
+  arrange(team_cons)
+```
+
+```{r}
+survey_data%>%
+  group_by(Manager)%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
+  arrange(desc(team_cons))
+```
+
+

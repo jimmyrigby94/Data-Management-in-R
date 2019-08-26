@@ -32,7 +32,7 @@ Summary of Suffix Definitions
 - To use rename_all() we simply define the data frame and then a function that will take a column name and change it in some way.
 - tolower() converts string values to lowercase and is the appropriate function to use here.
 
-```{r, echo = FALSE, fig.width=10, fig.height=2}
+```{r, echo = FALSE, fig.width=10, fig.height=2, fig.cap="Original Data"}
 survey_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -45,7 +45,7 @@ survey_data%>%
   rename_all(tolower)
 ```
 
-```{r, echo=FALSE, fig.height=2, fig.width=8}
+```{r, echo=FALSE, fig.height=2, fig.width=8, fig.cap = "Renamed All variables to lower case"}
 survey_data%>%
   rename_all(tolower)%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
@@ -60,7 +60,7 @@ survey_data%>%
 - The names of the elements in the list will be appended to my original names to create new columns. 
 - .s are used as place holders for the vars.
 
-```{r, echo = FALSE, fig.width=10, fig.height=2}
+```{r, echo = FALSE, fig.width=10, fig.height=2, fig.cap="Original Data"}
 survey_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
@@ -74,9 +74,11 @@ centered_data<-survey_data%>%
 centered_data
 ```
 
-```{r, echo=FALSE, echo = FALSE, fig.height=2, fig.width=10}
-survey_data%>%
-  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+```{r, echo=FALSE, echo = FALSE, fig.height=2, fig.width=10, fig.cap="Centers Variables Defined in vars()"}
+centered_data<-survey_data%>%
+  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))
+
+centered_data%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 - Lets double check our work using summarise_at()
@@ -92,9 +94,8 @@ centered_data%>%
 
 ```
 
-```{r, echo=FALSE, fig.width=12, fig.height=1}
-survey_data%>%
-  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+```{r, echo=FALSE, fig.width=12, fig.height=1, fig.cap="Creates Summary Table for Variables Defined in vars()"}
+centered_data%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%
   mutate_if(is.numeric, round, digits = 5)%>%
@@ -113,18 +114,16 @@ The code you saw really generates this ugly beast.
 centered_data%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))
-
 ```
 
-```{r, echo=FALSE, fig.width=12, fig.height=1}
-survey_data%>%
-  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+```{r, echo=FALSE, fig.width=12, fig.height=1, fig.cap="Unrounded Data"}
+centered_data%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
-- The floating point (maximum decimal point) in R goes out a long way making calculations very precise but output unwildy.
+- The floating point (maximum decimal point) in R goes out a long way making calculations very precise but output unwieldy.
 - By using mutate_if(), we can apply round() repeatedly across the data frame. 
 - round() only works with numeric data, though, so we want to avoid applying it character and factor data.
 
@@ -137,9 +136,8 @@ centered_data%>%
   mutate_if(is.numeric, round, digits = 5)
 ```
 
-```{r, echo=FALSE, fig.width=12, fig.height=1}
-survey_data%>%
-  mutate_at(vars(cons, perf), list(c = ~ .-mean(., na.rm = TRUE)))%>%
+```{r, echo=FALSE, fig.width=12, fig.height=1, fig.cap="Formatting Output using mutate_if"}
+centered_data%>%
   summarise_at(vars(cons, perf, cons_c, perf_c), list(mean = ~mean(., na.rm = TRUE),
                                                       sd = ~sd(., na.rm = TRUE)))%>%
   mutate_if(is.numeric, round, digits = 5)%>%

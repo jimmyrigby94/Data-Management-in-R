@@ -1,0 +1,52 @@
+# Activity
+
+- Let's see what you've learned!
+- [Relational databases](https://en.wikipedia.org/wiki/Relational_database) are a common way to store data.
+- Information associated with different levels is stored in separate tables.
+- Tables are linked with foreign keys.
+- This organization reduces memory demands, but requires a strong knowledge of joins to extract meaningful information.
+- [IMBD](https://www.imdb.com/) stores their data about movies in a similar format. 
+- You can find a description of the data files title IMDB.txt in the suppl folder, linked [here](https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl).
+- Again, instructions may be ambiguous.
+- This is intended to facilitate critical thinking when applying the principles learned. 
+- Feel free to use other functions unless explictly told not to. 
+
+<div class = activity>
+<div class = activitytitle>
+Instructions</div>
+**Data Cleaning**
+
+1. Load the following .csv's into your environment
+
+    - ratings.csv
+    - titles.csv
+    - principal_actors.csv
+    - names.csv
+    
+2. Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.
+
+3. Create a new object call actors that only contains information about actor-movie pairs where they are categorized as actors. 
+
+4. Are there actors that for whom we don't have their movie history? 
+
+5. How many actors are missing movie information?
+
+6. Merge the titles and ratings data sets retaining all observations in title to create a new dataframe called movies.
+
+7. Merge actors and movies using your favorite mutating join. 
+
+8. Calculate summary statistics using the actors unique id. Store the below information in an object titled actor_summaries
+
+
+    - Count the number of movies each actor has been in.
+    - Calculate the average ratings for each actor.
+    - Create a cumulative distribution variable for the actors' average ratings.
+    
+9. Plot the rating cumulative distribution.
+
+10. Using the actor_summaries and movies, create a data frame that contains the movie information for the actors with ratings in the top 10%. 
+
+</div>
+
+
+
