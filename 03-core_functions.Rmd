@@ -202,7 +202,7 @@ survey_data<-select(survey_data, contains("id", ignore.case = TRUE), starts_with
 <div class = activity>
 <div class = structure>
 
-rename(data, old_name = new_name, ...)</div>
+rename(data, new_name = old_name, ...)</div>
 - Following the general dplyr form (See section \@ref(form)), the first argument specifies the data you are manipulating.
 - In this case the transformation arguments take the form of an equation, where the new column name is on the left of the equals sign and the old column name is on the right.
 - Multiple variables can be renamed within one rename call, as indicated by the ellipse.
