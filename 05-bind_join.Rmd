@@ -229,7 +229,7 @@ full_join(manager, cons_dat, by = c("ResponseId" = "ResponseId"))
 ```
 
 ```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
-full_join(manager, survey_data, by=c("ResponseId", "ResponseId"))%>%
+full_join(manager, survey_data, by=c("ResponseId" = "ResponseId"))%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
@@ -264,7 +264,7 @@ left_join(survey_data, manager)%>%
 ```
 
 ```{example, leftjoin2}
-For left_join() order does matter. Different observations are retained depending on which data frame is in the left_hand position and which data frame is in the right-hand right hand position. 
+left_join() retains different observations depending on which data frame is in the left_hand position and which data frame is in the right-hand right hand position. 
 ```{r, eval = FALSE}
 left_join(manager, cons_dat)
 ```
