@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -289,8 +289,8 @@ distinct(data, distinct_var, …, .keep_all)
 </div>
 <div id="using-distinct" class="section level3">
 <h3><span class="header-section-number">11.2.2</span> Using distinct()</h3>
-<div class="figure"><span id="fig:unnamed-chunk-100"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-100-1.png" alt="Original Data" width="288" />
+<div class="figure"><span id="fig:unnamed-chunk-101"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-101-1.png" alt="Original Data" width="288" />
 <p class="caption">
 Figure 11.5: Original Data
 </p>
@@ -311,10 +311,10 @@ Figure 11.5: Original Data
 <span id="exm:distinct1" class="example"><strong>Example 11.4  </strong></span>Using distinct() to extract unique levels of manager.
 </div>
 
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">manager<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Manager)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-102"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-102-1.png" alt="Disinct Levels of Manager" width="288" />
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">manager<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Manager)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-103"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-103-1.png" alt="Disinct Levels of Manager" width="288" />
 <p class="caption">
 Figure 11.6: Disinct Levels of Manager
 </p>
@@ -324,10 +324,10 @@ Figure 11.6: Disinct Levels of Manager
 <span id="exm:distinct2" class="example"><strong>Example 11.5  </strong></span>Using distinct() to extract unique levels of ResponseId.
 </div>
 
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">manager<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Employee)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-104"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-104-1.png" alt="Unique levels of ResponseId" width="288" />
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">manager<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Employee)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-105"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-105-1.png" alt="Unique levels of ResponseId" width="288" />
 <p class="caption">
 Figure 11.7: Unique levels of ResponseId
 </p>
@@ -337,10 +337,10 @@ Figure 11.7: Unique levels of ResponseId
 <span id="exm:distinct3" class="example"><strong>Example 11.6  </strong></span>Using distinct() to extract unique ResponseId-Manager combinations.
 </div>
 
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">manager<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Employee, Manager)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-106"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-106-1.png" alt="Distinct ResponseId-Manager combinations" width="288" />
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">manager<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">distinct</span>(Employee, Manager)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-107"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-107-1.png" alt="Distinct ResponseId-Manager combinations" width="288" />
 <p class="caption">
 Figure 11.8: Distinct ResponseId-Manager combinations
 </p>

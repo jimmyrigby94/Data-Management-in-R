@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,8 +288,8 @@ gather(data, key, value, …)
 <li>gather() can be used to stack the pre and post columns into a single test column which we will define with the value</li>
 <li>The temporal information can be stored in a separate column which we define with the key argument</li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-121"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-121-1.png" alt="Wide Format Data" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-122"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-122-1.png" alt="Wide Format Data" width="672" />
 <p class="caption">
 Figure 13.3: Wide Format Data
 </p>
@@ -299,9 +299,9 @@ Figure 13.3: Wide Format Data
 <span id="exm:gather1" class="example"><strong>Example 13.1  </strong></span>We can specify the columns we want to gather using the elipse argument
 </div>
 
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">gather</span>(wide, <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>, pre, post)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-123"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-123-1.png" alt="Using gather() to Go From Wide to Long" width="672" />
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">gather</span>(wide, <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>, pre, post)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-124"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-124-1.png" alt="Using gather() to Go From Wide to Long" width="672" />
 <p class="caption">
 Figure 13.4: Using gather() to Go From Wide to Long
 </p>
@@ -311,7 +311,7 @@ Figure 13.4: Using gather() to Go From Wide to Long
 <span id="exm:gather2" class="example"><strong>Example 13.2  </strong></span>Equivalent sytax would be to use - to deselect columns to be gathered. In some use cases, this is quicker.
 </div>
 
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">gather</span>(wide, <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>, <span class="op">-</span><span class="kw">c</span>(id, gender, condition, non_naieve))</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">gather</span>(wide, <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>, <span class="op">-</span><span class="kw">c</span>(id, gender, condition, non_naieve))</a></code></pre></div>
 </div>
 </div>
             </section>

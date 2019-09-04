@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,8 +284,8 @@ pivot_longer(data, names_to, values_to, cols, …)
 </div>
 <div id="using-pivot_longer" class="section level3">
 <h3><span class="header-section-number">13.4.2</span> Using pivot_longer()</h3>
-<div class="figure"><span id="fig:unnamed-chunk-129"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-129-1.png" alt="Wide Data" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-130"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-130-1.png" alt="Wide Data" width="672" />
 <p class="caption">
 Figure 13.7: Wide Data
 </p>
@@ -295,9 +295,9 @@ Figure 13.7: Wide Data
 <span id="exm:pivotlonger" class="example"><strong>Example 13.4  </strong></span>We can specify the columns we want to gather using the elipse argument
 </div>
 
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">pivot_longer</span>(wide, <span class="dt">cols =</span> <span class="kw">c</span>(pre, post), <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-131"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-131-1.png" alt="Using pivot_longer() to go from Wide to Long" width="672" />
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">pivot_longer</span>(wide, <span class="dt">cols =</span> <span class="kw">c</span>(pre, post), <span class="dt">key =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;test&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-132"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-132-1.png" alt="Using pivot_longer() to go from Wide to Long" width="672" />
 <p class="caption">
 Figure 13.8: Using pivot_longer() to go from Wide to Long
 </p>

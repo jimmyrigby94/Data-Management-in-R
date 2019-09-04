@@ -23,6 +23,24 @@ Instructions</div>
     - principal_actors.csv
     - names.csv
     
+```{r, eval = FALSE}
+# Loading tidyverse into memory
+library(tidyverse)
+
+# Reading csvs directly from github!
+ratings<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/ratings.csv")
+
+read_csv("https://github.com/jimmyrigby94/Data-Management-in-R/blob/master/suppl/titles.csv")
+
+principal_actors<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/principal_actors.csv")
+
+names<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/names.csv")
+
+```
+    
+    
+    
+    
 2. Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.
 
 3. Create a new object call actors that only contains information about actor-movie combinations where they are explicitly categorized as actors. 
@@ -45,7 +63,7 @@ Instructions</div>
     
 9. Plot the rating cumulative distribution.
 
-10. Using the actor_summaries and movies, create a data frame that contains the movie information for the actors with ratings in the top 10%. 
+10. Using the actor_summaries and movies data, create a data frame that contains the movie information for the actors with ratings in the top 10%. 
 
 </div>
 

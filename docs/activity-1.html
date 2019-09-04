@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -289,6 +289,19 @@ Instructions
 <li>principal_actors.csv</li>
 <li>names.csv</li>
 </ul></li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># Loading tidyverse into memory</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb38-3" title="3"></a>
+<a class="sourceLine" id="cb38-4" title="4"><span class="co"># Reading csvs directly from github!</span></a>
+<a class="sourceLine" id="cb38-5" title="5">ratings&lt;-<span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/ratings.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb38-6" title="6"></a>
+<a class="sourceLine" id="cb38-7" title="7"><span class="kw">read_csv</span>(<span class="st">&quot;https://github.com/jimmyrigby94/Data-Management-in-R/blob/master/suppl/titles.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb38-8" title="8"></a>
+<a class="sourceLine" id="cb38-9" title="9">principal_actors&lt;-<span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/principal_actors.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb38-10" title="10"></a>
+<a class="sourceLine" id="cb38-11" title="11">names&lt;-<span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/names.csv&quot;</span>)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
 <li><p>Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.</p></li>
 <li><p>Create a new object call actors that only contains information about actor-movie combinations where they are explicitly categorized as actors.</p></li>
 <li><p>Are there actors that for whom we don’t have movie history?</p></li>
@@ -302,7 +315,7 @@ Instructions
 <li>Create a cumulative distribution variable for the actors’ average ratings.</li>
 </ul></li>
 <li><p>Plot the rating cumulative distribution.</p></li>
-<li><p>Using the actor_summaries and movies, create a data frame that contains the movie information for the actors with ratings in the top 10%.</p></li>
+<li><p>Using the actor_summaries and movies data, create a data frame that contains the movie information for the actors with ratings in the top 10%.</p></li>
 </ol>
 </div>
 

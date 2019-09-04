@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,8 +299,8 @@ sample_x(data, size, replace, weight, …)
 <li>When randomly sampling the data frame, always make sure to use set.seed() so that the results are reproducible.</li>
 <li>I will also include and example that shows you how to work around the potential pitfalls of sample_n() by avoiding hard coding its size argument.</li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-93"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-93-1.png" alt="Original Data" width="768" />
+<div class="figure"><span id="fig:unnamed-chunk-94"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-94-1.png" alt="Original Data" width="768" />
 <p class="caption">
 Figure 11.1: Original Data
 </p>
@@ -310,11 +310,11 @@ Figure 11.1: Original Data
 <span id="exm:samplen1" class="example"><strong>Example 11.1  </strong></span>Using sample_n() and anti_join() to create training and test sets, hardcoding size.
 </div>
 
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb38-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb38-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-95"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-95-1.png" alt="Using sample_n() to randomly sample data" width="1344" />
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb39-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb39-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-96"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-96-1.png" alt="Using sample_n() to randomly sample data" width="1344" />
 <p class="caption">
 Figure 11.2: Using sample_n() to randomly sample data
 </p>
@@ -324,11 +324,11 @@ Figure 11.2: Using sample_n() to randomly sample data
 <span id="exm:samplefrac" class="example"><strong>Example 11.2  </strong></span>Using sample_frac() and anti_join() to create training and test sets.
 </div>
 
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb39-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_frac</span>(survey_data, <span class="dt">size =</span> <span class="fl">.8</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb39-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-97"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-97-1.png" alt="Using sample_frac to randomly sample data" width="1344" />
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb40-2" title="2">training &lt;-<span class="st"> </span><span class="kw">sample_frac</span>(survey_data, <span class="dt">size =</span> <span class="fl">.8</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb40-3" title="3">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-98"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-98-1.png" alt="Using sample_frac to randomly sample data" width="1344" />
 <p class="caption">
 Figure 11.3: Using sample_frac to randomly sample data
 </p>
@@ -338,12 +338,12 @@ Figure 11.3: Using sample_frac to randomly sample data
 <span id="exm:samplen2" class="example"><strong>Example 11.3  </strong></span>Using sample_n() and anti_join() to create training and test sets, without hardcoding n.
 </div>
 
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb40-2" title="2">rel_n&lt;-<span class="st"> </span><span class="kw">nrow</span>(survey_data)<span class="op">*</span>.<span class="dv">8</span></a>
-<a class="sourceLine" id="cb40-3" title="3">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> rel_n, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb40-4" title="4">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-99"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-99-1.png" alt="Avoiding Hard Coding n" width="1344" />
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb41-2" title="2">rel_n&lt;-<span class="st"> </span><span class="kw">nrow</span>(survey_data)<span class="op">*</span>.<span class="dv">8</span></a>
+<a class="sourceLine" id="cb41-3" title="3">training &lt;-<span class="st"> </span><span class="kw">sample_n</span>(survey_data, <span class="dt">size =</span> rel_n, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb41-4" title="4">holdout &lt;-<span class="st"> </span><span class="kw">anti_join</span>(survey_data, training)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-100"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-100-1.png" alt="Avoiding Hard Coding n" width="1344" />
 <p class="caption">
 Figure 11.4: Avoiding Hard Coding n
 </p>

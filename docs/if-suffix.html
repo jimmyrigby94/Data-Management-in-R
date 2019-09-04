@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -274,11 +274,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="exm:summariseat2" class="example"><strong>Example 12.4  </strong></span>The code you saw really generates this ugly beast.
 </div>
 
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">centered_data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb47-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-116"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-116-1.png" alt="Unrounded Data" width="1152" />
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">centered_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb48-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-117"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-117-1.png" alt="Unrounded Data" width="1152" />
 <p class="caption">
 Figure 12.6: Unrounded Data
 </p>
@@ -293,12 +293,12 @@ Figure 12.6: Unrounded Data
 <span id="exm:summariseat3" class="example"><strong>Example 12.5  </strong></span>Using summarise_at() to verify the transformation worked appropriately
 </div>
 
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">centered_data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb48-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-4" title="4"><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dt">digits =</span> <span class="dv">5</span>)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-118"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-118-1.png" alt="Formatting Output using mutate_if" width="1152" />
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">centered_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb49-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dt">digits =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-119"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-119-1.png" alt="Formatting Output using mutate_if" width="1152" />
 <p class="caption">
 Figure 12.7: Formatting Output using mutate_if
 </p>

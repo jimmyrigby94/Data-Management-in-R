@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -273,8 +273,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The names of the elements in the list will be appended to my original names to create new columns.</li>
 <li>.s are used as place holders for the vars.</li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-110"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-110-1.png" alt="Original Data" width="960" />
+<div class="figure"><span id="fig:unnamed-chunk-111"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-111-1.png" alt="Original Data" width="960" />
 <p class="caption">
 Figure 12.3: Original Data
 </p>
@@ -284,12 +284,12 @@ Figure 12.3: Original Data
 <span id="exm:mutateat" class="example"><strong>Example 12.2  </strong></span>Using mutate_at() to center cons and perf at 0.
 </div>
 
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">centered_data&lt;-survey_data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(cons, perf), <span class="kw">list</span>(<span class="dt">c =</span> <span class="op">~</span><span class="st"> </span>.<span class="op">-</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
-<a class="sourceLine" id="cb45-3" title="3"></a>
-<a class="sourceLine" id="cb45-4" title="4">centered_data</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-112"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-112-1.png" alt="Centers Variables Defined in vars()" width="960" />
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">centered_data&lt;-survey_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(cons, perf), <span class="kw">list</span>(<span class="dt">c =</span> <span class="op">~</span><span class="st"> </span>.<span class="op">-</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
+<a class="sourceLine" id="cb46-3" title="3"></a>
+<a class="sourceLine" id="cb46-4" title="4">centered_data</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-113"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-113-1.png" alt="Centers Variables Defined in vars()" width="960" />
 <p class="caption">
 Figure 12.4: Centers Variables Defined in vars()
 </p>
@@ -304,11 +304,11 @@ Figure 12.4: Centers Variables Defined in vars()
 <span id="exm:summariseat" class="example"><strong>Example 12.3  </strong></span>Using summarise_at() to verify the transformation worked appropriately
 </div>
 
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">centered_data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb46-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-114"></span>
-<img src="Introduction_to_R_files/figure-html/unnamed-chunk-114-1.png" alt="Creates Summary Table for Variables Defined in vars()" width="1152" />
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">centered_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(cons, perf, cons_c, perf_c), <span class="kw">list</span>(<span class="dt">mean =</span> <span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb47-3" title="3">                                                      <span class="dt">sd =</span> <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-115"></span>
+<img src="Introduction_to_R_files/figure-html/unnamed-chunk-115-1.png" alt="Creates Summary Table for Variables Defined in vars()" width="1152" />
 <p class="caption">
 Figure 12.5: Creates Summary Table for Variables Defined in vars()
 </p>
