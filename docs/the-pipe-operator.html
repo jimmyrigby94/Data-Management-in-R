@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-09-04" />
+<meta name="date" content="2019-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -303,7 +303,7 @@ function2(transformation)
 <a class="sourceLine" id="cb17-5" title="5"><span class="st">  </span><span class="kw">rowwise</span>()<span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb17-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cons =</span> <span class="kw">mean</span>(<span class="kw">c</span>(cons1,cons2,cons3), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">perf =</span> <span class="kw">mean</span>(<span class="kw">c</span>(perf1,perf2,perf3), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb17-7" title="7"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">perf_p =</span> <span class="kw">percent_rank</span>(cons), <span class="dt">perf_cdf =</span> <span class="kw">cume_dist</span>(perf), <span class="dt">lt_50p =</span> <span class="kw">if_else</span>(perf_p<span class="op">&lt;=</span>.<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">perf_p =</span> <span class="kw">percent_rank</span>(perf), <span class="dt">perf_cdf =</span> <span class="kw">cume_dist</span>(perf), <span class="dt">lte_50p =</span> <span class="kw">if_else</span>(perf_p<span class="op">&lt;=</span>.<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))<span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb17-9" title="9"><span class="st">  </span><span class="kw">select</span>(<span class="kw">matches</span>(<span class="st">&quot;[[:alpha:]]$&quot;</span>))</a></code></pre></div>
 <div class="figure"><span id="fig:unnamed-chunk-43"></span>
 <img src="Introduction_to_R_files/figure-html/unnamed-chunk-43-1.png" alt="Replicating Data cleaning with Piping" width="912" />

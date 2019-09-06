@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-09-04" />
+<meta name="date" content="2019-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -385,7 +385,7 @@ Figure 4.15: Adding Rank Variables
 <span id="exm:mutate4" class="example"><strong>Example 4.13  </strong></span>You can also create binary indicator variables using conditional logic (i.e. if_else() statements). These indicator variables are sometimes referred to a dummy coded variables or one hot encoding.
 </div>
 
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">mutate</span>(survey_data, <span class="dt">lt_50p =</span> <span class="kw">if_else</span>(perf_p<span class="op">&lt;=</span>.<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">mutate</span>(survey_data, <span class="dt">lte_50p =</span> <span class="kw">if_else</span>(perf_p<span class="op">&lt;=</span>.<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))</a></code></pre></div>
 <div class="activity">
 <div class="structure">
 if_else(logical_test, value_if_TRUE, value_if_FALSE)

@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-09-04" />
+<meta name="date" content="2019-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,7 +278,7 @@ Figure 8.1: Two Data Frames with a Shared Identfier
 <span id="exm:fulljoin1" class="example"><strong>Example 8.1  </strong></span>Joining the survey data with managerial data, retaining all observations from both data frames. How are duplicate matches handled?
 </div>
 
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">full_join</span>(cons_dat, manager, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span> =<span class="st"> &quot;ResponseId&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">full_join</span>(survey_data, manager, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span> =<span class="st"> &quot;ResponseId&quot;</span>))</a></code></pre></div>
 <div class="figure"><span id="fig:unnamed-chunk-71"></span>
 <img src="Introduction_to_R_files/figure-html/unnamed-chunk-71-1.png" alt="Joining Data Frames using Full_join" width="960" />
 <p class="caption">
@@ -290,14 +290,14 @@ Figure 8.2: Joining Data Frames using Full_join
 <span id="exm:fulljoin2" class="example"><strong>Example 8.2  </strong></span>Changing which data frame is the left-hand df and which data frame is the right-hand df changes the order of the columns but not which observations are kept.
 </div>
 
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">full_join</span>(manager, cons_dat, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span> =<span class="st"> &quot;ResponseId&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">full_join</span>(manager, survey_data, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ResponseId&quot;</span> =<span class="st"> &quot;ResponseId&quot;</span>))</a></code></pre></div>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-73-1.png" width="960" /></p>
 
 <div class="example">
 <span id="exm:fulljoin3" class="example"><strong>Example 8.3  </strong></span>Since the data frames only share one variable with a commmon name. dplyr does give us a lovely message to let us know what the data frames are being joined by. This message will be suppressed from this point forward.
 </div>
 
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">full_join</span>(manager, cons_dat)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">full_join</span>(manager, survey_data)</a></code></pre></div>
 <pre><code>## Joining, by = &quot;ResponseId&quot;</code></pre>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-75-1.png" width="960" /></p>
 </div>

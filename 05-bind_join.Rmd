@@ -90,7 +90,7 @@ ggarrange(bt1, bt2, ncol = 2)
 ```{example, bindc}
 Binding data frames together horizontally.
 ```{r, eval = FALSE}
-bind_cols(cons_dat, perf_dat)
+bind_cols(survey_data, perf_dat)
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=7, fig.cap="Output of bind_cols"}
@@ -139,7 +139,7 @@ ggarrange(rt1, rt2, nrow=2)
 ```{example, bindr}
 Binding data frames together vertically (AKA, stacking).
 ```{r, eval = FALSE}
-bind_rows(cons_dat, perf_dat)
+bind_rows(survey_data, perf_dat)
 ```
 
 ```{r, echo = FALSE, message = FALSE, warning=FALSE, fig.height=2, fig.width=8, fig.cap="Output of bind_rows()"}
@@ -214,7 +214,7 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, fulljoin1}
 Joining the survey data with managerial data, retaining all observations from both data frames. How are duplicate matches handled?
 ```{r, eval = FALSE}
-full_join(cons_dat, manager, by = c("ResponseId" = "ResponseId"))
+full_join(survey_data, manager, by = c("ResponseId" = "ResponseId"))
 ```
 
 ```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE, fig.cap="Joining Data Frames using Full_join"}
@@ -225,7 +225,7 @@ full_join(survey_data, manager, by=c("ResponseId" = "ResponseId"))%>%
 ```{example, fulljoin2}
 Changing which data frame is the left-hand df and which data frame is the right-hand df changes the order of the columns but not which observations are kept.
 ```{r, eval = FALSE}
-full_join(manager, cons_dat, by = c("ResponseId" = "ResponseId"))
+full_join(manager, survey_data, by = c("ResponseId" = "ResponseId"))
 ```
 
 ```{r, fig.width=10, fig.height=3.5, message=FALSE, echo=FALSE, warning=FALSE}
@@ -236,7 +236,7 @@ full_join(manager, survey_data, by=c("ResponseId" = "ResponseId"))%>%
 ```{example, fulljoin3}
 Since the data frames only share one variable with a commmon name. dplyr does give us a lovely message to let us know what the data frames are being joined by. This message will be suppressed from this point forward.
 ```{r, eval = FALSE}
-full_join(manager, cons_dat)
+full_join(manager, survey_data)
 ```
 
 ```{r, fig.width=10, fig.height=3.5, echo=FALSE, warning=FALSE, message=TRUE}
@@ -255,7 +255,7 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, leftjoin1}
 Retaining all observations from the survey data, but only matching observations from the managerial data.
 ```{r, eval = FALSE}
-left_join(cons_dat, manager)
+left_join(survey_data, manager)
 ```
 
 ```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE}
@@ -266,7 +266,7 @@ left_join(survey_data, manager)%>%
 ```{example, leftjoin2}
 left_join() retains different observations depending on which data frame is in the left_hand position and which data frame is in the right-hand right hand position. 
 ```{r, eval = FALSE}
-left_join(manager, cons_dat)
+left_join(manager, survey_data)
 ```
 
 ```{r, fig.width=10, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
@@ -285,7 +285,7 @@ ggarrange(t1,t2, widths = c(2,1))
 ```{example, righjoin1}
 Note that this example produces output that is identical to Example \@ref(exm:leftjoin1). The only difference is the data frame arguments are flipped!
 ```{r, eval = FALSE}
-right_join(manager, cons_dat)
+right_join(manager, survey_data)
 ```
 
 ```{r, fig.width=10, fig.height=2, echo=FALSE, warning=FALSE, message=FALSE, fig_cap}

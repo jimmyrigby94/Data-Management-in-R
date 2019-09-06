@@ -386,7 +386,7 @@ survey_data%>%
 ```{example, mutate4}
 You can also create binary indicator variables using conditional logic (i.e. if_else() statements). These indicator variables are sometimes referred to a dummy coded variables or one hot encoding.
 ```{r, eval=FALSE}
-mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))
+mutate(survey_data, lte_50p = if_else(perf_p<=.5, 1, 0))
 ```
 
 <div class = activity>
@@ -398,7 +398,7 @@ if_else(logical_test, value_if_TRUE, value_if_FALSE)</div>
 </div>
 
 ```{r, echo = FALSE, fig.height=2, fig.width=9.5, fig.cap = "Adding Dummy Variables"}
-mutate(survey_data, lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+mutate(survey_data, lte_50p = if_else(perf_p<=.5, 1, 0))%>%
   mutate_if(is.numeric, round, digits = 2)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
@@ -442,7 +442,7 @@ survey_data%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
   ungroup()%>%
-  mutate(perf_p = percent_rank(cons), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lte_50p = if_else(perf_p<=.5, 1, 0))%>%
   select(matches("[[:alpha:]]$"))
 ```
 
@@ -454,7 +454,7 @@ survey_data<-survey_data%>%
   rowwise()%>%
   mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
   ungroup()%>%
-  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lt_50p = if_else(perf_p<=.5, 1, 0))%>%
+  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lte_50p = if_else(perf_p<=.5, 1, 0))%>%
   select(matches("[[:alpha:]]$"))
 
 survey_data%>%

@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-09-04" />
+<meta name="date" content="2019-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -273,14 +273,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="exm:leftjoin1" class="example"><strong>Example 8.4  </strong></span>Retaining all observations from the survey data, but only matching observations from the managerial data.
 </div>
 
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">left_join</span>(cons_dat, manager)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">left_join</span>(survey_data, manager)</a></code></pre></div>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-78-1.png" width="960" /></p>
 
 <div class="example">
 <span id="exm:leftjoin2" class="example"><strong>Example 8.5  </strong></span>left_join() retains different observations depending on which data frame is in the left_hand position and which data frame is in the right-hand right hand position.
 </div>
 
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">left_join</span>(manager, cons_dat)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">left_join</span>(manager, survey_data)</a></code></pre></div>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-80-1.png" width="960" /></p>
 </div>
             </section>

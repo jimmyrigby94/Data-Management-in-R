@@ -11,10 +11,25 @@
 - This is done intentionally to facilitate critical thinking when applying the principles learned above. 
 - Feel free to use other functions unless explictly told not to do so. 
 
+Your goal is to identfiy the movies that have at least one "star" actor. In this excercise a "star" actor is considered to be an actor who's rating average across all movies they have been in is in the top 10% of the rating distribution. 
+
+To load the data please run the following code. 
+
+```{r, eval = FALSE}
+# Loading tidyverse into memory
+library(tidyverse)
+# Reading csvs directly from github!
+ratings<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/ratings.csv")
+titles<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/titles.csv")
+principal_actors<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/principal_actors.csv")
+names<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/names.csv")
+```
+
+
 <div class = activity>
 <div class = activitytitle>
 Instructions</div>
-**Data Cleaning**
+
 
 1. Load the following .csv's into your environment
 
@@ -22,36 +37,18 @@ Instructions</div>
     - titles.csv
     - principal_actors.csv
     - names.csv
-    
-```{r, eval = FALSE}
-# Loading tidyverse into memory
-library(tidyverse)
 
-# Reading csvs directly from github!
-ratings<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/ratings.csv")
+2. Merge the principal_actors and names data frames retaining all observations from both objects to create a data frame titled cinematic_pros.
 
-read_csv("https://github.com/jimmyrigby94/Data-Management-in-R/blob/master/suppl/titles.csv")
+3. Are we missing movie history for some cinematic professionals? Tests this by using an appropriate function call that identifies observations in names that don't have a matching id variable in principal_actors.
 
-principal_actors<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/principal_actors.csv")
+4. How many movie professionals do not have their acting history principal_actors?
 
-names<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/names.csv")
+5. cinematc_pros contains information on more people than just actors. Create a new object called actors that only contains information about actor-movie combinations where they are explicitly categorized as actors. 
 
-```
-    
-    
-    
-    
-2. Merge the principal_actors and names data frames retaining all observations to create a data frame title cinematic_pros.
+6. Merge the titles and ratings data sets retaining only matching observations in both dataframes to create a new dataframe called movies.
 
-3. Create a new object call actors that only contains information about actor-movie combinations where they are explicitly categorized as actors. 
-
-4. Are there actors that for whom we don't have movie history? 
-
-5. How many actors are missing movie information?
-
-6. Merge the titles and ratings data sets retaining all observations in title to create a new dataframe called movies.
-
-7. Merge actors and movies using your favorite mutating join. 
+7. Merge actors and movies using your favorite mutating join to create an objected titled full_data. 
 
 8. Calculate summary statistics using the actors unique id. Store the below information in an object titled actor_summaries
 
@@ -61,7 +58,7 @@ names<-read_csv("https://raw.githubusercontent.com/jimmyrigby94/Data-Management-
     - Create a cumulative distribution variable for the actors' average ratings.
     
     
-9. Plot the rating cumulative distribution.
+9. Plot the average rating cumulative distribution.
 
 10. Using the actor_summaries and movies data, create a data frame that contains the movie information for the actors with ratings in the top 10%. 
 
