@@ -1,0 +1,88 @@
+# (PART) Additional Excercises {-}
+
+# The Pygmalion Effect: Self-efficacy based intervention
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental_data to answer the following questions. Note that experimental_data is created in the first R chunk. Do **not** overwrite the original data for each question. 
+
+### Data Creation (Do Not Change)
+
+```{r}
+set.seed(783623)
+library(tidyverse)
+experimental_data<-tibble(participant_id = runif(120, min = 10000000, max = 99999999),
+  session = sample(factor(x = c("morning", "midday", "evening"), levels = c("morning", "midday", "evening"), ordered = TRUE), size = 120, replace = TRUE, prob = c(.25, .30, .45)),
+          Administrator = sample(c("UG", "Graduate"), size = 120, c(.5, .5), replace = TRUE))%>%
+  mutate(intervention_finished = case_when(session == "morning" ~ rbinom(n(), 1, .75),
+                               session == "midday" ~ rbinom(n(), 1, .80), 
+                               session == "evening" ~ rbinom(n(), 1, .5)))%>%
+  mutate(memory_task_pre = sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.15, .2, .15, .2, .3)),
+    memory_task_post = case_when(intervention_finished == 1 ~ sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.3, .4, .2, .05, .05)),
+                            intervention_finished == 0 ~ sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.2, .2, .3, .1, .2))))
+```
+
+## Data Manipulation
+
+### Question 1
+Completely deidentify the data by removing participant ids. Identify two ways to do this using the appropriate dplyr function. What is the first column in this new data?
+
+```{r}
+```
+
+
+### Question 2
+Create a data frame that only contains participants that have finished the intervention. How many participants completed the intervention?
+
+```{r}
+```
+
+### Question 3
+Using the original data frame, create a new data frame that stores observations of people who did not complete the intervention **and** performed terribly on the pre test. How many participants meet this criteria?
+
+```{r}
+```
+
+### Question 4
+Using the original data, reate a new variable that contains the number of students in each session. How many students were in the 17th student's session?
+
+```{r}
+```
+
+### Question 5
+Create a new variable that contains a 1 if the student is the student was in the midday session and a 0 otherwise. What is the sum of that column?
+
+```{r}
+```
+
+## Probability with dplyr
+
+### Question 6
+*Count* (hint hint) the number of people who completed and failed to complete your intervention. How many people completed the study.  
+```{r}
+
+```
+
+### Question 7
+Add a column to freq_table that stores the proportion of participants that completed/failed to complete your intervention. What proportion of people failed to complete the study? 
+```{r}
+
+```
+
+### Question 8
+Create a *summary* (hint hint) table that contains the joint frequencies of the memory task post test and the intervention completion. How many people had an excellent post test score AND completed the intervention?
+
+```{r}
+
+```
+
+
+### Question 9
+Using the summary table created in Question 8, covert the joint frequencies into joint probabilities. What is the probability of not completing the intervention and doing adequate on the post test.
+```{r}
+
+```
+
+### Question 10
+Using the summary table created in Question 9, calculate the marginal probabilities for each level of the memory test scores (advanced). 
+```{r}
+
+```
+

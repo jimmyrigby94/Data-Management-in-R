@@ -222,11 +222,15 @@ survey_data%>%
 Using rename() to provide substantive column names.
 
 ```{r, eval=FALSE}
-rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+rename(survey_data, cons1 = Q1.1, cons2 = Q1.2,
+       cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, 
+       perf3 = Q2.3)
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Renamed Data"}
-rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, 
+       cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, 
+       perf3 = Q2.3)%>%
       ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -234,11 +238,15 @@ rename(survey_data, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf
 select() can be used to rename columns as well!
 
 ```{r, eval=FALSE}
-select(survey_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)
+select(survey_data, ResponseId, cons1 = Q1.1, 
+       cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, 
+       perf2 = Q2.2, perf3 = Q2.3)
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=8}
-select(survey_data, ResponseId, cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+select(survey_data, ResponseId, cons1 = Q1.1, 
+       cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, 
+       perf2 = Q2.2, perf3 = Q2.3)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
 
@@ -293,12 +301,15 @@ survey_data%>%
 Using mutate() and arithmetic operators to create scale scores with missing data.
 
 ```{r, eval=FALSE}
-mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)
+mutate(survey_data, cons = (cons1+cons2+cons3)/3, 
+       perf = (perf1+perf2+perf3)/3)
 ```
 
 
 ```{r, echo = FALSE, fig.height=2, fig.width=8, fig.cap="Arithmatic Scale Scores"}
-mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%>%
+mutate(survey_data, 
+       cons = (cons1+cons2+cons3)/3, 
+       perf = (perf1+perf2+perf3)/3)%>%
   mutate_if(is.numeric, round, digits = 2)%>%
     ggtexttable(theme = ttheme(base_style = "lBlueWhite"))
 ```
@@ -309,7 +320,14 @@ mutate(survey_data, cons = (cons1+cons2+cons3)/3, perf = (perf1+perf2+perf3)/3)%
 Using mutate() and rowwise() to create scale scores while handling missing data (use with caution).
 
 ```{r, eval=FALSE}
-ungroup(mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE)))
+ungroup(
+  mutate(rowwise(survey_data),
+         cons = mean(c(cons1,cons2,cons3),
+                     na.rm = TRUE), 
+         perf = mean(c(perf1,perf2,perf3), 
+                     na.rm = TRUE)
+         )
+  )
 ```
 
 
@@ -333,7 +351,8 @@ survey_data<-mutate(rowwise(survey_data), cons = mean(c(cons1,cons2,cons3), na.r
 While the above examples illustrate composites, you can also create normalize variables (i.e., percents).
 
 ```{r, eval=FALSE}
-mutate(survey_data, perf_p = percent_rank(perf), perf_cdf = cume_dist(perf))
+mutate(survey_data, perf_p = percent_rank(perf),
+       perf_cdf = cume_dist(perf))
 ```
 
 ```{r, echo = FALSE, fig.height=2, fig.width=9, fig.cap="Adding Rank Variables"}
@@ -353,8 +372,10 @@ p1<-survey_data%>%
   distinct()%>%
   ggplot(aes(x = perf, y = perf_p))+
   geom_density(stat = "identity", fill = "blue", color = "white")+
-  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
-  scale_y_continuous(name = "p(Performance< x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  scale_x_continuous(name = "Performance", breaks = 1:5, 
+                     labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance< x)", breaks = c(0, .25, .5, .75, 1), 
+                     labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
   labs(title = "Plot of percent_ranks() Output")
   
 p2<-survey_data%>%
@@ -362,8 +383,10 @@ p2<-survey_data%>%
   distinct()%>%
   ggplot(aes(x = perf, y = perf_cdf))+
   geom_density(stat = "identity", fill = "blue", color = "white")+
-  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
-  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  scale_x_continuous(name = "Performance", breaks = 1:5, 
+                     labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", 
+                     breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
   labs(title = "Plot of cume_dist() Output")
 
 ggarrange(p1, p2)
@@ -376,8 +399,10 @@ ggarrange(p1, p2)
 survey_data%>%
   ggplot(aes(x = perf))+
   geom_density(stat = "ecdf", fill = "blue", color = "white")+
-  scale_x_continuous(name = "Performance", breaks = 1:5, labels = 1:5, limits = c(1, 5))+
-  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
+  scale_x_continuous(name = "Performance", breaks = 1:5, 
+                     labels = 1:5, limits = c(1, 5))+
+  scale_y_continuous(name = "p(Performance<= x)", breaks = c(0, .25, .5, .75, 1), 
+                     labels = paste0(c(0, .25, .5, .75, 1)*100, "%"))+
   labs(title = "Plot of cume_dist() Output")
 ```
 
@@ -438,11 +463,15 @@ Using pipe operator (%>%) to redo what we have done thus far.
 survey_data%>%
   filter(Status == 0)%>%
   select(-Status, -last_name)%>%
-  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3, perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
+  rename(cons1 = Q1.1, cons2 = Q1.2, cons3 = Q1.3,
+         perf1 = Q2.1, perf2 = Q2.2, perf3 = Q2.3)%>%
   rowwise()%>%
-  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
+  mutate(cons = mean(c(cons1,cons2,cons3), na.rm = TRUE), 
+         perf = mean(c(perf1,perf2,perf3), na.rm = TRUE))%>%
   ungroup()%>%
-  mutate(perf_p = percent_rank(perf), perf_cdf = cume_dist(perf), lte_50p = if_else(perf_p<=.5, 1, 0))%>%
+  mutate(perf_p = percent_rank(perf), 
+         perf_cdf = cume_dist(perf), 
+         lte_50p = if_else(perf_p<=.5, 1, 0))%>%
   select(matches("[[:alpha:]]$"))
 ```
 
@@ -669,8 +698,10 @@ Adding arrange() to our summary table
 ```{r, eval = FALSE}
 survey_data%>%
   group_by(Manager)%>%
-  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
-            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), 
+            team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), 
+            sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(team_cons)
 ```
 
@@ -690,16 +721,20 @@ Sorting the summary table in descending order with desc() and arrange()
 ```{r, eval = FALSE}
 survey_data%>%
   group_by(Manager)%>%
-  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
-            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), 
+            team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), 
+            sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(desc(team_cons))
 ```
 
 ```{r, echo = FALSE, fig.height=1, fig.width=8, fig.cap="Sorting in Descending Order"}
 survey_data%>%
   group_by(Manager)%>%
-  summarise(team_cons = mean(cons, na.rm = TRUE), team_perf = mean(perf, na.rm = TRUE),
-            sd_cons = sd(cons, na.rm = TRUE), sd_perf = sd(perf, na.rm = TRUE))%>%
+  summarise(team_cons = mean(cons, na.rm = TRUE), 
+            team_perf = mean(perf, na.rm = TRUE),
+            sd_cons = sd(cons, na.rm = TRUE), 
+            sd_perf = sd(perf, na.rm = TRUE))%>%
   arrange(desc(team_cons))%>%
   mutate_if(is.numeric, round, digits = 2)%>%
   ggtexttable(theme = ttheme(base_style = "lBlueWhite"))

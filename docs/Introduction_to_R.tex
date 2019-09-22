@@ -1,0 +1,3773 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Psyc 6300: Data Management},
+            pdfauthor={James Rigby},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Psyc 6300: Data Management}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{James Rigby}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-09-21}
+
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+\includegraphics[width=19.58in]{suppl/cover}
+
+\hypertarget{prerequisites}{%
+\section{Prerequisites}\label{prerequisites}}
+
+\begin{itemize}
+\item
+  This book assumes that you are familiar with the basics of the R language.
+\item
+  Thus, we will not discuss basic arithmatic operators, common functions (i.e., mean), or data structures.
+\item
+  Please review the material on base R if you are still uncomfortable with the foundations of the language.
+\item
+  Datacamp offers a great set of courses (linked \href{https://www.datacamp.com/courses/free-introduction-to-r}{here}) that will help get you up to speed.
+\item
+  If you have yet to do so please install and load tidyverse by running the following code
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Install tidyverse}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{# Load tidyverse}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{supplemental-resources}{%
+\section{Supplemental Resources}\label{supplemental-resources}}
+
+\begin{itemize}
+\tightlist
+\item
+  This is by no means the only resource to learn data management skills in R.
+\item
+  My aim is to provide a somewhat biased overview of how data management should be done in R.
+\item
+  I draw heavily on packages from the tidyverse because they result in type consistent output and incorporate piping making them easier to use and interpret when compared to their base R counterparts.
+\item
+  Here are additional resources that may provide different perspectives or additional insight into data management in R.
+\end{itemize}
+
+Supplemental Resources
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf}{Dplyr Cheatsheet}
+\item
+  \href{https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html}{Dplyr Vignette}
+\item
+  \href{http://r4ds.had.co.nz/transform.html}{R For Data Scientists: Chapter 5}
+\item
+  \href{https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial}{DataCamp: Data Manipulation with Dplyr}
+\item
+  \href{https://www.statmethods.net/management/variables.html}{Quick R: Data Management in Base R}
+\end{itemize}
+
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+\includegraphics[width=19.03in]{suppl/DataCamp}
+
+This class is supported by DataCamp, the most intuitive learning platform for data science. Learn R, Python and SQL the way you learn best through a combination of short expert videos and hands-on-the-keyboard exercises. Take over 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalised feedback on every exercise.
+
+\hypertarget{material-overview}{%
+\chapter{Material Overview}\label{material-overview}}
+
+If you are taking PSYC 6300 with me, this is the lecture plan for the classes covering data management.
+
+Day 1: Basic dplyr
+
+\begin{itemize}
+\tightlist
+\item
+  Part 1: What is dplyr?
+\item
+  Part 2: Core dplyr Functions
+\item
+  Break
+\item
+  Activity 1
+\item
+  Part 3: Bind and Join Functions
+\item
+  Break
+\item
+  Activity 2
+\end{itemize}
+
+Day 2: Advanced dplyr and tidyr
+
+\begin{itemize}
+\tightlist
+\item
+  Part 1: Functions for Extracting Observations
+\item
+  Part 2: Repeated Operations
+\item
+  Break
+\item
+  Activity 1
+\item
+  Part 3: spread() and gather()
+\end{itemize}
+
+\hypertarget{part-introduction-to-dplyr}{%
+\part{Introduction to Dplyr}\label{part-introduction-to-dplyr}}
+
+\hypertarget{what-is-dplyr}{%
+\chapter{What is dplyr?}\label{what-is-dplyr}}
+
+\begin{itemize}
+\tightlist
+\item
+  dplyr is a package that tries to provide a set of functions that utilizes a consistent design, philosophy, grammar, and data structure
+\item
+  This consistency increases usability and interpretability of code
+\item
+  It is consistently updated and supported by members of the R-Core team and creaters of RStudio
+\item
+  It is the most commonly used to manipulate data within the R program
+\end{itemize}
+
+\hypertarget{why-is-data-manipulation-important}{%
+\section{Why is Data Manipulation Important?}\label{why-is-data-manipulation-important}}
+
+\hypertarget{example-1-survey-data}{%
+\subsection{Example 1: Survey Data}\label{example-1-survey-data}}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{whats-wrong-with-the-survey-data}{%
+\subsection{What's Wrong With the Survey Data?}\label{whats-wrong-with-the-survey-data}}
+
+\begin{itemize}
+\tightlist
+\item
+  Some of the meta-data collected by the survey platform is not meaningful.
+\item
+  It is unclear what the data (i.e., Q1.1) is referring to.
+\item
+  Items that start with Q1 and Q2 are associated with unique scales that need to be formed into composites.
+\item
+  Some observations were created by you during pilot testing and should not be included.
+\end{itemize}
+
+\hypertarget{this-isnt-relevant-to-me---my-research-is-experimental}{%
+\section{This Isn't Relevant to Me - My Research is Experimental!}\label{this-isnt-relevant-to-me---my-research-is-experimental}}
+
+\hypertarget{example-2-experimental-data}{%
+\subsection{Example 2: Experimental Data}\label{example-2-experimental-data}}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\hypertarget{whats-wrong-with-the-experimental-data}{%
+\subsection{What's Wrong With the Experimental Data?}\label{whats-wrong-with-the-experimental-data}}
+
+\begin{itemize}
+\tightlist
+\item
+  Some of your participants figured out the purpose of your expiriment making their responses invalid.
+\item
+  Your pre and post scale was miscalibrated and is .3 higher than it should be.
+\item
+  Your pre and post measures are stored in seperate data files.
+\item
+  Making matters more difficult, you have 17\% participant attrition so you can't just copy and paste data frames together.
+\end{itemize}
+
+\hypertarget{take-aways}{%
+\section{Take-Aways}\label{take-aways}}
+
+Why Does Data Mangaement Matter?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Data is messy, no matter what paradigm you work in.
+\item
+  Models have different structuring requirements.
+\item
+  Knowing how to use a robust set of tools for data management will save you time.
+\end{enumerate}
+
+\hypertarget{core-dplyr-functions}{%
+\chapter{Core dplyr Functions}\label{core-dplyr-functions}}
+
+Core dplyr Functions for Data Manipulation
+
+\begin{itemize}
+\tightlist
+\item
+  filter(): select rows based on some logical condition
+\item
+  select(): select columns based on their names
+\item
+  rename(): rename columns
+\item
+  mutate(): add new variables that are functions of old variables
+\item
+  group\_by(): perform grouped operations
+\item
+  summarise(): create summary statistics for a group
+\item
+  arrange(): reorder rows based on some column
+\end{itemize}
+
+\hypertarget{form}{%
+\section{dplyr Function Structure}\label{form}}
+
+All of the core dplyr functions take the following form:
+
+function(data, transformation, \ldots{})
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  function: the dplyr function that you want to use
+\item
+  data: the data frame or tibble you want to use the function on
+\item
+  transformation: the transformation that you want to perform
+\item
+  \ldots{}: other transformations you want to perform
+\end{enumerate}
+
+\hypertarget{filter}{%
+\section{filter(): Retaining Rows}\label{filter}}
+
+\begin{itemize}
+\tightlist
+\item
+  This function allows you to subset the data frame based on a logical test.
+\item
+  Simply put, it allows you to choose which rows to keep.
+\end{itemize}
+
+\hypertarget{filter-structure}{%
+\subsection{filter() Structure}\label{filter-structure}}
+
+filter(data, logical\_test, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  Remember, all dplyr functions take the same general form (See section \ref{form}).
+\item
+  The first argument specifies the data frame that we are manipulating.
+\item
+  The second argument specifies the transformation we want to preform.
+\item
+  In this case transformation argument uses a logical test to define the observations we would like to keep.
+\item
+  Logical tests can explicitly use logical operators (i.e., == or \%in\%).
+\item
+  Functions that return logical values can also be used (i.e., is.na()).
+\item
+  Multiple logical tests can be provided as indicated by the ellipse.
+\item
+  If tests are separated by a comma or ampersand, both tests must be TRUE for the observation to be retained.
+\item
+  If tests are separated by a pipe (i.e., \textbar{}), either argument can be satisfied for the observation to be retained
+\end{itemize}
+
+\hypertarget{using-filter}{%
+\subsection{Using filter()}\label{using-filter}}
+
+\begin{itemize}
+\tightlist
+\item
+  Remember the survey data?
+\item
+  Some observations were created when the survey was being tested.
+\item
+  These observations are not informative and should be removed.
+\item
+  Luckily, the survey platform records whether a response is from a participant or a tester in the Status column (0 = participant, 8 = tester).
+\item
+  Using filter(), we can easily retain the real observations while excluding rows associated with the pilot test.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-9-1.pdf}
+\caption{\label{fig:unnamed-chunk-9}Raw Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:filter1}{}{\label{exm:filter1} }Using filter to retain non-pilot observations (Status = 0).
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{filter}\NormalTok{(survey_data, Status }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-11-1.pdf}
+\caption{\label{fig:unnamed-chunk-11}Filtered Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:filter2}{}{\label{exm:filter2} }A less practical example that retains observations that responded to Q1.1 OR Q1.3 with 5
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{filter}\NormalTok{(survey_data, Q1}\FloatTok{.1} \OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{|}\StringTok{ }\NormalTok{Q1}\FloatTok{.3} \OperatorTok{==}\StringTok{ }\DecValTok{5}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-13-1.pdf}
+\caption{\label{fig:unnamed-chunk-13}Participants Who Responded 5 to questions Q1.1 OR Q1.3}
+\end{figure}
+
+\hypertarget{select-choosing-columns}{%
+\section{select(): Choosing Columns}\label{select-choosing-columns}}
+
+\begin{itemize}
+\tightlist
+\item
+  Often when cleaning data, we only want to work with a subset of columns.
+\item
+  select() is used to retain or remove specific columns.
+\end{itemize}
+
+\hypertarget{select-structure}{%
+\subsection{select() Structure}\label{select-structure}}
+
+select(data, cols\_to\_keep, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  Again, select() takes the general dplyr form (See section \ref{form}).
+\item
+  The first argument specifies the data frame that we are manipulating.
+\item
+  The second argument specifies the transformation we want to preform.
+\item
+  In this case, the transformation argument specifies a column or columns we would like to keep, separated by commas.
+\item
+  If you want to keep a range of columns you can specify the first column and last column of the range with a colon.
+\item
+  Sometimes, it is more efficient to drop then select columns.
+\item
+  To remove columns, simply include a minus sign in front of the column name.
+\item
+  select() can also be used to reorder columns - the columns will be ordered how you type them.
+\end{itemize}
+
+\hypertarget{useful-helper-functions-for-select}{%
+\subsection{Useful Helper Functions for select()}\label{useful-helper-functions-for-select}}
+
+\begin{itemize}
+\tightlist
+\item
+  starts\_with() used in tandem select() allows you to keep variables that share a stem.
+\item
+  ends\_with() used in tandem with select() allows you to keep variables that share a suffix.
+\item
+  contains() used in tandem with select() allows you to keep variables that share some common string anywhere in their structure.
+\item
+  These can be used along with \href{https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html}{regular expressions} to automate large portions of data cleaning.
+\item
+  Helper functions can speed up the data cleaning process while keeping your code easy to interpret.
+\end{itemize}
+
+\hypertarget{using-select}{%
+\subsection{Using select()}\label{using-select}}
+
+\begin{itemize}
+\tightlist
+\item
+  Again, this function helps us solve two issues in the survey data example.
+\item
+  The survey platform created a column of data for the participant's last name that is completely empty.
+\item
+  Furthermore, the Status column is no longer informative because all the values should equal 0.
+\item
+  We can remove this column entirely using the select function.
+\item
+  All of the following examples complete the same task using different methods although some are more efficient than others!
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf}
+\caption{\label{fig:unnamed-chunk-14}Most Recent Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:select1}{}{\label{exm:select1} }Using select() by specifying columns to retain.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(survey_data, ResponseId, Q1}\FloatTok{.1}\NormalTok{, Q1}\FloatTok{.2}\NormalTok{, Q1}\FloatTok{.3}\NormalTok{, Q2}\FloatTok{.1}\NormalTok{, Q2}\FloatTok{.2}\NormalTok{, Q2}\FloatTok{.3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf}
+\caption{\label{fig:unnamed-chunk-16}Selected Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:select2}{}{\label{exm:select2} }Using select() by specifying columns to omit.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(survey_data, }\OperatorTok{-}\NormalTok{Status, }\OperatorTok{-}\NormalTok{last_name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-18-1.pdf}
+\caption{\label{fig:unnamed-chunk-18}Dropped Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:select3}{}{\label{exm:select3} }Using select() by specifying range of columns.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(survey_data, ResponseId, Q1}\FloatTok{.1}\OperatorTok{:}\NormalTok{Q2}\FloatTok{.3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-20-1.pdf}
+\caption{\label{fig:unnamed-chunk-20}Range of Variables Selected}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:select4}{}{\label{exm:select4} }Using select() with helper functions.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(survey_data, }\KeywordTok{contains}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\DataTypeTok{ignore.case =} \OtherTok{TRUE}\NormalTok{), }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"Q"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-22-1.pdf}
+\caption{\label{fig:unnamed-chunk-22}Select with Helper Functions}
+\end{figure}
+
+\hypertarget{rename-renaming-variables}{%
+\section{rename(): Renaming Variables}\label{rename-renaming-variables}}
+
+\begin{itemize}
+\tightlist
+\item
+  This function is very self explanatory - it renames columns (variables)
+\end{itemize}
+
+\hypertarget{rename-structure}{%
+\subsection{rename() Structure}\label{rename-structure}}
+
+rename(data, new\_name = old\_name, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  Following the general dplyr form (See section \ref{form}), the first argument specifies the data you are manipulating.
+\item
+  In this case the transformation arguments take the form of an equation, where the new column name is on the left of the equals sign and the old column name is on the right.
+\item
+  Multiple variables can be renamed within one rename call, as indicated by the ellipse.
+\end{itemize}
+
+\hypertarget{using-rename}{%
+\subsection{Using rename()}\label{using-rename}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given that Q1.x and Q2.x are not meaningful stems, we should rename the items so that they are interpretable.
+\item
+  It turns out that items that are labeled with the prefix ``Q1'' measured conscientiousness and items that are measured Q2 measure job performance.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-23-1.pdf}
+\caption{\label{fig:unnamed-chunk-23}Most Recent Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:rename1}{}{\label{exm:rename1} }Using rename() to provide substantive column names.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rename}\NormalTok{(survey_data, }\DataTypeTok{cons1 =}\NormalTok{ Q1}\FloatTok{.1}\NormalTok{, }\DataTypeTok{cons2 =}\NormalTok{ Q1}\FloatTok{.2}\NormalTok{,}
+       \DataTypeTok{cons3 =}\NormalTok{ Q1}\FloatTok{.3}\NormalTok{, }\DataTypeTok{perf1 =}\NormalTok{ Q2}\FloatTok{.1}\NormalTok{, }\DataTypeTok{perf2 =}\NormalTok{ Q2}\FloatTok{.2}\NormalTok{, }
+       \DataTypeTok{perf3 =}\NormalTok{ Q2}\FloatTok{.3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf}
+\caption{\label{fig:unnamed-chunk-25}Renamed Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:rename2}{}{\label{exm:rename2} }select() can be used to rename columns as well!
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(survey_data, ResponseId, }\DataTypeTok{cons1 =}\NormalTok{ Q1}\FloatTok{.1}\NormalTok{, }
+       \DataTypeTok{cons2 =}\NormalTok{ Q1}\FloatTok{.2}\NormalTok{, }\DataTypeTok{cons3 =}\NormalTok{ Q1}\FloatTok{.3}\NormalTok{, }\DataTypeTok{perf1 =}\NormalTok{ Q2}\FloatTok{.1}\NormalTok{, }
+       \DataTypeTok{perf2 =}\NormalTok{ Q2}\FloatTok{.2}\NormalTok{, }\DataTypeTok{perf3 =}\NormalTok{ Q2}\FloatTok{.3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:rename3}{}{\label{exm:rename3} }rename() may be one area where dplyr is lacking in efficiency. Here is the base R code to do the same task!
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{colnames}\NormalTok{(survey_data)<-}\KeywordTok{c}\NormalTok{(}\StringTok{"ResponseId"}\NormalTok{, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"cons"}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{), }\KeywordTok{paste0}\NormalTok{(}\StringTok{"perf"}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{))}
+\NormalTok{survey_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-29-1.pdf}
+\caption{\label{fig:unnamed-chunk-29}Renamed Data Using Base R}
+\end{figure}
+
+\hypertarget{mutate-creating-new-variables}{%
+\section{mutate(): Creating New Variables}\label{mutate-creating-new-variables}}
+
+\begin{itemize}
+\tightlist
+\item
+  mutate() creates new variables that are defined by some function or operation.
+\end{itemize}
+
+\hypertarget{mutate-structure}{%
+\subsection{mutate() Structure}\label{mutate-structure}}
+
+mutate(data, new\_var = function, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  Again, following the general dplyr form (See section \ref{form}), the first argument specifies the data you are manipulating.
+\item
+  The next argument specifies the transformation, which in mutate() defines a new variable.
+\item
+  To do this, you specify a formula that specifies the name of a new variable on the left of the equals sign and a function that creates the new variable on the right.
+\item
+  In this notation, function refers to any function or operator that creates a vector of output that is as long as the data frame \emph{or} has a single value.
+\item
+  Multiple new variables can be created within one mutate() call, but should be separated by commas.
+\end{itemize}
+
+\hypertarget{helper-functions}{%
+\subsection{Helper Functions}\label{helper-functions}}
+
+\begin{itemize}
+\tightlist
+\item
+  rowwise(): Applies functions across columns within rows.
+\item
+  ungroup(): Undoes grouping functions such as rowwise() and group\_by() (group\_by() will be discussed in Section \ref{group})
+\end{itemize}
+
+\hypertarget{using-mutate}{%
+\subsection{Using mutate()}\label{using-mutate}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given that there are two sub scales (i.e., conscientiousness and performance) within our survey data, we can create scale scores for these sets of items.
+\item
+  Typically, this is done by averaging the item level data.
+\item
+  mutate() provides an easy way to do this!
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-30-1.pdf}
+\caption{\label{fig:unnamed-chunk-30}Most Recent Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:mutate1}{}{\label{exm:mutate1} }Using mutate() and arithmetic operators to create scale scores with missing data.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mutate}\NormalTok{(survey_data, }\DataTypeTok{cons =}\NormalTok{ (cons1}\OperatorTok{+}\NormalTok{cons2}\OperatorTok{+}\NormalTok{cons3)}\OperatorTok{/}\DecValTok{3}\NormalTok{, }
+       \DataTypeTok{perf =}\NormalTok{ (perf1}\OperatorTok{+}\NormalTok{perf2}\OperatorTok{+}\NormalTok{perf3)}\OperatorTok{/}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-32-1.pdf}
+\caption{\label{fig:unnamed-chunk-32}Arithmatic Scale Scores}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:mutate2}{}{\label{exm:mutate2} }Using mutate() and rowwise() to create scale scores while handling missing data (use with caution).
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ungroup}\NormalTok{(}
+  \KeywordTok{mutate}\NormalTok{(}\KeywordTok{rowwise}\NormalTok{(survey_data),}
+         \DataTypeTok{cons =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(cons1,cons2,cons3),}
+                     \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+         \DataTypeTok{perf =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(perf1,perf2,perf3), }
+                     \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{         )}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-34-1.pdf}
+\caption{\label{fig:unnamed-chunk-34}Rowwise Scale Scores}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Two new functions are used in the code below.
+\item
+  percent\_rank() calculates the percentage of observations \emph{less than} an observation.
+\item
+  cume\_dist() calculates the percentage of obseravtions \emph{less than or equal to} an observation.
+\end{itemize}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:mutate3}{}{\label{exm:mutate3} }While the above examples illustrate composites, you can also create normalize variables (i.e., percents).
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mutate}\NormalTok{(survey_data, }\DataTypeTok{perf_p =} \KeywordTok{percent_rank}\NormalTok{(perf),}
+       \DataTypeTok{perf_cdf =} \KeywordTok{cume_dist}\NormalTok{(perf))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-36-1.pdf}
+\caption{\label{fig:unnamed-chunk-36}Adding Rank Variables}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  This information can be used to provide useful summarise of distributions.
+\item
+  I demonstrate how this can be visualized below.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1<-survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(perf, perf_p, perf_cdf)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ perf, }\DataTypeTok{y =}\NormalTok{ perf_p))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Performance"}\NormalTok{, }\DataTypeTok{breaks =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }
+                     \DataTypeTok{labels =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"p(Performance< x)"}\NormalTok{, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{), }
+                     \DataTypeTok{labels =} \KeywordTok{paste0}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\DecValTok{100}\NormalTok{, }\StringTok{"%"}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of percent_ranks() Output"}\NormalTok{)}
+  
+\NormalTok{p2<-survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(perf, perf_p, perf_cdf)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ perf, }\DataTypeTok{y =}\NormalTok{ perf_cdf))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Performance"}\NormalTok{, }\DataTypeTok{breaks =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }
+                     \DataTypeTok{labels =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"p(Performance<= x)"}\NormalTok{, }
+                     \DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{paste0}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\DecValTok{100}\NormalTok{, }\StringTok{"%"}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of cume_dist() Output"}\NormalTok{)}
+
+\KeywordTok{ggarrange}\NormalTok{(p1, p2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that, the cume\_dist() can be visulized from raw data (without feature engineering) by using the stat\_ecdf
+\item
+  ecdf stands for empirical cumulative density function
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ perf))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"ecdf"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Performance"}\NormalTok{, }\DataTypeTok{breaks =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }
+                     \DataTypeTok{labels =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"p(Performance<= x)"}\NormalTok{, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{), }
+                     \DataTypeTok{labels =} \KeywordTok{paste0}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.25}\NormalTok{, }\FloatTok{.5}\NormalTok{, }\FloatTok{.75}\NormalTok{, }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\DecValTok{100}\NormalTok{, }\StringTok{"%"}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of cume_dist() Output"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:mutate4}{}{\label{exm:mutate4} }You can also create binary indicator variables using conditional logic (i.e.~if\_else() statements). These indicator variables are sometimes referred to a dummy coded variables or one hot encoding.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mutate}\NormalTok{(survey_data, }\DataTypeTok{lte_50p =} \KeywordTok{if_else}\NormalTok{(perf_p}\OperatorTok{<=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+if\_else(logical\_test, value\_if\_TRUE, value\_if\_FALSE)
+
+\begin{itemize}
+\tightlist
+\item
+  Used to conditionally operate on dataframe
+\item
+  Uses two different values or algorithms, depending on a logical test
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-40-1.pdf}
+\caption{\label{fig:unnamed-chunk-40}Adding Dummy Variables}
+\end{figure}
+
+\hypertarget{the-pipe-operator}{%
+\section{The Pipe Operator (\%\textgreater{}\%)}\label{the-pipe-operator}}
+
+\begin{itemize}
+\tightlist
+\item
+  Notice that while cleaning the survey data we have been typing the data argument multiple times.
+\item
+  Furthermore, using rowwise(), ungroup(), and mutate() all together makes our code difficult to read!
+\item
+  Wouldn't it be nice if there was some shorthand way to link functions together?
+\item
+  Lucky for us there is, and it is call the pipe operator.
+\item
+  The pipe operator carries forward the output of the previous function and uses it in the function that follows.
+\item
+  This allows us to string together multiple functions without retyping the data argument.
+\end{itemize}
+
+\hypertarget{structure-of-the-pipe-operator}{%
+\subsection{Structure of the Pipe Operator}\label{structure-of-the-pipe-operator}}
+
+function1(data, transformation, \ldots{})\%\textgreater{}\%
+function2(transformation)
+
+\begin{itemize}
+\tightlist
+\item
+  The pipe operator carriers forward the output of the previous call and uses it in the subsequent function
+\item
+  Thus, following any call with \%\textgreater{}\% will carry forward the output into the subsequent function
+\item
+  The pipe can be used with base R by using a period as a place holder for the data frame.
+\end{itemize}
+
+\hypertarget{using-the-pipe-operator}{%
+\subsection{Using the pipe operator}\label{using-the-pipe-operator}}
+
+\begin{itemize}
+\tightlist
+\item
+  Let's use the pipe operator to make our code more readable
+\end{itemize}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:pipe1}{}{\label{exm:pipe1} }Using pipe operator (\%\textgreater{}\%) to redo what we have done thus far.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Status }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{Status, }\OperatorTok{-}\NormalTok{last_name)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{cons1 =}\NormalTok{ Q1}\FloatTok{.1}\NormalTok{, }\DataTypeTok{cons2 =}\NormalTok{ Q1}\FloatTok{.2}\NormalTok{, }\DataTypeTok{cons3 =}\NormalTok{ Q1}\FloatTok{.3}\NormalTok{,}
+         \DataTypeTok{perf1 =}\NormalTok{ Q2}\FloatTok{.1}\NormalTok{, }\DataTypeTok{perf2 =}\NormalTok{ Q2}\FloatTok{.2}\NormalTok{, }\DataTypeTok{perf3 =}\NormalTok{ Q2}\FloatTok{.3}\NormalTok{)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rowwise}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{cons =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(cons1,cons2,cons3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+         \DataTypeTok{perf =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(perf1,perf2,perf3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{perf_p =} \KeywordTok{percent_rank}\NormalTok{(perf), }
+         \DataTypeTok{perf_cdf =} \KeywordTok{cume_dist}\NormalTok{(perf), }
+         \DataTypeTok{lte_50p =} \KeywordTok{if_else}\NormalTok{(perf_p}\OperatorTok{<=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\KeywordTok{matches}\NormalTok{(}\StringTok{"[[:alpha:]]$"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-43-1.pdf}
+\caption{\label{fig:unnamed-chunk-43}Replicating Data cleaning with Piping}
+\end{figure}
+
+\hypertarget{group}{%
+\section{group\_by(): Grouping Data Frames}\label{group}}
+
+\begin{itemize}
+\tightlist
+\item
+  Sometimes, when working with data we want to perform some operation within a grouping variable.
+\item
+  For example, the participants responding to this survey report to different managers.
+\item
+  We may be interested in creating a new column of data that contains the work-groups' average performance.
+\item
+  group\_by() can be used in tandem with mutate() to apply a function within columns clustering on groups
+\end{itemize}
+
+\hypertarget{group_by-structure}{%
+\subsection{group\_by Structure}\label{group_by-structure}}
+
+group\_by(data, grouping\_variable, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  group\_by() takes the common dplyr structure - define the data and then define the transformation.
+\item
+  The transformation in this case simply defines the grouping variable.
+\item
+  If multiple grouping variables are provided, the data is grouped by unique combinations of all grouping variables.
+\item
+  Note that this function is similar to rowwise() in that no physical change happens to the data - it only affects how later functions act the object.
+\item
+  Because of this, group\_by() is rarely (dare I say never) used without being accompanied by other functions such as mutate() or summarise() (to be covered in Section \ref{sum})
+\item
+  Also, just like rowwise(), in order return the data set to its ungrouped form it is necessary to call the ungroup() function after finishing grouped manipulations.
+\end{itemize}
+
+\hypertarget{using-group_by}{%
+\subsection{Using group\_by()}\label{using-group_by}}
+
+\begin{itemize}
+\tightlist
+\item
+  The survey data has been joined with information regarding employees managers.
+\item
+  We can now calculate each employee's team's average performance, conscientiousness, and the number of teammates who responded in the data.
+\item
+  While I only illustrate how to use group\_by() with the pipe operator, if for some reason you wanted to use a single group\_by() call instead of a chain, it can be done.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-45-1.pdf}
+\caption{\label{fig:unnamed-chunk-45}Cleaned Data with Manager Info}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:groupby1}{}{\label{exm:groupby1} }Using group\_by() to create team level variables and n() to create group size variables.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Manager)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{team_cons =} \KeywordTok{mean}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{team_size =} \KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-47-1.pdf}
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:groupby2}{}{\label{exm:groupby2} }Using group\_by() to create team level cumulative distribution.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Manager)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{team_cdf =} \KeywordTok{cume_dist}\NormalTok{(perf))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf}
+\caption{\label{fig:unnamed-chunk-49}Within-team CDF}
+\end{figure}
+
+The CDF can be used to visulize distributional differences across groups as well.
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-50-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:addcount}{}{\label{exm:addcount} }add\_count() is a nice alternative, to the group\_by()\%\textgreater{}\%mutate() chain if your goal is to simply add a grouped frequency variables to the data frame.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{add_count}\NormalTok{(Manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-52-1.pdf}
+\caption{\label{fig:unnamed-chunk-52}Alternative method for creating count variables}
+\end{figure}
+
+\hypertarget{sum}{%
+\section{summarise(): Creating Data Summaries}\label{sum}}
+
+\begin{itemize}
+\tightlist
+\item
+  While creating grouped variables is sometimes necessary for analyses, often we simply want to describe properties of our data.
+\item
+  summarise() is especially useful for this because it applies a function across rows of data to create a single value.
+\item
+  If the data is grouped, there is a value returned for each group.
+\end{itemize}
+
+\hypertarget{summarise-structure}{%
+\subsection{summarise() Structure}\label{summarise-structure}}
+
+summarise(data, summary\_var = function, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  Following the consistent dplyr structure, summarise() requires that you first specify the data and then a transformation.
+\item
+  The transformation in summarise takes a similar form as mutate().
+\item
+  The left hand side of the equation defines the name of a new summary variable and the right hand side defines a function or operation.
+\item
+  The function should return a single value (i.e., mean() or sd()).
+\end{itemize}
+
+\hypertarget{using-summarise}{%
+\subsection{Using summarise()}\label{using-summarise}}
+
+\begin{itemize}
+\tightlist
+\item
+  Let's create a summary table for the overall sample as well as each team
+\end{itemize}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:sum1}{}{\label{exm:sum1} }Using summarise() to create a summary table for the entire survey data frame
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_cons =} \KeywordTok{mean}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{mean_perf =} \KeywordTok{mean}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+            \DataTypeTok{sd_cons =} \KeywordTok{sd}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{sd_perf =} \KeywordTok{sd}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-54-1.pdf}
+\caption{\label{fig:unnamed-chunk-54}Summary Statistics}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:sum2}{}{\label{exm:sum2} }Using group\_by() and summarise() to create a summary table for different work groups
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Manager)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{team_cons =} \KeywordTok{mean}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{team_perf =} \KeywordTok{mean}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+            \DataTypeTok{sd_cons =} \KeywordTok{sd}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{sd_perf =} \KeywordTok{sd}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-56-1.pdf}
+\caption{\label{fig:unnamed-chunk-56}Grouped Summary Statistics}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:count}{}{\label{exm:count} }count() is a nice alternative to the group\_by()\%\textgreater{}\%summarise() chain if your goal is simply to describe grouped frequencies.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{(Manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/Grouped Frequencies-1.pdf}
+
+\hypertarget{arrange-ordering-rows}{%
+\section{arrange(): Ordering Rows}\label{arrange-ordering-rows}}
+
+\begin{itemize}
+\tightlist
+\item
+  arrange() can be used to sort rows in a data frame
+\item
+  By default, arrange() orders a data frame from values in a column that go from smallest to largest
+\item
+  You can use desc() with arrange to sort from largest to smallest
+\end{itemize}
+
+\hypertarget{arrange-structure}{%
+\subsection{arrange() Structure}\label{arrange-structure}}
+
+arrange(data, sort\_var, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  arrange() takes the same structure as all other core dplyr functions.
+\item
+  First, specify the data you are manipulating
+\item
+  Second, specify the transformation - the column or columns you are sorting by
+\item
+  If multiple columns are provided, arrange will sort by the first column and use subsequent columns as tie breakers
+\end{itemize}
+
+\hypertarget{using-arrange}{%
+\subsection{Using arrange()}\label{using-arrange}}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:arr1}{}{\label{exm:arr1} }Adding arrange() to our summary table
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Manager)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{team_cons =} \KeywordTok{mean}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{team_perf =} \KeywordTok{mean}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+            \DataTypeTok{sd_cons =} \KeywordTok{sd}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{sd_perf =} \KeywordTok{sd}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(team_cons)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-59-1.pdf}
+\caption{\label{fig:unnamed-chunk-59}Sorting the Summary Table}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:arr2}{}{\label{exm:arr2} }Sorting the summary table in descending order with desc() and arrange()
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Manager)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{team_cons =} \KeywordTok{mean}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{team_perf =} \KeywordTok{mean}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+            \DataTypeTok{sd_cons =} \KeywordTok{sd}\NormalTok{(cons, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{sd_perf =} \KeywordTok{sd}\NormalTok{(perf, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(team_cons))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-61-1.pdf}
+\caption{\label{fig:unnamed-chunk-61}Sorting in Descending Order}
+\end{figure}
+
+\hypertarget{activity}{%
+\chapter{Activity}\label{activity}}
+
+\begin{itemize}
+\tightlist
+\item
+  Now it's your turn!
+\item
+  You can find a data set titled ``clinician.csv'' in the supplemental material linked \href{https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl}{here}.
+\item
+  A .txt file (clinician\_description.txt) is also included describing the data and structure.
+\item
+  Your goal is to clean the data and then summarise the data in a meaningful way.
+\item
+  Instructions may, at times, be intentionally ambiguous.
+\item
+  This is intended to facilitate critical thinking when applying the principles learned.
+\end{itemize}
+
+Instructions
+
+\textbf{Data Cleaning}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a dataframe with only the current patients.
+\item
+  Remove irrelevant columns.
+\item
+  Assign meaningful names to all columns.
+\item
+  Remove observatons that have NO data for Beck Depression Inventory and Subjective Well-Being scales.
+\item
+  Create scale scores using arithmetic operators.
+\item
+  Create scale scores using a method that employs a function to generate the mean.
+\item
+  Create a varaible that stores the depression CDF for each participant.
+\end{enumerate}
+
+\textbf{Group-Level Feature Extraction}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a variable that stores therapist-level depression scores for each participant
+\item
+  Create a variable that stores therapist-level attrition rate.
+\end{enumerate}
+
+\textbf{Summary Statistics}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a separate data frame that summarises the sample's central tendency (i.e., mean and median) and spread (i.e., variance, standard deviation, and mad).
+\item
+  Create an identical table, except calculate these summary statistics across therapists.
+\item
+  Which therapist has the highest attrition rate?
+\item
+  Which therapist has the highest recovery rate?
+\item
+  Is there an association between the Recrutiment Medium and recovery rate?
+\end{enumerate}
+
+\textbf{Follow-up Quesitons}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What was the difference between scale scores generated by arithmetic operators and functions?
+\item
+  Did the information stored within group-level features differ from what was generated using grouped summary statistics?
+\item
+  When would it be useful to store group-level data as a summary table versus a variable in the original data frame?
+\end{enumerate}
+
+\hypertarget{solutions}{%
+\section{Solutions}\label{solutions}}
+
+Below are the solutions for the activity. First I answer each question individually. After that, I use a single dplyr chain to complete the Data Cleaning and Group-level Feature Extraction exercises. For each function call in the chain, I explain what the functions are doing. Note that functions ending in \_at(), \_all(), or \_if are advanced function that save time. The associated base calls are just as appropriate.
+
+\textbf{Data Cleaning}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Preporation work ----------------------}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{# Read the data}
+\NormalTok{clinician<-}\KeywordTok{read_csv}\NormalTok{(}\StringTok{"suppl/clinician.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Missing column names filled in: 'X1' [1]
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a dataframe with only the current patients.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{clean_clinician<-clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(attrition}\OperatorTok{!=}\DecValTok{1}\NormalTok{) }\CommentTok{# Removing patients that no longer attend therapy (i.e., attrition == 1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Remove irrelevant columns.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Dropping variables with no variance (Pull_Date and}
+\CommentTok{# attrition were the same across each obs)}
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{Pull_Date, }\OperatorTok{-}\NormalTok{attrition) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Assign meaningful names to all columns.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{# renaming to meaningful variables}
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{beck1 =}\NormalTok{ Q1}\FloatTok{.1}\NormalTok{, }\DataTypeTok{beck2 =}\NormalTok{ Q1}\FloatTok{.2}\NormalTok{, }\DataTypeTok{beck3 =}\NormalTok{ Q1}\FloatTok{.3}\NormalTok{,}
+         \DataTypeTok{swb1 =}\NormalTok{ Q2}\FloatTok{.1}\NormalTok{, }\DataTypeTok{swb2 =}\NormalTok{ Q2}\FloatTok{.2}\NormalTok{, }\DataTypeTok{swb3 =}\NormalTok{ Q2}\FloatTok{.3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Remove observatons that have NO data for Beck Depression Inventory and Subjective Well-Being scales.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Removing observations if all are missing (retaining if responded on any observations)}
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(beck1)}\OperatorTok{|!}\KeywordTok{is.na}\NormalTok{(beck2)}\OperatorTok{|!}\KeywordTok{is.na}\NormalTok{(beck3)}\OperatorTok{|}
+\StringTok{            }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(swb1)}\OperatorTok{|!}\KeywordTok{is.na}\NormalTok{(swb2)}\OperatorTok{|!}\KeywordTok{is.na}\NormalTok{(swb3)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Create scale scores using arithmetic operators.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{#Creating a new column called beck_arith using arithmetic methods for means}
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{beck_arith =}\NormalTok{ (beck1}\OperatorTok{+}\NormalTok{beck2}\OperatorTok{+}\NormalTok{beck3)}\OperatorTok{/}\DecValTok{3}\NormalTok{, }
+         \DataTypeTok{swb_arith =}\NormalTok{ (swb1}\OperatorTok{+}\NormalTok{swb2}\OperatorTok{+}\NormalTok{swb3)}\OperatorTok{/}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Create scale scores using a method that employs a function to generate the mean.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rowwise}\NormalTok{()}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Creating scale scores with missing data}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{beck_fun =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(beck1, beck2, beck3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+         \DataTypeTok{swb_fun =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(beck1, beck2, beck3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Using function for means}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}\CommentTok{# always making sure to ungroup}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Create a varaible that stores the depression CDF for each participant.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# creating a new variable that contains the cdf for becks depression inventory}
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{dep_cdf =} \KeywordTok{cume_dist}\NormalTok{(beck_fun)) }
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Group-Level Feature Extraction}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a variable that stores therapist-level depression scores for each participant
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{clean_clinician<-clean_clinician}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Using the cleaned data overwrite clean data.}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# group the data by Therapist}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{dep_cdf_grp =} \KeywordTok{mean}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# calculate the cdf by group}
+\StringTok{    }\KeywordTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create a variable that stores therapist-level attrition rate.
+\end{enumerate}
+
+Attrtion rate is no longer stored in this data. We deselected it above. Below, I show how to use join to add it to the cleaned data. A more efficient way would be to create the attr\_count variable before I filtered out former patients. (i.e., add\_count(Therapist, attrition, name = "attr\_count)), but this is a good opportunity to using a join function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Counting the number of patients that stopped comming to each clinician}
+\NormalTok{ attr_rate<-clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{count}\NormalTok{(Therapist, attrition, }\DataTypeTok{name =} \StringTok{"attr_count"}\NormalTok{) }
+
+\CommentTok{# Joining the new attrition count data with the cleaned data}
+\NormalTok{ clean_clinician<-}\KeywordTok{left_join}\NormalTok{(clean_clinician, attr_rate) }
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Summary Statistics}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a separate data frame that summarises the sample's central tendency (i.e., mean and median) and spread (i.e., variance, standard deviation, and mad).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Notice how a lot of code is repeated. Cases like this is when summarise_if or _at come in handy. See later chapters}
+\NormalTok{summary_stat<-clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{select}\NormalTok{(beck_fun, swb_fun, recovery)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{beck_fun_m =} \KeywordTok{mean}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating BECK Central Tendency Summaries}
+             \DataTypeTok{beck_fun_med =} \KeywordTok{median}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{beck_fun_sd =} \KeywordTok{sd}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating BECK Spread Summaries}
+             \DataTypeTok{beck_fun_var =} \KeywordTok{var}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{beck_fun_mad =} \KeywordTok{mad}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+             \DataTypeTok{swb_fun_m =} \KeywordTok{mean}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Central Tendency Summaries}
+             \DataTypeTok{swb_fun_med =} \KeywordTok{median}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{swb_fun_sd =} \KeywordTok{sd}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Spread Summaries}
+             \DataTypeTok{swb_fun_var =} \KeywordTok{var}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{swb_fun_mad =} \KeywordTok{mad}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+             \DataTypeTok{rec_fun_m =} \KeywordTok{mean}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Central Tendency Summaries}
+             \DataTypeTok{rec_fun_med =} \KeywordTok{median}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{rec_fun_sd =} \KeywordTok{sd}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Spread Summaries}
+             \DataTypeTok{rec_fun_var =} \KeywordTok{var}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{rec_fun_mad =} \KeywordTok{mad}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{             )}
+
+
+\NormalTok{summary_stat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 15
+##   beck_fun_m beck_fun_med beck_fun_sd beck_fun_var beck_fun_mad swb_fun_m
+##        <dbl>        <dbl>       <dbl>        <dbl>        <dbl>     <dbl>
+## 1       4.19         4.33        1.40         1.95         1.48      4.19
+## # ... with 9 more variables: swb_fun_med <dbl>, swb_fun_sd <dbl>,
+## #   swb_fun_var <dbl>, swb_fun_mad <dbl>, rec_fun_m <dbl>,
+## #   rec_fun_med <dbl>, rec_fun_sd <dbl>, rec_fun_var <dbl>,
+## #   rec_fun_mad <dbl>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create an identical table, except calculate these summary statistics across therapists.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped_stats<-clean_clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{select}\NormalTok{(beck_fun, swb_fun, recovery)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{beck_fun_m =} \KeywordTok{mean}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating BECK Central Tendency Summaries}
+             \DataTypeTok{beck_fun_med =} \KeywordTok{median}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{beck_fun_sd =} \KeywordTok{sd}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating BECK Spread Summaries}
+             \DataTypeTok{beck_fun_var =} \KeywordTok{var}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{beck_fun_mad =} \KeywordTok{mad}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+             \DataTypeTok{swb_fun_m =} \KeywordTok{mean}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Central Tendency Summaries}
+             \DataTypeTok{swb_fun_med =} \KeywordTok{median}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{swb_fun_sd =} \KeywordTok{sd}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Spread Summaries}
+             \DataTypeTok{swb_fun_var =} \KeywordTok{var}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{swb_fun_mad =} \KeywordTok{mad}\NormalTok{(swb_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+             \DataTypeTok{rec_m =} \KeywordTok{mean}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Central Tendency Summaries}
+             \DataTypeTok{rec_med =} \KeywordTok{median}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{rec_sd =} \KeywordTok{sd}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{# Creating Spread Summaries}
+             \DataTypeTok{rec_var =} \KeywordTok{var}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+             \DataTypeTok{rec_mad =} \KeywordTok{mad}\NormalTok{(recovery, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{             )}
+
+
+\NormalTok{grouped_stats}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 16
+##   Therapist beck_fun_m beck_fun_med beck_fun_sd beck_fun_var beck_fun_mad
+##   <chr>          <dbl>        <dbl>       <dbl>        <dbl>        <dbl>
+## 1 Blaine          3.97         4           1.43         2.04         1.48
+## 2 Dustin          4.21         4.33        1.41         2.00         1.48
+## 3 Nikola          4.29         4.33        1.34         1.80         1.48
+## 4 Ricardo         4.18         4.33        1.32         1.75         1.48
+## 5 Samantha        4.28         4.33        1.46         2.12         1.48
+## # ... with 10 more variables: swb_fun_m <dbl>, swb_fun_med <dbl>,
+## #   swb_fun_sd <dbl>, swb_fun_var <dbl>, swb_fun_mad <dbl>, rec_m <dbl>,
+## #   rec_med <dbl>, rec_sd <dbl>, rec_var <dbl>, rec_mad <dbl>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Which therapist has the highest attrition rate?
+\end{enumerate}
+
+Attrition couldn't be calculated from the cleaned data, because we filtered out those observations! Since we have the number of people who stopped attending therapy and the number of people who continued to attend therapy, we can recover that information. Again, this could have been more easily solved by using the original clinician data.
+
+This data suggests that Ricardo has the highest attrition rate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ attr_rate<-clean_clinician}\OperatorTok{%>%}
+\StringTok{              }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}
+\StringTok{              }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{attr_rate =} \KeywordTok{mean}\NormalTok{(attr_count)}\OperatorTok{/}\NormalTok{(}\KeywordTok{mean}\NormalTok{(attr_count)}\OperatorTok{+}\KeywordTok{n}\NormalTok{()))}\OperatorTok{%>%}\StringTok{ }\CommentTok{#Mean can be used because their is no variability within group clinicians.}
+\StringTok{              }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(attr_rate))}
+\NormalTok{ attr_rate}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Therapist attr_rate
+##   <chr>         <dbl>
+## 1 Ricardo       0.254
+## 2 Blaine        0.244
+## 3 Nikola        0.232
+## 4 Samantha      0.228
+## 5 Dustin        0.227
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Which therapist has the highest recovery rate?
+\end{enumerate}
+
+Because recovery rate is stored as a binary variable (i.e., 1 or 0), the proportion of patients recovered is equal to the average of the recovery column. We calculated this above. It suggests that Blaine has the highes recovery rate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped_stats}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(Therapist, rec_m)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(rec_m))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Therapist rec_m
+##   <chr>     <dbl>
+## 1 Blaine    0.618
+## 2 Nikola    0.497
+## 3 Dustin    0.337
+## 4 Samantha  0.336
+## 5 Ricardo   0.316
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Is there an association between the Recrutiment Medium and recovery rate?
+\end{enumerate}
+
+This was an advanced problem. There are several ways to approach this. I illustrate one method below. Using the cleaned data, I calculate the joint, conditional, and marginal probabilities. If the two variables are independent, the conditional probabilities should approximate the marginal probabilities (i.e., the probability of recovery across recruitment channels is equal to the probabilty of recovering overall)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Advanced Question: Calculate joint, conditional, and marginal probabilities }
+\CommentTok{### Conditonal p should approximate marginal if independent}
+\NormalTok{ clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{count}\NormalTok{(Recruitment_Channel, recovery)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Uses count to count the joint frequency }
+\StringTok{   }\KeywordTok{group_by}\NormalTok{(recovery)}\OperatorTok{%>%}\StringTok{ }
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recovery_mf=} \KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculates the marginal frequencies of recovering and not recovering}
+\StringTok{   }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{group_by}\NormalTok{(Recruitment_Channel)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recruitment_mf =} \KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculates the marginal frequencies of each recruitment channel}
+\StringTok{   }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n), }\CommentTok{# Converting joint frequencies to joint probabilities}
+          \DataTypeTok{recovery_mp =}\NormalTok{ recovery_mf}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n), }\CommentTok{# Converting marginal frequencies to marginal probabilities}
+          \DataTypeTok{recruitment_mp =}\NormalTok{ recruitment_mf}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Recruitment_Channel)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recovery_cond_p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculate probability of recovery conditioned on channel }
+\StringTok{  }\KeywordTok{select}\NormalTok{(Recruitment_Channel, recovery, p, recovery_mp, recovery_cond_p) }\CommentTok{# Selecting only probabilities}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 8 x 5
+## # Groups:   Recruitment_Channel [4]
+##   Recruitment_Channel recovery      p recovery_mp recovery_cond_p
+##   <chr>                  <dbl>  <dbl>       <dbl>           <dbl>
+## 1 Email                      0 0.156        0.582           0.578
+## 2 Email                      1 0.114        0.418           0.422
+## 3 Friend Referral            0 0.134        0.582           0.557
+## 4 Friend Referral            1 0.107        0.418           0.443
+## 5 Google                     0 0.154        0.582           0.639
+## 6 Google                     1 0.0867       0.418           0.361
+## 7 Medical Referral           0 0.139        0.582           0.557
+## 8 Medical Referral           1 0.110        0.418           0.443
+\end{verbatim}
+
+\textbf{Follow-up Quesitons}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What was the difference between scale scores generated by arithmetic operators and functions?
+  They handle missing data differently. mean() has the na.rm option that allows you to calculate an average using all available data.
+\item
+  Did the information stored within group-level features differ from what was generated using grouped summary statistics?
+  Nope! They are really generating the same information! The group-level feature extraction just repeats it across observations.
+\item
+  When would it be useful to store group-level data as a summary table versus a variable in the original data frame?
+  It is useful to store group-level data when you want to use it in a model. When you want to communicate data, it is more useful to store it in a separate table.
+\end{enumerate}
+
+\emph{Dplyr Chain with Some Advanced Functions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Cleaning Data ----------------------------------------------------------------------------------------------------}
+\NormalTok{clean_clinician<-clinician}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(attrition}\OperatorTok{!=}\DecValTok{1}\NormalTok{)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Removing patients that no longer attend therapy (i.e., attrition == 1)}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{Pull_Date, }\OperatorTok{-}\NormalTok{attrition)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Dropping variables with no variance (Pull_Date and attrition were the same across each obs)}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{beck1 =}\NormalTok{ Q1}\FloatTok{.1}\NormalTok{, }\DataTypeTok{beck2 =}\NormalTok{ Q1}\FloatTok{.2}\NormalTok{, }\DataTypeTok{beck3 =}\NormalTok{ Q1}\FloatTok{.3}\NormalTok{, }\DataTypeTok{swb1 =}\NormalTok{ Q2}\FloatTok{.1}\NormalTok{, }\DataTypeTok{swb2 =}\NormalTok{ Q2}\FloatTok{.2}\NormalTok{, }\DataTypeTok{swb3 =}\NormalTok{ Q2}\FloatTok{.3}\NormalTok{)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# renaming to meaningful variables}
+\StringTok{  }\KeywordTok{filter_at}\NormalTok{(}\DataTypeTok{.vars =} \KeywordTok{vars}\NormalTok{(beck1, beck2, beck3, swb1, swb2, swb3), }\DataTypeTok{.vars_predicate =} \KeywordTok{any_vars}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(.)))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Removing observations if all are missing (retaining if responded on any observations)}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{beck_arith =}\NormalTok{ (beck1}\OperatorTok{+}\NormalTok{beck2}\OperatorTok{+}\NormalTok{beck3)}\OperatorTok{/}\DecValTok{3}\NormalTok{, }\DataTypeTok{swb_arith =}\NormalTok{ (swb1}\OperatorTok{+}\NormalTok{swb2}\OperatorTok{+}\NormalTok{swb3)}\OperatorTok{/}\DecValTok{3}\NormalTok{)}\OperatorTok{%>%}\StringTok{ }\CommentTok{#Using arithmetic methods for means}
+\StringTok{  }\KeywordTok{rowwise}\NormalTok{()}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Creating scale scores with missing data}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{beck_fun =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(beck1, beck2, beck3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{swb_fun =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(beck1, beck2, beck3), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Using function for means}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}\StringTok{ }\CommentTok{# always making sure to ungroup}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{dep_cdf =} \KeywordTok{cume_dist}\NormalTok{(beck_fun)) }\CommentTok{# creating a new variable that contains the cdf for becks depression inventory}
+
+\CommentTok{# Extracting Group-level Features -------------------------------------------------------------------------------------}
+\NormalTok{ clean_clinician<-clean_clinician}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Using the cleaned data overwrite clean data.}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# group the data by Therapist}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{dep_cdf_grp =} \KeywordTok{mean}\NormalTok{(beck_fun, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# calculate the cdf by group}
+\StringTok{    }\KeywordTok{ungroup}\NormalTok{()}
+
+ \CommentTok{# Attrtion rate is no longer stored in this data. Below I show how to use join to add it to the cleaned data}
+ \CommentTok{# A more efficient way would be to create the attr_count variable before I filtered (i.e., add_count(Therapist, attrition, name = "attr_count)), but this is a good opportunity to using a join function}
+
+\NormalTok{ attr_rate<-clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{count}\NormalTok{(Therapist, attrition, }\DataTypeTok{name =} \StringTok{"attr_count"}\NormalTok{) }\CommentTok{# Counting the number of patients that stopped comming to each clinician}
+
+\NormalTok{ clean_clinician<-}\KeywordTok{left_join}\NormalTok{(clean_clinician, attr_rate) }\CommentTok{# Joining the new attrition count data with the cleaned data}
+ 
+ \CommentTok{# Summary Tables -------------------------------------------------------------------------------------------------}
+ 
+ \CommentTok{## summarise_all is useful, and depicted here, but summary() is equally acceptible!}
+\NormalTok{  summary_stat<-clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{select}\NormalTok{(beck_fun, swb_fun, recovery)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{summarise_all}\NormalTok{(}\DataTypeTok{.funs =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{m =} \OperatorTok{~}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{med =} \OperatorTok{~}\KeywordTok{median}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{sd =} \OperatorTok{~}\KeywordTok{sd}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{var =} \OperatorTok{~}\KeywordTok{var}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+                              \DataTypeTok{mad =} \OperatorTok{~}\KeywordTok{mad}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+ 
+\NormalTok{ grouped_summary<-clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{select}\NormalTok{(Therapist, beck_fun, swb_fun, recovery)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{summarise_all}\NormalTok{(}\DataTypeTok{.funs =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{m =} \OperatorTok{~}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{med =} \OperatorTok{~}\KeywordTok{median}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{sd =} \OperatorTok{~}\KeywordTok{sd}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                              \DataTypeTok{var =} \OperatorTok{~}\KeywordTok{var}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+                              \DataTypeTok{mad =} \OperatorTok{~}\KeywordTok{mad}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+ 
+ 
+  \CommentTok{# Printing both summaries}
+\NormalTok{  summary_stat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 15
+##   beck_fun_m swb_fun_m recovery_m beck_fun_med swb_fun_med recovery_med
+##        <dbl>     <dbl>      <dbl>        <dbl>       <dbl>        <dbl>
+## 1       4.19      4.19      0.418         4.33        4.33            0
+## # ... with 9 more variables: beck_fun_sd <dbl>, swb_fun_sd <dbl>,
+## #   recovery_sd <dbl>, beck_fun_var <dbl>, swb_fun_var <dbl>,
+## #   recovery_var <dbl>, beck_fun_mad <dbl>, swb_fun_mad <dbl>,
+## #   recovery_mad <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  grouped_summary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 16
+##   Therapist beck_fun_m swb_fun_m recovery_m beck_fun_med swb_fun_med
+##   <chr>          <dbl>     <dbl>      <dbl>        <dbl>       <dbl>
+## 1 Blaine          3.97      3.97      0.618         4           4   
+## 2 Dustin          4.21      4.21      0.337         4.33        4.33
+## 3 Nikola          4.29      4.29      0.497         4.33        4.33
+## 4 Ricardo         4.18      4.18      0.316         4.33        4.33
+## 5 Samantha        4.28      4.28      0.336         4.33        4.33
+## # ... with 10 more variables: recovery_med <dbl>, beck_fun_sd <dbl>,
+## #   swb_fun_sd <dbl>, recovery_sd <dbl>, beck_fun_var <dbl>,
+## #   swb_fun_var <dbl>, recovery_var <dbl>, beck_fun_mad <dbl>,
+## #   swb_fun_mad <dbl>, recovery_mad <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{# Attrition couldn't be calculated like recovery rate using the mean function because we filtered out those observations! }
+ \CommentTok{#Since we have the number of people who stopped attending therapy and the number of people who continued to attend therapy, we can recover that information. }
+ \CommentTok{# Again, this could have been more easily solved by using the original clinician information. }
+ \CommentTok{# It had to be calculated separately}
+  
+\NormalTok{ attr_rate<-clean_clinician}\OperatorTok{%>%}
+\StringTok{              }\KeywordTok{group_by}\NormalTok{(Therapist)}\OperatorTok{%>%}
+\StringTok{              }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{attr_rate =} \KeywordTok{mean}\NormalTok{(attr_count)}\OperatorTok{/}\NormalTok{(}\KeywordTok{mean}\NormalTok{(attr_count)}\OperatorTok{+}\KeywordTok{n}\NormalTok{()))}
+   
+\NormalTok{ attr_rate}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Therapist attr_rate
+##   <chr>         <dbl>
+## 1 Blaine        0.244
+## 2 Dustin        0.227
+## 3 Nikola        0.232
+## 4 Ricardo       0.254
+## 5 Samantha      0.228
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{# Based on this information Ricardo has the highest attrition rate}
+\NormalTok{ attr_rate}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Using attr_rate data}
+\StringTok{   }\KeywordTok{select}\NormalTok{(Therapist, attr_rate)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# select the Therapist and attr_rate columns}
+\StringTok{   }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(attr_rate)) }\CommentTok{# sore attr_rate column in descending order}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Therapist attr_rate
+##   <chr>         <dbl>
+## 1 Ricardo       0.254
+## 2 Blaine        0.244
+## 3 Nikola        0.232
+## 4 Samantha      0.228
+## 5 Dustin        0.227
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{# Blaine has this highest recovery rate}
+\NormalTok{  grouped_summary}\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{select}\NormalTok{(Therapist, recovery_m)}\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(recovery_m))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Therapist recovery_m
+##   <chr>          <dbl>
+## 1 Blaine         0.618
+## 2 Nikola         0.497
+## 3 Dustin         0.337
+## 4 Samantha       0.336
+## 5 Ricardo        0.316
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{# Relationship between Recruitment Channel and Recovery? -----------------------------------------------  }
+\NormalTok{ clean_clinician}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{count}\NormalTok{(Recruitment_Channel, recovery)}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Uses count to count the joint frequency }
+\StringTok{   }\KeywordTok{group_by}\NormalTok{(recovery)}\OperatorTok{%>%}\StringTok{ }
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recovery_mf=} \KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculates the marginal frequencies of recovering and not recovering}
+\StringTok{   }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{group_by}\NormalTok{(Recruitment_Channel)}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recruitment_mf =} \KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculates the marginal frequencies of each recruitment channel}
+\StringTok{   }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n), }\CommentTok{# Converting joint frequencies to joint probabilities}
+          \DataTypeTok{recovery_mp =}\NormalTok{ recovery_mf}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n), }\CommentTok{# Converting marginal frequencies to marginal probabilities}
+          \DataTypeTok{recruitment_mp =}\NormalTok{ recruitment_mf}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Recruitment_Channel)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{recovery_cond_p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{%>%}\StringTok{ }\CommentTok{# Calculate probability of recovery conditioned on channel }
+\StringTok{  }\KeywordTok{select}\NormalTok{(Recruitment_Channel, recovery, p, recovery_mp, recovery_cond_p) }\CommentTok{# Selecting only probabilities}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 8 x 5
+## # Groups:   Recruitment_Channel [4]
+##   Recruitment_Channel recovery      p recovery_mp recovery_cond_p
+##   <chr>                  <dbl>  <dbl>       <dbl>           <dbl>
+## 1 Email                      0 0.156        0.582           0.578
+## 2 Email                      1 0.114        0.418           0.422
+## 3 Friend Referral            0 0.134        0.582           0.557
+## 4 Friend Referral            1 0.107        0.418           0.443
+## 5 Google                     0 0.154        0.582           0.639
+## 6 Google                     1 0.0867       0.418           0.361
+## 7 Medical Referral           0 0.139        0.582           0.557
+## 8 Medical Referral           1 0.110        0.418           0.443
+\end{verbatim}
+
+\hypertarget{part-combining-data-frames}{%
+\part{Combining Data Frames}\label{part-combining-data-frames}}
+
+\hypertarget{combining-data-sets}{%
+\chapter{Combining Data Sets}\label{combining-data-sets}}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-78-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  Take a look the left panel of the tables above which shows the original survey data set after it was cleaned up.
+\item
+  Manager information was not originally stored in this data!
+\item
+  In order to get manager information into the data frame I did some magic behind the scenes.
+\item
+  I merged the survey data set the manager data in the right pane based on the ResponseId variable.
+\item
+  Luckily the creators of dplyr wrote a set of functions that make merging multiple data tables easy.
+\item
+  In the following sections we are going to learn a variety of different ways to bind and join data frames.
+\end{itemize}
+
+\hypertarget{binding-functions}{%
+\chapter{Binding Functions}\label{binding-functions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Binding functions are the most basic method used to combine data sets in the tidyverse, although they are not appropriate for all cases.
+\item
+  In the sections that follow we will review what these functions do and highlight cases in which they are and are not appropriate.
+\end{itemize}
+
+Binding Functions
+
+\begin{itemize}
+\tightlist
+\item
+  bind\_rows(): Stacks many data frames vertically.
+\item
+  bind\_cols(): Joins many date frames horizontally.
+\end{itemize}
+
+\hypertarget{bind_cols-binding-data-frames-horizontally}{%
+\section{bind\_cols(): Binding Data Frames Horizontally}\label{bind_cols-binding-data-frames-horizontally}}
+
+\begin{itemize}
+\tightlist
+\item
+  bind\_cols() is used when you have a set of data frames that
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Have equal number of rows
+\item
+  Are ordered identically, with no missing or new observations
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  If these two requirements are not met, the data will joined combining information about different observations or participants
+\item
+  If your data does not meet either of these requirements, but has a participant identifier use a join function discussed below.
+\end{itemize}
+
+\hypertarget{bind_cols-structure}{%
+\subsection{bind\_cols() Structure}\label{bind_cols-structure}}
+
+bind\_cols(\ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  bind\_cols() takes two or more data frames (or a list of data frames) that have an equal number of identically ordered rows.
+\end{itemize}
+
+\hypertarget{using-bind_cols}{%
+\subsection{Using bind\_cols()}\label{using-bind_cols}}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that, while for the survey data we want to combine two data frames horizontally, the data frames do not have the same number of rows.
+\item
+  Furthermore, based on the responseId variable, we know that participants are not in the same order.
+\item
+  Thus we are probably better off using a different function to join these two data sets.
+\item
+  In contrast, note that in the two tables below, each data frame has the same number of observations and the ID variables align perfectly.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf}
+\caption{\label{fig:unnamed-chunk-79}Two Measures with Shared Identifier}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:bindc}{}{\label{exm:bindc} }Binding data frames together horizontally.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{bind_cols}\NormalTok{(survey_data, perf_dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-81-1.pdf}
+\caption{\label{fig:unnamed-chunk-81}Output of bind\_cols}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that, since there is a duplicate column (ResponseId) in the new joined data set, col\_bind() automatically added a 1 to the end of the column name.
+\item
+  This is intended to prevent mix ups, but can result in duplicate data.
+\item
+  While this example was adequate for illustration purposes, in practice, join functions are more flexible and appropriate when data sets have a shared identifier.
+\end{itemize}
+
+\hypertarget{bind_rows-binding-data-frames-vertically}{%
+\section{bind\_rows(): Binding Data Frames Vertically}\label{bind_rows-binding-data-frames-vertically}}
+
+\begin{itemize}
+\tightlist
+\item
+  bind\_rows() is used when you want to bind data frames vertically.
+\item
+  This is sometimes referred to as stacking data frames.
+\item
+  Unlike bind\_cols(), bind\_rows() attempts to match columns based on their names.
+\item
+  If a data frame is missing a column, observations will have missing data for that variable.
+\end{itemize}
+
+\hypertarget{bind_rows-structure}{%
+\subsection{bind\_rows() Structure}\label{bind_rows-structure}}
+
+bind\_rows(\ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  bind\_rows() takes two or more data frames (or a list of data frames)
+\end{itemize}
+
+\hypertarget{using-bind_rows}{%
+\subsection{Using bind\_rows()}\label{using-bind_rows}}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-82-1.pdf}
+\caption{\label{fig:unnamed-chunk-82}Two Data Frames with Overlapping and Unique Information}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:bindr}{}{\label{exm:bindr} }Binding data frames together vertically (AKA, stacking).
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{bind_rows}\NormalTok{(survey_data, perf_dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-84-1.pdf}
+\caption{\label{fig:unnamed-chunk-84}Output of bind\_rows()}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that the columns that are named the same are appropriately matched.
+\item
+  Furthermore, observations from a data frames that is missing a column are assigned NA for that variable.
+\end{itemize}
+
+\hypertarget{mutating-joins}{%
+\chapter{Mutating Joins}\label{mutating-joins}}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that when we were using bind\_cols(), corresponding rows in each data frame were assumed to belong to the same observation.
+\item
+  This perfect match up rarely occurs unless data frames were programatically spit and manipulated by the user.
+\item
+  In psychological research, participant attrition causes some observations to be present in one data set but not another.
+\item
+  Furthermore, participants can respond in a different orders across time-points.
+\item
+  bind\_cols() may also be inadequate when merging data frames associated with different levels in a hierarchy (i.e., team and individual).
+\item
+  When merging hierarchical data frames, if one team is associated with many individuals, team information may need to be repeated multiple times.
+\item
+  The mutating join functions were developed with these problems in mind.
+\item
+  Mutating join functions share a number of common characteristics.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  They share the same structural form.
+\item
+  Data frames are horizontally combined so that the outputted data frame has more columns than either of the independent data frames.
+\item
+  Rows are matched based on some common ID variable.
+\item
+  If there are multiple rows with the same ID variable, all combinations of rows are returned.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Despite their similarities, each mutating join differs in how it handles observations that do not match on an ID variable.
+\item
+  In the sections that follow, I will:
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Define the common join function form.
+\item
+  Described how each join function handles observations that do not have a match on the ID variable.
+\item
+  Provide examples of uses for each form.
+\end{enumerate}
+
+List of Mutating Joins
+
+\begin{itemize}
+\tightlist
+\item
+  left\_join(): Joins based on an ID variable. Retains all rows in left data frame and only matching rows in the right.
+\item
+  right\_join(): Joins based on an ID variable. Retains all rows in the right data frame and only matching rows in the left.
+\item
+  inner\_join(): Joins based on an ID variable. Retains only matching rows for both data frames.
+\item
+  full\_join(): Joins based on an ID variable (Considers order). Retains only matching rows for
+\end{itemize}
+
+\hypertarget{joinform}{%
+\section{Join Functions: Structural Form}\label{joinform}}
+
+function(x, y, by = c(``lh\_id'' = ``rh\_id''))
+
+\begin{itemize}
+\tightlist
+\item
+  function denotes the type of join you would like to perform (i.e., full\_join, left\_join).
+\item
+  Join functions commonly refer to left-hand and right-hand and data frames.
+\item
+  Whether a data frame is a left-hand or right-hand data frame is determined by what order you enter your the two data frames.
+\item
+  x defines the left-hand data frame (it is the data frame argument furthest left).
+\item
+  y defines the right-hand data frame (it is the data frame argument furthers right).
+\item
+  by is an optional argument that defines the ID variables that will be used to match rows
+\item
+  lh\_id is the ID variable in the left-hand data frame while rh\_id is the ID in the right-hand data frame
+\item
+  If by is left NULL, join functions will search the for columns that share names and join those.
+\end{itemize}
+
+\hypertarget{full_join}{%
+\section{full\_join()}\label{full_join}}
+
+\begin{itemize}
+\tightlist
+\item
+  full\_join() retains all rows from left- and right-hand data frames.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-85-1.pdf}
+\caption{\label{fig:unnamed-chunk-85}Two Data Frames with a Shared Identfier}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:fulljoin1}{}{\label{exm:fulljoin1} }Joining the survey data with managerial data, retaining all observations from both data frames. How are duplicate matches handled?
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{full_join}\NormalTok{(survey_data, manager, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"ResponseId"}\NormalTok{ =}\StringTok{ "ResponseId"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-87-1.pdf}
+\caption{\label{fig:unnamed-chunk-87}Joining Data Frames using Full\_join}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:fulljoin2}{}{\label{exm:fulljoin2} }Changing which data frame is the left-hand df and which data frame is the right-hand df changes the order of the columns but not which observations are kept.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{full_join}\NormalTok{(manager, survey_data, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"ResponseId"}\NormalTok{ =}\StringTok{ "ResponseId"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-89-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:fulljoin3}{}{\label{exm:fulljoin3} }Since the data frames only share one variable with a commmon name. dplyr does give us a lovely message to let us know what the data frames are being joined by. This message will be suppressed from this point forward.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{full_join}\NormalTok{(manager, survey_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "ResponseId"
+\end{verbatim}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf}
+
+\hypertarget{left}{%
+\section{left\_join()}\label{left}}
+
+\begin{itemize}
+\tightlist
+\item
+  left\_join() retains all observations in the left-hand data frame but only matching observations from the right-hand data frame.
+\end{itemize}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-92-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:leftjoin1}{}{\label{exm:leftjoin1} }Retaining all observations from the survey data, but only matching observations from the managerial data.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{left_join}\NormalTok{(survey_data, manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-94-1.pdf}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:leftjoin2}{}{\label{exm:leftjoin2} }left\_join() retains different observations depending on which data frame is in the left\_hand position and which data frame is in the right-hand right hand position.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{left_join}\NormalTok{(manager, survey_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-96-1.pdf}
+
+\hypertarget{right_join}{%
+\section{right\_join()}\label{right_join}}
+
+\begin{itemize}
+\tightlist
+\item
+  Unsurprisingly, right\_join() is the inverse of left\_join().
+\item
+  It simply retains all observations in the right-hand data frame and only matching observations in the left-hand data frame
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-97-1.pdf}
+\caption{\label{fig:unnamed-chunk-97}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:righjoin1}{}{\label{exm:righjoin1} }Note that this example produces output that is identical to Example \ref{exm:leftjoin1}. The only difference is the data frame arguments are flipped!
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{right_join}\NormalTok{(manager, survey_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/fig_cap-1.pdf}
+
+\hypertarget{inner_join}{%
+\section{inner\_join()}\label{inner_join}}
+
+\begin{itemize}
+\tightlist
+\item
+  inner\_join() only retains observations with matching IDs in both left-hand and right-hand data frames.
+\item
+  For our example, there is one respondent that doesn't have managerial information (ResponseId = R\_2Sq8eFhNWEfZOJd).
+\item
+  If the purpose of the survey was to provide managers with insight about their team, this person's responses may not be useful.
+\item
+  inner\_join() can be used to exclude this person from subsequent reports.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-99-1.pdf}
+\caption{\label{fig:unnamed-chunk-99}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:innerjoin1}{}{\label{exm:innerjoin1} }inner\_join() will exclude all respondents for whom we do not have managerial information and all employees who did not respond to the survey.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{inner_join}\NormalTok{(manager, survey_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-101-1.pdf}
+\caption{\label{fig:unnamed-chunk-101}Only Retaining Observations that Match}
+\end{figure}
+
+\hypertarget{filtering-joins}{%
+\chapter{Filtering Joins}\label{filtering-joins}}
+
+\begin{itemize}
+\tightlist
+\item
+  While mutating joins are useful, sometimes it is necessary to remove observations from a data frame based on information stored elsewhere without adding any information to a focal data frame.
+\item
+  Filtering joins do just that.
+\item
+  As their title suggests, filtering joins are kind of a hybrid between filter() and the join family of functions.
+\item
+  They take the same structural form as mutating joins (discussed in Section \ref{joinform}) but remove or retain observations that do not correspond to any observations ID variable in the right-hand data frame.
+\end{itemize}
+
+Filtering Joins
+
+\begin{itemize}
+\tightlist
+\item
+  semi\_join(): Retains rows in the left hand data frame that match an ID variable in the right hand data frame.
+\item
+  anti\_join(): Retains rows in the left hand data frame that do NOT match and ID variable in the right hand data frame.
+\end{itemize}
+
+\hypertarget{semi_join}{%
+\section{semi\_join()}\label{semi_join}}
+
+\begin{itemize}
+\tightlist
+\item
+  semi\_join() retains observations in the left-hand data frame that have corresponding ID variables in the right-hand data frame.
+\item
+  No new columns are added to the left-hand data frame.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-102-1.pdf}
+\caption{\label{fig:unnamed-chunk-102}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:semijoin1}{}{\label{exm:semijoin1} }Using semi\_join() to retain observations for which we have managerial data without adding managerial data to the survey data.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{semi_join}\NormalTok{(survey_data, manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-104-1.pdf}
+
+\hypertarget{anti_join}{%
+\section{anti\_join()}\label{anti_join}}
+
+\begin{itemize}
+\tightlist
+\item
+  anti\_join() retains observations in the left-hand data frame that do NOT have corresponding ID variables in the right-hand data frame.
+\item
+  No new columns are added to the left-hand data frame.
+\item
+  This can be especially useful when trying to identify cases that are not contained in one data frame, but stored in another.
+\item
+  This can occur as a result of non-response, participant attrition, or random sampling (as we will see in the next chapter)
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-105-1.pdf}
+\caption{\label{fig:unnamed-chunk-105}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:antijoin1}{}{\label{exm:antijoin1} }Using anti\_join() to identify employees in the managerial data frame that have not yet responded to our survey.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anti_join}\NormalTok{(manager, survey_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-107-1.pdf}
+\caption{\label{fig:unnamed-chunk-107}Using anti\_join() to identify employees that have yet to respond to the survey.}
+\end{figure}
+
+\hypertarget{activity-1}{%
+\chapter{Activity}\label{activity-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Let's see what you've learned!
+\item
+  \href{https://en.wikipedia.org/wiki/Relational_database}{Relational databases} are a common way to store data.
+\item
+  Information associated with different levels is stored in separate tables.
+\item
+  Tables are linked with foreign keys, a fancy name for ID variables.
+\item
+  This organization reduces memory demands, but requires a strong knowledge of joins to extract piece together the information.
+\item
+  \href{https://www.imdb.com/}{IMBD} stores their data about movies in a relational database format.
+\item
+  You can find a description of the data files title IMDB.txt in the suppl folder, linked \href{https://github.com/jimmyrigby94/Data-Management-in-R/tree/master/suppl}{here}.
+\item
+  Again, instructions may be ambiguous.
+\item
+  This is done intentionally to facilitate critical thinking when applying the principles learned above.
+\item
+  Feel free to use other functions unless explictly told not to do so.
+\end{itemize}
+
+Your goal is to identfiy the movies that have at least one ``star'' actor. In this excercise a ``star'' actor is considered to be an actor who's rating average across all movies they have been in is in the top 10\% of the rating distribution.
+
+To load the data please run the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Loading tidyverse into memory}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\CommentTok{# Reading csvs directly from github!}
+\NormalTok{ratings<-}\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/ratings.csv"}\NormalTok{)}
+\NormalTok{titles<-}\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/titles.csv"}\NormalTok{)}
+\NormalTok{principal_actors<-}\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/principal_actors.csv"}\NormalTok{)}
+\NormalTok{names<-}\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/jimmyrigby94/Data-Management-in-R/master/suppl/names.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Instructions
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Load the following .csv's into your environment
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ratings.csv
+  \item
+    titles.csv
+  \item
+    principal\_actors.csv
+  \item
+    names.csv
+  \end{itemize}
+\item
+  Merge the principal\_actors and names data frames retaining all observations from both objects to create a data frame titled cinematic\_pros.
+\item
+  Are we missing movie history for some cinematic professionals? Tests this by using an appropriate function call that identifies observations in names that don't have a matching id variable in principal\_actors.
+\item
+  How many movie professionals do not have their acting history principal\_actors?
+\item
+  cinematc\_pros contains information on more people than just actors. Create a new object called actors that only contains information about actor-movie combinations where they are explicitly categorized as actors.
+\item
+  Merge the titles and ratings data sets retaining only matching observations in both dataframes to create a new dataframe called movies.
+\item
+  Merge actors and movies using your favorite mutating join to create an objected titled full\_data.
+\item
+  Calculate summary statistics using the actors unique id. Store the below information in an object titled actor\_summaries
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Count the number of movies each actor has been in.
+  \item
+    Calculate the average ratings for each actor.
+  \item
+    Create a cumulative distribution variable for the actors' average ratings.
+  \end{itemize}
+\item
+  Plot the average rating cumulative distribution.
+\item
+  Using the actor\_summaries and movies data, create a data frame that contains the movie information for the actors with ratings in the top 10\%.
+\end{enumerate}
+
+\hypertarget{part-advanced-dplyr}{%
+\part{Advanced Dplyr}\label{part-advanced-dplyr}}
+
+\hypertarget{other-functions-for-extracting-observations}{%
+\chapter{Other Functions for Extracting Observations}\label{other-functions-for-extracting-observations}}
+
+\begin{itemize}
+\tightlist
+\item
+  In the previous chapters, we learned several functions that can be used to extract observations from a data frame.
+\item
+  filter() uses a logical test to extract observations.
+\item
+  In contrast, filtering joins use an ID variable in another data frame to extract observations.
+\item
+  In the chapters that follow we will cover functions that allow us to extract observations when we want to
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Want to take a random subset of observations
+\item
+  Want to retain only distinct observations
+\end{enumerate}
+
+\hypertarget{random-samples-of-observations}{%
+\section{Random Samples of Observations}\label{random-samples-of-observations}}
+
+\begin{itemize}
+\tightlist
+\item
+  While very much beyond the scope of this lecture, randomly splitting a data set is a key operation for many statistical procedures.
+\item
+  Researchers who want to cross-validated their models subset their data (sometimes \(n\) times) to evaluate its performance
+\item
+  When a model's statistical assumptions are violated, a researcher can implement a procedure called bootstrapping that uses resampling methods to estimate a parameters standard error.
+\item
+  In short, knowing how to randomly sample a data set opens the door to many other statistical procedures
+\item
+  The following sections will define the structural form, and show a few examples, however this section is not ended to go in depth into resampling methods.
+\end{itemize}
+
+\hypertarget{structural-form-of-sample_-functions}{%
+\subsection{Structural Form of sample\_ Functions}\label{structural-form-of-sample_-functions}}
+
+sample\_x(data, size, replace, weight, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  sample\_x denotes the sampling function you would like to use.
+\item
+  data: specifies the data frame you would like to operate on.
+\item
+  size: specifies the size of the sample you would like to take either in absolute or relative terms (depending on whether you use sample\_n() or sample\_frac()).
+\item
+  replace: logical value specifying whether a data frame should be sampled with replacement (i.e., bootstrap).
+\item
+  weight: a vector of weights equal to the number of observations in the data frame specifying how likely each observation is to be sampled (useful for stratified sampling).
+\end{itemize}
+
+\hypertarget{using-sample_n-and-sample_frac}{%
+\subsection{Using sample\_n() and sample\_frac()}\label{using-sample_n-and-sample_frac}}
+
+\begin{itemize}
+\tightlist
+\item
+  sample\_frac() and sample\_n() only differ in terms of the size argument
+\item
+  For sample\_frac() you specify a proportion, relative to data argument.
+\item
+  For sample\_n() you specify an absolute number of rows for the output data.
+\item
+  Arguably, sample\_frac() is more robust to changes in upstream code.
+\item
+  For example, if you catch a mistake in your data cleaning prior to taking a random sample of your data set, sample\_frac() will still sample relative to this new data frame.
+\item
+  In contrast, sample\_n() does not adjust to changes in your code and will still resample based on the n you define.
+\item
+  Putting differences aside, lets consider how a researcher could create a training and test data frame to evaluate their model's performance.
+\item
+  When randomly sampling the data frame, always make sure to use set.seed() so that the results are reproducible.
+\item
+  I will also include and example that shows you how to work around the potential pitfalls of sample\_n() by avoiding hard coding its size argument.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf}
+\caption{\label{fig:unnamed-chunk-110}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:samplen1}{}{\label{exm:samplen1} }Using sample\_n() and anti\_join() to create training and test sets, hardcoding size.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{training <-}\StringTok{ }\KeywordTok{sample_n}\NormalTok{(survey_data, }\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{holdout <-}\StringTok{ }\KeywordTok{anti_join}\NormalTok{(survey_data, training)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-112-1.pdf}
+\caption{\label{fig:unnamed-chunk-112}Using sample\_n() to randomly sample data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:samplefrac}{}{\label{exm:samplefrac} }Using sample\_frac() and anti\_join() to create training and test sets.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{training <-}\StringTok{ }\KeywordTok{sample_frac}\NormalTok{(survey_data, }\DataTypeTok{size =} \FloatTok{.8}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{holdout <-}\StringTok{ }\KeywordTok{anti_join}\NormalTok{(survey_data, training)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-114-1.pdf}
+\caption{\label{fig:unnamed-chunk-114}Using sample\_frac to randomly sample data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:samplen2}{}{\label{exm:samplen2} }Using sample\_n() and anti\_join() to create training and test sets, without hardcoding n.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{rel_n<-}\StringTok{ }\KeywordTok{nrow}\NormalTok{(survey_data)}\OperatorTok{*}\NormalTok{.}\DecValTok{8}
+\NormalTok{training <-}\StringTok{ }\KeywordTok{sample_n}\NormalTok{(survey_data, }\DataTypeTok{size =}\NormalTok{ rel_n, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{holdout <-}\StringTok{ }\KeywordTok{anti_join}\NormalTok{(survey_data, training)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-116-1.pdf}
+\caption{\label{fig:unnamed-chunk-116}Avoiding Hard Coding n}
+\end{figure}
+
+\hypertarget{distinct-extracting-unique-observations}{%
+\section{distinct(): extracting unique observations}\label{distinct-extracting-unique-observations}}
+
+\begin{itemize}
+\tightlist
+\item
+  As we know, data collection methods are not perfect and neither are participants.
+\item
+  Sometimes, software accidentally records duplicate observations.
+\item
+  Furthermore, participants may take surveys more than once resulting in duplicate information for the same person.
+\item
+  Identifying distinct responses is often of critical step in ensuring high fidelity data.
+\item
+  The final observation extraction function we will cover provides a means of extracting unique cases.
+\end{itemize}
+
+\hypertarget{distinct-structure}{%
+\subsection{distinct() Structure}\label{distinct-structure}}
+
+distinct(data, distinct\_var, \ldots{}, .keep\_all)
+
+\begin{itemize}
+\tightlist
+\item
+  data: specifies the data frame you would like to operate on.
+\item
+  distinct\_var: defines a variable for which you would like to identify distinct levels.
+\item
+  If multiple variables are provided, distinct identifies unique combinations of these levels.
+\item
+  .keep\_all: is a logical values that specifies whether or not to keep all other variables in the resulting output.
+\item
+  Note that distinct() returns the first observations with a distinct level of distinct\_var.
+\item
+  This means that if .keep\_all = TRUE is only really appropriate when an observation is a true duplicate (all information is redundant).
+\end{itemize}
+
+\hypertarget{using-distinct}{%
+\subsection{Using distinct()}\label{using-distinct}}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-117-1.pdf}
+\caption{\label{fig:unnamed-chunk-117}Original Data}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Let's take a look at the manager data that we used when combining multiple data frames.
+\item
+  Let's use distinct() create data frames that:
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Store the names of each manager.
+\item
+  Store the IDs associated with each employee.
+\item
+  Store ID/manager combinations.
+\end{enumerate}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:distinct1}{}{\label{exm:distinct1} }Using distinct() to extract unique levels of manager.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{manager}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{(Manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-119-1.pdf}
+\caption{\label{fig:unnamed-chunk-119}Disinct Levels of Manager}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:distinct2}{}{\label{exm:distinct2} }Using distinct() to extract unique levels of ResponseId.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{manager}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{(Employee)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-121-1.pdf}
+\caption{\label{fig:unnamed-chunk-121}Unique levels of ResponseId}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:distinct3}{}{\label{exm:distinct3} }Using distinct() to extract unique ResponseId-Manager combinations.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{manager}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{(Employee, Manager)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-123-1.pdf}
+\caption{\label{fig:unnamed-chunk-123}Distinct ResponseId-Manager combinations}
+\end{figure}
+
+\hypertarget{performing-repeated-operations}{%
+\chapter{Performing Repeated Operations}\label{performing-repeated-operations}}
+
+\begin{itemize}
+\tightlist
+\item
+  By this point, my hope is that you feel comfortable with the core dplyr functions.
+\item
+  In the next chapters, we will discuss three variations on each of these functions that allow you to write one line of code to repeat a manipulation many times.
+\item
+  While I will not demonstrated every variation of these functions, knowing they exist can help you speed up your data cleaning.
+\item
+  What are some instances when you would want to do repeated manipulations?
+\item
+  Renaming all all columns so that their names are lower case.
+\item
+  Centering a set of independent variables for regression.
+\item
+  Calculating summary statistics for a large set of variables.
+\item
+  Converting a set of variables that were read as character to numeric.
+\item
+  Rounding all numeric variables to the second decimal place.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  Most of the core functions have variations that variations that facilitate repeated operations in different ways.
+\item
+  The names are mostly the same, except a suffix is added to the end to differentiate it from its typical call (i.e., mutate\_all())
+\item
+  Each suffix defines the repeated manipulation in a different way.
+\end{itemize}
+
+Summary of Suffix Definitions
+
+\begin{itemize}
+\tightlist
+\item
+  \_all: Applies the transformation to all columns.
+\item
+  \_at: Applies the transformation to a set of columns you define.
+\item
+  \_if: Applies the transformation to a set of columns that match an argument.
+\end{itemize}
+
+\hypertarget{all-suffix}{%
+\section{all() suffix}\label{all-suffix}}
+
+\begin{itemize}
+\tightlist
+\item
+  As you might suspect, functions with the \_all() suffix apply your specified transformation to \textbf{all} columns in the data frame.
+\item
+  This is useful when there is a single transformation that is appropriate for every column.
+\item
+  For example, because R is case sensitive, it is much easier to always were with lower case column names.
+\item
+  Using rename\_all() will help us rename every single column so that it matches this pattern.
+\item
+  To use rename\_all() we simply define the data frame and then a function that will take a column name and change it in some way.
+\item
+  tolower() converts string values to lowercase and is the appropriate function to use here.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf}
+\caption{\label{fig:unnamed-chunk-124}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:renameall}{}{\label{exm:renameall} }Using rename\_all() and tolower() to rename all variables so they are lower case.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rename_all}\NormalTok{(tolower)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-126-1.pdf}
+\caption{\label{fig:unnamed-chunk-126}Renamed All variables to lower case}
+\end{figure}
+
+\hypertarget{at-suffix}{%
+\section{at() suffix}\label{at-suffix}}
+
+\begin{itemize}
+\tightlist
+\item
+  The at suffix applies a given transformation to a set of variables.
+\item
+  It relies on the vars() helper function to define these variables.
+\item
+  Let's use the mutate\_at() function to center the cons and perf columns
+\item
+  In this case, I want to retain my centered and uncentered variables for later use.
+\item
+  To do this, I defined a named list that contains the functions I want to apply to the variables I define.
+\item
+  The names of the elements in the list will be appended to my original names to create new columns.
+\item
+  .s are used as place holders for the vars.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf}
+\caption{\label{fig:unnamed-chunk-127}Original Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:mutateat}{}{\label{exm:mutateat} }Using mutate\_at() to center cons and perf at 0.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{centered_data<-survey_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(cons, perf), }\KeywordTok{list}\NormalTok{(}\DataTypeTok{c =} \OperatorTok{~}\StringTok{ }\NormalTok{.}\OperatorTok{-}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+
+\NormalTok{centered_data}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-129-1.pdf}
+- Lets double check our work using summarise\_at()
+- Centering a variables changes it's expected value but not its spread.
+- This means that the new variables should have different means but identical standard deviations compared to the original variables.
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:summariseat}{}{\label{exm:summariseat} }Using summarise\_at() to verify the transformation worked appropriately
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{centered_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(cons, perf, cons_c, perf_c), }\KeywordTok{list}\NormalTok{(}\DataTypeTok{mean =} \OperatorTok{~}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                                                      \DataTypeTok{sd =} \OperatorTok{~}\KeywordTok{sd}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-131-1.pdf}
+\caption{\label{fig:unnamed-chunk-131}Creates Summary Table for Variables Defined in vars()}
+\end{figure}
+
+\hypertarget{if-suffix}{%
+\section{if() suffix}\label{if-suffix}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \_if suffix applies a transformation to a set of columns that satisfy a logical test.
+\item
+  I have been using mutate\_if() and round() behind the scenes while writing this book to format most of the tables that you see.
+\item
+  Consider Example \ref{exm:summariseat} when I don't use mutate\_if().
+\end{itemize}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:summariseat2}{}{\label{exm:summariseat2} }The code you saw really generates this ugly beast.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{centered_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(cons, perf, cons_c, perf_c), }\KeywordTok{list}\NormalTok{(}\DataTypeTok{mean =} \OperatorTok{~}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                                                      \DataTypeTok{sd =} \OperatorTok{~}\KeywordTok{sd}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-133-1.pdf}
+\caption{\label{fig:unnamed-chunk-133}Unrounded Data}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  The floating point (maximum decimal point) in R goes out a long way making calculations very precise but output unwieldy.
+\item
+  By using mutate\_if(), we can apply round() repeatedly across the data frame.
+\item
+  round() only works with numeric data, though, so we want to avoid applying it character and factor data.
+\end{itemize}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:summariseat3}{}{\label{exm:summariseat3} }Using summarise\_at() to verify the transformation worked appropriately
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{centered_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(cons, perf, cons_c, perf_c), }\KeywordTok{list}\NormalTok{(}\DataTypeTok{mean =} \OperatorTok{~}\KeywordTok{mean}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+                                                      \DataTypeTok{sd =} \OperatorTok{~}\KeywordTok{sd}\NormalTok{(., }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate_if}\NormalTok{(is.numeric, round, }\DataTypeTok{digits =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-135-1.pdf}
+\caption{\label{fig:unnamed-chunk-135}Formatting Output using mutate\_if}
+\end{figure}
+
+\hypertarget{part-tidy-data-with-tidyr}{%
+\part{Tidy Data with tidyr}\label{part-tidy-data-with-tidyr}}
+
+\hypertarget{wider-and-longer-data-formats}{%
+\chapter{Wider and Longer Data Formats}\label{wider-and-longer-data-formats}}
+
+\begin{itemize}
+\item
+  You now know how to efficiently add/remove columns, remove rows, and summarise information contained within a data frame.
+\item
+  There are a few more tools you need to learn before you can handle most data management tasks.
+\item
+  You have seen one form longitudinal data can take in Chapter 1 (separate objects).
+\item
+  It can also come in long format and wide format, depicted below.
+\item
+  Transitioning back and forth between these formats is an important skill to have, because different analyses require different data formats.
+\item
+  For example, most multi-level modeling software take the data in long format. In contrast, many MANCOVA packages require wide format data.
+\item
+  Luckily, tidyr, another package written by Hadley Wickham, is specially designed to reshape data.
+\item
+  tidyr contains a set of functions for wrangling messy data and making it tidy.
+\item
+  tidy data has the following properties.
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Each variable forms a column.
+  \item
+    Each observation forms a row.
+  \item
+    Each type of observational unit forms a table.
+  \end{enumerate}
+\item
+  Please see the \href{https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html}{tidyr vignette} for more information on tidy data.
+\end{itemize}
+
+Core tidyr Functions for Reshaping Data
+
+\begin{itemize}
+\tightlist
+\item
+  gather(): Make a data frame longer
+\item
+  spread(): Make a data frame wider
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf}
+\caption{\label{fig:unnamed-chunk-136}Wide Format}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-137-1.pdf}
+\caption{\label{fig:unnamed-chunk-137}Long Format}
+\end{figure}
+
+\hypertarget{gather-wider-to-longer}{%
+\section{gather(): Wider to Longer}\label{gather-wider-to-longer}}
+
+gather() is a function intended to take wide format data and make it longer. It does this by gathering a set of columns in the wide data into one column. The user defines the columns columns that should be collapsed, the name of the column that will store the original columns' names, and the name of the column that will store the original columns' values.
+
+\hypertarget{gather-structure}{%
+\subsection{gather() Structure}\label{gather-structure}}
+
+gather(data, key, value, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  key: Name of column to store wide format column names.
+\item
+  value: Name of column to store the selected columns values.
+\item
+  \ldots{}: A selection of columns to gather into long format. This operates similar to select() and can accommodate special operators like :, -, starts\_with, etc.
+\end{itemize}
+
+\hypertarget{using-gather}{%
+\subsection{Using gather()}\label{using-gather}}
+
+\begin{itemize}
+\tightlist
+\item
+  gather() is useful for converting a data frame into a longer format.
+\item
+  We will illustrate this with the wide data set shown previously
+\item
+  This data frame has to columns for a test core taken at two different time points
+\item
+  These are labeled ``pre'' and ``post''
+\item
+  gather() can be used to stack the pre and post columns into a single test column which we will define with the value
+\item
+  The temporal information can be stored in a separate column which we define with the key argument
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf}
+\caption{\label{fig:unnamed-chunk-138}Wide Format Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:gather1}{}{\label{exm:gather1} }We can specify the columns we want to gather using the elipse argument
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gather}\NormalTok{(wide, }\DataTypeTok{key =} \StringTok{"time"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"test"}\NormalTok{, pre, post)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-140-1.pdf}
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:gather2}{}{\label{exm:gather2} }Equivalent sytax would be to use - to deselect columns to be gathered. In some use cases, this is quicker.
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gather}\NormalTok{(wide, }\DataTypeTok{key =} \StringTok{"time"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"test"}\NormalTok{, }\OperatorTok{-}\KeywordTok{c}\NormalTok{(id, gender, condition, non_naieve))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{spread-longer-to-wider}{%
+\section{spread(): Longer to Wider}\label{spread-longer-to-wider}}
+
+\begin{itemize}
+\tightlist
+\item
+  spread() is gather()'s conjugate.
+\item
+  It converts long data frames into wider data frames.
+\item
+  To do this, the user specifies a key column, that stores variable names, and a value column that stores the information associated with those variables.
+\item
+  The key column is spread so that each unique value stored within it becomes a new column storing the associated values.
+\end{itemize}
+
+\hypertarget{spread-structure}{%
+\subsection{spread() Structure}\label{spread-structure}}
+
+spread(data, key, value)
+
+\begin{itemize}
+\tightlist
+\item
+  key: Name of column to store wide format column names.
+\item
+  value: Name of column to store the selected columns values.
+\end{itemize}
+
+\hypertarget{using-spread}{%
+\subsection{Using spread()}\label{using-spread}}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf}
+\caption{\label{fig:unnamed-chunk-142}Long Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:spread1}{}{\label{exm:spread1} }
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{spread}\NormalTok{(wide, }\DataTypeTok{key =} \StringTok{"time"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-144-1.pdf}
+\caption{\label{fig:unnamed-chunk-144}Using Spread to Go From Long to Wide}
+\end{figure}
+
+\hypertarget{recent-developments}{%
+\section{Recent Developments}\label{recent-developments}}
+
+\begin{itemize}
+\tightlist
+\item
+  The tidyverse is under constant development by a team of very smart people.
+\item
+  Recently, Hadley Wickham, one of the key contributes to the tidyverse announced new functions that will come to replace gather() and spread.
+\item
+  To prepare you for this eventuality, I am going to introduce pivot\_wider() and pivot\_longer().
+\item
+  Given that they are still in development, I will only cover the very basics of these functions.
+\item
+  They are only available in the tidyr development version and are not yet available in the tidyverse package
+\item
+  To download the development version restart your R session (ctr+shift+f10) and run the following code
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"tidyverse/tidyr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-problems-with-gather-and-spread}{%
+\subsection{The Problems with gather() and spread()}\label{the-problems-with-gather-and-spread}}
+
+\begin{itemize}
+\tightlist
+\item
+  Gather and spread will throw errors when working with some data types.
+\item
+  Some find the functions non-intuitive.
+\item
+  The latest iteration of these functions make them more robust and also more intuitive.
+\item
+  Cannot extract meta-data from column names.
+\end{itemize}
+
+\hypertarget{pivot_longer-gathers-predecessor}{%
+\section{pivot\_longer(): gather's() predecessor}\label{pivot_longer-gathers-predecessor}}
+
+\begin{itemize}
+\tightlist
+\item
+  pivot\_longer() is the most recent iteration of gather()
+\item
+  It takes a data set and transforms it so it is longer, just like gather().
+\end{itemize}
+
+\hypertarget{pivot_longer-structure}{%
+\subsection{pivot\_longer() structure}\label{pivot_longer-structure}}
+
+pivot\_longer(data, names\_to, values\_to, cols, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  cols: The columns to gather, defined similar to select() and gather()
+\item
+  names\_to: Column name to store the former column names.
+\item
+  values\_to: Column name to store the former value names.
+\item
+  \ldots{}: to see additional arguments run ?pivot\_longer.
+\end{itemize}
+
+\hypertarget{using-pivot_longer}{%
+\subsection{Using pivot\_longer()}\label{using-pivot_longer}}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf}
+\caption{\label{fig:unnamed-chunk-146}Wide Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:pivotlonger}{}{\label{exm:pivotlonger} }We can specify the columns we want to gather using the elipse argument
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pivot_longer}\NormalTok{(wide, }\DataTypeTok{cols =} \KeywordTok{c}\NormalTok{(pre, post), }\DataTypeTok{key =} \StringTok{"time"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-148-1.pdf}
+\caption{\label{fig:unnamed-chunk-148}Using pivot\_longer() to go from Wide to Long}
+\end{figure}
+
+\hypertarget{pivot_wider-spreads-predecessor}{%
+\section{pivot\_wider(): spread()'s predecessor}\label{pivot_wider-spreads-predecessor}}
+
+\begin{itemize}
+\tightlist
+\item
+  pivot\_wider() is the most recent iteration of spread().
+\item
+  pivot\_wider() takes a data frame and makes it wider.
+\end{itemize}
+
+\hypertarget{pivot_wider-structure}{%
+\subsection{pivot\_wider() Structure}\label{pivot_wider-structure}}
+
+pivot\_wider(data, names\_from, values\_from, \ldots{})
+
+\begin{itemize}
+\tightlist
+\item
+  names\_from: Column name to store the former column names.
+\item
+  values\_from: Column name to store the former value names.
+\item
+  \ldots{}: to see additional arguments run ?pivot\_longer.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-149-1.pdf}
+\caption{\label{fig:unnamed-chunk-149}Long Data}
+\end{figure}
+
+\BeginKnitrBlock{example}
+\protect\hypertarget{exm:spread1}{}{\label{exm:spread1} }
+\EndKnitrBlock{example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pivot_wider}\NormalTok{(long, }\DataTypeTok{names_from =}  \StringTok{"time"}\NormalTok{, }\DataTypeTok{values_from =} \StringTok{"test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf}
+\caption{\label{fig:unnamed-chunk-151}Using pivot\_wider() to Go From Long to Wide}
+\end{figure}
+
+\hypertarget{part-additional-excercises}{%
+\part{Additional Excercises}\label{part-additional-excercises}}
+
+\hypertarget{the-pygmalion-effect-self-efficacy-based-intervention}{%
+\chapter{The Pygmalion Effect: Self-efficacy based intervention}\label{the-pygmalion-effect-self-efficacy-based-intervention}}
+
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
+
+\hypertarget{data-creation-do-not-change}{%
+\subsection{Data Creation (Do Not Change)}\label{data-creation-do-not-change}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{783623}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\NormalTok{experimental_data<-}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{participant_id =} \KeywordTok{runif}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DataTypeTok{min =} \DecValTok{10000000}\NormalTok{, }\DataTypeTok{max =} \DecValTok{99999999}\NormalTok{),}
+  \DataTypeTok{session =} \KeywordTok{sample}\NormalTok{(}\KeywordTok{factor}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"morning"}\NormalTok{, }\StringTok{"midday"}\NormalTok{, }\StringTok{"evening"}\NormalTok{), }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"morning"}\NormalTok{, }\StringTok{"midday"}\NormalTok{, }\StringTok{"evening"}\NormalTok{), }\DataTypeTok{ordered =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{size =} \DecValTok{120}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{25}\NormalTok{, }\FloatTok{.30}\NormalTok{, }\FloatTok{.45}\NormalTok{)),}
+          \DataTypeTok{Administrator =} \KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"UG"}\NormalTok{, }\StringTok{"Graduate"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{120}\NormalTok{, }\KeywordTok{c}\NormalTok{(.}\DecValTok{5}\NormalTok{, }\FloatTok{.5}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{intervention_finished =} \KeywordTok{case_when}\NormalTok{(session }\OperatorTok{==}\StringTok{ "morning"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.75}\NormalTok{),}
+\NormalTok{                               session }\OperatorTok{==}\StringTok{ "midday"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.80}\NormalTok{), }
+\NormalTok{                               session }\OperatorTok{==}\StringTok{ "evening"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.5}\NormalTok{)))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{memory_task_pre =} \KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{)),}
+    \DataTypeTok{memory_task_post =} \KeywordTok{case_when}\NormalTok{(intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{3}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.05}\NormalTok{, }\FloatTok{.05}\NormalTok{)),}
+\NormalTok{                            intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{2}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-manipulation}{%
+\section{Data Manipulation}\label{data-manipulation}}
+
+\hypertarget{question-1}{%
+\subsection{Question 1}\label{question-1}}
+
+Completely deidentify the data by removing participant ids. Identify two ways to do this using the appropriate dplyr function. What is the first column in this new data?
+
+\hypertarget{question-2}{%
+\subsection{Question 2}\label{question-2}}
+
+Create a data frame that only contains participants that have finished the intervention. How many participants completed the intervention?
+
+\hypertarget{question-3}{%
+\subsection{Question 3}\label{question-3}}
+
+Using the original data frame, create a new data frame that stores observations of people who did not complete the intervention \textbf{and} performed terribly on the pre test. How many participants meet this criteria?
+
+\hypertarget{question-4}{%
+\subsection{Question 4}\label{question-4}}
+
+Using the original data, reate a new variable that contains the number of students in each session. How many students were in the 17th student's session?
+
+\hypertarget{question-5}{%
+\subsection{Question 5}\label{question-5}}
+
+Create a new variable that contains a 1 if the student is the student was in the midday session and a 0 otherwise. What is the sum of that column?
+
+\hypertarget{probability-with-dplyr}{%
+\section{Probability with dplyr}\label{probability-with-dplyr}}
+
+\hypertarget{question-6}{%
+\subsection{Question 6}\label{question-6}}
+
+\emph{Count} (hint hint) the number of people who completed and failed to complete your intervention. How many people completed the study.
+
+\hypertarget{question-7}{%
+\subsection{Question 7}\label{question-7}}
+
+Add a column to freq\_table that stores the proportion of participants that completed/failed to complete your intervention. What proportion of people failed to complete the study?
+
+\hypertarget{question-8}{%
+\subsection{Question 8}\label{question-8}}
+
+Create a \emph{summary} (hint hint) table that contains the joint frequencies of the memory task post test and the intervention completion. How many people had an excellent post test score AND completed the intervention?
+
+\hypertarget{question-9}{%
+\subsection{Question 9}\label{question-9}}
+
+Using the summary table created in Question 8, covert the joint frequencies into joint probabilities. What is the probability of not completing the intervention and doing adequate on the post test.
+
+\hypertarget{question-10}{%
+\subsection{Question 10}\label{question-10}}
+
+Using the summary table created in Question 9, calculate the marginal probabilities for each level of the memory test scores (advanced).
+
+\hypertarget{part-solutions-to-additional-excercises}{%
+\part{Solutions to Additional Excercises}\label{part-solutions-to-additional-excercises}}
+
+\hypertarget{solutions-to-the-pygmalion-effect-self-efficacy-based-intervention}{%
+\chapter{Solutions to The Pygmalion Effect: Self-efficacy based intervention}\label{solutions-to-the-pygmalion-effect-self-efficacy-based-intervention}}
+
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
+
+\hypertarget{data-creation-do-not-change-1}{%
+\subsection{Data Creation (Do Not Change)}\label{data-creation-do-not-change-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{783623}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\NormalTok{experimental_data<-}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{participant_id =} \KeywordTok{runif}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DataTypeTok{min =} \DecValTok{10000000}\NormalTok{, }\DataTypeTok{max =} \DecValTok{99999999}\NormalTok{),}
+  \DataTypeTok{session =} \KeywordTok{sample}\NormalTok{(}\KeywordTok{factor}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"morning"}\NormalTok{, }\StringTok{"midday"}\NormalTok{, }\StringTok{"evening"}\NormalTok{), }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"morning"}\NormalTok{, }\StringTok{"midday"}\NormalTok{, }\StringTok{"evening"}\NormalTok{), }\DataTypeTok{ordered =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{size =} \DecValTok{120}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{25}\NormalTok{, }\FloatTok{.30}\NormalTok{, }\FloatTok{.45}\NormalTok{)),}
+          \DataTypeTok{Administrator =} \KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"UG"}\NormalTok{, }\StringTok{"Graduate"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{120}\NormalTok{, }\KeywordTok{c}\NormalTok{(.}\DecValTok{5}\NormalTok{, }\FloatTok{.5}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{intervention_finished =} \KeywordTok{case_when}\NormalTok{(session }\OperatorTok{==}\StringTok{ "morning"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.75}\NormalTok{),}
+\NormalTok{                               session }\OperatorTok{==}\StringTok{ "midday"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.80}\NormalTok{), }
+\NormalTok{                               session }\OperatorTok{==}\StringTok{ "evening"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.5}\NormalTok{)))}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{memory_task_pre =} \KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{)),}
+    \DataTypeTok{memory_task_post =} \KeywordTok{case_when}\NormalTok{(intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{3}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.05}\NormalTok{, }\FloatTok{.05}\NormalTok{)),}
+\NormalTok{                            intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{2}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-manipulation-1}{%
+\section{Data Manipulation}\label{data-manipulation-1}}
+
+\hypertarget{question-1-1}{%
+\subsection{Question 1}\label{question-1-1}}
+
+Completely deidentify the data by removing participant ids. Identify two ways to do this using the appropriate dplyr function. What is the first column in this new data?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# I use select and the minus sign to drop the participant id column from the experimental data}
+\NormalTok{Q1.dat<-experimental_data}\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{participant_id)}
+
+\CommentTok{# I then use colnames and the square brackets to index the column names in Q1.dat. You can also just print the data frame.}
+\KeywordTok{colnames}\NormalTok{(Q1.dat)[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "session"
+\end{verbatim}
+
+\hypertarget{question-2-1}{%
+\subsection{Question 2}\label{question-2-1}}
+
+Create a data frame that only contains participants that have finished the intervention. How many participants completed the intervention?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# I use filter to return observations from experimental data that successfully completed the intervention. }
+\NormalTok{Q2.dat<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{# Since filter only returns the observations that passed a logical argument, the number of rows in the output tells us the number of participants that completed the intervention. }
+\KeywordTok{nrow}\NormalTok{(Q2.dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 79
+\end{verbatim}
+
+\hypertarget{question-3-1}{%
+\subsection{Question 3}\label{question-3-1}}
+
+Using the original data frame, create a new data frame that stores observations of people who did not complete the intervention \textbf{and} performed terribly on the pre test. How many participants meet this criteria?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Again, I use filter to return observations that meet this compound logical test. filter(intervention_finished != 1, memory_task_pre == "Terrible") would return the same results. The ampersand just makes the logical test explicit. }
+\NormalTok{Q3.dat<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(intervention_finished }\OperatorTok{!=}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{memory_task_pre }\OperatorTok{==}\StringTok{ "Terrible"}\NormalTok{)}
+
+\CommentTok{# nrow again returns the number of participants that satisfy the logical test. }
+\KeywordTok{nrow}\NormalTok{(Q3.dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14
+\end{verbatim}
+
+\hypertarget{question-4-1}{%
+\subsection{Question 4}\label{question-4-1}}
+
+Using the original data, reate a new variable that contains the number of students in each session. How many students were in the 17th student's session?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# One way to add a count variable is to use add_count()}
+\NormalTok{Q2.dat}\FloatTok{.1}\NormalTok{<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{add_count}\NormalTok{(session)}
+
+\CommentTok{# We can also use mutate() and group_by()}
+\NormalTok{Q2.dat}\FloatTok{.2}\NormalTok{<-}\StringTok{ }\NormalTok{experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(session)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\CommentTok{# don't forget your ungroup()}
+
+
+\CommentTok{# I then index the column n within Q2.dat.2$n using square brackets}
+\NormalTok{Q2.dat}\FloatTok{.2}\OperatorTok{$}\NormalTok{n[}\DecValTok{17}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 40
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A logical test suggests both add_count and group_by-mutate() get the job done}
+\KeywordTok{identical}\NormalTok{(Q2.dat}\FloatTok{.2}\OperatorTok{$}\NormalTok{n, Q2.dat}\FloatTok{.1}\OperatorTok{$}\NormalTok{n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{question-5-1}{%
+\subsection{Question 5}\label{question-5-1}}
+
+Create a new variable that contains a 1 if the student is the student was in the midday session and a 0 otherwise. What is the sum of that column?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# This problem requires conditional processing}
+\CommentTok{# I use if_else within mutate. if_else returns one value if a logical test evaluates as true and another if it evaluates as false.}
+\NormalTok{Q5}\FloatTok{.1}\NormalTok{<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{midday =} \KeywordTok{if_else}\NormalTok{(session }\OperatorTok{==}\StringTok{ "midday"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+
+\KeywordTok{sum}\NormalTok{(Q5}\FloatTok{.1}\OperatorTok{$}\NormalTok{midday)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 40
+\end{verbatim}
+
+\hypertarget{probability-with-dplyr-1}{%
+\section{Probability with dplyr}\label{probability-with-dplyr-1}}
+
+\hypertarget{question-6-1}{%
+\subsection{Question 6}\label{question-6-1}}
+
+\emph{Count} (hint hint) the number of people who completed and failed to complete your intervention. How many people completed the study.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# The count function can be used to create frequency tables}
+\NormalTok{freq_table<-experimental_data}\OperatorTok{%>%}
+\StringTok{             }\KeywordTok{count}\NormalTok{(intervention_finished)}
+
+\CommentTok{# Heres a look at the table}
+\NormalTok{freq_table}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   intervention_finished     n
+##                   <int> <int>
+## 1                     0    41
+## 2                     1    79
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Looking at the table, it is clear that 79 people completed the intervention. We can us indexing to pull that number out incase we want to use it in the future}
+\NormalTok{freq_table[freq_table}\OperatorTok{$}\NormalTok{intervention_finished}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{"n"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       n
+##   <int>
+## 1    79
+\end{verbatim}
+
+\hypertarget{question-7-1}{%
+\subsection{Question 7}\label{question-7-1}}
+
+Add a column to freq\_table that stores the proportion of participants that completed/failed to complete your intervention. What proportion of people failed to complete the study?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Working with frequencies in dplyr is nice becuase we can use core dplyr function to manipulate our tables}
+\CommentTok{# mutate() can be used to add the column of probabilities to the table}
+\NormalTok{p_freq<-freq_table}\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}
+
+\CommentTok{# Here I index the column p and the row that is associated with not completing the intervention}
+\NormalTok{p_freq[p_freq}\OperatorTok{$}\NormalTok{intervention_finished}\OperatorTok{==}\DecValTok{0}\NormalTok{, }\StringTok{"p"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       p
+##   <dbl>
+## 1 0.342
+\end{verbatim}
+
+\hypertarget{question-8-1}{%
+\subsection{Question 8}\label{question-8-1}}
+
+Create a \emph{summary} (hint hint) table that contains the joint frequencies of the memory task post test and the intervention completion. How many people had an excellent post test score AND completed the intervention?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Like the hint suggests, we can use group_by() and summarise() to get joint frequencies across to variables}
+\NormalTok{jf}\FloatTok{.1}\NormalTok{<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(memory_task_post, intervention_finished)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+
+\NormalTok{jf}\FloatTok{.1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    memory_task_post intervention_finished     n
+##    <chr>                            <int> <int>
+##  1 Adequate                             0     9
+##  2 Adequate                             1    14
+##  3 Excellent                            0    10
+##  4 Excellent                            1    17
+##  5 Good                                 0     9
+##  6 Good                                 1    40
+##  7 Poor                                 0     6
+##  8 Poor                                 1     5
+##  9 Terrible                             0     7
+## 10 Terrible                             1     3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Count can be used in this case too (I just wanted to get you practice with summarise()).}
+\NormalTok{jf}\FloatTok{.2}\NormalTok{<-experimental_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{(memory_task_post, intervention_finished)}
+
+\NormalTok{jf}\FloatTok{.2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    memory_task_post intervention_finished     n
+##    <chr>                            <int> <int>
+##  1 Adequate                             0     9
+##  2 Adequate                             1    14
+##  3 Excellent                            0    10
+##  4 Excellent                            1    17
+##  5 Good                                 0     9
+##  6 Good                                 1    40
+##  7 Poor                                 0     6
+##  8 Poor                                 1     5
+##  9 Terrible                             0     7
+## 10 Terrible                             1     3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# I use filter to and the square brackets to pull out n. This is an advanced technique and regular indexing is perfectly accepible}
+\NormalTok{jf}\FloatTok{.1}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(memory_task_post}\OperatorTok{==}\StringTok{"Excellent"}\NormalTok{, intervention_finished}\OperatorTok{==}\DecValTok{1}\NormalTok{)}\OperatorTok{%>%}
+\StringTok{  }\NormalTok{.[}\StringTok{"n"}\NormalTok{]  }\CommentTok{### Note that the period acts as a place holder for the data set when working with the pipe function. }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       n
+##   <int>
+## 1    17
+\end{verbatim}
+
+\hypertarget{question-9-1}{%
+\subsection{Question 9}\label{question-9-1}}
+
+Using the summary table created in Question 8, covert the joint frequencies into joint probabilities. What is the probability of not completing the intervention and doing adequate on the post test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# This is done simply by deviding the frequencies calculated above by the total observations. }
+\CommentTok{# Take a minute to make sure your probabilities are summing to 0. If not did you forget to call ungroup() above (I did the first time!). }
+\CommentTok{# If you did forget to call ungroup(), congratulations, you accidently computed conditional probabilities. }
+\NormalTok{jf_p<-jf}\FloatTok{.1}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{p =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}
+
+\NormalTok{jf_p}\OperatorTok{$}\NormalTok{p[jf_p}\OperatorTok{$}\NormalTok{intervention_finished}\OperatorTok{==}\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{jf_p}\OperatorTok{$}\NormalTok{memory_task_post}\OperatorTok{==}\StringTok{"Adequate"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.075
+\end{verbatim}
+
+\hypertarget{question-10-1}{%
+\subsection{Question 10}\label{question-10-1}}
+
+Using the summary table created in Question 9, calculate the marginal probabilities for each level of the memory test scores (advanced).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Remember, marginal proabilities sum across all joint probabilities at a given level of x. }
+\CommentTok{# This is easily done grouping by the focal variable, and summing across all cells given that variable}
+
+\NormalTok{jf_p}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(memory_task_post)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{marginal_p =} \KeywordTok{sum}\NormalTok{(p))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   memory_task_post marginal_p
+##   <chr>                 <dbl>
+## 1 Adequate             0.192 
+## 2 Excellent            0.225 
+## 3 Good                 0.408 
+## 4 Poor                 0.0917
+## 5 Terrible             0.0833
+\end{verbatim}
+
+
+\end{document}

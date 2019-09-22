@@ -1,0 +1,102 @@
+---
+title: "Introduction to Creating Reproducible Research Reports"
+author: "James Rigby"
+date: "9/18/2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Software Setup
+
+### APA Papers with papaja
+Several packages exist to create reproducible research reports. The first is papaja, a package that creates formatted APA style papers using Rmarkdown [documentation linked here](https://crsh.github.io/papaja_man/). 
+
+```{r, eval = FALSE}
+install.packages("papaja")
+```
+
+### latex Distribution for PDF Output
+In order render your documents as a pdf you need to install a latex package. The easiest to maintain and quickest to download is [tinytex](https://yihui.name/tinytex/). If you do not choose to install the tinytex, make sure to render the package as a word document. 
+
+```{r, eval = FALSE}
+install.packages('tinytex')
+tinytex::install_tinytex()
+```
+
+### Bibliography Manager
+
+If you have yet to download a citation manager, I recommend you do so. [Zotero](https://www.zotero.org) is a free open source software that is integrated with chrome, making citation management really quick and easy! With the chrome extention you can just click on button to save citation information when conducting a literature search via Google Scholar, Crossref, Web of Science, or others. 
+
+To download zotero, navigate to the link above and click on download link. Follow the prompts appropirate for your opperating system. Also, download the better bib extention. 
+
+    - Download the latest release [linked here](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v5.1.139).
+    - Open zotero 
+    - Click tools > add-ons
+    - Select extentions
+    - Click the gear in the top right corner and choose "Install Add-on From File..."
+    - Select the .xpi file you downloaded in step 1
+    - Restart Zotero
+
+### Automatic Citations and Bibliographies with citr
+
+citr provides a graphical interphase for your bibliography within zotero. To install the package run the following code. 
+
+```{r, eval = FALSE}
+install.packages("citr")
+```
+
+You can map citr to a hotkey for easy access by doing the following in RStudio.
+
+      - Tools > Modify Keyboard Shortcuts
+      - Search Insert Citations
+      - Click on the space beneath shortcut
+      - Type your hotkey (I like ctr+shift+r)
+
+
+## Creating Your First Papaja
+
+After installing papaja, you should have a template available to create a APA formatted document within rmarkdown. To do this follow the following steps. 
+
+1) Click the green plus sign in the top left of R. 
+2) Click RMarkdown.
+3) Name the document.
+4) Click template.
+5) Click APA Style 6th Edition. 
+6) Click ok.
+
+## Understanding the Markdown Template
+
+1) The top portion of the document contains meta data called the YAML header [More information here](https://crsh.github.io/papaja_man/r-markdown-components.html#yaml-front-matter). This is where you write the abstract, define the author names and order, and update keywords. Simply change the text information to the appropriate names. Be careful as you do this, because spacing matters in the YAML header (i.e., don't change the text to the left of the colon unless you know what you're doing). What do you need to change?
+
+
+      - title
+      - shorttitle
+      - author information (add or delete authors by adding more name and affiliation rows)
+      - authornote
+      - abstract
+      - keywords
+      - wordcount
+      - bibliography (if used)
+      - output (if tinytex is not installed change to apa6_word)
+
+2) Section headers are predefined. You can write your introduction above methods. 
+
+3) References are compiled at the end of the document. All packages used within the document will be included in the citations. The bibliogrpahy is used as well. 
+
+## Managing Citations
+
+If you opt to include a bib file, you have the option to include automatic intext citations and automatically generated bibliographies. To export a bib file from zotero do the following. 
+
+      - File > Export Library
+      - Select better BibTeX format
+      - Click ok
+      - Select the location you would like to export the file to (i.e., the folder you are storing your document)
+      
+Make sure you change the bibliography option in the YAML header to the name of the exported file. 
+
+
+      
+      

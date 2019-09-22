@@ -8,3 +8,5 @@ bookdown::gitbook:
         <li><a href="./"Psyc 6300</a></li>
       after: |
     download: ["pdf", "epub"]
+bookdown::pdf_book:
+  keep_tex: yes

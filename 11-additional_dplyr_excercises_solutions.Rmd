@@ -1,0 +1,172 @@
+# (PART) Solutions to Additional Excercises {-}
+
+# Solutions to The Pygmalion Effect: Self-efficacy based intervention
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental_data to answer the following questions. Note that experimental_data is created in the first R chunk. Do **not** overwrite the original data for each question. 
+
+### Data Creation (Do Not Change)
+
+```{r}
+set.seed(783623)
+library(tidyverse)
+experimental_data<-tibble(participant_id = runif(120, min = 10000000, max = 99999999),
+  session = sample(factor(x = c("morning", "midday", "evening"), levels = c("morning", "midday", "evening"), ordered = TRUE), size = 120, replace = TRUE, prob = c(.25, .30, .45)),
+          Administrator = sample(c("UG", "Graduate"), size = 120, c(.5, .5), replace = TRUE))%>%
+  mutate(intervention_finished = case_when(session == "morning" ~ rbinom(n(), 1, .75),
+                               session == "midday" ~ rbinom(n(), 1, .80), 
+                               session == "evening" ~ rbinom(n(), 1, .5)))%>%
+  mutate(memory_task_pre = sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.15, .2, .15, .2, .3)),
+    memory_task_post = case_when(intervention_finished == 1 ~ sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.3, .4, .2, .05, .05)),
+                            intervention_finished == 0 ~ sample(size = n(), c("Excellent", "Good", "Adequate", "Poor", "Terrible"), replace = TRUE, prob = c(.2, .2, .3, .1, .2))))
+```
+
+## Data Manipulation
+
+### Question 1
+Completely deidentify the data by removing participant ids. Identify two ways to do this using the appropriate dplyr function. What is the first column in this new data?
+
+```{r}
+# I use select and the minus sign to drop the participant id column from the experimental data
+Q1.dat<-experimental_data%>%
+          select(-participant_id)
+
+# I then use colnames and the square brackets to index the column names in Q1.dat. You can also just print the data frame.
+colnames(Q1.dat)[1]
+```
+
+
+### Question 2
+Create a data frame that only contains participants that have finished the intervention. How many participants completed the intervention?
+
+```{r}
+# I use filter to return observations from experimental data that successfully completed the intervention. 
+Q2.dat<-experimental_data%>%
+  filter(intervention_finished == 1)
+
+# Since filter only returns the observations that passed a logical argument, the number of rows in the output tells us the number of participants that completed the intervention. 
+nrow(Q2.dat)
+```
+
+### Question 3
+Using the original data frame, create a new data frame that stores observations of people who did not complete the intervention **and** performed terribly on the pre test. How many participants meet this criteria?
+
+```{r}
+# Again, I use filter to return observations that meet this compound logical test. filter(intervention_finished != 1, memory_task_pre == "Terrible") would return the same results. The ampersand just makes the logical test explicit. 
+Q3.dat<-experimental_data%>%
+  filter(intervention_finished != 1 & memory_task_pre == "Terrible")
+
+# nrow again returns the number of participants that satisfy the logical test. 
+nrow(Q3.dat)
+```
+
+### Question 4
+Using the original data, reate a new variable that contains the number of students in each session. How many students were in the 17th student's session?
+
+```{r}
+# One way to add a count variable is to use add_count()
+Q2.dat.1<-experimental_data%>%
+  add_count(session)
+
+# We can also use mutate() and group_by()
+Q2.dat.2<- experimental_data%>%
+  group_by(session)%>%
+  mutate(n = n())%>%
+  ungroup() # don't forget your ungroup()
+
+
+# I then index the column n within Q2.dat.2$n using square brackets
+Q2.dat.2$n[17]
+
+# A logical test suggests both add_count and group_by-mutate() get the job done
+identical(Q2.dat.2$n, Q2.dat.1$n)
+```
+
+### Question 5
+Create a new variable that contains a 1 if the student is the student was in the midday session and a 0 otherwise. What is the sum of that column?
+
+```{r}
+# This problem requires conditional processing
+# I use if_else within mutate. if_else returns one value if a logical test evaluates as true and another if it evaluates as false.
+Q5.1<-experimental_data%>%
+  mutate(midday = if_else(session == "midday", 1, 0))
+
+sum(Q5.1$midday)
+```
+
+## Probability with dplyr
+
+### Question 6
+*Count* (hint hint) the number of people who completed and failed to complete your intervention. How many people completed the study.  
+```{r}
+# The count function can be used to create frequency tables
+freq_table<-experimental_data%>%
+             count(intervention_finished)
+
+# Heres a look at the table
+freq_table
+
+# Looking at the table, it is clear that 79 people completed the intervention. We can us indexing to pull that number out incase we want to use it in the future
+freq_table[freq_table$intervention_finished==1, "n"]
+```
+
+### Question 7
+Add a column to freq_table that stores the proportion of participants that completed/failed to complete your intervention. What proportion of people failed to complete the study? 
+```{r}
+# Working with frequencies in dplyr is nice becuase we can use core dplyr function to manipulate our tables
+# mutate() can be used to add the column of probabilities to the table
+p_freq<-freq_table%>%
+          mutate(p = n/sum(n))
+
+# Here I index the column p and the row that is associated with not completing the intervention
+p_freq[p_freq$intervention_finished==0, "p"]
+```
+
+### Question 8
+Create a *summary* (hint hint) table that contains the joint frequencies of the memory task post test and the intervention completion. How many people had an excellent post test score AND completed the intervention?
+
+```{r}
+# Like the hint suggests, we can use group_by() and summarise() to get joint frequencies across to variables
+jf.1<-experimental_data%>%
+  group_by(memory_task_post, intervention_finished)%>%
+  summarise(n = n())%>%
+  ungroup()
+
+jf.1
+
+# Count can be used in this case too (I just wanted to get you practice with summarise()).
+jf.2<-experimental_data%>%
+  count(memory_task_post, intervention_finished)
+
+jf.2
+
+# I use filter to and the square brackets to pull out n. This is an advanced technique and regular indexing is perfectly accepible
+jf.1%>%
+  filter(memory_task_post=="Excellent", intervention_finished==1)%>%
+  .["n"]  ### Note that the period acts as a place holder for the data set when working with the pipe function. 
+
+```
+
+
+### Question 9
+Using the summary table created in Question 8, covert the joint frequencies into joint probabilities. What is the probability of not completing the intervention and doing adequate on the post test.
+```{r}
+# This is done simply by deviding the frequencies calculated above by the total observations. 
+# Take a minute to make sure your probabilities are summing to 0. If not did you forget to call ungroup() above (I did the first time!). 
+# If you did forget to call ungroup(), congratulations, you accidently computed conditional probabilities. 
+jf_p<-jf.1%>%
+  mutate(p = n/sum(n))
+
+jf_p$p[jf_p$intervention_finished==0 & jf_p$memory_task_post=="Adequate"]
+
+```
+
+### Question 10
+Using the summary table created in Question 9, calculate the marginal probabilities for each level of the memory test scores (advanced). 
+```{r}
+# Remember, marginal proabilities sum across all joint probabilities at a given level of x. 
+# This is easily done grouping by the focal variable, and summing across all cells given that variable
+
+jf_p%>%
+  group_by(memory_task_post)%>%
+  summarise(marginal_p = sum(p))
+```
+
