@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.8.29)  21 SEP 2019 22:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.8.29)  12 OCT 2019 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -691,7 +691,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Chapter 1.
-<suppl/cover.png, id=340, 1061.46562pt x 1693.82813pt>
+<suppl/cover.png, id=380, 1061.46562pt x 1693.82813pt>
 File: suppl/cover.png Graphic file (type png)
 <use suppl/cover.png>
 Package pdftex.def Info: suppl/cover.png  used on input line 154.
@@ -715,7 +715,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 175.
-<suppl/DataCamp.png, id=359, 1375.1375pt x 311.1625pt>
+<suppl/DataCamp.png, id=399, 1375.1375pt x 311.1625pt>
 File: suppl/DataCamp.png Graphic file (type png)
 <use suppl/DataCamp.png>
 Package pdftex.def Info: suppl/DataCamp.png  used on input line 216.
@@ -733,7 +733,7 @@ Chapter 2.
 
 ] [13] [14]
 Chapter 3.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-6-1.pdf, id=394, 794.97pt x
+<Introduction_to_R_files/figure-latex/unnamed-chunk-6-1.pdf, id=434, 794.97pt x
  144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (
 type pdf)
@@ -741,7 +741,7 @@ type pdf)
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-6-1
 .pdf  used on input line 285.
 (pdftex.def)             Requested size: 345.00856pt x 62.72882pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-7-1.pdf, id=395, 542.025pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-7-1.pdf, id=435, 542.025pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (
 type pdf)
@@ -757,7 +757,7 @@ Chapter 4.
 [17
 
 ]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-9-1.pdf, id=446, 578.16pt x
+<Introduction_to_R_files/figure-latex/unnamed-chunk-9-1.pdf, id=487, 578.16pt x
  144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (
 type pdf)
@@ -765,7 +765,7 @@ type pdf)
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-9-1
 .pdf  used on input line 440.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-11-1.pdf, id=447, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-11-1.pdf, id=488, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file 
 (type pdf)
@@ -774,7 +774,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-11-
 1.pdf  used on input line 456.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [18 <./Introduction_to_R_files/figure-latex/unnamed-chunk-9-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-13-1.pdf, id=468, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-13-1.pdf, id=508, 578.16pt 
 x 108.405pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file 
 (type pdf)
@@ -784,7 +784,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-13-
 (pdftex.def)             Requested size: 344.99312pt x 64.6862pt.
 [19 <./Introduction_to_R_files/figure-latex/unnamed-chunk-11-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-13-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf, id=496, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf, id=536, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file 
 (type pdf)
@@ -792,7 +792,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-14-
 1.pdf  used on input line 548.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf, id=497, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf, id=537, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file 
 (type pdf)
@@ -800,7 +800,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-16-
 1.pdf  used on input line 564.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-18-1.pdf, id=498, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-18-1.pdf, id=538, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file 
 (type pdf)
@@ -809,7 +809,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-18-
 1.pdf  used on input line 580.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [20 <./Introduction_to_R_files/figure-latex/unnamed-chunk-14-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-20-1.pdf, id=520, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-20-1.pdf, id=560, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file 
 (type pdf)
@@ -817,7 +817,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-20-
 1.pdf  used on input line 596.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-22-1.pdf, id=521, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-22-1.pdf, id=561, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file 
 (type pdf)
@@ -828,7 +828,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-22-
 [21 <./Introduction_to_R_files/figure-latex/unnamed-chunk-16-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-18-1.pdf> <./Introduction_to_R_files
 /figure-latex/unnamed-chunk-20-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-23-1.pdf, id=555, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-23-1.pdf, id=596, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file 
 (type pdf)
@@ -838,7 +838,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-23-
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [22 <./Introduction_to_R_files/figure-latex/unnamed-chunk-22-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-23-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf, id=582, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf, id=622, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file 
 (type pdf)
@@ -846,7 +846,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-25-
 1.pdf  used on input line 671.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-27-1.pdf, id=583, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-27-1.pdf, id=623, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file 
 (type pdf)
@@ -854,7 +854,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-27-
 1.pdf  used on input line 687.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-29-1.pdf, id=584, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-29-1.pdf, id=624, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file 
 (type pdf)
@@ -864,7 +864,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-29-
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [23 <./Introduction_to_R_files/figure-latex/unnamed-chunk-25-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-27-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-30-1.pdf, id=612, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-30-1.pdf, id=652, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file 
 (type pdf)
@@ -873,7 +873,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-30-
 1.pdf  used on input line 760.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [24 <./Introduction_to_R_files/figure-latex/unnamed-chunk-29-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-32-1.pdf, id=633, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-32-1.pdf, id=673, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-32-1.pdf Graphic file 
 (type pdf)
@@ -881,7 +881,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-32-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-32-
 1.pdf  used on input line 777.
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-34-1.pdf, id=634, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-34-1.pdf, id=674, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file 
 (type pdf)
@@ -891,7 +891,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-34-
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [25 <./Introduction_to_R_files/figure-latex/unnamed-chunk-30-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-32-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-36-1.pdf, id=660, 650.43pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-36-1.pdf, id=700, 650.43pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file 
 (type pdf)
@@ -901,7 +901,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-36-
 (pdftex.def)             Requested size: 345.00415pt x 76.66757pt.
 [26 <./Introduction_to_R_files/figure-latex/unnamed-chunk-34-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-36-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf, id=681, 722.7pt x
+<Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf, id=722, 722.7pt x
  325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file 
 (type pdf)
@@ -909,7 +909,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-37-
 1.pdf  used on input line 867.
 (pdftex.def)             Requested size: 344.99533pt x 155.2479pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-38-1.pdf, id=682, 469.755pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-38-1.pdf, id=723, 469.755pt
  x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file 
 (type pdf)
@@ -921,7 +921,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-38-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [27 <./Introduction_to_R_files/figure-latex/unnamed-chunk-37-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-40-1.pdf, id=692, 686.565pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-40-1.pdf, id=733, 686.565pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file 
 (type pdf)
@@ -934,7 +934,7 @@ Underfull \vbox (badness 1406) has occurred while \output is active []
 
 [28 <./Introduction_to_R_files/figure-latex/unnamed-chunk-40-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-38-1.pdf>] [29]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-43-1.pdf, id=724, 686.565pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-43-1.pdf, id=764, 686.565pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file 
 (type pdf)
@@ -943,7 +943,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-43-
 1.pdf  used on input line 986.
 (pdftex.def)             Requested size: 344.99974pt x 72.6315pt.
 [30 <./Introduction_to_R_files/figure-latex/unnamed-chunk-43-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-45-1.pdf, id=742, 722.7pt x
+<Introduction_to_R_files/figure-latex/unnamed-chunk-45-1.pdf, id=782, 722.7pt x
  144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-45-1.pdf Graphic file 
 (type pdf)
@@ -951,7 +951,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-45-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-45-
 1.pdf  used on input line 1041.
 (pdftex.def)             Requested size: 344.99533pt x 68.99905pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-47-1.pdf, id=743, 867.24pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-47-1.pdf, id=783, 867.24pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-47-1.pdf Graphic file 
 (type pdf)
@@ -959,7 +959,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-47-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-47-
 1.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 344.99754pt x 57.49957pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf, id=744, 831.105pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf, id=784, 831.105pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file 
 (type pdf)
@@ -967,7 +967,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-49-
 1.pdf  used on input line 1074.
 (pdftex.def)             Requested size: 345.0036pt x 60.00061pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-50-1.pdf, id=745, 469.755pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-50-1.pdf, id=785, 469.755pt
  x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-50-1.pdf Graphic file 
 (type pdf)
@@ -982,7 +982,7 @@ Overfull \hbox (15.2922pt too wide) in paragraph at lines 1083--1084
 -na-tive, to the group_by()%>%mutate()
  []
 
-<Introduction_to_R_files/figure-latex/unnamed-chunk-52-1.pdf, id=771, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-52-1.pdf, id=811, 578.16pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-52-1.pdf Graphic file 
 (type pdf)
@@ -992,7 +992,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-52-
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [32 <./Introduction_to_R_files/figure-latex/unnamed-chunk-49-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-50-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-54-1.pdf, id=793, 867.24pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-54-1.pdf, id=834, 867.24pt 
 x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-54-1.pdf Graphic file 
 (type pdf)
@@ -1000,7 +1000,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-54-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-54-
 1.pdf  used on input line 1152.
 (pdftex.def)             Requested size: 344.99754pt x 28.74979pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-56-1.pdf, id=794, 867.24pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-56-1.pdf, id=835, 867.24pt 
 x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-56-1.pdf Graphic file 
 (type pdf)
@@ -1016,7 +1016,7 @@ tive to the group_by()%>%summarise()
 
 [33 <./Introduction_to_R_files/figure-latex/unnamed-chunk-52-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-54-1.pdf>]
-<Introduction_to_R_files/figure-latex/Grouped Frequencies-1.pdf, id=823, 867.24
+<Introduction_to_R_files/figure-latex/Grouped Frequencies-1.pdf, id=863, 867.24
 pt x 72.27pt>
 File: Introduction_to_R_files/figure-latex/Grouped Frequencies-1.pdf Graphic fi
 le (type pdf)
@@ -1026,7 +1026,7 @@ es-1.pdf  used on input line 1186.
 (pdftex.def)             Requested size: 344.99754pt x 28.74979pt.
 [34 <./Introduction_to_R_files/figure-latex/unnamed-chunk-56-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/Grouped Frequencies-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-59-1.pdf, id=852, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-59-1.pdf, id=892, 578.16pt 
 x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-59-1.pdf Graphic file 
 (type pdf)
@@ -1034,7 +1034,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-59-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-59-
 1.pdf  used on input line 1239.
 (pdftex.def)             Requested size: 344.99312pt x 43.12413pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-61-1.pdf, id=853, 578.16pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-61-1.pdf, id=893, 578.16pt 
 x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-61-1.pdf Graphic file 
 (type pdf)
@@ -1326,8 +1326,8 @@ Overfull \hbox (11.99896pt too wide) in paragraph at lines 1926--1926
 
 ] [50]
 Chapter 6.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-78-1.pdf, id=980, 722.7pt x
- 252.945pt>
+<Introduction_to_R_files/figure-latex/unnamed-chunk-78-1.pdf, id=1020, 722.7pt 
+x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-78-1.pdf Graphic file 
 (type pdf)
 <use Introduction_to_R_files/figure-latex/unnamed-chunk-78-1.pdf>
@@ -1341,7 +1341,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-78-
 ]
 Chapter 7.
 [53]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf, id=1007, 433.62pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf, id=1047, 433.62pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf Graphic file 
 (type pdf)
@@ -1349,7 +1349,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-79-
 1.pdf  used on input line 2027.
 (pdftex.def)             Requested size: 345.01738pt x 115.00577pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-81-1.pdf, id=1008, 505.89pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-81-1.pdf, id=1048, 505.89pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-81-1.pdf Graphic file 
 (type pdf)
@@ -1359,7 +1359,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-81-
 (pdftex.def)             Requested size: 345.00414pt x 98.5726pt.
 [54 <./Introduction_to_R_files/figure-latex/unnamed-chunk-79-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-81-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-82-1.pdf, id=1033, 469.755p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-82-1.pdf, id=1074, 469.755p
 t x 216.81pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-82-1.pdf Graphic file 
 (type pdf)
@@ -1368,7 +1368,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-82-
 1.pdf  used on input line 2088.
 (pdftex.def)             Requested size: 344.997pt x 159.22937pt.
 [55 <./Introduction_to_R_files/figure-latex/unnamed-chunk-82-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-84-1.pdf, id=1054, 578.16pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-84-1.pdf, id=1095, 578.16pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-84-1.pdf Graphic file 
 (type pdf)
@@ -1381,7 +1381,7 @@ Chapter 8.
 [57
 
 ]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-85-1.pdf, id=1078, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-85-1.pdf, id=1118, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-85-1.pdf Graphic file 
 (type pdf)
@@ -1390,7 +1390,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-85-
 1.pdf  used on input line 2221.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
 [58]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-87-1.pdf, id=1089, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-87-1.pdf, id=1129, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-87-1.pdf Graphic file 
 (type pdf)
@@ -1398,7 +1398,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-87-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-87-
 1.pdf  used on input line 2237.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-89-1.pdf, id=1090, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-89-1.pdf, id=1130, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-89-1.pdf Graphic file 
 (type pdf)
@@ -1409,7 +1409,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-89-
 [59 <./Introduction_to_R_files/figure-latex/unnamed-chunk-85-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-87-1.pdf> <./Introduction_to_R_files
 /figure-latex/unnamed-chunk-89-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf, id=1120, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf, id=1160, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf Graphic file 
 (type pdf)
@@ -1417,7 +1417,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-91-
 1.pdf  used on input line 2267.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-92-1.pdf, id=1121, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-92-1.pdf, id=1161, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-92-1.pdf Graphic file 
 (type pdf)
@@ -1425,7 +1425,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-92-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-92-
 1.pdf  used on input line 2278.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-94-1.pdf, id=1122, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-94-1.pdf, id=1162, 722.7pt 
 x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-94-1.pdf Graphic file 
 (type pdf)
@@ -1435,7 +1435,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-94-
 (pdftex.def)             Requested size: 344.99533pt x 68.99905pt.
 [60 <./Introduction_to_R_files/figure-latex/unnamed-chunk-91-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-92-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-96-1.pdf, id=1146, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-96-1.pdf, id=1186, 722.7pt 
 x 289.08pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-96-1.pdf Graphic file 
 (type pdf)
@@ -1443,7 +1443,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-96-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-96-
 1.pdf  used on input line 2302.
 (pdftex.def)             Requested size: 344.99533pt x 137.99812pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-97-1.pdf, id=1147, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-97-1.pdf, id=1187, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file 
 (type pdf)
@@ -1451,7 +1451,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-97-
 1.pdf  used on input line 2317.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/fig_cap-1.pdf, id=1149, 722.7pt x 144.54p
+<Introduction_to_R_files/figure-latex/fig_cap-1.pdf, id=1189, 722.7pt x 144.54p
 t>
 File: Introduction_to_R_files/figure-latex/fig_cap-1.pdf Graphic file (type pdf
 )
@@ -1462,7 +1462,7 @@ ed on input line 2331.
 [61 <./Introduction_to_R_files/figure-latex/unnamed-chunk-94-1.pdf> <./Introduc
 tion_to_R_files/figure-latex/unnamed-chunk-96-1.pdf> <./Introduction_to_R_files
 /figure-latex/fig_cap-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-99-1.pdf, id=1183, 722.7pt 
+<Introduction_to_R_files/figure-latex/unnamed-chunk-99-1.pdf, id=1223, 722.7pt 
 x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-99-1.pdf Graphic file 
 (type pdf)
@@ -1470,7 +1470,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-99-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-99-
 1.pdf  used on input line 2350.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-101-1.pdf, id=1184, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-101-1.pdf, id=1224, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-101-1.pdf Graphic file
  (type pdf)
@@ -1484,7 +1484,7 @@ files/figure-latex/unnamed-chunk-101-1.pdf>] [64
 
 ]
 Chapter 9.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-102-1.pdf, id=1225, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-102-1.pdf, id=1265, 722.7pt
  x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-102-1.pdf Graphic file
  (type pdf)
@@ -1493,7 +1493,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-102
 -1.pdf  used on input line 2408.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
 [65]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-104-1.pdf, id=1233, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-104-1.pdf, id=1273, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-104-1.pdf Graphic file
  (type pdf)
@@ -1501,7 +1501,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-104-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-104
 -1.pdf  used on input line 2422.
 (pdftex.def)             Requested size: 344.99533pt x 68.99905pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-105-1.pdf, id=1234, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-105-1.pdf, id=1274, 722.7pt
  x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-105-1.pdf Graphic file
  (type pdf)
@@ -1509,7 +1509,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-105-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-105
 -1.pdf  used on input line 2441.
 (pdftex.def)             Requested size: 344.99533pt x 120.74835pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-107-1.pdf, id=1235, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-107-1.pdf, id=1275, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-107-1.pdf Graphic file
  (type pdf)
@@ -1531,7 +1531,7 @@ Chapter 11.
 [73
 
 ]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf, id=1326, 578.16p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf, id=1366, 578.16p
 t x 216.81pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf Graphic file
  (type pdf)
@@ -1539,7 +1539,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-110
 -1.pdf  used on input line 2642.
 (pdftex.def)             Requested size: 344.99312pt x 129.3724pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-112-1.pdf, id=1327, 1011.78
+<Introduction_to_R_files/figure-latex/unnamed-chunk-112-1.pdf, id=1367, 1011.78
 pt x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-112-1.pdf Graphic file
  (type pdf)
@@ -1554,7 +1554,7 @@ BSERVATIONS
  []
 
 [74]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-114-1.pdf, id=1339, 1011.78
+<Introduction_to_R_files/figure-latex/unnamed-chunk-114-1.pdf, id=1379, 1011.78
 pt x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-114-1.pdf Graphic file
  (type pdf)
@@ -1562,7 +1562,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-114-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-114
 -1.pdf  used on input line 2678.
 (pdftex.def)             Requested size: 345.00415pt x 49.2863pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-116-1.pdf, id=1340, 1011.78
+<Introduction_to_R_files/figure-latex/unnamed-chunk-116-1.pdf, id=1380, 1011.78
 pt x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-116-1.pdf Graphic file
  (type pdf)
@@ -1576,7 +1576,7 @@ Underfull \vbox (badness 2564) has occurred while \output is active []
 [75 <./Introduction_to_R_files/figure-latex/unnamed-chunk-110-1.pdf> <./Introdu
 ction_to_R_files/figure-latex/unnamed-chunk-112-1.pdf> <./Introduction_to_R_fil
 es/figure-latex/unnamed-chunk-114-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-117-1.pdf, id=1372, 216.81p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-117-1.pdf, id=1412, 216.81p
 t x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-117-1.pdf Graphic file
  (type pdf)
@@ -1592,7 +1592,7 @@ BSERVATIONS
 
 [76 <./Introduction_to_R_files/figure-latex/unnamed-chunk-116-1.pdf>] [77 <./In
 troduction_to_R_files/figure-latex/unnamed-chunk-117-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-119-1.pdf, id=1402, 216.81p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-119-1.pdf, id=1443, 216.81p
 t x 108.405pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-119-1.pdf Graphic file
  (type pdf)
@@ -1600,7 +1600,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-119-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-119
 -1.pdf  used on input line 2780.
 (pdftex.def)             Requested size: 216.81938pt x 108.40968pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-121-1.pdf, id=1403, 216.81p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-121-1.pdf, id=1444, 216.81p
 t x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-121-1.pdf Graphic file
  (type pdf)
@@ -1608,7 +1608,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-121-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-121
 -1.pdf  used on input line 2797.
 (pdftex.def)             Requested size: 216.81276pt x 252.94823pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-123-1.pdf, id=1404, 216.81p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-123-1.pdf, id=1445, 216.81p
 t x 252.945pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-123-1.pdf Graphic file
  (type pdf)
@@ -1634,7 +1634,7 @@ Chapter 12.
 [81
 
 ]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf, id=1457, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf, id=1497, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf Graphic file
  (type pdf)
@@ -1642,7 +1642,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-124
 -1.pdf  used on input line 2886.
 (pdftex.def)             Requested size: 344.99533pt x 68.99905pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-126-1.pdf, id=1458, 578.16p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-126-1.pdf, id=1498, 578.16p
 t x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-126-1.pdf Graphic file
  (type pdf)
@@ -1652,7 +1652,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-126
 (pdftex.def)             Requested size: 344.99312pt x 86.24826pt.
 [82 <./Introduction_to_R_files/figure-latex/unnamed-chunk-124-1.pdf> <./Introdu
 ction_to_R_files/figure-latex/unnamed-chunk-126-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf, id=1482, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf, id=1522, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf Graphic file
  (type pdf)
@@ -1660,7 +1660,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-127
 -1.pdf  used on input line 2930.
 (pdftex.def)             Requested size: 344.99533pt x 68.99905pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-129-1.pdf, id=1483, 722.7pt
+<Introduction_to_R_files/figure-latex/unnamed-chunk-129-1.pdf, id=1523, 722.7pt
  x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-129-1.pdf Graphic file
  (type pdf)
@@ -1673,7 +1673,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2947--2951
 [][]
  []
 
-<Introduction_to_R_files/figure-latex/unnamed-chunk-131-1.pdf, id=1484, 867.24p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-131-1.pdf, id=1524, 867.24p
 t x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-131-1.pdf Graphic file
  (type pdf)
@@ -1683,7 +1683,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-131
 (pdftex.def)             Requested size: 344.99754pt x 28.74979pt.
 [83 <./Introduction_to_R_files/figure-latex/unnamed-chunk-127-1.pdf> <./Introdu
 ction_to_R_files/figure-latex/unnamed-chunk-129-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-133-1.pdf, id=1510, 867.24p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-133-1.pdf, id=1550, 867.24p
 t x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-133-1.pdf Graphic file
  (type pdf)
@@ -1691,7 +1691,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-133-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-133
 -1.pdf  used on input line 2997.
 (pdftex.def)             Requested size: 344.99754pt x 28.74979pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-135-1.pdf, id=1511, 867.24p
+<Introduction_to_R_files/figure-latex/unnamed-chunk-135-1.pdf, id=1551, 867.24p
 t x 72.27pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-135-1.pdf Graphic file
  (type pdf)
@@ -1708,7 +1708,7 @@ Chapter 13.
 [89
 
 ]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf, id=1571, 325.215
+<Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf, id=1611, 325.215
 pt x 144.54pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf Graphic file
  (type pdf)
@@ -1716,7 +1716,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-136
 -1.pdf  used on input line 3082.
 (pdftex.def)             Requested size: 325.22908pt x 144.54623pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-137-1.pdf, id=1572, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-137-1.pdf, id=1612, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-137-1.pdf Graphic file
  (type pdf)
@@ -1725,7 +1725,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-137
 -1.pdf  used on input line 3088.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
 [90 <./Introduction_to_R_files/figure-latex/unnamed-chunk-136-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf, id=1590, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf, id=1630, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf Graphic file
  (type pdf)
@@ -1733,7 +1733,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-138
 -1.pdf  used on input line 3133.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-140-1.pdf, id=1591, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-140-1.pdf, id=1631, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-140-1.pdf Graphic file
  (type pdf)
@@ -1747,7 +1747,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [91 <./Introduction_to_R_files/figure-latex/unnamed-chunk-137-1.pdf>] [92 <./In
 troduction_to_R_files/figure-latex/unnamed-chunk-138-1.pdf> <./Introduction_to_
 R_files/figure-latex/unnamed-chunk-140-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf, id=1628, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf, id=1668, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf Graphic file
  (type pdf)
@@ -1755,7 +1755,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-142
 -1.pdf  used on input line 3191.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-144-1.pdf, id=1629, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-144-1.pdf, id=1669, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-144-1.pdf Graphic file
  (type pdf)
@@ -1771,7 +1771,7 @@ on (ctr+shift+f10)
 
 [93] [94 <./Introduction_to_R_files/figure-latex/unnamed-chunk-142-1.pdf> <./In
 troduction_to_R_files/figure-latex/unnamed-chunk-144-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf, id=1663, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf, id=1703, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file
  (type pdf)
@@ -1779,7 +1779,7 @@ File: Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file
 Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-146
 -1.pdf  used on input line 3285.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
-<Introduction_to_R_files/figure-latex/unnamed-chunk-148-1.pdf, id=1664, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-148-1.pdf, id=1704, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-148-1.pdf Graphic file
  (type pdf)
@@ -1789,7 +1789,7 @@ Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-148
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
 [95] [96 <./Introduction_to_R_files/figure-latex/unnamed-chunk-146-1.pdf> <./In
 troduction_to_R_files/figure-latex/unnamed-chunk-148-1.pdf>]
-<Introduction_to_R_files/figure-latex/unnamed-chunk-149-1.pdf, id=1700, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-149-1.pdf, id=1740, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-149-1.pdf Graphic file
  (type pdf)
@@ -1803,7 +1803,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{exm:spread1})
                    \relax 
 l.3338 \protect\hypertarget{exm:spread1}{}
                                           {\label{exm:spread1} }
-<Introduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf, id=1701, 469.755
+<Introduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf, id=1741, 469.755
 pt x 325.215pt>
 File: Introduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf Graphic file
  (type pdf)
@@ -1816,70 +1816,549 @@ troduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf>] [99
 
 ] [100]
 Chapter 14.
-
-Underfull \vbox (badness 2027) has occurred while \output is active []
-
 [101
 
 ]
-Overfull \hbox (77.1924pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 102 \T1/lmr/m/sl/10 CHAPTER 14.  THE PYGMALION EFFECT: SELF-EFFI
-CACY BASED INTERVENTION
+Underfull \hbox (badness 10000) in paragraph at lines 3403--3405
+[]\T1/lmr/m/n/10 Measures of As-so-ci-a-tion - \T1/lmtt/m/n/10 psycho::correlat
+ion(df, type = "full",
  []
 
-[102] [103]
-Overfull \hbox (77.1924pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 104 \T1/lmr/m/sl/10 CHAPTER 14.  THE PYGMALION EFFECT: SELF-EFFI
-CACY BASED INTERVENTION
+
+Underfull \hbox (badness 10000) in paragraph at lines 3409--3411
+\T1/lmtt/m/n/10 = NA, table.number = NA, showconf.interval = TRUE, landscape =
  []
 
-[104
+[102]
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ rating     <dbl> 43, 63, 71, 61, 81, 43, 58, 71, 72, 67,
+ 64, 67, 69,...[] 
+ []
 
-] [105] [106]
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ complaints <dbl> 51, 64, 70, 63, 78, 55, 67, 75, 82, 61,
+ 53, 60, 62,...[] 
+ []
+
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ privileges <dbl> 30, 51, 68, 45, 56, 49, 42, 50, 72, 45,
+ 53, 47, 57,...[] 
+ []
+
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ learning   <dbl> 39, 54, 69, 47, 66, 44, 56, 55, 67, 47,
+ 58, 39, 42,...[] 
+ []
+
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ raises     <dbl> 61, 63, 76, 54, 71, 54, 66, 70, 71, 62,
+ 58, 59, 55,...[] 
+ []
+
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ critical   <dbl> 92, 73, 86, 84, 83, 49, 68, 66, 83, 80,
+ 67, 74, 63,...[] 
+ []
+
+
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 3453--3453
+[]\T1/lmtt/m/n/10 ## $ advance    <dbl> 45, 47, 48, 35, 47, 34, 35, 41, 31, 41,
+ 34, 41, 25,...[] 
+ []
+
+[103]
+Overfull \hbox (69.7488pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ## -- Variable type:numeric ---------------------------------
+------------------[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##    variable missing complete  n  mean    sd p0   p25  p50 
+  p75 p100[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##     advance       0       30 30 42.93 10.29 25 35    41   
+47.75   72[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  complaints       0       30 30 66.6  13.31 37 58.5  65   
+77      90[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##    critical       0       30 30 74.77  9.89 49 69.25 77.5 
+80      92[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##    learning       0       30 30 56.37 11.74 34 47    56.5 
+66.75   75[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  privileges       0       30 30 53.13 12.24 30 45    51.5 
+62.5    83[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##      raises       0       30 30 64.63 10.4  43 58.25 63.5 
+71      88[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##      rating       0       30 30 64.63 12.17 40 58.75 65.5 
+71.75   85[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2581><U+2587><U+2586><U+2585><U+2582><U+2582><U+2581><
+U+2581>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2582><U+2581><U+2583><U+2587><U+2585><U+2582><U+2586><
+U+2583>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2582><U+2581><U+2582><U+2582><U+2583><U+2587><U+2585><
+U+2581>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2583><U+2582><U+2587><U+2583><U+2587><U+2582><U+2585><
+U+2587>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2582><U+2583><U+2586><U+2587><U+2582><U+2585><U+2582><
+U+2581>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2581><U+2585><U+2586><U+2587><U+2587><U+2582><U+2585><
+U+2581>[] 
+ []
+
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3506--3506
+[]\T1/lmtt/m/n/10 ##  <U+2582><U+2582><U+2581><U+2582><U+2587><U+2583><U+2582><
+U+2583>[] 
+ []
+
+
+Overfull \hbox (22.49893pt too wide) in paragraph at lines 3531--3531
+[]\T1/lmtt/m/n/10 ##   advance_var complaints_var privileges_var learning_var r
+aises_var[] 
+ []
+
+
+Overfull \hbox (22.49893pt too wide) in paragraph at lines 3531--3531
+[]\T1/lmtt/m/n/10 ## 1    105.8575       177.2828       149.7057     137.7575  
+ 108.1023[] 
+ []
+
+[104]
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 3547--3547
+[]\T1/lmtt/m/n/10 ##   rating_var complaints_var privileges_var learning_var ra
+ises_var[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 3547--3547
+[]\T1/lmtt/m/n/10 ## 1   148.1713       177.2828       149.7057     137.7575   
+108.1023[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ##               rating complaints privileges  learning    ra
+ises critical[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## rating     148.17126  133.77931   63.46437  89.10460  74.6
+8851 18.84253[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## complaints 133.77931  177.28276   90.95172  93.25517  92.6
+4138 24.73103[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## privileges  63.46437   90.95172  149.70575  70.84598  56.6
+7126 17.82529[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## learning    89.10460   93.25517   70.84598 137.75747  78.1
+3908 13.46782[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## raises      74.68851   92.64138   56.67126  78.13908 108.1
+0230 38.77356[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## critical    18.84253   24.73103   17.82529  13.46782  38.7
+7356 97.90920[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3578--3578
+[]\T1/lmtt/m/n/10 ## advance     19.42299   30.76552   43.21609  64.19770  61.4
+2299 28.84598[] 
+ []
+
+[105]
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ##               rating complaints privileges  learning    ra
+ises  critical[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## rating     1.0000000  0.8254176  0.4261169 0.6236782 0.590
+1390 0.1564392[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## complaints 0.8254176  1.0000000  0.5582882 0.5967358 0.669
+1975 0.1877143[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## privileges 0.4261169  0.5582882  1.0000000 0.4933310 0.445
+4779 0.1472331[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## learning   0.6236782  0.5967358  0.4933310 1.0000000 0.640
+3144 0.1159652[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## raises     0.5901390  0.6691975  0.4454779 0.6403144 1.000
+0000 0.3768830[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## critical   0.1564392  0.1877143  0.1472331 0.1159652 0.376
+8830 1.0000000[] 
+ []
+
+
+Overfull \hbox (48.74886pt too wide) in paragraph at lines 3604--3604
+[]\T1/lmtt/m/n/10 ## advance    0.1550863  0.2245796  0.3432934 0.5316198 0.574
+1862 0.2833432[] 
+ []
+
+
+Overfull \hbox (620.9972pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [2] "   - rating / complaints:   Results of the Pearson c
+orrelation showed a significant large, and positive association between rating 
+and complaints (r(28) = 0.83, p < .001***)."[] 
+ []
+
+
+Overfull \hbox (631.49716pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [3] "   - rating / privileges:   Results of the Pearson c
+orrelation showed a non significant moderate, and positive association between 
+rating and privileges (r(28) = 0.43, p > .1)."[] 
+ []
+
+
+Overfull \hbox (647.24712pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [4] "   - complaints / privileges:   Results of the Pears
+on correlation showed a significant large, and positive association between com
+plaints and privileges (r(28) = 0.56, p < .05*)."[] 
+ []
+
+
+Overfull \hbox (589.49728pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [5] "   - rating / learning:   Results of the Pearson cor
+relation showed a significant large, and positive association between rating an
+d learning (r(28) = 0.62, p < .01**)."[] 
+ []
+
+
+Overfull \hbox (631.49716pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [6] "   - complaints / learning:   Results of the Pearson
+ correlation showed a significant large, and positive association between compl
+aints and learning (r(28) = 0.60, p < .01**)."[] 
+ []
+
+
+Overfull \hbox (668.24706pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [7] "   - privileges / learning:   Results of the Pearson
+ correlation showed a non significant moderate, and positive association betwee
+n privileges and learning (r(28) = 0.49, p = 0.07\TS1/lmtt/m/n/10 °\T1/lmtt/m/n
+/10 )."[] 
+ []
+
+
+Overfull \hbox (568.49734pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [8] "   - rating / raises:   Results of the Pearson corre
+lation showed a significant large, and positive association between rating and 
+raises (r(28) = 0.59, p < .01**)."[] 
+ []
+
+
+Overfull \hbox (610.49722pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ##  [9] "   - complaints / raises:   Results of the Pearson c
+orrelation showed a significant large, and positive association between complai
+nts and raises (r(28) = 0.67, p < .01**)."[] 
+ []
+
+
+Overfull \hbox (631.49716pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [10] "   - privileges / raises:   Results of the Pearson c
+orrelation showed a non significant moderate, and positive association between 
+privileges and raises (r(28) = 0.45, p > .1)."[] 
+ []
+
+
+Overfull \hbox (589.49728pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [11] "   - learning / raises:   Results of the Pearson cor
+relation showed a significant large, and positive association between learning 
+and raises (r(28) = 0.64, p < .01**)."[] 
+ []
+
+
+Overfull \hbox (594.74727pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [12] "   - rating / critical:   Results of the Pearson cor
+relation showed a non significant small, and positive association between ratin
+g and critical (r(28) = 0.16, p > .1)."[] 
+ []
+
+
+Overfull \hbox (636.74715pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [13] "   - complaints / critical:   Results of the Pearson
+ correlation showed a non significant small, and positive association between c
+omplaints and critical (r(28) = 0.19, p > .1)."[] 
+ []
+
+[106]
+Overfull \hbox (636.74715pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [14] "   - privileges / critical:   Results of the Pearson
+ correlation showed a non significant small, and positive association between p
+rivileges and critical (r(28) = 0.15, p > .1)."[] 
+ []
+
+
+Overfull \hbox (615.74721pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [15] "   - learning / critical:   Results of the Pearson c
+orrelation showed a non significant small, and positive association between lea
+rning and critical (r(28) = 0.12, p > .1)."[] 
+ []
+
+
+Overfull \hbox (610.49722pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [16] "   - raises / critical:   Results of the Pearson cor
+relation showed a non significant moderate, and positive association between ra
+ises and critical (r(28) = 0.38, p > .1)."[] 
+ []
+
+
+Overfull \hbox (584.2473pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [17] "   - rating / advance:   Results of the Pearson corr
+elation showed a non significant small, and positive association between rating
+ and advance (r(28) = 0.16, p > .1)."[] 
+ []
+
+
+Overfull \hbox (626.24718pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [18] "   - complaints / advance:   Results of the Pearson 
+correlation showed a non significant small, and positive association between co
+mplaints and advance (r(28) = 0.22, p > .1)."[] 
+ []
+
+
+Overfull \hbox (641.99713pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [19] "   - privileges / advance:   Results of the Pearson 
+correlation showed a non significant moderate, and positive association between
+ privileges and advance (r(28) = 0.34, p > .1)."[] 
+ []
+
+
+Overfull \hbox (594.74727pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [20] "   - learning / advance:   Results of the Pearson co
+rrelation showed a significant large, and positive association between learning
+ and advance (r(28) = 0.53, p < .05*)."[] 
+ []
+
+
+Overfull \hbox (573.74733pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [21] "   - raises / advance:   Results of the Pearson corr
+elation showed a significant large, and positive association between raises and
+ advance (r(28) = 0.57, p < .05*)."[] 
+ []
+
+
+Overfull \hbox (605.24724pt too wide) in paragraph at lines 3644--3644
+[]\T1/lmtt/m/n/10 ## [22] "   - critical / advance:   Results of the Pearson co
+rrelation showed a non significant small, and positive association between crit
+ical and advance (r(28) = 0.28, p > .1)."[] 
+ []
+
+<Introduction_to_R_files/figure-latex/unnamed-chunk-160-1.pdf, id=1817, 469.755
+pt x 325.215pt>
+File: Introduction_to_R_files/figure-latex/unnamed-chunk-160-1.pdf Graphic file
+ (type pdf)
+<use Introduction_to_R_files/figure-latex/unnamed-chunk-160-1.pdf>
+Package pdftex.def Info: Introduction_to_R_files/figure-latex/unnamed-chunk-160
+-1.pdf  used on input line 3653.
+(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
+
+Overfull \hbox (11.99896pt too wide) in paragraph at lines 3671--3671
+[]\T1/lmtt/m/n/10 ##             rating complaints privileges learning raises c
+ritical[] 
+ []
+
+[107 <./Introduction_to_R_files/figure-latex/unnamed-chunk-160-1.pdf>]
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 3671--3671
+[]\T1/lmtt/m/n/10 ## advance      0.16       0.22       0.34    0.53*  0.57*   
+  0.28[] 
+ []
+
+
+Overfull \hbox (38.24889pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ## Means, standard deviations, and correlations with confiden
+ce intervals[] 
+ []
+
+
+Overfull \hbox (1.499pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ##                             [-.22, .49] [-.19, .51] [-.22,
+ .48][] 
+ []
+
+
+Overfull \hbox (1.499pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ##                             [-.22, .49] [-.15, .54] [-.02,
+ .63][] 
+ []
+
+[108]
+Overfull \hbox (85.49875pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ## Note. M and SD are used to represent mean and standard dev
+iation, respectively.[] 
+ []
+
+
+Overfull \hbox (1.499pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ## Values in square brackets indicate the 95% confidence inte
+rval.[] 
+ []
+
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 3743--3743
+[]\T1/lmtt/m/n/10 ## The confidence interval is a plausible range of population
+ correlations[] 
+ []
+
+[109] [110
+
+] [111] [112]
 Chapter 15.
 
 Underfull \vbox (badness 2027) has occurred while \output is active []
 
-[107
+[113
+
+]
+Overfull \hbox (77.1924pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10 114 \T1/lmr/m/sl/10 CHAPTER 15.  THE PYGMALION EFFECT: SELF-EFFI
+CACY BASED INTERVENTION
+ []
+
+[114] [115]
+Overfull \hbox (77.1924pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10 116 \T1/lmr/m/sl/10 CHAPTER 15.  THE PYGMALION EFFECT: SELF-EFFI
+CACY BASED INTERVENTION
+ []
+
+[116
+
+] [117] [118]
+Chapter 16.
+
+Underfull \vbox (badness 2027) has occurred while \output is active []
+
+[119
 
 ]
 Overfull \hbox (155.38457pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 108 \T1/lmr/m/sl/10 CHAPTER 15.  SOLUTIONS TO THE PYGMALION EFFE
+\T1/lmr/m/n/10 120 \T1/lmr/m/sl/10 CHAPTER 16.  SOLUTIONS TO THE PYGMALION EFFE
 CT: SELF-EFFICACY BASED INTERVENTION
  []
 
-[108] [109]
+[120] [121]
 Overfull \hbox (155.38457pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 110 \T1/lmr/m/sl/10 CHAPTER 15.  SOLUTIONS TO THE PYGMALION EFFE
+\T1/lmr/m/n/10 122 \T1/lmr/m/sl/10 CHAPTER 16.  SOLUTIONS TO THE PYGMALION EFFE
 CT: SELF-EFFICACY BASED INTERVENTION
  []
 
-[110] [111]
+[122] [123]
 Overfull \hbox (155.38457pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 112 \T1/lmr/m/sl/10 CHAPTER 15.  SOLUTIONS TO THE PYGMALION EFFE
+\T1/lmr/m/n/10 124 \T1/lmr/m/sl/10 CHAPTER 16.  SOLUTIONS TO THE PYGMALION EFFE
 CT: SELF-EFFICACY BASED INTERVENTION
  []
 
-[112]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3773.
-[113]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3773.
+[124]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4165.
+[125]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4165.
 (./Introduction_to_R.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3773.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3773.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4165.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4165.
 
 Package rerunfilecheck Info: File `Introduction_to_R.out' has not changed.
-(rerunfilecheck)             Checksum: 3F7BBD0BB9136C2FCE8416921B50A258;10924.
+(rerunfilecheck)             Checksum: 81D7A4E62660F1D67BA5BDFC8D3EE798;12595.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3773.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4165.
  ) 
 Here is how much of TeX's memory you used:
- 11724 strings out of 494553
- 185285 string characters out of 6175971
- 233076 words of memory out of 5000000
- 14666 multiletter control sequences out of 15000+600000
+ 11786 strings out of 494553
+ 186742 string characters out of 6175971
+ 233907 words of memory out of 5000000
+ 14692 multiletter control sequences out of 15000+600000
  60146 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  28i,6n,33p,730b,469s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1898,10 +2377,10 @@ TeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/Users/jimmy/AppData/Roaming
 /TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/jimmy/AppData/Ro
 aming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/jimmy/AppDa
 ta/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Introduction_to_R.pdf (113 pages, 2324611 bytes).
+Output written on Introduction_to_R.pdf (125 pages, 2348671 bytes).
 PDF statistics:
- 2013 PDF objects out of 2073 (max. 8388607)
- 1711 compressed objects within 18 object streams
- 579 named destinations out of 1000 (max. 500000)
- 876 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2134 PDF objects out of 2487 (max. 8388607)
+ 1816 compressed objects within 19 object streams
+ 615 named destinations out of 1000 (max. 500000)
+ 945 words of extra memory for PDF output out of 10000 (max. 10000000)
 

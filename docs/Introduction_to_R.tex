@@ -122,7 +122,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-09-21}
+    \date{2019-10-12}
 
 
 \usepackage{amsthm}
@@ -3349,6 +3349,398 @@ pivot\_wider(data, names\_from, values\_from, \ldots{})
 \includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-151-1.pdf}
 \caption{\label{fig:unnamed-chunk-151}Using pivot\_wider() to Go From Long to Wide}
 \end{figure}
+
+\hypertarget{part-applications-of-dplyr-and-tidyr}{%
+\part{Applications of dplyr and tidyr}\label{part-applications-of-dplyr-and-tidyr}}
+
+\hypertarget{formatted-summary-statistics}{%
+\chapter{Formatted Summary Statistics}\label{formatted-summary-statistics}}
+
+You now have the tools for efficiently managing data in one or multiple objects! You may be wondering ``What do I do with my new found skills?''. In the chapter that follows, I will illustrate how dplyr and tidyr can be harnessed to quickly complete a foundational task for any professional working with data: calculate summary statistics.
+
+\hypertarget{a-quick-review-necessary-base-functions}{%
+\section{A Quick Review: Necessary Base Functions}\label{a-quick-review-necessary-base-functions}}
+
+There are a few key base R functions that are necessary for you to know by heart. These are listed below along with their arguments and defaults. If you have questions, remember you can use \texttt{?function\_name} to open the help file.
+
+Central Tendency Functions
+
+\begin{verbatim}
+  - `mean(x, trim = 0, na.rm = FALSE)`
+  - `median(x, na.rm = FALSE)`
+  
+\end{verbatim}
+
+Spread Functions
+
+\begin{verbatim}
+  - `var(x, na.rm = FALSE)`
+  - `sd(x, na.rm = FALSE)`
+  
+\end{verbatim}
+
+Measures of Association (A preview of things to come)
+
+\begin{verbatim}
+  - `cor(x, y = NULL, use = "everything", method = "peason")`
+  - `cov(x, y = NULL, use = "everything", method = "peason")`
+  
+\end{verbatim}
+
+\hypertarget{beyond-base-r}{%
+\section{Beyond Base R}\label{beyond-base-r}}
+
+There are a few functions that I have found especially helpful over the years. The standard base R functions do not provide hypothesis tests along with measures of association. The correlation function in the psycho package provides this and more! Table formatting also takes a ton of time! The apaTables function stream lines this process
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"psycho"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"apaTables"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"skimr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Measures of Association
+- \texttt{psycho::correlation(df,\ type\ =\ "full",\ method\ =\ "peason",\ adjust\ =\ "holm",\ i\_am\_cheating\ =\ FALSE)}
+
+Unformatted Summary Statistics
+-\texttt{skimr::skim(data)}
+
+Formatted Summary Tables
+- \texttt{apaTables::apa.cor.table(data,\ filename\ =\ NA,\ table.number\ =\ NA,\ showconf.interval\ =\ TRUE,\ landscape\ =\ TRUE)}
+
+\hypertarget{prepping-environment}{%
+\section{Prepping Environment}\label{prepping-environment}}
+
+As always, it is necessary to load packages into the environment. This makes the functions within tha pacakges callable without some additional voodoo. This code chunk, I also load the Chaterjee-Price Attitude Data. This is an employee survey of clerical employees in a financial organization. Type \texttt{?attitude}to learn more.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Loading required packages}
+\KeywordTok{library}\NormalTok{(psycho)}
+\KeywordTok{library}\NormalTok{(skimr)}
+\KeywordTok{library}\NormalTok{(kableExtra)}
+\KeywordTok{library}\NormalTok{(apaTables)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{# Loading Data from built-in data set}
+\NormalTok{attitude_data<-attitude}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{inspecting-data}{%
+\section{Inspecting Data}\label{inspecting-data}}
+
+Prior to diving into the data, lets inspect it to see what we are dealing with.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Printing an overview of the data}
+\KeywordTok{glimpse}\NormalTok{(attitude_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Observations: 30
+## Variables: 7
+## $ rating     <dbl> 43, 63, 71, 61, 81, 43, 58, 71, 72, 67, 64, 67, 69,...
+## $ complaints <dbl> 51, 64, 70, 63, 78, 55, 67, 75, 82, 61, 53, 60, 62,...
+## $ privileges <dbl> 30, 51, 68, 45, 56, 49, 42, 50, 72, 45, 53, 47, 57,...
+## $ learning   <dbl> 39, 54, 69, 47, 66, 44, 56, 55, 67, 47, 58, 39, 42,...
+## $ raises     <dbl> 61, 63, 76, 54, 71, 54, 66, 70, 71, 62, 58, 59, 55,...
+## $ critical   <dbl> 92, 73, 86, 84, 83, 49, 68, 66, 83, 80, 67, 74, 63,...
+## $ advance    <dbl> 45, 47, 48, 35, 47, 34, 35, 41, 31, 41, 34, 41, 25,...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Verifying that the double type is actually numeric}
+\KeywordTok{mode}\NormalTok{(attitude_data}\OperatorTok{$}\NormalTok{rating)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+It looks like we are dealing with 30 observations of 7 variables. Each of these variables is a double (meaning they have a numeric mode). Based on this information, it is safe to say that we can treat this data as numeric and calculate summary statistics reporting the central tendency, spread, and association between these variables.
+
+\hypertarget{quick-and-dirty-mean-and-central-tendency}{%
+\section{Quick and Dirty Mean and Central Tendency}\label{quick-and-dirty-mean-and-central-tendency}}
+
+\hypertarget{skim-for-basic-summary-statistics}{%
+\subsection{skim() for Basic Summary Statistics}\label{skim-for-basic-summary-statistics}}
+
+When working with data initially, it is useful to calculate a wide variety of summary statistics. This provides the scientist with an idea about how their data looks, what its scale is, and how interrelated variables are.
+
+\texttt{skim()} in the skimr package calculates a range of summary statistics and histograms! It even treats categorical variables differently, if you have them, returning frequencies and levels. All you have to do is pass it a data frame!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{skim}\NormalTok{(attitude_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Skim summary statistics
+##  n obs: 30 
+##  n variables: 7 
+## 
+## -- Variable type:numeric ---------------------------------------------------
+##    variable missing complete  n  mean    sd p0   p25  p50   p75 p100
+##     advance       0       30 30 42.93 10.29 25 35    41   47.75   72
+##  complaints       0       30 30 66.6  13.31 37 58.5  65   77      90
+##    critical       0       30 30 74.77  9.89 49 69.25 77.5 80      92
+##    learning       0       30 30 56.37 11.74 34 47    56.5 66.75   75
+##  privileges       0       30 30 53.13 12.24 30 45    51.5 62.5    83
+##      raises       0       30 30 64.63 10.4  43 58.25 63.5 71      88
+##      rating       0       30 30 64.63 12.17 40 58.75 65.5 71.75   85
+##      hist
+##  <U+2581><U+2587><U+2586><U+2585><U+2582><U+2582><U+2581><U+2581>
+##  <U+2582><U+2581><U+2583><U+2587><U+2585><U+2582><U+2586><U+2583>
+##  <U+2582><U+2581><U+2582><U+2582><U+2583><U+2587><U+2585><U+2581>
+##  <U+2583><U+2582><U+2587><U+2583><U+2587><U+2582><U+2585><U+2587>
+##  <U+2582><U+2583><U+2586><U+2587><U+2582><U+2585><U+2582><U+2581>
+##  <U+2581><U+2585><U+2586><U+2587><U+2587><U+2582><U+2585><U+2581>
+##  <U+2582><U+2582><U+2581><U+2582><U+2587><U+2583><U+2582><U+2583>
+\end{verbatim}
+
+\hypertarget{summarise-for-custom-summary-statistics}{%
+\subsection{summarise() for Custom Summary Statistics}\label{summarise-for-custom-summary-statistics}}
+
+\texttt{skim()} is very useful, but doesn't give all the information you may need! Notice that \texttt{skim()} doesn't produce the variance of the objects. While that is easy to get to from sd, we can use \texttt{summarise()} to get this information directly from the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{attitude_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+            \DataTypeTok{advance_var =} \KeywordTok{var}\NormalTok{(advance),}
+            \DataTypeTok{complaints_var =} \KeywordTok{var}\NormalTok{(complaints),}
+            \DataTypeTok{privileges_var =} \KeywordTok{var}\NormalTok{(privileges),}
+            \DataTypeTok{learning_var =} \KeywordTok{var}\NormalTok{(learning), }
+            \DataTypeTok{raises_var =} \KeywordTok{var}\NormalTok{(raises), }
+            \DataTypeTok{critical_var =} \KeywordTok{var}\NormalTok{(critical))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   advance_var complaints_var privileges_var learning_var raises_var
+## 1    105.8575       177.2828       149.7057     137.7575   108.1023
+##   critical_var
+## 1      97.9092
+\end{verbatim}
+
+That was a lot of typeing the same basic thing, over and over! Remember \texttt{summarise\_if()}? We can use \texttt{summarise\_if()} along with the appropriate predicate function to calculate the variance of all numeric variables! Since our goal is to summarise the numeric variables our predicate will be \texttt{is.numeric}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{attitude_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise_if}\NormalTok{(}\DataTypeTok{.predicate =}\NormalTok{ is.numeric, }\DataTypeTok{.funs =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{var =}\NormalTok{ var))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   rating_var complaints_var privileges_var learning_var raises_var
+## 1   148.1713       177.2828       149.7057     137.7575   108.1023
+##   critical_var advance_var
+## 1      97.9092    105.8575
+\end{verbatim}
+
+\hypertarget{quick-and-dirty-measures-of-association}{%
+\section{Quick and Dirty Measures of Association}\label{quick-and-dirty-measures-of-association}}
+
+The above functions are great for summarising the central tendency and spread of variables in a data, but we have gained little insight into how the varaibles are associated. \texttt{cov()} and \texttt{cor()} return variance-covariance and correlation matrices respectively. These scales provide an indice of association between variables. More positive numbers suggest a stronger positive association and more negative numbers suggest a stronger negative association. Note that differences in scale (i.e., spread) makes different covariances difficult to compare. Correlations are on a standard scale and give more insight into the relative proportion of variance explained.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Covariance}
+\KeywordTok{cov}\NormalTok{(attitude_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               rating complaints privileges  learning    raises critical
+## rating     148.17126  133.77931   63.46437  89.10460  74.68851 18.84253
+## complaints 133.77931  177.28276   90.95172  93.25517  92.64138 24.73103
+## privileges  63.46437   90.95172  149.70575  70.84598  56.67126 17.82529
+## learning    89.10460   93.25517   70.84598 137.75747  78.13908 13.46782
+## raises      74.68851   92.64138   56.67126  78.13908 108.10230 38.77356
+## critical    18.84253   24.73103   17.82529  13.46782  38.77356 97.90920
+## advance     19.42299   30.76552   43.21609  64.19770  61.42299 28.84598
+##              advance
+## rating      19.42299
+## complaints  30.76552
+## privileges  43.21609
+## learning    64.19770
+## raises      61.42299
+## critical    28.84598
+## advance    105.85747
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Correlation}
+\KeywordTok{cor}\NormalTok{(attitude_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               rating complaints privileges  learning    raises  critical
+## rating     1.0000000  0.8254176  0.4261169 0.6236782 0.5901390 0.1564392
+## complaints 0.8254176  1.0000000  0.5582882 0.5967358 0.6691975 0.1877143
+## privileges 0.4261169  0.5582882  1.0000000 0.4933310 0.4454779 0.1472331
+## learning   0.6236782  0.5967358  0.4933310 1.0000000 0.6403144 0.1159652
+## raises     0.5901390  0.6691975  0.4454779 0.6403144 1.0000000 0.3768830
+## critical   0.1564392  0.1877143  0.1472331 0.1159652 0.3768830 1.0000000
+## advance    0.1550863  0.2245796  0.3432934 0.5316198 0.5741862 0.2833432
+##              advance
+## rating     0.1550863
+## complaints 0.2245796
+## privileges 0.3432934
+## learning   0.5316198
+## raises     0.5741862
+## critical   0.2833432
+## advance    1.0000000
+\end{verbatim}
+
+\hypertarget{measures-of-association-with-hypothesis-tests}{%
+\subsection{Measures of Association With Hypothesis Tests}\label{measures-of-association-with-hypothesis-tests}}
+
+While the base R functions are nice, they do not provide any indication about the confidence in our estimate. \texttt{correlation()} in the psycho package provides a verbal interpretation along with signicance tests which have been corrected for multiple comparisons.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Using the correlation function in psycho}
+\NormalTok{my_correlation<-}\KeywordTok{correlation}\NormalTok{(attitude_data)}
+
+\CommentTok{# Printing the textual interpretation}
+\NormalTok{my_correlation}\OperatorTok{$}\NormalTok{text}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Pearson Full correlation (p value correction: holm):\n"                                                                                                                                 
+##  [2] "   - rating / complaints:   Results of the Pearson correlation showed a significant large, and positive association between rating and complaints (r(28) = 0.83, p < .001***)."         
+##  [3] "   - rating / privileges:   Results of the Pearson correlation showed a non significant moderate, and positive association between rating and privileges (r(28) = 0.43, p > .1)."       
+##  [4] "   - complaints / privileges:   Results of the Pearson correlation showed a significant large, and positive association between complaints and privileges (r(28) = 0.56, p < .05*)."    
+##  [5] "   - rating / learning:   Results of the Pearson correlation showed a significant large, and positive association between rating and learning (r(28) = 0.62, p < .01**)."               
+##  [6] "   - complaints / learning:   Results of the Pearson correlation showed a significant large, and positive association between complaints and learning (r(28) = 0.60, p < .01**)."       
+##  [7] "   - privileges / learning:   Results of the Pearson correlation showed a non significant moderate, and positive association between privileges and learning (r(28) = 0.49, p = 0.07°)."
+##  [8] "   - rating / raises:   Results of the Pearson correlation showed a significant large, and positive association between rating and raises (r(28) = 0.59, p < .01**)."                   
+##  [9] "   - complaints / raises:   Results of the Pearson correlation showed a significant large, and positive association between complaints and raises (r(28) = 0.67, p < .01**)."           
+## [10] "   - privileges / raises:   Results of the Pearson correlation showed a non significant moderate, and positive association between privileges and raises (r(28) = 0.45, p > .1)."       
+## [11] "   - learning / raises:   Results of the Pearson correlation showed a significant large, and positive association between learning and raises (r(28) = 0.64, p < .01**)."               
+## [12] "   - rating / critical:   Results of the Pearson correlation showed a non significant small, and positive association between rating and critical (r(28) = 0.16, p > .1)."              
+## [13] "   - complaints / critical:   Results of the Pearson correlation showed a non significant small, and positive association between complaints and critical (r(28) = 0.19, p > .1)."      
+## [14] "   - privileges / critical:   Results of the Pearson correlation showed a non significant small, and positive association between privileges and critical (r(28) = 0.15, p > .1)."      
+## [15] "   - learning / critical:   Results of the Pearson correlation showed a non significant small, and positive association between learning and critical (r(28) = 0.12, p > .1)."          
+## [16] "   - raises / critical:   Results of the Pearson correlation showed a non significant moderate, and positive association between raises and critical (r(28) = 0.38, p > .1)."           
+## [17] "   - rating / advance:   Results of the Pearson correlation showed a non significant small, and positive association between rating and advance (r(28) = 0.16, p > .1)."                
+## [18] "   - complaints / advance:   Results of the Pearson correlation showed a non significant small, and positive association between complaints and advance (r(28) = 0.22, p > .1)."        
+## [19] "   - privileges / advance:   Results of the Pearson correlation showed a non significant moderate, and positive association between privileges and advance (r(28) = 0.34, p > .1)."     
+## [20] "   - learning / advance:   Results of the Pearson correlation showed a significant large, and positive association between learning and advance (r(28) = 0.53, p < .05*)."              
+## [21] "   - raises / advance:   Results of the Pearson correlation showed a significant large, and positive association between raises and advance (r(28) = 0.57, p < .05*)."                  
+## [22] "   - critical / advance:   Results of the Pearson correlation showed a non significant small, and positive association between critical and advance (r(28) = 0.28, p > .1)."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Inspecting the correlelogram}
+\NormalTok{my_correlation}\OperatorTok{$}\NormalTok{plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-160-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Printing the correlation table with significance values}
+\NormalTok{my_correlation}\OperatorTok{$}\NormalTok{summary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             rating complaints privileges learning raises critical
+## rating                                                           
+## complaints 0.83***                                               
+## privileges   0.43      0.56*                                     
+## learning   0.62**      0.6**       0.49                          
+## raises     0.59**     0.67**       0.45   0.64**                 
+## critical     0.16       0.19       0.15     0.12   0.38          
+## advance      0.16       0.22       0.34    0.53*  0.57*     0.28
+\end{verbatim}
+
+\hypertarget{formatted-apa-summary-statistics}{%
+\subsection{Formatted APA Summary Statistics}\label{formatted-apa-summary-statistics}}
+
+Reporting summary statistics typically requires a bit more work to be put into formatting. However, \texttt{apa.cor.table()} really makes the job as easy as possible. The only thing we really have to do is ensure that are variables are properly named and capitalized before calling the function. This is because they will be used directly in the generated table. For the attitude\_data, we just need to capitlize the variables. I use rename\_all() to do this quickly
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{attitude_data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{rename_all}\NormalTok{(}\DataTypeTok{.funs =} \OperatorTok{~}\KeywordTok{str_to_sentence}\NormalTok{(.))}\OperatorTok{%>%}
+\KeywordTok{apa.cor.table}\NormalTok{(}\DataTypeTok{filename =} \StringTok{"APA_Attitude_Table.doc"}\NormalTok{, }\DataTypeTok{table.number =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 
+## Table 1 
+## 
+## Means, standard deviations, and correlations with confidence intervals
+##  
+## 
+##   Variable      M     SD    1           2           3          
+##   1. Rating     64.63 12.17                                    
+##                                                                
+##   2. Complaints 66.60 13.31 .83**                              
+##                             [.66, .91]                         
+##                                                                
+##   3. Privileges 53.13 12.24 .43*        .56**                  
+##                             [.08, .68]  [.25, .76]             
+##                                                                
+##   4. Learning   56.37 11.74 .62**       .60**       .49**      
+##                             [.34, .80]  [.30, .79]  [.16, .72] 
+##                                                                
+##   5. Raises     64.63 10.40 .59**       .67**       .45*       
+##                             [.29, .78]  [.41, .83]  [.10, .69] 
+##                                                                
+##   6. Critical   74.77 9.89  .16         .19         .15        
+##                             [-.22, .49] [-.19, .51] [-.22, .48]
+##                                                                
+##   7. Advance    42.93 10.29 .16         .22         .34        
+##                             [-.22, .49] [-.15, .54] [-.02, .63]
+##                                                                
+##   4           5          6          
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##                                     
+##   .64**                             
+##   [.36, .81]                        
+##                                     
+##   .12         .38*                  
+##   [-.25, .46] [.02, .65]            
+##                                     
+##   .53**       .57**      .28        
+##   [.21, .75]  [.27, .77] [-.09, .58]
+##                                     
+## 
+## Note. M and SD are used to represent mean and standard deviation, respectively.
+## Values in square brackets indicate the 95% confidence interval.
+## The confidence interval is a plausible range of population correlations 
+## that could have caused the sample correlation (Cumming, 2014).
+## * indicates p < .05. ** indicates p < .01.
+## 
+\end{verbatim}
 
 \hypertarget{part-additional-excercises}{%
 \part{Additional Excercises}\label{part-additional-excercises}}

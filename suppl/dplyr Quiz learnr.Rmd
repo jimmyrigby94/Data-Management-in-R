@@ -1,0 +1,71 @@
+---
+title: "Do Additional Exercises Help Your Undergrads?"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+You are the TA for three sections of undergraduate statistics. You are curious about the students performance and want to explore the data. Furthermore, the instructor of record has asked you to investigate whether the optional exercises she created is helping students test scores. Before you begin, you need to explore and clean the data. Answer the following questions using class_data and dplyr.
+
+
+```{r, message = FALSE, warning=FALSE}
+# Data Generation 
+### DO NOT CHANGE ###
+set.seed(12345)
+library(tidyverse)
+class_data<-tibble(student_id = runif(120, min = 10000000, max = 99999999),
+  class = sample(factor(x = c("7:00 am", "10:00 am", "7:00 pm"), levels = c("7:00 am", "10:00 am", "7:00 pm"), ordered = TRUE), size = 120, replace = TRUE, prob = c(.25, .30, .45)),
+          gender = sample(c("M", "F"), size = 120, c(.5, .5), replace = TRUE))%>%
+  mutate(completed = case_when(class == "7:00 am" ~ rbinom(n(), 1, .75),
+                               class == "10:00 am" ~ rbinom(n(), 1, .80), 
+                               class == "7:00 pm" ~ rbinom(n(), 1, .5)))%>%
+  mutate(grade = case_when(completed == 1 ~ sample(size = n(), c("A", "B", "C", "D", "F"), replace = TRUE, prob = c(.3, .4, .2, .05, .05)),
+                            completed == 0 ~ sample(size = n(), c("A", "B", "C", "D", "F"), replace = TRUE, prob = c(.2, .2, .3, .1, .2))))
+
+head(class_data)%>%
+  knitr::kable()%>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```
+
+### Question 1
+You plan on sharing the grade information with the instructor of record, but you want it to be deidentified (just to be safe). Remove the column containing student ids. What is the name of the first column?
+
+```{r q1, exercise=TRUE, exercise.lines = 5}
+
+```
+
+
+### Question 2
+Create a data frame that only contains students in the 7:00 am session. Did the third student complete the optional assignment?
+
+```{r q2, exercise = TRUE, exercise.lines = 5}
+
+```
+
+### Question 3
+Using the original data, create another data frame that contains only students that received an A and completed the optional assignment. How many students are there in this new object?
+
+```{r q3, exercise = TRUE, exercise.lines = 5}
+
+```
+
+### Question 4
+Using the original data, create a new variable that contains the number of students in each class. How many students are in the 99th student's class.
+
+```{r q4, exercise = TRUE, exercise.lines = 5}
+
+```
+
+### Question 5
+Create a new variable that contains a 1 if the student is female and a 0 otherwise. What is the sum of this column?
+
+```{r q5, exercise = TRUE, exercise.lines = 5}
+
+```
+
+
+

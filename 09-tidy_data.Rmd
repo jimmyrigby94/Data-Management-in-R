@@ -204,7 +204,7 @@ long%>%
   ggtexttable(theme = ttheme(base_style="lBlueWhite"))
 ```
 
-```{example, spread1}
+```{example, pivot_wider1}
 ```{r, eval=FALSE}
 pivot_wider(long, names_from =  "time", values_from = "test")
 ```

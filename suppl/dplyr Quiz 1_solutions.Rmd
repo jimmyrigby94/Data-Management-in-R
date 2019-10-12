@@ -1,0 +1,89 @@
+---
+title: "dplyr Quiz 1"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+You are the TA for three sections of undergraduate statistics. You are curious about the students performance and want to explore the data. Furthemore, the instructor of record has asked you to investigate whether the optional excercises she created is helping students test scores. Before you begin, you need to explore and clean the data. Answer the following questions using dplyr.
+
+## Data Creation (Do Not Change)
+
+```{r}
+set.seed(12345)
+library(tidyverse)
+class_data<-tibble(student_id = runif(120, min = 10000000, max = 99999999),
+  class = sample(factor(x = c("7:00 am", "10:00 am", "7:00 pm"), levels = c("7:00 am", "10:00 am", "7:00 pm"), ordered = TRUE), size = 120, replace = TRUE, prob = c(.25, .30, .45)),
+          gender = sample(c("M", "F"), size = 120, c(.5, .5), replace = TRUE))%>%
+  mutate(completed = case_when(class == "7:00 am" ~ rbinom(n(), 1, .75),
+                               class == "10:00 am" ~ rbinom(n(), 1, .80), 
+                               class == "7:00 pm" ~ rbinom(n(), 1, .5)))%>%
+  mutate(grade = case_when(completed == 1 ~ sample(size = n(), c("A", "B", "C", "D", "F"), replace = TRUE, prob = c(.3, .4, .2, .05, .05)),
+                            completed == 0 ~ sample(size = n(), c("A", "B", "C", "D", "F"), replace = TRUE, prob = c(.2, .2, .3, .1, .2))))
+```
+
+## Question 1
+You plan on sharing the grade information with the instructor of record, but you want it to be deidentified (just to be safe). Remove the column containing student ids. What is the name of the first column?
+
+```{r}
+# The minus sign used within select drop columns
+Q1_data<-class_data%>%
+ select(-student_id)
+
+# Print the column names of the new data
+colnames(Q1_data)
+```
+
+
+## Question 2
+Create a data frame that only contains students in the 7:00 am session. Did the third student complete the optional assignment?
+
+```{r}
+# filter() retains observations that meet a logical test
+# the logical test for this question is that class == "7:00 am"
+Q2_data<-class_data%>%
+  filter(class == "7:00 am")
+
+# Extract the third column from completed
+Q2_data[3, "completed"]
+```
+
+## Quesiton 3
+Using the original data, create another data frame that contains only students that recieved an A and completed the optional assignment. How many students are there in this new object?
+
+```{r}
+# Use a compound logical test to filter observations
+Q3_data<-class_data%>%
+  filter(grade == "A" & completed ==1)
+
+# list the number of rows in Q3
+nrow(Q3_data)
+```
+
+## Question 4
+Using the original data, create a new variable that contains the number of students in each class. How many students are in the 99th student's class.
+
+```{r}
+# Add a column of count data to the class_data
+Q4_data<-class_data%>%
+  add_count(class)
+
+# extract the count (stored in the n column) pull the 99th observation
+Q4_data[99, "n"]
+```
+
+## Question 5
+Create a new variable that contains a 1 if the student is female and a 0 otherwise. What is the sum of this column?
+
+```{r}
+# mutate creates new columns 
+# uses conditional processing (if_else) to return 1 if gender equal F otherwise 0
+Q5_data<-class_data%>%
+  mutate(female = if_else(gender == "F", 1, 0))
+
+# sums the female column
+sum(Q5_data$female)
+```
+
