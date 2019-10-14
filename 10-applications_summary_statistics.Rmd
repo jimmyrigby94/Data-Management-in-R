@@ -10,18 +10,27 @@ There are a few key base R functions that are necessary for you to know by heart
 
 Central Tendency Functions
 
-- `mean(x, trim = 0, na.rm = FALSE)`
-- `median(x, na.rm = FALSE)`
+
+`mean(x, trim = 0, na.rm = FALSE)`
+
+
+`median(x, na.rm = FALSE)`
       
 Spread Functions
 
-- `var(x, na.rm = FALSE)`
-- `sd(x, na.rm = FALSE)`
+
+`var(x, na.rm = FALSE)`
+
+
+`sd(x, na.rm = FALSE)`
       
 Measures of Association (A preview of things to come)
 
-- `cor(x, y = NULL, use = "everything", method = "peason")`
-- `cov(x, y = NULL, use = "everything", method = "peason")`
+
+`cor(x, y = NULL, use = "everything", method = "peason")`
+
+
+`cov(x, y = NULL, use = "everything", method = "peason")`
       
 
 ## Beyond Base R
