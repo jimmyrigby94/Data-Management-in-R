@@ -122,7 +122,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-10-12}
+    \date{2019-10-13}
 
 
 \usepackage{amsthm}
@@ -3335,7 +3335,7 @@ pivot\_wider(data, names\_from, values\_from, \ldots{})
 \end{figure}
 
 \BeginKnitrBlock{example}
-\protect\hypertarget{exm:spread1}{}{\label{exm:spread1} }
+\protect\hypertarget{exm:pivot_wider1}{}{(\#exm:pivot\_wider1) }
 \EndKnitrBlock{example}
 
 \begin{Shaded}
@@ -3365,27 +3365,33 @@ There are a few key base R functions that are necessary for you to know by heart
 
 Central Tendency Functions
 
-\begin{verbatim}
-  - `mean(x, trim = 0, na.rm = FALSE)`
-  - `median(x, na.rm = FALSE)`
-  
-\end{verbatim}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mean(x,\ trim\ =\ 0,\ na.rm\ =\ FALSE)}
+\item
+  \texttt{median(x,\ na.rm\ =\ FALSE)}
+\end{itemize}
 
 Spread Functions
 
-\begin{verbatim}
-  - `var(x, na.rm = FALSE)`
-  - `sd(x, na.rm = FALSE)`
-  
-\end{verbatim}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{var(x,\ na.rm\ =\ FALSE)}
+\item
+  \texttt{sd(x,\ na.rm\ =\ FALSE)}
+\end{itemize}
 
 Measures of Association (A preview of things to come)
 
-\begin{verbatim}
-  - `cor(x, y = NULL, use = "everything", method = "peason")`
-  - `cov(x, y = NULL, use = "everything", method = "peason")`
-  
-\end{verbatim}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cor(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
+\item
+  \texttt{cov(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
+\end{itemize}
 
 \hypertarget{beyond-base-r}{%
 \section{Beyond Base R}\label{beyond-base-r}}
@@ -3486,7 +3492,7 @@ When working with data initially, it is useful to calculate a wide variety of su
 ##  n obs: 30 
 ##  n variables: 7 
 ## 
-## -- Variable type:numeric ---------------------------------------------------
+## -- Variable type:numeric ----------------------------------------------------------------------
 ##    variable missing complete  n  mean    sd p0   p25  p50   p75 p100
 ##     advance       0       30 30 42.93 10.29 25 35    41   47.75   72
 ##  complaints       0       30 30 66.6  13.31 37 58.5  65   77      90
@@ -3742,13 +3748,23 @@ Reporting summary statistics typically requires a bit more work to be put into f
 ## 
 \end{verbatim}
 
+\hypertarget{plotting-distributions}{%
+\section{Plotting distributions}\label{plotting-distributions}}
+
+Visualizations can provide a unique perspective on continuous distributions. ggplot is one of the primary plotting packages used in R and follows many of the same principles that dplyr and tidyr follow. Below I illustrate how to use ggplot to create a boxplot. Each line in the code is associated with a different layer of the plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(attitude_data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Employee Sample"}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ rating))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Rating"}\NormalTok{, }\DataTypeTok{title =} \StringTok{"Summary of Rating Distribution"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Introduction_to_R_files/figure-latex/unnamed-chunk-162-1.pdf}
+
 \hypertarget{part-additional-excercises}{%
 \part{Additional Excercises}\label{part-additional-excercises}}
-
-\hypertarget{the-pygmalion-effect-self-efficacy-based-intervention}{%
-\chapter{The Pygmalion Effect: Self-efficacy based intervention}\label{the-pygmalion-effect-self-efficacy-based-intervention}}
-
-You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
 
 \hypertarget{data-creation-do-not-change}{%
 \subsection{Data Creation (Do Not Change)}\label{data-creation-do-not-change}}
@@ -3765,9 +3781,16 @@ You are conducting a study on self-efficacy based interventions on short term me
 \NormalTok{                               session }\OperatorTok{==}\StringTok{ "evening"} \OperatorTok{~}\StringTok{ }\KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), }\DecValTok{1}\NormalTok{, }\FloatTok{.5}\NormalTok{)))}\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{memory_task_pre =} \KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.15}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{)),}
     \DataTypeTok{memory_task_post =} \KeywordTok{case_when}\NormalTok{(intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{3}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.05}\NormalTok{, }\FloatTok{.05}\NormalTok{)),}
-\NormalTok{                            intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{2}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.2}\NormalTok{))))}
+\NormalTok{                            intervention_finished }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{size =} \KeywordTok{n}\NormalTok{(), }\KeywordTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{, }\StringTok{"Good"}\NormalTok{, }\StringTok{"Adequate"}\NormalTok{, }\StringTok{"Poor"}\NormalTok{, }\StringTok{"Terrible"}\NormalTok{), }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(.}\DecValTok{2}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.2}\NormalTok{))),}
+    \DataTypeTok{GPA =} \KeywordTok{if_else}\NormalTok{(session }\OperatorTok{==}\StringTok{ "evening"}\NormalTok{, }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DataTypeTok{sd =}\NormalTok{.}\DecValTok{75}\NormalTok{), }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{120}\NormalTok{, }\FloatTok{2.3}\NormalTok{, }\FloatTok{.30}\NormalTok{)), }
+    \DataTypeTok{SWB =}\NormalTok{(((GPA}\OperatorTok{-}\KeywordTok{mean}\NormalTok{(GPA))}\OperatorTok{/}\KeywordTok{sd}\NormalTok{(GPA)}\OperatorTok{*}\NormalTok{.}\DecValTok{3}\OperatorTok{+}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \FloatTok{.91}\NormalTok{))}\OperatorTok{+}\FloatTok{2.5}\NormalTok{)}\OperatorTok{*}\FloatTok{1.3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{the-pygmalion-effect-self-efficacy-based-intervention}{%
+\chapter{The Pygmalion Effect: Self-efficacy based intervention}\label{the-pygmalion-effect-self-efficacy-based-intervention}}
+
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
 
 \hypertarget{data-manipulation}{%
 \section{Data Manipulation}\label{data-manipulation}}
@@ -3824,6 +3847,34 @@ Using the summary table created in Question 8, covert the joint frequencies into
 \subsection{Question 10}\label{question-10}}
 
 Using the summary table created in Question 9, calculate the marginal probabilities for each level of the memory test scores (advanced).
+
+\hypertarget{summary-statistics-with-base-r-and-dplyr}{%
+\section{Summary Statistics with Base R and Dplyr}\label{summary-statistics-with-base-r-and-dplyr}}
+
+\hypertarget{question-11}{%
+\section{Question 11}\label{question-11}}
+
+Use skimr to summarise experimental\_data. How does it treat factors?
+
+\hypertarget{question-12}{%
+\section{Question 12}\label{question-12}}
+
+Generate custom reports for numeric variables using the appropriate functions. In the report calculate maximum and minimum values and standard deviations.
+
+\hypertarget{question-13}{%
+\section{Question 13}\label{question-13}}
+
+Create a covariance table and a correlation table? Are GPA and subjective well-being significantly related at \(p < .05\)?
+
+\hypertarget{question-14}{%
+\section{Question 14}\label{question-14}}
+
+Create summary report for each session. Report the mean, standard deviation, and frequency. Which session had the highest GPA?
+
+\hypertarget{question-15}{%
+\section{Question 15}\label{question-15}}
+
+Visualize the distributions of GPA across sessions. Which session has the most variability?
 
 \hypertarget{part-solutions-to-additional-excercises}{%
 \part{Solutions to Additional Excercises}\label{part-solutions-to-additional-excercises}}

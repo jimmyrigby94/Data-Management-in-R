@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-10-12" />
+<meta name="date" content="2019-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -261,10 +261,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6.1" data-path="quick-and-dirty-measures-of-association.html"><a href="quick-and-dirty-measures-of-association.html#measures-of-association-with-hypothesis-tests"><i class="fa fa-check"></i><b>14.6.1</b> Measures of Association With Hypothesis Tests</a></li>
 <li class="chapter" data-level="14.6.2" data-path="quick-and-dirty-measures-of-association.html"><a href="quick-and-dirty-measures-of-association.html#formatted-apa-summary-statistics"><i class="fa fa-check"></i><b>14.6.2</b> Formatted APA Summary Statistics</a></li>
 </ul></li>
+<li class="chapter" data-level="14.7" data-path="plotting-distributions.html"><a href="plotting-distributions.html"><i class="fa fa-check"></i><b>14.7</b> Plotting distributions</a></li>
 </ul></li>
-<li class="part"><span><b>VI Additional Excercises</b></span></li>
+<li class="part"><span><b>VI Additional Excercises</b></span><ul>
+<li class="chapter" data-level="14.7.1" data-path="10-applications_summary_statistics.html"><a href="#data-creation-do-not-change"><i class="fa fa-check"></i><b>14.7.1</b> Data Creation (Do Not Change)</a></li>
+</ul></li>
 <li class="chapter" data-level="15" data-path="the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="the-pygmalion-effect-self-efficacy-based-intervention.html"><i class="fa fa-check"></i><b>15</b> The Pygmalion Effect: Self-efficacy based intervention</a><ul>
-<li class="chapter" data-level="15.0.1" data-path="the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="the-pygmalion-effect-self-efficacy-based-intervention.html#data-creation-do-not-change"><i class="fa fa-check"></i><b>15.0.1</b> Data Creation (Do Not Change)</a></li>
 <li class="chapter" data-level="15.1" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>15.1</b> Data Manipulation</a><ul>
 <li class="chapter" data-level="15.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#question-1"><i class="fa fa-check"></i><b>15.1.1</b> Question 1</a></li>
 <li class="chapter" data-level="15.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#question-2"><i class="fa fa-check"></i><b>15.1.2</b> Question 2</a></li>
@@ -279,6 +281,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.4" data-path="probability-with-dplyr.html"><a href="probability-with-dplyr.html#question-9"><i class="fa fa-check"></i><b>15.2.4</b> Question 9</a></li>
 <li class="chapter" data-level="15.2.5" data-path="probability-with-dplyr.html"><a href="probability-with-dplyr.html#question-10"><i class="fa fa-check"></i><b>15.2.5</b> Question 10</a></li>
 </ul></li>
+<li class="chapter" data-level="15.3" data-path="summary-statistics-with-base-r-and-dplyr.html"><a href="summary-statistics-with-base-r-and-dplyr.html"><i class="fa fa-check"></i><b>15.3</b> Summary Statistics with Base R and Dplyr</a></li>
+<li class="chapter" data-level="15.4" data-path="question-11.html"><a href="question-11.html"><i class="fa fa-check"></i><b>15.4</b> Question 11</a></li>
+<li class="chapter" data-level="15.5" data-path="question-12.html"><a href="question-12.html"><i class="fa fa-check"></i><b>15.5</b> Question 12</a></li>
+<li class="chapter" data-level="15.6" data-path="question-13.html"><a href="question-13.html"><i class="fa fa-check"></i><b>15.6</b> Question 13</a></li>
+<li class="chapter" data-level="15.7" data-path="question-14.html"><a href="question-14.html"><i class="fa fa-check"></i><b>15.7</b> Question 14</a></li>
+<li class="chapter" data-level="15.8" data-path="question-15.html"><a href="question-15.html"><i class="fa fa-check"></i><b>15.8</b> Question 15</a></li>
 </ul></li>
 <li class="part"><span><b>VII Solutions to Additional Excercises</b></span></li>
 <li class="chapter" data-level="16" data-path="solutions-to-the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="solutions-to-the-pygmalion-effect-self-efficacy-based-intervention.html"><i class="fa fa-check"></i><b>16</b> Solutions to The Pygmalion Effect: Self-efficacy based intervention</a><ul>
@@ -318,15 +326,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="prepping-environment" class="section level2">
 <h2><span class="header-section-number">14.3</span> Prepping Environment</h2>
 <p>As always, it is necessary to load packages into the environment. This makes the functions within tha pacakges callable without some additional voodoo. This code chunk, I also load the Chaterjee-Price Attitude Data. This is an employee survey of clerical employees in a financial organization. Type <code>?attitude</code>to learn more.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="co"># Loading required packages</span></a>
-<a class="sourceLine" id="cb93-2" title="2"><span class="kw">library</span>(psycho)</a>
-<a class="sourceLine" id="cb93-3" title="3"><span class="kw">library</span>(skimr)</a>
-<a class="sourceLine" id="cb93-4" title="4"><span class="kw">library</span>(kableExtra)</a>
-<a class="sourceLine" id="cb93-5" title="5"><span class="kw">library</span>(apaTables)</a>
-<a class="sourceLine" id="cb93-6" title="6"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb93-7" title="7"></a>
-<a class="sourceLine" id="cb93-8" title="8"><span class="co"># Loading Data from built-in data set</span></a>
-<a class="sourceLine" id="cb93-9" title="9">attitude_data&lt;-attitude</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># Loading required packages</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">library</span>(psycho)</a>
+<a class="sourceLine" id="cb90-3" title="3"><span class="kw">library</span>(skimr)</a>
+<a class="sourceLine" id="cb90-4" title="4"><span class="kw">library</span>(kableExtra)</a>
+<a class="sourceLine" id="cb90-5" title="5"><span class="kw">library</span>(apaTables)</a>
+<a class="sourceLine" id="cb90-6" title="6"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb90-7" title="7"></a>
+<a class="sourceLine" id="cb90-8" title="8"><span class="co"># Loading Data from built-in data set</span></a>
+<a class="sourceLine" id="cb90-9" title="9">attitude_data&lt;-attitude</a></code></pre></div>
 </div>
             </section>
 

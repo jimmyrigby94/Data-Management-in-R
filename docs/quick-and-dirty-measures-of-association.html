@@ -24,7 +24,7 @@
 <meta name="author" content="James Rigby" />
 
 
-<meta name="date" content="2019-10-12" />
+<meta name="date" content="2019-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="quick-and-dirty-mean-and-central-tendency.html">
-<link rel="next" href="the-pygmalion-effect-self-efficacy-based-intervention.html">
+<link rel="next" href="plotting-distributions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -261,10 +261,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6.1" data-path="quick-and-dirty-measures-of-association.html"><a href="quick-and-dirty-measures-of-association.html#measures-of-association-with-hypothesis-tests"><i class="fa fa-check"></i><b>14.6.1</b> Measures of Association With Hypothesis Tests</a></li>
 <li class="chapter" data-level="14.6.2" data-path="quick-and-dirty-measures-of-association.html"><a href="quick-and-dirty-measures-of-association.html#formatted-apa-summary-statistics"><i class="fa fa-check"></i><b>14.6.2</b> Formatted APA Summary Statistics</a></li>
 </ul></li>
+<li class="chapter" data-level="14.7" data-path="plotting-distributions.html"><a href="plotting-distributions.html"><i class="fa fa-check"></i><b>14.7</b> Plotting distributions</a></li>
 </ul></li>
-<li class="part"><span><b>VI Additional Excercises</b></span></li>
+<li class="part"><span><b>VI Additional Excercises</b></span><ul>
+<li class="chapter" data-level="14.7.1" data-path="10-applications_summary_statistics.html"><a href="#data-creation-do-not-change"><i class="fa fa-check"></i><b>14.7.1</b> Data Creation (Do Not Change)</a></li>
+</ul></li>
 <li class="chapter" data-level="15" data-path="the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="the-pygmalion-effect-self-efficacy-based-intervention.html"><i class="fa fa-check"></i><b>15</b> The Pygmalion Effect: Self-efficacy based intervention</a><ul>
-<li class="chapter" data-level="15.0.1" data-path="the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="the-pygmalion-effect-self-efficacy-based-intervention.html#data-creation-do-not-change"><i class="fa fa-check"></i><b>15.0.1</b> Data Creation (Do Not Change)</a></li>
 <li class="chapter" data-level="15.1" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>15.1</b> Data Manipulation</a><ul>
 <li class="chapter" data-level="15.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#question-1"><i class="fa fa-check"></i><b>15.1.1</b> Question 1</a></li>
 <li class="chapter" data-level="15.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#question-2"><i class="fa fa-check"></i><b>15.1.2</b> Question 2</a></li>
@@ -279,6 +281,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.4" data-path="probability-with-dplyr.html"><a href="probability-with-dplyr.html#question-9"><i class="fa fa-check"></i><b>15.2.4</b> Question 9</a></li>
 <li class="chapter" data-level="15.2.5" data-path="probability-with-dplyr.html"><a href="probability-with-dplyr.html#question-10"><i class="fa fa-check"></i><b>15.2.5</b> Question 10</a></li>
 </ul></li>
+<li class="chapter" data-level="15.3" data-path="summary-statistics-with-base-r-and-dplyr.html"><a href="summary-statistics-with-base-r-and-dplyr.html"><i class="fa fa-check"></i><b>15.3</b> Summary Statistics with Base R and Dplyr</a></li>
+<li class="chapter" data-level="15.4" data-path="question-11.html"><a href="question-11.html"><i class="fa fa-check"></i><b>15.4</b> Question 11</a></li>
+<li class="chapter" data-level="15.5" data-path="question-12.html"><a href="question-12.html"><i class="fa fa-check"></i><b>15.5</b> Question 12</a></li>
+<li class="chapter" data-level="15.6" data-path="question-13.html"><a href="question-13.html"><i class="fa fa-check"></i><b>15.6</b> Question 13</a></li>
+<li class="chapter" data-level="15.7" data-path="question-14.html"><a href="question-14.html"><i class="fa fa-check"></i><b>15.7</b> Question 14</a></li>
+<li class="chapter" data-level="15.8" data-path="question-15.html"><a href="question-15.html"><i class="fa fa-check"></i><b>15.8</b> Question 15</a></li>
 </ul></li>
 <li class="part"><span><b>VII Solutions to Additional Excercises</b></span></li>
 <li class="chapter" data-level="16" data-path="solutions-to-the-pygmalion-effect-self-efficacy-based-intervention.html"><a href="solutions-to-the-pygmalion-effect-self-efficacy-based-intervention.html"><i class="fa fa-check"></i><b>16</b> Solutions to The Pygmalion Effect: Self-efficacy based intervention</a><ul>
@@ -318,8 +326,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quick-and-dirty-measures-of-association" class="section level2">
 <h2><span class="header-section-number">14.6</span> Quick and Dirty Measures of Association</h2>
 <p>The above functions are great for summarising the central tendency and spread of variables in a data, but we have gained little insight into how the varaibles are associated. <code>cov()</code> and <code>cor()</code> return variance-covariance and correlation matrices respectively. These scales provide an indice of association between variables. More positive numbers suggest a stronger positive association and more negative numbers suggest a stronger negative association. Note that differences in scale (i.e., spread) makes different covariances difficult to compare. Correlations are on a standard scale and give more insight into the relative proportion of variance explained.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># Covariance</span></a>
-<a class="sourceLine" id="cb104-2" title="2"><span class="kw">cov</span>(attitude_data)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># Covariance</span></a>
+<a class="sourceLine" id="cb101-2" title="2"><span class="kw">cov</span>(attitude_data)</a></code></pre></div>
 <pre><code>##               rating complaints privileges  learning    raises critical
 ## rating     148.17126  133.77931   63.46437  89.10460  74.68851 18.84253
 ## complaints 133.77931  177.28276   90.95172  93.25517  92.64138 24.73103
@@ -336,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## raises      61.42299
 ## critical    28.84598
 ## advance    105.85747</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># Correlation</span></a>
-<a class="sourceLine" id="cb106-2" title="2"><span class="kw">cor</span>(attitude_data)</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># Correlation</span></a>
+<a class="sourceLine" id="cb103-2" title="2"><span class="kw">cor</span>(attitude_data)</a></code></pre></div>
 <pre><code>##               rating complaints privileges  learning    raises  critical
 ## rating     1.0000000  0.8254176  0.4261169 0.6236782 0.5901390 0.1564392
 ## complaints 0.8254176  1.0000000  0.5582882 0.5967358 0.6691975 0.1877143
@@ -357,11 +365,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="measures-of-association-with-hypothesis-tests" class="section level3">
 <h3><span class="header-section-number">14.6.1</span> Measures of Association With Hypothesis Tests</h3>
 <p>While the base R functions are nice, they do not provide any indication about the confidence in our estimate. <code>correlation()</code> in the psycho package provides a verbal interpretation along with signicance tests which have been corrected for multiple comparisons.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># Using the correlation function in psycho</span></a>
-<a class="sourceLine" id="cb108-2" title="2">my_correlation&lt;-<span class="kw">correlation</span>(attitude_data)</a>
-<a class="sourceLine" id="cb108-3" title="3"></a>
-<a class="sourceLine" id="cb108-4" title="4"><span class="co"># Printing the textual interpretation</span></a>
-<a class="sourceLine" id="cb108-5" title="5">my_correlation<span class="op">$</span>text</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co"># Using the correlation function in psycho</span></a>
+<a class="sourceLine" id="cb105-2" title="2">my_correlation&lt;-<span class="kw">correlation</span>(attitude_data)</a>
+<a class="sourceLine" id="cb105-3" title="3"></a>
+<a class="sourceLine" id="cb105-4" title="4"><span class="co"># Printing the textual interpretation</span></a>
+<a class="sourceLine" id="cb105-5" title="5">my_correlation<span class="op">$</span>text</a></code></pre></div>
 <pre><code>##  [1] &quot;Pearson Full correlation (p value correction: holm):\n&quot;                                                                                                                                 
 ##  [2] &quot;   - rating / complaints:   Results of the Pearson correlation showed a significant large, and positive association between rating and complaints (r(28) = 0.83, p &lt; .001***).&quot;         
 ##  [3] &quot;   - rating / privileges:   Results of the Pearson correlation showed a non significant moderate, and positive association between rating and privileges (r(28) = 0.43, p &gt; .1).&quot;       
@@ -384,11 +392,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [20] &quot;   - learning / advance:   Results of the Pearson correlation showed a significant large, and positive association between learning and advance (r(28) = 0.53, p &lt; .05*).&quot;              
 ## [21] &quot;   - raises / advance:   Results of the Pearson correlation showed a significant large, and positive association between raises and advance (r(28) = 0.57, p &lt; .05*).&quot;                  
 ## [22] &quot;   - critical / advance:   Results of the Pearson correlation showed a non significant small, and positive association between critical and advance (r(28) = 0.28, p &gt; .1).&quot;</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co"># Inspecting the correlelogram</span></a>
-<a class="sourceLine" id="cb110-2" title="2">my_correlation<span class="op">$</span>plot</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="co"># Inspecting the correlelogram</span></a>
+<a class="sourceLine" id="cb107-2" title="2">my_correlation<span class="op">$</span>plot</a></code></pre></div>
 <p><img src="Introduction_to_R_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># Printing the correlation table with significance values</span></a>
-<a class="sourceLine" id="cb111-2" title="2">my_correlation<span class="op">$</span>summary</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># Printing the correlation table with significance values</span></a>
+<a class="sourceLine" id="cb108-2" title="2">my_correlation<span class="op">$</span>summary</a></code></pre></div>
 <pre><code>##             rating complaints privileges learning raises critical
 ## rating                                                           
 ## complaints 0.83***                                               
@@ -401,9 +409,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="formatted-apa-summary-statistics" class="section level3">
 <h3><span class="header-section-number">14.6.2</span> Formatted APA Summary Statistics</h3>
 <p>Reporting summary statistics typically requires a bit more work to be put into formatting. However, <code>apa.cor.table()</code> really makes the job as easy as possible. The only thing we really have to do is ensure that are variables are properly named and capitalized before calling the function. This is because they will be used directly in the generated table. For the attitude_data, we just need to capitlize the variables. I use rename_all() to do this quickly</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">attitude_data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb113-2" title="2"><span class="st">  </span><span class="kw">rename_all</span>(<span class="dt">.funs =</span> <span class="op">~</span><span class="kw">str_to_sentence</span>(.))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb113-3" title="3"><span class="kw">apa.cor.table</span>(<span class="dt">filename =</span> <span class="st">&quot;APA_Attitude_Table.doc&quot;</span>, <span class="dt">table.number =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">attitude_data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="st">  </span><span class="kw">rename_all</span>(<span class="dt">.funs =</span> <span class="op">~</span><span class="kw">str_to_sentence</span>(.))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-3" title="3"><span class="kw">apa.cor.table</span>(<span class="dt">filename =</span> <span class="st">&quot;APA_Attitude_Table.doc&quot;</span>, <span class="dt">table.number =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## 
 ## 
 ## Table 1 
@@ -460,20 +468,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## that could have caused the sample correlation (Cumming, 2014).
 ## * indicates p &lt; .05. ** indicates p &lt; .01.
 ## </code></pre>
-
 </div>
 </div>
-<!-- </div> -->
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="quick-and-dirty-mean-and-central-tendency.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-pygmalion-effect-self-efficacy-based-intervention.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plotting-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
