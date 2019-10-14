@@ -3365,33 +3365,21 @@ There are a few key base R functions that are necessary for you to know by heart
 
 Central Tendency Functions
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{mean(x,\ trim\ =\ 0,\ na.rm\ =\ FALSE)}
-\item
-  \texttt{median(x,\ na.rm\ =\ FALSE)}
-\end{itemize}
+\texttt{mean(x,\ trim\ =\ 0,\ na.rm\ =\ FALSE)}
+
+\texttt{median(x,\ na.rm\ =\ FALSE)}
 
 Spread Functions
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{var(x,\ na.rm\ =\ FALSE)}
-\item
-  \texttt{sd(x,\ na.rm\ =\ FALSE)}
-\end{itemize}
+\texttt{var(x,\ na.rm\ =\ FALSE)}
+
+\texttt{sd(x,\ na.rm\ =\ FALSE)}
 
 Measures of Association (A preview of things to come)
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{cor(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
-\item
-  \texttt{cov(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
-\end{itemize}
+\texttt{cor(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
+
+\texttt{cov(x,\ y\ =\ NULL,\ use\ =\ "everything",\ method\ =\ "peason")}
 
 \hypertarget{beyond-base-r}{%
 \section{Beyond Base R}\label{beyond-base-r}}
@@ -3766,6 +3754,11 @@ Visualizations can provide a unique perspective on continuous distributions. ggp
 \hypertarget{part-additional-excercises}{%
 \part{Additional Excercises}\label{part-additional-excercises}}
 
+\hypertarget{the-pygmalion-effect-self-efficacy-based-intervention}{%
+\chapter{The Pygmalion Effect: Self-efficacy based intervention}\label{the-pygmalion-effect-self-efficacy-based-intervention}}
+
+You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
+
 \hypertarget{data-creation-do-not-change}{%
 \subsection{Data Creation (Do Not Change)}\label{data-creation-do-not-change}}
 
@@ -3786,11 +3779,6 @@ Visualizations can provide a unique perspective on continuous distributions. ggp
     \DataTypeTok{SWB =}\NormalTok{(((GPA}\OperatorTok{-}\KeywordTok{mean}\NormalTok{(GPA))}\OperatorTok{/}\KeywordTok{sd}\NormalTok{(GPA)}\OperatorTok{*}\NormalTok{.}\DecValTok{3}\OperatorTok{+}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \FloatTok{.91}\NormalTok{))}\OperatorTok{+}\FloatTok{2.5}\NormalTok{)}\OperatorTok{*}\FloatTok{1.3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{the-pygmalion-effect-self-efficacy-based-intervention}{%
-\chapter{The Pygmalion Effect: Self-efficacy based intervention}\label{the-pygmalion-effect-self-efficacy-based-intervention}}
-
-You are conducting a study on self-efficacy based interventions on short term memory. Before diving into your studies focal analysis, you want to dig into the data a bit more! Use dplyr and experimental\_data to answer the following questions. Note that experimental\_data is created in the first R chunk. Do \textbf{not} overwrite the original data for each question.
 
 \hypertarget{data-manipulation}{%
 \section{Data Manipulation}\label{data-manipulation}}
@@ -3852,27 +3840,27 @@ Using the summary table created in Question 9, calculate the marginal probabilit
 \section{Summary Statistics with Base R and Dplyr}\label{summary-statistics-with-base-r-and-dplyr}}
 
 \hypertarget{question-11}{%
-\section{Question 11}\label{question-11}}
+\subsection{Question 11}\label{question-11}}
 
 Use skimr to summarise experimental\_data. How does it treat factors?
 
 \hypertarget{question-12}{%
-\section{Question 12}\label{question-12}}
+\subsection{Question 12}\label{question-12}}
 
 Generate custom reports for numeric variables using the appropriate functions. In the report calculate maximum and minimum values and standard deviations.
 
 \hypertarget{question-13}{%
-\section{Question 13}\label{question-13}}
+\subsection{Question 13}\label{question-13}}
 
 Create a covariance table and a correlation table? Are GPA and subjective well-being significantly related at \(p < .05\)?
 
 \hypertarget{question-14}{%
-\section{Question 14}\label{question-14}}
+\subsection{Question 14}\label{question-14}}
 
 Create summary report for each session. Report the mean, standard deviation, and frequency. Which session had the highest GPA?
 
 \hypertarget{question-15}{%
-\section{Question 15}\label{question-15}}
+\subsection{Question 15}\label{question-15}}
 
 Visualize the distributions of GPA across sessions. Which session has the most variability?
 
