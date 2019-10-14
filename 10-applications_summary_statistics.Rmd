@@ -10,18 +10,18 @@ There are a few key base R functions that are necessary for you to know by heart
 
 Central Tendency Functions
 
-      - `mean(x, trim = 0, na.rm = FALSE)`
-      - `median(x, na.rm = FALSE)`
+- `mean(x, trim = 0, na.rm = FALSE)`
+- `median(x, na.rm = FALSE)`
       
 Spread Functions
 
-      - `var(x, na.rm = FALSE)`
-      - `sd(x, na.rm = FALSE)`
+- `var(x, na.rm = FALSE)`
+- `sd(x, na.rm = FALSE)`
       
 Measures of Association (A preview of things to come)
 
-      - `cor(x, y = NULL, use = "everything", method = "peason")`
-      - `cov(x, y = NULL, use = "everything", method = "peason")`
+- `cor(x, y = NULL, use = "everything", method = "peason")`
+- `cov(x, y = NULL, use = "everything", method = "peason")`
       
 
 ## Beyond Base R
@@ -35,13 +35,13 @@ install.packages("skimr")
 ```
 
 Measures of Association
-      - `psycho::correlation(df, type = "full", method = "peason", adjust = "holm", i_am_cheating = FALSE)`
+- `psycho::correlation(df, type = "full", method = "peason", adjust = "holm", i_am_cheating = FALSE)`
 
 Unformatted Summary Statistics
-      -`skimr::skim(data)`
+-`skimr::skim(data)`
 
 Formatted Summary Tables
-      - `apaTables::apa.cor.table(data, filename = NA, table.number = NA, showconf.interval = TRUE, landscape = TRUE)`
+- `apaTables::apa.cor.table(data, filename = NA, table.number = NA, showconf.interval = TRUE, landscape = TRUE)`
 
 ## Prepping Environment
 As always, it is necessary to load packages into the environment. This makes the functions within tha pacakges callable without some additional voodoo. This code chunk, I also load the Chaterjee-Price Attitude Data. This is an employee survey of clerical employees in a financial organization. Type `?attitude`to learn more.
@@ -146,4 +146,13 @@ attitude_data%>%
 apa.cor.table(filename = "APA_Attitude_Table.doc", table.number = 1)
 ```
 
+## Plotting distributions
+
+Visualizations can provide a unique perspective on continuous distributions. ggplot is one of the primary plotting packages used in R and follows many of the same principles that dplyr and tidyr follow. Below I illustrate how to use ggplot to create a boxplot. Each line in the code is associated with a different layer of the plot. 
+
+```{r}
+ggplot(attitude_data, aes(x = "Employee Sample", y = rating))+
+  geom_boxplot()+
+  labs(x = NULL, y = "Rating", title = "Summary of Rating Distribution")
+```
 
